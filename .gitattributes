@@ -1,0 +1,21 @@
+* text=auto
+
+# Unity YAML: keep LF and use Unity's merge tool (UnityYAMLMerge) when configured.
+*.unity    text eol=lf merge=unityyamlmerge
+*.prefab   text eol=lf merge=unityyamlmerge
+*.asset    text eol=lf merge=unityyamlmerge
+*.mat      text eol=lf merge=unityyamlmerge
+*.meta     text eol=lf
+*.asmdef   text eol=lf
+*.cs       text diff=csharp
+*.shader   text
+
+# The generated junkyard mesh is ~10 MB of serialized vertex data: don't diff it.
+Assets/_Game/Data/Junkyard.asset -diff
+
+*.png binary
+*.jpg binary
+*.fbx binary
+*.wav binary
+*.mp3 binary
+*.ogg binary

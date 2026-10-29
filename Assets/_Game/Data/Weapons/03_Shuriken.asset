@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216b6e3b7aba9ff49bdfadf28e243518, type: 3}
+  m_Name: 03_Shuriken
+  m_EditorClassIdentifier: VoxelSmash.Core::VoxelSmash.Core.WeaponDef
+  displayName: Shuriken
+  type: 2
+  mode: 0
+  radius: 0.58
+  power: 6.2
+  cooldown: 0.32
+  duration: 0.29
+  unlockLevel: 0
+  sound: 1
+  shake: 0.065
+  pattern:
+  - delay: 0
+    dx: 0
+    dy: 0
+    scale: 1

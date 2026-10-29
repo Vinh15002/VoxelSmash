@@ -1,0 +1,11759 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796d380692080574b938d0b017f0982f, type: 3}
+  m_Name: 03_SpottedMushroom
+  m_EditorClassIdentifier: VoxelSmash.Core::VoxelSmash.Core.VoxelModel
+  displayName: Spotted Mushroom
+  voxelSize: 0.1
+  palette:
+  - serializedVersion: 2
+    rgba: 4291961976
+  - serializedVersion: 2
+    rgba: 4288235756
+  - serializedVersion: 2
+    rgba: 4279618810
+  - serializedVersion: 2
+    rgba: 4282664175
+  - serializedVersion: 2
+    rgba: 4293326330
+  - serializedVersion: 2
+    rgba: 4284400930
+  - serializedVersion: 2
+    rgba: 4294345275
+  - serializedVersion: 2
+    rgba: 4279661561
+  - serializedVersion: 2
+    rgba: 4285093191
+  - serializedVersion: 2
+    rgba: 4280557086
+  - serializedVersion: 2
+    rgba: 4281621652
+  - serializedVersion: 2
+    rgba: 4294967295
+  - serializedVersion: 2
+    rgba: 4280823492
+  - serializedVersion: 2
+    rgba: 4280305814
+  - serializedVersion: 2
+    rgba: 4279906920
+  - serializedVersion: 2
+    rgba: 4292531406
+  - serializedVersion: 2
+    rgba: 4292786810
+  - serializedVersion: 2
+    rgba: 4285025844
+  - serializedVersion: 2
+    rgba: 4281215530
+  - serializedVersion: 2
+    rgba: 4293192940
+  - serializedVersion: 2
+    rgba: 4282545328
+  - serializedVersion: 2
+    rgba: 4280698480
+  - serializedVersion: 2
+    rgba: 4283586624
+  - serializedVersion: 2
+    rgba: 4289777284
+  - serializedVersion: 2
+    rgba: 4290011686
+  - serializedVersion: 2
+    rgba: 4279809256
+  - serializedVersion: 2
+    rgba: 4287399038
+  - serializedVersion: 2
+    rgba: 4287425791
+  voxels:
+  - x: -9
+    y: 0
+    z: -3
+    color: 5
+    shade: 1.0102422
+  - x: -9
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.96254116
+  - x: -9
+    y: 0
+    z: -1
+    color: 5
+    shade: 0.9315798
+  - x: -9
+    y: 0
+    z: 0
+    color: 5
+    shade: 1.0380561
+  - x: -9
+    y: 0
+    z: 1
+    color: 5
+    shade: 0.9241706
+  - x: -9
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.9498685
+  - x: -9
+    y: 0
+    z: 3
+    color: 5
+    shade: 1.0142783
+  - x: -8
+    y: 0
+    z: -5
+    color: 5
+    shade: 0.9679211
+  - x: -8
+    y: 0
+    z: -4
+    color: 5
+    shade: 0.93924785
+  - x: -8
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.9114569
+  - x: -8
+    y: 0
+    z: -2
+    color: 5
+    shade: 1.0094978
+  - x: -8
+    y: 0
+    z: -1
+    color: 5
+    shade: 0.9137367
+  - x: -8
+    y: 0
+    z: 0
+    color: 5
+    shade: 0.91098297
+  - x: -8
+    y: 0
+    z: 1
+    color: 5
+    shade: 0.9763029
+  - x: -8
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.9596724
+  - x: -8
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.94632316
+  - x: -8
+    y: 0
+    z: 4
+    color: 5
+    shade: 1.0014015
+  - x: -8
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.940595
+  - x: -7
+    y: 0
+    z: -6
+    color: 5
+    shade: 1.0050719
+  - x: -7
+    y: 0
+    z: -5
+    color: 5
+    shade: 0.92157024
+  - x: -7
+    y: 0
+    z: -4
+    color: 5
+    shade: 0.9207444
+  - x: -7
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.95403427
+  - x: -7
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.9528886
+  - x: -7
+    y: 0
+    z: -1
+    color: 5
+    shade: 1.0050713
+  - x: -7
+    y: 0
+    z: 0
+    color: 5
+    shade: 1.026474
+  - x: -7
+    y: 0
+    z: 1
+    color: 5
+    shade: 1.0156446
+  - x: -7
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.9949613
+  - x: -7
+    y: 0
+    z: 3
+    color: 5
+    shade: 1.0304887
+  - x: -7
+    y: 0
+    z: 4
+    color: 5
+    shade: 0.9229014
+  - x: -7
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.99993783
+  - x: -7
+    y: 0
+    z: 6
+    color: 5
+    shade: 1.0303124
+  - x: -6
+    y: 0
+    z: -7
+    color: 5
+    shade: 1.0374184
+  - x: -6
+    y: 0
+    z: -6
+    color: 5
+    shade: 0.9231846
+  - x: -6
+    y: 0
+    z: -5
+    color: 5
+    shade: 0.9150291
+  - x: -6
+    y: 0
+    z: -4
+    color: 5
+    shade: 0.9543371
+  - x: -6
+    y: 0
+    z: -3
+    color: 5
+    shade: 1.0204532
+  - x: -6
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.9993221
+  - x: -6
+    y: 0
+    z: -1
+    color: 5
+    shade: 1.0067203
+  - x: -6
+    y: 0
+    z: 0
+    color: 5
+    shade: 0.99913394
+  - x: -6
+    y: 0
+    z: 1
+    color: 5
+    shade: 0.922098
+  - x: -6
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.91526777
+  - x: -6
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.94531065
+  - x: -6
+    y: 0
+    z: 4
+    color: 5
+    shade: 0.9442227
+  - x: -6
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.97497135
+  - x: -6
+    y: 0
+    z: 6
+    color: 5
+    shade: 1.0350041
+  - x: -6
+    y: 0
+    z: 7
+    color: 5
+    shade: 0.9822859
+  - x: -5
+    y: 0
+    z: -8
+    color: 5
+    shade: 0.9122884
+  - x: -5
+    y: 0
+    z: -7
+    color: 5
+    shade: 0.9735103
+  - x: -5
+    y: 0
+    z: -6
+    color: 5
+    shade: 0.9544876
+  - x: -5
+    y: 0
+    z: -5
+    color: 5
+    shade: 0.973135
+  - x: -5
+    y: 0
+    z: -4
+    color: 5
+    shade: 0.9935162
+  - x: -5
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.9906166
+  - x: -5
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.9195349
+  - x: -5
+    y: 0
+    z: -1
+    color: 5
+    shade: 1.0264049
+  - x: -5
+    y: 0
+    z: 0
+    color: 5
+    shade: 0.9873985
+  - x: -5
+    y: 0
+    z: 1
+    color: 5
+    shade: 0.966208
+  - x: -5
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.9196526
+  - x: -5
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.9665086
+  - x: -5
+    y: 0
+    z: 4
+    color: 5
+    shade: 0.9215822
+  - x: -5
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.9485261
+  - x: -5
+    y: 0
+    z: 6
+    color: 5
+    shade: 0.99490714
+  - x: -5
+    y: 0
+    z: 7
+    color: 5
+    shade: 1.0237895
+  - x: -5
+    y: 0
+    z: 8
+    color: 5
+    shade: 0.9550197
+  - x: -4
+    y: 0
+    z: -8
+    color: 5
+    shade: 0.97931004
+  - x: -4
+    y: 0
+    z: -7
+    color: 5
+    shade: 0.9211445
+  - x: -4
+    y: 0
+    z: -6
+    color: 5
+    shade: 1.0120795
+  - x: -4
+    y: 0
+    z: -5
+    color: 5
+    shade: 1.0305521
+  - x: -4
+    y: 0
+    z: -4
+    color: 5
+    shade: 1.0359539
+  - x: -4
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.9319658
+  - x: -4
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.9792192
+  - x: -4
+    y: 0
+    z: -1
+    color: 5
+    shade: 0.98700106
+  - x: -4
+    y: 0
+    z: 0
+    color: 5
+    shade: 1.0346812
+  - x: -4
+    y: 0
+    z: 1
+    color: 5
+    shade: 0.98146105
+  - x: -4
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.9929739
+  - x: -4
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.9163025
+  - x: -4
+    y: 0
+    z: 4
+    color: 5
+    shade: 1.0154338
+  - x: -4
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.91981167
+  - x: -4
+    y: 0
+    z: 6
+    color: 5
+    shade: 1.0179173
+  - x: -4
+    y: 0
+    z: 7
+    color: 5
+    shade: 1.0100671
+  - x: -4
+    y: 0
+    z: 8
+    color: 5
+    shade: 0.95418805
+  - x: -3
+    y: 0
+    z: -9
+    color: 5
+    shade: 1.0133562
+  - x: -3
+    y: 0
+    z: -8
+    color: 5
+    shade: 0.9314511
+  - x: -3
+    y: 0
+    z: -7
+    color: 5
+    shade: 0.98600113
+  - x: -3
+    y: 0
+    z: -6
+    color: 5
+    shade: 0.9897665
+  - x: -3
+    y: 0
+    z: -5
+    color: 5
+    shade: 0.91642165
+  - x: -3
+    y: 0
+    z: -4
+    color: 5
+    shade: 0.9496958
+  - x: -3
+    y: 0
+    z: -3
+    color: 5
+    shade: 1.0278834
+  - x: -3
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.93677974
+  - x: -3
+    y: 0
+    z: -1
+    color: 5
+    shade: 0.9676306
+  - x: -3
+    y: 0
+    z: 0
+    color: 5
+    shade: 1.0281292
+  - x: -3
+    y: 0
+    z: 1
+    color: 5
+    shade: 1.0108006
+  - x: -3
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.94281346
+  - x: -3
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.9951381
+  - x: -3
+    y: 0
+    z: 4
+    color: 5
+    shade: 0.9606079
+  - x: -3
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.96719086
+  - x: -3
+    y: 0
+    z: 6
+    color: 5
+    shade: 0.9314782
+  - x: -3
+    y: 0
+    z: 7
+    color: 5
+    shade: 1.030291
+  - x: -3
+    y: 0
+    z: 8
+    color: 5
+    shade: 1.0049126
+  - x: -3
+    y: 0
+    z: 9
+    color: 5
+    shade: 0.9638269
+  - x: -2
+    y: 0
+    z: -9
+    color: 5
+    shade: 0.9329247
+  - x: -2
+    y: 0
+    z: -8
+    color: 5
+    shade: 0.99173385
+  - x: -2
+    y: 0
+    z: -7
+    color: 5
+    shade: 0.9163345
+  - x: -2
+    y: 0
+    z: -6
+    color: 5
+    shade: 0.9515445
+  - x: -2
+    y: 0
+    z: -5
+    color: 5
+    shade: 1.0152684
+  - x: -2
+    y: 0
+    z: -4
+    color: 5
+    shade: 1.0261339
+  - x: -2
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.99883497
+  - x: -2
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.9191556
+  - x: -2
+    y: 0
+    z: -1
+    color: 5
+    shade: 0.966561
+  - x: -2
+    y: 0
+    z: 0
+    color: 5
+    shade: 1.0201024
+  - x: -2
+    y: 0
+    z: 1
+    color: 5
+    shade: 1.0119647
+  - x: -2
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.95639634
+  - x: -2
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.9417353
+  - x: -2
+    y: 0
+    z: 4
+    color: 5
+    shade: 0.99644154
+  - x: -2
+    y: 0
+    z: 5
+    color: 5
+    shade: 1.0073942
+  - x: -2
+    y: 0
+    z: 6
+    color: 5
+    shade: 0.97516996
+  - x: -2
+    y: 0
+    z: 7
+    color: 5
+    shade: 0.97345614
+  - x: -2
+    y: 0
+    z: 8
+    color: 5
+    shade: 0.9477885
+  - x: -2
+    y: 0
+    z: 9
+    color: 5
+    shade: 1.0052533
+  - x: -1
+    y: 0
+    z: -9
+    color: 5
+    shade: 0.9728884
+  - x: -1
+    y: 0
+    z: -8
+    color: 5
+    shade: 1.0114486
+  - x: -1
+    y: 0
+    z: -7
+    color: 5
+    shade: 1.024196
+  - x: -1
+    y: 0
+    z: -6
+    color: 5
+    shade: 1.0037724
+  - x: -1
+    y: 0
+    z: -5
+    color: 5
+    shade: 0.97832334
+  - x: -1
+    y: 0
+    z: -4
+    color: 5
+    shade: 0.9438366
+  - x: -1
+    y: 0
+    z: -3
+    color: 5
+    shade: 1.0084186
+  - x: -1
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.95418763
+  - x: -1
+    y: 0
+    z: -1
+    color: 5
+    shade: 0.9495431
+  - x: -1
+    y: 0
+    z: 0
+    color: 5
+    shade: 0.9308532
+  - x: -1
+    y: 0
+    z: 1
+    color: 5
+    shade: 0.9357831
+  - x: -1
+    y: 0
+    z: 2
+    color: 5
+    shade: 1.0248243
+  - x: -1
+    y: 0
+    z: 3
+    color: 5
+    shade: 1.0251428
+  - x: -1
+    y: 0
+    z: 4
+    color: 5
+    shade: 0.954899
+  - x: -1
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.9640904
+  - x: -1
+    y: 0
+    z: 6
+    color: 5
+    shade: 0.9871425
+  - x: -1
+    y: 0
+    z: 7
+    color: 5
+    shade: 1.0024543
+  - x: -1
+    y: 0
+    z: 8
+    color: 5
+    shade: 1.0070217
+  - x: -1
+    y: 0
+    z: 9
+    color: 5
+    shade: 1.0199066
+  - x: 0
+    y: 0
+    z: -9
+    color: 5
+    shade: 1.0107327
+  - x: 0
+    y: 0
+    z: -8
+    color: 5
+    shade: 1.0036325
+  - x: 0
+    y: 0
+    z: -7
+    color: 5
+    shade: 0.9575867
+  - x: 0
+    y: 0
+    z: -6
+    color: 5
+    shade: 0.94054025
+  - x: 0
+    y: 0
+    z: -5
+    color: 5
+    shade: 0.9713224
+  - x: 0
+    y: 0
+    z: -4
+    color: 5
+    shade: 0.9566774
+  - x: 0
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.9956659
+  - x: 0
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.9817329
+  - x: 0
+    y: 0
+    z: -1
+    color: 5
+    shade: 0.9790653
+  - x: 0
+    y: 0
+    z: 0
+    color: 5
+    shade: 0.986372
+  - x: 0
+    y: 0
+    z: 1
+    color: 5
+    shade: 1.0277439
+  - x: 0
+    y: 0
+    z: 2
+    color: 5
+    shade: 1.025438
+  - x: 0
+    y: 0
+    z: 3
+    color: 5
+    shade: 1.0337348
+  - x: 0
+    y: 0
+    z: 4
+    color: 5
+    shade: 1.0236897
+  - x: 0
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.93503773
+  - x: 0
+    y: 0
+    z: 6
+    color: 5
+    shade: 0.94202423
+  - x: 0
+    y: 0
+    z: 7
+    color: 5
+    shade: 0.99237823
+  - x: 0
+    y: 0
+    z: 8
+    color: 5
+    shade: 0.9487286
+  - x: 0
+    y: 0
+    z: 9
+    color: 5
+    shade: 1.0279615
+  - x: 1
+    y: 0
+    z: -9
+    color: 5
+    shade: 0.9780112
+  - x: 1
+    y: 0
+    z: -8
+    color: 5
+    shade: 0.91770786
+  - x: 1
+    y: 0
+    z: -7
+    color: 5
+    shade: 0.91684985
+  - x: 1
+    y: 0
+    z: -6
+    color: 5
+    shade: 0.9819463
+  - x: 1
+    y: 0
+    z: -5
+    color: 5
+    shade: 0.9592919
+  - x: 1
+    y: 0
+    z: -4
+    color: 5
+    shade: 1.0283024
+  - x: 1
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.940778
+  - x: 1
+    y: 0
+    z: -2
+    color: 5
+    shade: 1.0352781
+  - x: 1
+    y: 0
+    z: -1
+    color: 5
+    shade: 1.026822
+  - x: 1
+    y: 0
+    z: 0
+    color: 5
+    shade: 0.91149735
+  - x: 1
+    y: 0
+    z: 1
+    color: 5
+    shade: 1.017645
+  - x: 1
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.91929907
+  - x: 1
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.91493994
+  - x: 1
+    y: 0
+    z: 4
+    color: 5
+    shade: 1.0081483
+  - x: 1
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.9935495
+  - x: 1
+    y: 0
+    z: 6
+    color: 5
+    shade: 0.97705585
+  - x: 1
+    y: 0
+    z: 7
+    color: 5
+    shade: 0.91162074
+  - x: 1
+    y: 0
+    z: 8
+    color: 5
+    shade: 0.92530173
+  - x: 1
+    y: 0
+    z: 9
+    color: 5
+    shade: 0.98090845
+  - x: 2
+    y: 0
+    z: -9
+    color: 5
+    shade: 0.96287364
+  - x: 2
+    y: 0
+    z: -8
+    color: 5
+    shade: 0.957095
+  - x: 2
+    y: 0
+    z: -7
+    color: 5
+    shade: 1.0226574
+  - x: 2
+    y: 0
+    z: -6
+    color: 5
+    shade: 1.0021038
+  - x: 2
+    y: 0
+    z: -5
+    color: 5
+    shade: 0.93935335
+  - x: 2
+    y: 0
+    z: -4
+    color: 5
+    shade: 1.0078157
+  - x: 2
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.96179914
+  - x: 2
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.94541526
+  - x: 2
+    y: 0
+    z: -1
+    color: 5
+    shade: 0.9420483
+  - x: 2
+    y: 0
+    z: 0
+    color: 5
+    shade: 0.9111346
+  - x: 2
+    y: 0
+    z: 1
+    color: 5
+    shade: 1.0001051
+  - x: 2
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.9228748
+  - x: 2
+    y: 0
+    z: 3
+    color: 5
+    shade: 1.0117122
+  - x: 2
+    y: 0
+    z: 4
+    color: 5
+    shade: 0.9484139
+  - x: 2
+    y: 0
+    z: 5
+    color: 5
+    shade: 1.0144928
+  - x: 2
+    y: 0
+    z: 6
+    color: 5
+    shade: 0.9390105
+  - x: 2
+    y: 0
+    z: 7
+    color: 5
+    shade: 1.0121987
+  - x: 2
+    y: 0
+    z: 8
+    color: 5
+    shade: 1.0038829
+  - x: 2
+    y: 0
+    z: 9
+    color: 5
+    shade: 0.9316863
+  - x: 3
+    y: 0
+    z: -9
+    color: 5
+    shade: 1.0382948
+  - x: 3
+    y: 0
+    z: -8
+    color: 5
+    shade: 0.9522378
+  - x: 3
+    y: 0
+    z: -7
+    color: 5
+    shade: 0.9405444
+  - x: 3
+    y: 0
+    z: -6
+    color: 5
+    shade: 0.96139926
+  - x: 3
+    y: 0
+    z: -5
+    color: 5
+    shade: 1.008844
+  - x: 3
+    y: 0
+    z: -4
+    color: 5
+    shade: 0.9802356
+  - x: 3
+    y: 0
+    z: -3
+    color: 5
+    shade: 1.0014204
+  - x: 3
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.97707295
+  - x: 3
+    y: 0
+    z: -1
+    color: 5
+    shade: 1.022804
+  - x: 3
+    y: 0
+    z: 0
+    color: 5
+    shade: 0.9272896
+  - x: 3
+    y: 0
+    z: 1
+    color: 5
+    shade: 0.95018524
+  - x: 3
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.9566339
+  - x: 3
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.933417
+  - x: 3
+    y: 0
+    z: 4
+    color: 5
+    shade: 0.9267225
+  - x: 3
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.9214698
+  - x: 3
+    y: 0
+    z: 6
+    color: 5
+    shade: 1.025855
+  - x: 3
+    y: 0
+    z: 7
+    color: 5
+    shade: 0.98086643
+  - x: 3
+    y: 0
+    z: 8
+    color: 5
+    shade: 0.99535376
+  - x: 3
+    y: 0
+    z: 9
+    color: 5
+    shade: 0.95560414
+  - x: 4
+    y: 0
+    z: -8
+    color: 5
+    shade: 1.0174966
+  - x: 4
+    y: 0
+    z: -7
+    color: 5
+    shade: 1.0141306
+  - x: 4
+    y: 0
+    z: -6
+    color: 5
+    shade: 1.0374928
+  - x: 4
+    y: 0
+    z: -5
+    color: 5
+    shade: 0.9928872
+  - x: 4
+    y: 0
+    z: -4
+    color: 5
+    shade: 1.0387297
+  - x: 4
+    y: 0
+    z: -3
+    color: 5
+    shade: 1.0341436
+  - x: 4
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.93671685
+  - x: 4
+    y: 0
+    z: -1
+    color: 5
+    shade: 1.0286225
+  - x: 4
+    y: 0
+    z: 0
+    color: 5
+    shade: 0.9159328
+  - x: 4
+    y: 0
+    z: 1
+    color: 5
+    shade: 1.0108852
+  - x: 4
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.9404472
+  - x: 4
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.9791379
+  - x: 4
+    y: 0
+    z: 4
+    color: 5
+    shade: 1.0213509
+  - x: 4
+    y: 0
+    z: 5
+    color: 5
+    shade: 1.013173
+  - x: 4
+    y: 0
+    z: 6
+    color: 5
+    shade: 1.0199344
+  - x: 4
+    y: 0
+    z: 7
+    color: 5
+    shade: 0.92700696
+  - x: 4
+    y: 0
+    z: 8
+    color: 5
+    shade: 0.9386707
+  - x: 5
+    y: 0
+    z: -8
+    color: 5
+    shade: 0.93232924
+  - x: 5
+    y: 0
+    z: -7
+    color: 5
+    shade: 1.0356958
+  - x: 5
+    y: 0
+    z: -6
+    color: 5
+    shade: 0.92381346
+  - x: 5
+    y: 0
+    z: -5
+    color: 5
+    shade: 0.9318682
+  - x: 5
+    y: 0
+    z: -4
+    color: 5
+    shade: 0.97793293
+  - x: 5
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.9407428
+  - x: 5
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.97899514
+  - x: 5
+    y: 0
+    z: -1
+    color: 5
+    shade: 0.9281257
+  - x: 5
+    y: 0
+    z: 0
+    color: 5
+    shade: 1.0318631
+  - x: 5
+    y: 0
+    z: 1
+    color: 5
+    shade: 0.99450064
+  - x: 5
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.97668815
+  - x: 5
+    y: 0
+    z: 3
+    color: 5
+    shade: 1.0361524
+  - x: 5
+    y: 0
+    z: 4
+    color: 5
+    shade: 1.0002424
+  - x: 5
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.9625589
+  - x: 5
+    y: 0
+    z: 6
+    color: 5
+    shade: 0.94362634
+  - x: 5
+    y: 0
+    z: 7
+    color: 5
+    shade: 0.9836567
+  - x: 5
+    y: 0
+    z: 8
+    color: 5
+    shade: 0.96659464
+  - x: 6
+    y: 0
+    z: -7
+    color: 5
+    shade: 1.0263864
+  - x: 6
+    y: 0
+    z: -6
+    color: 5
+    shade: 0.95755565
+  - x: 6
+    y: 0
+    z: -5
+    color: 5
+    shade: 0.91080207
+  - x: 6
+    y: 0
+    z: -4
+    color: 5
+    shade: 0.9993506
+  - x: 6
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.9418148
+  - x: 6
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.9672557
+  - x: 6
+    y: 0
+    z: -1
+    color: 5
+    shade: 0.9821272
+  - x: 6
+    y: 0
+    z: 0
+    color: 5
+    shade: 0.9916131
+  - x: 6
+    y: 0
+    z: 1
+    color: 5
+    shade: 0.99548763
+  - x: 6
+    y: 0
+    z: 2
+    color: 5
+    shade: 1.0061878
+  - x: 6
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.9923569
+  - x: 6
+    y: 0
+    z: 4
+    color: 5
+    shade: 0.9881518
+  - x: 6
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.9688344
+  - x: 6
+    y: 0
+    z: 6
+    color: 5
+    shade: 0.98346096
+  - x: 6
+    y: 0
+    z: 7
+    color: 5
+    shade: 0.95348257
+  - x: 7
+    y: 0
+    z: -6
+    color: 5
+    shade: 1.0397155
+  - x: 7
+    y: 0
+    z: -5
+    color: 5
+    shade: 1.0227991
+  - x: 7
+    y: 0
+    z: -4
+    color: 5
+    shade: 1.0035257
+  - x: 7
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.98517066
+  - x: 7
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.9815403
+  - x: 7
+    y: 0
+    z: -1
+    color: 5
+    shade: 0.93373597
+  - x: 7
+    y: 0
+    z: 0
+    color: 5
+    shade: 0.9495636
+  - x: 7
+    y: 0
+    z: 1
+    color: 5
+    shade: 0.9833879
+  - x: 7
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.9684977
+  - x: 7
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.97476155
+  - x: 7
+    y: 0
+    z: 4
+    color: 5
+    shade: 0.9168666
+  - x: 7
+    y: 0
+    z: 5
+    color: 5
+    shade: 0.94964296
+  - x: 7
+    y: 0
+    z: 6
+    color: 5
+    shade: 1.0000287
+  - x: 8
+    y: 0
+    z: -5
+    color: 5
+    shade: 1.0324702
+  - x: 8
+    y: 0
+    z: -4
+    color: 5
+    shade: 0.9556904
+  - x: 8
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.9583263
+  - x: 8
+    y: 0
+    z: -2
+    color: 5
+    shade: 1.0368209
+  - x: 8
+    y: 0
+    z: -1
+    color: 5
+    shade: 1.0354812
+  - x: 8
+    y: 0
+    z: 0
+    color: 5
+    shade: 0.96475625
+  - x: 8
+    y: 0
+    z: 1
+    color: 5
+    shade: 1.0267867
+  - x: 8
+    y: 0
+    z: 2
+    color: 5
+    shade: 0.9723788
+  - x: 8
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.9262049
+  - x: 8
+    y: 0
+    z: 4
+    color: 5
+    shade: 0.97932017
+  - x: 8
+    y: 0
+    z: 5
+    color: 5
+    shade: 1.0305145
+  - x: 9
+    y: 0
+    z: -3
+    color: 5
+    shade: 0.97844017
+  - x: 9
+    y: 0
+    z: -2
+    color: 5
+    shade: 0.98168635
+  - x: 9
+    y: 0
+    z: -1
+    color: 5
+    shade: 0.9802552
+  - x: 9
+    y: 0
+    z: 0
+    color: 5
+    shade: 1.0224453
+  - x: 9
+    y: 0
+    z: 1
+    color: 5
+    shade: 0.974555
+  - x: 9
+    y: 0
+    z: 2
+    color: 5
+    shade: 1.0266383
+  - x: 9
+    y: 0
+    z: 3
+    color: 5
+    shade: 0.9799739
+  - x: -3
+    y: 1
+    z: -1
+    color: 4
+    shade: 0.9730287
+  - x: -3
+    y: 1
+    z: 0
+    color: 4
+    shade: 0.9210397
+  - x: -3
+    y: 1
+    z: 1
+    color: 4
+    shade: 0.9332056
+  - x: -2
+    y: 1
+    z: -2
+    color: 4
+    shade: 1.0364368
+  - x: -2
+    y: 1
+    z: -1
+    color: 4
+    shade: 1.0174433
+  - x: -2
+    y: 1
+    z: 0
+    color: 4
+    shade: 0.99903315
+  - x: -2
+    y: 1
+    z: 1
+    color: 4
+    shade: 0.9984557
+  - x: -2
+    y: 1
+    z: 2
+    color: 4
+    shade: 0.91211647
+  - x: -1
+    y: 1
+    z: -4
+    color: 10
+    shade: 0.9428587
+  - x: -1
+    y: 1
+    z: -3
+    color: 4
+    shade: 0.9868227
+  - x: -1
+    y: 1
+    z: -2
+    color: 4
+    shade: 1.0141678
+  - x: -1
+    y: 1
+    z: -1
+    color: 4
+    shade: 0.98230445
+  - x: -1
+    y: 1
+    z: 0
+    color: 4
+    shade: 0.9345891
+  - x: -1
+    y: 1
+    z: 1
+    color: 4
+    shade: 0.9349482
+  - x: -1
+    y: 1
+    z: 2
+    color: 4
+    shade: 0.9276127
+  - x: -1
+    y: 1
+    z: 3
+    color: 4
+    shade: 1.0220985
+  - x: 0
+    y: 1
+    z: -4
+    color: 10
+    shade: 0.9991428
+  - x: 0
+    y: 1
+    z: -3
+    color: 4
+    shade: 0.9497973
+  - x: 0
+    y: 1
+    z: -2
+    color: 4
+    shade: 0.9578615
+  - x: 0
+    y: 1
+    z: -1
+    color: 4
+    shade: 0.995536
+  - x: 0
+    y: 1
+    z: 0
+    color: 4
+    shade: 0.9926706
+  - x: 0
+    y: 1
+    z: 1
+    color: 4
+    shade: 0.91407824
+  - x: 0
+    y: 1
+    z: 2
+    color: 4
+    shade: 0.99667436
+  - x: 0
+    y: 1
+    z: 3
+    color: 4
+    shade: 1.0211037
+  - x: 1
+    y: 1
+    z: -4
+    color: 10
+    shade: 1.0235107
+  - x: 1
+    y: 1
+    z: -3
+    color: 4
+    shade: 0.953479
+  - x: 1
+    y: 1
+    z: -2
+    color: 4
+    shade: 1.0130113
+  - x: 1
+    y: 1
+    z: -1
+    color: 4
+    shade: 0.9167305
+  - x: 1
+    y: 1
+    z: 0
+    color: 4
+    shade: 1.039854
+  - x: 1
+    y: 1
+    z: 1
+    color: 4
+    shade: 0.9934808
+  - x: 1
+    y: 1
+    z: 2
+    color: 4
+    shade: 0.9671183
+  - x: 1
+    y: 1
+    z: 3
+    color: 4
+    shade: 0.9188329
+  - x: 2
+    y: 1
+    z: -2
+    color: 4
+    shade: 0.98185945
+  - x: 2
+    y: 1
+    z: -1
+    color: 4
+    shade: 1.0347877
+  - x: 2
+    y: 1
+    z: 0
+    color: 4
+    shade: 0.9838379
+  - x: 2
+    y: 1
+    z: 1
+    color: 4
+    shade: 0.9386033
+  - x: 2
+    y: 1
+    z: 2
+    color: 4
+    shade: 0.97682315
+  - x: 3
+    y: 1
+    z: -1
+    color: 4
+    shade: 1.0360335
+  - x: 3
+    y: 1
+    z: 0
+    color: 4
+    shade: 0.9782471
+  - x: 3
+    y: 1
+    z: 1
+    color: 4
+    shade: 0.99929315
+  - x: -3
+    y: 2
+    z: -1
+    color: 4
+    shade: 0.9483652
+  - x: -3
+    y: 2
+    z: 0
+    color: 4
+    shade: 1.0333648
+  - x: -3
+    y: 2
+    z: 1
+    color: 4
+    shade: 0.9318976
+  - x: -2
+    y: 2
+    z: -2
+    color: 4
+    shade: 0.949964
+  - x: -2
+    y: 2
+    z: -1
+    color: 4
+    shade: 0.998211
+  - x: -2
+    y: 2
+    z: 0
+    color: 4
+    shade: 0.9839005
+  - x: -2
+    y: 2
+    z: 1
+    color: 4
+    shade: 0.9547311
+  - x: -2
+    y: 2
+    z: 2
+    color: 4
+    shade: 1.0055664
+  - x: -1
+    y: 2
+    z: -4
+    color: 10
+    shade: 0.9608274
+  - x: -1
+    y: 2
+    z: -3
+    color: 4
+    shade: 0.99958783
+  - x: -1
+    y: 2
+    z: -2
+    color: 4
+    shade: 1.0211123
+  - x: -1
+    y: 2
+    z: -1
+    color: 4
+    shade: 0.9826481
+  - x: -1
+    y: 2
+    z: 0
+    color: 4
+    shade: 0.9266935
+  - x: -1
+    y: 2
+    z: 1
+    color: 4
+    shade: 0.9411022
+  - x: -1
+    y: 2
+    z: 2
+    color: 4
+    shade: 1.0273033
+  - x: -1
+    y: 2
+    z: 3
+    color: 4
+    shade: 0.9689505
+  - x: 0
+    y: 2
+    z: -4
+    color: 10
+    shade: 0.96436536
+  - x: 0
+    y: 2
+    z: -3
+    color: 4
+    shade: 0.9521018
+  - x: 0
+    y: 2
+    z: -2
+    color: 4
+    shade: 0.92292607
+  - x: 0
+    y: 2
+    z: -1
+    color: 4
+    shade: 0.9739644
+  - x: 0
+    y: 2
+    z: 0
+    color: 4
+    shade: 1.0260218
+  - x: 0
+    y: 2
+    z: 1
+    color: 4
+    shade: 0.9917252
+  - x: 0
+    y: 2
+    z: 2
+    color: 4
+    shade: 0.91226244
+  - x: 0
+    y: 2
+    z: 3
+    color: 4
+    shade: 0.9893779
+  - x: 1
+    y: 2
+    z: -4
+    color: 10
+    shade: 0.9297044
+  - x: 1
+    y: 2
+    z: -3
+    color: 4
+    shade: 1.0053349
+  - x: 1
+    y: 2
+    z: -2
+    color: 4
+    shade: 0.91044503
+  - x: 1
+    y: 2
+    z: -1
+    color: 4
+    shade: 0.93980145
+  - x: 1
+    y: 2
+    z: 0
+    color: 4
+    shade: 0.9911103
+  - x: 1
+    y: 2
+    z: 1
+    color: 4
+    shade: 1.0290095
+  - x: 1
+    y: 2
+    z: 2
+    color: 4
+    shade: 0.9552754
+  - x: 1
+    y: 2
+    z: 3
+    color: 4
+    shade: 1.0031093
+  - x: 2
+    y: 2
+    z: -2
+    color: 4
+    shade: 1.0115502
+  - x: 2
+    y: 2
+    z: -1
+    color: 4
+    shade: 0.99856836
+  - x: 2
+    y: 2
+    z: 0
+    color: 4
+    shade: 0.9571709
+  - x: 2
+    y: 2
+    z: 1
+    color: 4
+    shade: 0.9993059
+  - x: 2
+    y: 2
+    z: 2
+    color: 4
+    shade: 1.0221807
+  - x: 3
+    y: 2
+    z: -1
+    color: 4
+    shade: 0.9567104
+  - x: 3
+    y: 2
+    z: 0
+    color: 4
+    shade: 0.93289274
+  - x: 3
+    y: 2
+    z: 1
+    color: 4
+    shade: 0.94961023
+  - x: -3
+    y: 3
+    z: -1
+    color: 4
+    shade: 1.0387479
+  - x: -3
+    y: 3
+    z: 0
+    color: 4
+    shade: 0.91744506
+  - x: -3
+    y: 3
+    z: 1
+    color: 10
+    shade: 0.99590313
+  - x: -2
+    y: 3
+    z: -2
+    color: 4
+    shade: 0.9502662
+  - x: -2
+    y: 3
+    z: -1
+    color: 10
+    shade: 1.0123684
+  - x: -2
+    y: 3
+    z: 0
+    color: 4
+    shade: 1.0244702
+  - x: -2
+    y: 3
+    z: 1
+    color: 10
+    shade: 1.0321394
+  - x: -2
+    y: 3
+    z: 2
+    color: 4
+    shade: 0.95075727
+  - x: -1
+    y: 3
+    z: -4
+    color: 10
+    shade: 0.91748434
+  - x: -1
+    y: 3
+    z: -3
+    color: 4
+    shade: 0.9248874
+  - x: -1
+    y: 3
+    z: -2
+    color: 4
+    shade: 1.0142379
+  - x: -1
+    y: 3
+    z: -1
+    color: 4
+    shade: 0.9347213
+  - x: -1
+    y: 3
+    z: 0
+    color: 4
+    shade: 1.0231075
+  - x: -1
+    y: 3
+    z: 1
+    color: 4
+    shade: 0.91428274
+  - x: -1
+    y: 3
+    z: 2
+    color: 4
+    shade: 1.0132713
+  - x: -1
+    y: 3
+    z: 3
+    color: 4
+    shade: 0.99664
+  - x: 0
+    y: 3
+    z: -4
+    color: 10
+    shade: 1.0311023
+  - x: 0
+    y: 3
+    z: -3
+    color: 4
+    shade: 0.9825197
+  - x: 0
+    y: 3
+    z: -2
+    color: 4
+    shade: 0.9302595
+  - x: 0
+    y: 3
+    z: -1
+    color: 4
+    shade: 1.0328761
+  - x: 0
+    y: 3
+    z: 0
+    color: 4
+    shade: 0.98345554
+  - x: 0
+    y: 3
+    z: 1
+    color: 4
+    shade: 0.9249297
+  - x: 0
+    y: 3
+    z: 2
+    color: 4
+    shade: 0.924456
+  - x: 0
+    y: 3
+    z: 3
+    color: 4
+    shade: 0.971818
+  - x: 1
+    y: 3
+    z: -4
+    color: 10
+    shade: 0.95431244
+  - x: 1
+    y: 3
+    z: -3
+    color: 4
+    shade: 0.9280031
+  - x: 1
+    y: 3
+    z: -2
+    color: 4
+    shade: 1.0110979
+  - x: 1
+    y: 3
+    z: -1
+    color: 4
+    shade: 0.96812516
+  - x: 1
+    y: 3
+    z: 0
+    color: 4
+    shade: 1.0239314
+  - x: 1
+    y: 3
+    z: 1
+    color: 4
+    shade: 0.93799746
+  - x: 1
+    y: 3
+    z: 2
+    color: 4
+    shade: 0.98676986
+  - x: 1
+    y: 3
+    z: 3
+    color: 4
+    shade: 0.917655
+  - x: 2
+    y: 3
+    z: -2
+    color: 4
+    shade: 0.9292091
+  - x: 2
+    y: 3
+    z: -1
+    color: 4
+    shade: 1.0133159
+  - x: 2
+    y: 3
+    z: 0
+    color: 4
+    shade: 0.9752165
+  - x: 2
+    y: 3
+    z: 1
+    color: 4
+    shade: 1.0185769
+  - x: 2
+    y: 3
+    z: 2
+    color: 4
+    shade: 1.035822
+  - x: 3
+    y: 3
+    z: -1
+    color: 10
+    shade: 1.0019963
+  - x: 3
+    y: 3
+    z: 0
+    color: 4
+    shade: 1.0170095
+  - x: 3
+    y: 3
+    z: 1
+    color: 4
+    shade: 0.94523424
+  - x: -3
+    y: 4
+    z: -1
+    color: 10
+    shade: 1.0131955
+  - x: -3
+    y: 4
+    z: 0
+    color: 4
+    shade: 0.9996878
+  - x: -3
+    y: 4
+    z: 1
+    color: 4
+    shade: 0.93231714
+  - x: -2
+    y: 4
+    z: -2
+    color: 4
+    shade: 0.97622293
+  - x: -2
+    y: 4
+    z: -1
+    color: 4
+    shade: 0.92477155
+  - x: -2
+    y: 4
+    z: 0
+    color: 10
+    shade: 0.93055415
+  - x: -2
+    y: 4
+    z: 1
+    color: 4
+    shade: 1.0200019
+  - x: -2
+    y: 4
+    z: 2
+    color: 4
+    shade: 1.0072675
+  - x: -1
+    y: 4
+    z: -4
+    color: 10
+    shade: 1.025297
+  - x: -1
+    y: 4
+    z: -3
+    color: 4
+    shade: 1.0005308
+  - x: -1
+    y: 4
+    z: -2
+    color: 4
+    shade: 1.0082035
+  - x: -1
+    y: 4
+    z: -1
+    color: 4
+    shade: 0.949661
+  - x: -1
+    y: 4
+    z: 0
+    color: 4
+    shade: 0.9364509
+  - x: -1
+    y: 4
+    z: 1
+    color: 4
+    shade: 0.9400166
+  - x: -1
+    y: 4
+    z: 2
+    color: 4
+    shade: 1.0061548
+  - x: -1
+    y: 4
+    z: 3
+    color: 4
+    shade: 1.0238183
+  - x: 0
+    y: 4
+    z: -4
+    color: 10
+    shade: 1.032989
+  - x: 0
+    y: 4
+    z: -3
+    color: 4
+    shade: 0.9340852
+  - x: 0
+    y: 4
+    z: -2
+    color: 10
+    shade: 1.0359538
+  - x: 0
+    y: 4
+    z: -1
+    color: 10
+    shade: 0.99436545
+  - x: 0
+    y: 4
+    z: 0
+    color: 4
+    shade: 0.9233723
+  - x: 0
+    y: 4
+    z: 1
+    color: 4
+    shade: 0.9740143
+  - x: 0
+    y: 4
+    z: 2
+    color: 4
+    shade: 0.96682596
+  - x: 0
+    y: 4
+    z: 3
+    color: 4
+    shade: 1.0194869
+  - x: 1
+    y: 4
+    z: -4
+    color: 10
+    shade: 0.9781175
+  - x: 1
+    y: 4
+    z: -3
+    color: 4
+    shade: 1.006583
+  - x: 1
+    y: 4
+    z: -2
+    color: 4
+    shade: 0.9155122
+  - x: 1
+    y: 4
+    z: -1
+    color: 4
+    shade: 0.91979164
+  - x: 1
+    y: 4
+    z: 0
+    color: 4
+    shade: 0.97906625
+  - x: 1
+    y: 4
+    z: 1
+    color: 4
+    shade: 1.0346946
+  - x: 1
+    y: 4
+    z: 2
+    color: 4
+    shade: 1.000818
+  - x: 1
+    y: 4
+    z: 3
+    color: 4
+    shade: 0.9391061
+  - x: 2
+    y: 4
+    z: -2
+    color: 4
+    shade: 1.0055102
+  - x: 2
+    y: 4
+    z: -1
+    color: 4
+    shade: 1.0250254
+  - x: 2
+    y: 4
+    z: 0
+    color: 4
+    shade: 0.9296807
+  - x: 2
+    y: 4
+    z: 1
+    color: 4
+    shade: 1.0237677
+  - x: 2
+    y: 4
+    z: 2
+    color: 4
+    shade: 1.0326126
+  - x: 3
+    y: 4
+    z: -1
+    color: 4
+    shade: 0.9882331
+  - x: 3
+    y: 4
+    z: 0
+    color: 4
+    shade: 0.95704645
+  - x: 3
+    y: 4
+    z: 1
+    color: 10
+    shade: 0.9337583
+  - x: -3
+    y: 5
+    z: -1
+    color: 10
+    shade: 0.9480012
+  - x: -3
+    y: 5
+    z: 0
+    color: 4
+    shade: 0.91383046
+  - x: -3
+    y: 5
+    z: 1
+    color: 4
+    shade: 0.98282814
+  - x: -2
+    y: 5
+    z: -2
+    color: 4
+    shade: 0.93340045
+  - x: -2
+    y: 5
+    z: -1
+    color: 4
+    shade: 0.969794
+  - x: -2
+    y: 5
+    z: 0
+    color: 10
+    shade: 0.94710886
+  - x: -2
+    y: 5
+    z: 1
+    color: 4
+    shade: 1.0212041
+  - x: -2
+    y: 5
+    z: 2
+    color: 4
+    shade: 1.0291926
+  - x: -1
+    y: 5
+    z: -3
+    color: 4
+    shade: 0.91716117
+  - x: -1
+    y: 5
+    z: -2
+    color: 4
+    shade: 0.99139833
+  - x: -1
+    y: 5
+    z: -1
+    color: 10
+    shade: 1.0255878
+  - x: -1
+    y: 5
+    z: 0
+    color: 4
+    shade: 1.011737
+  - x: -1
+    y: 5
+    z: 1
+    color: 4
+    shade: 1.0060425
+  - x: -1
+    y: 5
+    z: 2
+    color: 4
+    shade: 0.932644
+  - x: -1
+    y: 5
+    z: 3
+    color: 4
+    shade: 0.9318619
+  - x: 0
+    y: 5
+    z: -3
+    color: 4
+    shade: 0.94918126
+  - x: 0
+    y: 5
+    z: -2
+    color: 10
+    shade: 0.94286186
+  - x: 0
+    y: 5
+    z: -1
+    color: 4
+    shade: 0.9528303
+  - x: 0
+    y: 5
+    z: 0
+    color: 10
+    shade: 1.0381055
+  - x: 0
+    y: 5
+    z: 1
+    color: 4
+    shade: 0.95818865
+  - x: 0
+    y: 5
+    z: 2
+    color: 4
+    shade: 0.925042
+  - x: 0
+    y: 5
+    z: 3
+    color: 4
+    shade: 1.0102103
+  - x: 1
+    y: 5
+    z: -3
+    color: 4
+    shade: 0.93820125
+  - x: 1
+    y: 5
+    z: -2
+    color: 4
+    shade: 1.0306026
+  - x: 1
+    y: 5
+    z: -1
+    color: 4
+    shade: 1.0397129
+  - x: 1
+    y: 5
+    z: 0
+    color: 4
+    shade: 0.9790975
+  - x: 1
+    y: 5
+    z: 1
+    color: 10
+    shade: 0.9841508
+  - x: 1
+    y: 5
+    z: 2
+    color: 4
+    shade: 0.95142555
+  - x: 1
+    y: 5
+    z: 3
+    color: 4
+    shade: 0.92033595
+  - x: 2
+    y: 5
+    z: -2
+    color: 4
+    shade: 1.022387
+  - x: 2
+    y: 5
+    z: -1
+    color: 10
+    shade: 1.0312057
+  - x: 2
+    y: 5
+    z: 0
+    color: 4
+    shade: 0.95475596
+  - x: 2
+    y: 5
+    z: 1
+    color: 4
+    shade: 1.0170387
+  - x: 2
+    y: 5
+    z: 2
+    color: 4
+    shade: 1.0121955
+  - x: 3
+    y: 5
+    z: -1
+    color: 4
+    shade: 0.9563643
+  - x: 3
+    y: 5
+    z: 0
+    color: 4
+    shade: 0.9195419
+  - x: 3
+    y: 5
+    z: 1
+    color: 10
+    shade: 1.0311862
+  - x: -3
+    y: 6
+    z: -1
+    color: 4
+    shade: 0.9434255
+  - x: -3
+    y: 6
+    z: 0
+    color: 4
+    shade: 0.95969296
+  - x: -3
+    y: 6
+    z: 1
+    color: 4
+    shade: 0.9410087
+  - x: -2
+    y: 6
+    z: -2
+    color: 4
+    shade: 1.0253788
+  - x: -2
+    y: 6
+    z: -1
+    color: 4
+    shade: 0.92631966
+  - x: -2
+    y: 6
+    z: 0
+    color: 4
+    shade: 0.9126305
+  - x: -2
+    y: 6
+    z: 1
+    color: 4
+    shade: 1.027668
+  - x: -2
+    y: 6
+    z: 2
+    color: 4
+    shade: 0.9191067
+  - x: -1
+    y: 6
+    z: -3
+    color: 4
+    shade: 1.0290811
+  - x: -1
+    y: 6
+    z: -2
+    color: 4
+    shade: 0.9730636
+  - x: -1
+    y: 6
+    z: -1
+    color: 4
+    shade: 0.9828662
+  - x: -1
+    y: 6
+    z: 0
+    color: 4
+    shade: 1.0031635
+  - x: -1
+    y: 6
+    z: 1
+    color: 4
+    shade: 1.0204995
+  - x: -1
+    y: 6
+    z: 2
+    color: 10
+    shade: 0.99090594
+  - x: -1
+    y: 6
+    z: 3
+    color: 4
+    shade: 0.9897823
+  - x: 0
+    y: 6
+    z: -3
+    color: 4
+    shade: 0.9901277
+  - x: 0
+    y: 6
+    z: -2
+    color: 4
+    shade: 1.0388578
+  - x: 0
+    y: 6
+    z: -1
+    color: 4
+    shade: 0.9187164
+  - x: 0
+    y: 6
+    z: 0
+    color: 10
+    shade: 0.97779095
+  - x: 0
+    y: 6
+    z: 1
+    color: 4
+    shade: 1.0156292
+  - x: 0
+    y: 6
+    z: 2
+    color: 4
+    shade: 0.9922255
+  - x: 0
+    y: 6
+    z: 3
+    color: 4
+    shade: 0.93368757
+  - x: 1
+    y: 6
+    z: -3
+    color: 4
+    shade: 1.0306965
+  - x: 1
+    y: 6
+    z: -2
+    color: 4
+    shade: 1.002958
+  - x: 1
+    y: 6
+    z: -1
+    color: 4
+    shade: 0.97977865
+  - x: 1
+    y: 6
+    z: 0
+    color: 10
+    shade: 1.0188566
+  - x: 1
+    y: 6
+    z: 1
+    color: 4
+    shade: 0.93477416
+  - x: 1
+    y: 6
+    z: 2
+    color: 4
+    shade: 1.0001926
+  - x: 1
+    y: 6
+    z: 3
+    color: 4
+    shade: 0.98083186
+  - x: 2
+    y: 6
+    z: -2
+    color: 4
+    shade: 1.0346982
+  - x: 2
+    y: 6
+    z: -1
+    color: 4
+    shade: 1.0338471
+  - x: 2
+    y: 6
+    z: 0
+    color: 4
+    shade: 1.0162798
+  - x: 2
+    y: 6
+    z: 1
+    color: 4
+    shade: 0.92232
+  - x: 2
+    y: 6
+    z: 2
+    color: 4
+    shade: 0.9579951
+  - x: 3
+    y: 6
+    z: -1
+    color: 4
+    shade: 1.0394363
+  - x: 3
+    y: 6
+    z: 0
+    color: 4
+    shade: 1.0331374
+  - x: 3
+    y: 6
+    z: 1
+    color: 4
+    shade: 1.0070968
+  - x: -3
+    y: 7
+    z: -1
+    color: 4
+    shade: 0.97280985
+  - x: -3
+    y: 7
+    z: 0
+    color: 4
+    shade: 1.0387224
+  - x: -3
+    y: 7
+    z: 1
+    color: 4
+    shade: 1.0075798
+  - x: -2
+    y: 7
+    z: -2
+    color: 4
+    shade: 0.95053333
+  - x: -2
+    y: 7
+    z: -1
+    color: 10
+    shade: 1.0214959
+  - x: -2
+    y: 7
+    z: 0
+    color: 10
+    shade: 0.9206319
+  - x: -2
+    y: 7
+    z: 1
+    color: 4
+    shade: 0.9160339
+  - x: -2
+    y: 7
+    z: 2
+    color: 4
+    shade: 0.91128457
+  - x: -1
+    y: 7
+    z: -3
+    color: 10
+    shade: 0.9882621
+  - x: -1
+    y: 7
+    z: -2
+    color: 4
+    shade: 0.9398365
+  - x: -1
+    y: 7
+    z: -1
+    color: 4
+    shade: 0.94148105
+  - x: -1
+    y: 7
+    z: 0
+    color: 4
+    shade: 0.9514234
+  - x: -1
+    y: 7
+    z: 1
+    color: 4
+    shade: 1.0046283
+  - x: -1
+    y: 7
+    z: 2
+    color: 4
+    shade: 1.018181
+  - x: -1
+    y: 7
+    z: 3
+    color: 4
+    shade: 1.0034791
+  - x: 0
+    y: 7
+    z: -3
+    color: 10
+    shade: 1.0185733
+  - x: 0
+    y: 7
+    z: -2
+    color: 4
+    shade: 0.94391274
+  - x: 0
+    y: 7
+    z: -1
+    color: 4
+    shade: 0.94896066
+  - x: 0
+    y: 7
+    z: 0
+    color: 4
+    shade: 0.91973794
+  - x: 0
+    y: 7
+    z: 1
+    color: 4
+    shade: 0.96899647
+  - x: 0
+    y: 7
+    z: 2
+    color: 4
+    shade: 0.9780506
+  - x: 0
+    y: 7
+    z: 3
+    color: 4
+    shade: 0.9556002
+  - x: 1
+    y: 7
+    z: -3
+    color: 4
+    shade: 0.94746304
+  - x: 1
+    y: 7
+    z: -2
+    color: 4
+    shade: 1.0178564
+  - x: 1
+    y: 7
+    z: -1
+    color: 4
+    shade: 0.9374753
+  - x: 1
+    y: 7
+    z: 0
+    color: 4
+    shade: 0.9782749
+  - x: 1
+    y: 7
+    z: 1
+    color: 4
+    shade: 1.0343828
+  - x: 1
+    y: 7
+    z: 2
+    color: 4
+    shade: 0.9792165
+  - x: 1
+    y: 7
+    z: 3
+    color: 10
+    shade: 1.0065864
+  - x: 2
+    y: 7
+    z: -2
+    color: 4
+    shade: 0.99084353
+  - x: 2
+    y: 7
+    z: -1
+    color: 4
+    shade: 0.9725043
+  - x: 2
+    y: 7
+    z: 0
+    color: 4
+    shade: 0.9914696
+  - x: 2
+    y: 7
+    z: 1
+    color: 4
+    shade: 0.9966449
+  - x: 2
+    y: 7
+    z: 2
+    color: 4
+    shade: 1.0230309
+  - x: 3
+    y: 7
+    z: -1
+    color: 4
+    shade: 0.976048
+  - x: 3
+    y: 7
+    z: 0
+    color: 4
+    shade: 0.91999406
+  - x: 3
+    y: 7
+    z: 1
+    color: 4
+    shade: 1.0102112
+  - x: -3
+    y: 8
+    z: -1
+    color: 4
+    shade: 0.97509587
+  - x: -3
+    y: 8
+    z: 0
+    color: 4
+    shade: 1.0107297
+  - x: -3
+    y: 8
+    z: 1
+    color: 4
+    shade: 0.9230557
+  - x: -2
+    y: 8
+    z: -2
+    color: 4
+    shade: 1.0246626
+  - x: -2
+    y: 8
+    z: -1
+    color: 4
+    shade: 1.0016736
+  - x: -2
+    y: 8
+    z: 0
+    color: 10
+    shade: 1.0315166
+  - x: -2
+    y: 8
+    z: 1
+    color: 4
+    shade: 0.9890201
+  - x: -2
+    y: 8
+    z: 2
+    color: 4
+    shade: 1.0332931
+  - x: -1
+    y: 8
+    z: -3
+    color: 10
+    shade: 0.9587693
+  - x: -1
+    y: 8
+    z: -2
+    color: 4
+    shade: 1.0162035
+  - x: -1
+    y: 8
+    z: -1
+    color: 10
+    shade: 0.9265173
+  - x: -1
+    y: 8
+    z: 0
+    color: 4
+    shade: 0.940368
+  - x: -1
+    y: 8
+    z: 1
+    color: 10
+    shade: 1.0377065
+  - x: -1
+    y: 8
+    z: 2
+    color: 4
+    shade: 1.0184072
+  - x: -1
+    y: 8
+    z: 3
+    color: 4
+    shade: 0.9190345
+  - x: 0
+    y: 8
+    z: -3
+    color: 4
+    shade: 1.0296984
+  - x: 0
+    y: 8
+    z: -2
+    color: 10
+    shade: 0.97414094
+  - x: 0
+    y: 8
+    z: -1
+    color: 4
+    shade: 0.9390462
+  - x: 0
+    y: 8
+    z: 0
+    color: 4
+    shade: 0.92720973
+  - x: 0
+    y: 8
+    z: 1
+    color: 4
+    shade: 1.0012593
+  - x: 0
+    y: 8
+    z: 2
+    color: 10
+    shade: 1.0297235
+  - x: 0
+    y: 8
+    z: 3
+    color: 10
+    shade: 0.9230581
+  - x: 1
+    y: 8
+    z: -3
+    color: 4
+    shade: 0.9532211
+  - x: 1
+    y: 8
+    z: -2
+    color: 4
+    shade: 0.926249
+  - x: 1
+    y: 8
+    z: -1
+    color: 10
+    shade: 0.9768174
+  - x: 1
+    y: 8
+    z: 0
+    color: 4
+    shade: 0.94469815
+  - x: 1
+    y: 8
+    z: 1
+    color: 10
+    shade: 1.0374186
+  - x: 1
+    y: 8
+    z: 2
+    color: 4
+    shade: 1.0073322
+  - x: 1
+    y: 8
+    z: 3
+    color: 10
+    shade: 0.99001145
+  - x: 2
+    y: 8
+    z: -2
+    color: 4
+    shade: 0.99477845
+  - x: 2
+    y: 8
+    z: -1
+    color: 4
+    shade: 1.0215975
+  - x: 2
+    y: 8
+    z: 0
+    color: 4
+    shade: 0.95213294
+  - x: 2
+    y: 8
+    z: 1
+    color: 4
+    shade: 0.9934851
+  - x: 2
+    y: 8
+    z: 2
+    color: 4
+    shade: 0.91836214
+  - x: 3
+    y: 8
+    z: -1
+    color: 4
+    shade: 1.0088168
+  - x: 3
+    y: 8
+    z: 0
+    color: 4
+    shade: 0.978231
+  - x: 3
+    y: 8
+    z: 1
+    color: 4
+    shade: 1.0366822
+  - x: -3
+    y: 9
+    z: -1
+    color: 4
+    shade: 0.98433393
+  - x: -3
+    y: 9
+    z: 0
+    color: 10
+    shade: 1.0163771
+  - x: -3
+    y: 9
+    z: 1
+    color: 10
+    shade: 0.9640836
+  - x: -2
+    y: 9
+    z: -2
+    color: 4
+    shade: 0.99844295
+  - x: -2
+    y: 9
+    z: -1
+    color: 4
+    shade: 1.0245632
+  - x: -2
+    y: 9
+    z: 0
+    color: 4
+    shade: 1.018706
+  - x: -2
+    y: 9
+    z: 1
+    color: 4
+    shade: 1.0020714
+  - x: -2
+    y: 9
+    z: 2
+    color: 4
+    shade: 1.0178655
+  - x: -1
+    y: 9
+    z: -3
+    color: 4
+    shade: 0.94884855
+  - x: -1
+    y: 9
+    z: -2
+    color: 4
+    shade: 1.00888
+  - x: -1
+    y: 9
+    z: -1
+    color: 4
+    shade: 1.0124363
+  - x: -1
+    y: 9
+    z: 0
+    color: 4
+    shade: 0.96346986
+  - x: -1
+    y: 9
+    z: 1
+    color: 4
+    shade: 1.0017712
+  - x: -1
+    y: 9
+    z: 2
+    color: 4
+    shade: 0.93250406
+  - x: -1
+    y: 9
+    z: 3
+    color: 4
+    shade: 0.99398476
+  - x: 0
+    y: 9
+    z: -3
+    color: 4
+    shade: 0.95883834
+  - x: 0
+    y: 9
+    z: -2
+    color: 4
+    shade: 0.95873475
+  - x: 0
+    y: 9
+    z: -1
+    color: 4
+    shade: 1.0204878
+  - x: 0
+    y: 9
+    z: 0
+    color: 4
+    shade: 0.9620378
+  - x: 0
+    y: 9
+    z: 1
+    color: 4
+    shade: 0.9675086
+  - x: 0
+    y: 9
+    z: 2
+    color: 4
+    shade: 1.0368067
+  - x: 0
+    y: 9
+    z: 3
+    color: 10
+    shade: 0.95784515
+  - x: 1
+    y: 9
+    z: -3
+    color: 4
+    shade: 0.9669754
+  - x: 1
+    y: 9
+    z: -2
+    color: 4
+    shade: 1.034098
+  - x: 1
+    y: 9
+    z: -1
+    color: 4
+    shade: 1.021688
+  - x: 1
+    y: 9
+    z: 0
+    color: 4
+    shade: 0.9532817
+  - x: 1
+    y: 9
+    z: 1
+    color: 4
+    shade: 1.0039909
+  - x: 1
+    y: 9
+    z: 2
+    color: 4
+    shade: 1.0346061
+  - x: 1
+    y: 9
+    z: 3
+    color: 4
+    shade: 1.0143844
+  - x: 2
+    y: 9
+    z: -2
+    color: 4
+    shade: 0.986883
+  - x: 2
+    y: 9
+    z: -1
+    color: 4
+    shade: 1.0293444
+  - x: 2
+    y: 9
+    z: 0
+    color: 4
+    shade: 0.9195904
+  - x: 2
+    y: 9
+    z: 1
+    color: 4
+    shade: 0.9808035
+  - x: 2
+    y: 9
+    z: 2
+    color: 4
+    shade: 1.0330162
+  - x: 3
+    y: 9
+    z: -1
+    color: 10
+    shade: 1.029807
+  - x: 3
+    y: 9
+    z: 0
+    color: 10
+    shade: 0.96266913
+  - x: 3
+    y: 9
+    z: 1
+    color: 4
+    shade: 1.0031261
+  - x: -3
+    y: 10
+    z: -1
+    color: 4
+    shade: 0.9128164
+  - x: -3
+    y: 10
+    z: 0
+    color: 4
+    shade: 0.91516024
+  - x: -3
+    y: 10
+    z: 1
+    color: 4
+    shade: 0.9443521
+  - x: -2
+    y: 10
+    z: -2
+    color: 4
+    shade: 0.9911497
+  - x: -2
+    y: 10
+    z: -1
+    color: 4
+    shade: 0.9483835
+  - x: -2
+    y: 10
+    z: 0
+    color: 4
+    shade: 0.9379689
+  - x: -2
+    y: 10
+    z: 1
+    color: 10
+    shade: 0.9758182
+  - x: -2
+    y: 10
+    z: 2
+    color: 4
+    shade: 0.93498236
+  - x: -1
+    y: 10
+    z: -3
+    color: 10
+    shade: 0.95386237
+  - x: -1
+    y: 10
+    z: -2
+    color: 4
+    shade: 1.0282403
+  - x: -1
+    y: 10
+    z: -1
+    color: 10
+    shade: 0.9722745
+  - x: -1
+    y: 10
+    z: 0
+    color: 4
+    shade: 0.9376128
+  - x: -1
+    y: 10
+    z: 1
+    color: 10
+    shade: 1.0332947
+  - x: -1
+    y: 10
+    z: 2
+    color: 4
+    shade: 0.9447503
+  - x: -1
+    y: 10
+    z: 3
+    color: 4
+    shade: 0.9378744
+  - x: 0
+    y: 10
+    z: -3
+    color: 4
+    shade: 0.9567791
+  - x: 0
+    y: 10
+    z: -2
+    color: 4
+    shade: 0.9207224
+  - x: 0
+    y: 10
+    z: -1
+    color: 4
+    shade: 1.0398756
+  - x: 0
+    y: 10
+    z: 0
+    color: 4
+    shade: 0.9364888
+  - x: 0
+    y: 10
+    z: 1
+    color: 4
+    shade: 0.9594017
+  - x: 0
+    y: 10
+    z: 2
+    color: 4
+    shade: 0.96998566
+  - x: 0
+    y: 10
+    z: 3
+    color: 4
+    shade: 1.016755
+  - x: 1
+    y: 10
+    z: -3
+    color: 4
+    shade: 0.9812816
+  - x: 1
+    y: 10
+    z: -2
+    color: 4
+    shade: 0.92471516
+  - x: 1
+    y: 10
+    z: -1
+    color: 10
+    shade: 1.0074652
+  - x: 1
+    y: 10
+    z: 0
+    color: 4
+    shade: 0.9134812
+  - x: 1
+    y: 10
+    z: 1
+    color: 10
+    shade: 1.0019656
+  - x: 1
+    y: 10
+    z: 2
+    color: 4
+    shade: 1.0195355
+  - x: 1
+    y: 10
+    z: 3
+    color: 10
+    shade: 1.0028459
+  - x: 2
+    y: 10
+    z: -2
+    color: 4
+    shade: 1.0226665
+  - x: 2
+    y: 10
+    z: -1
+    color: 4
+    shade: 1.0087551
+  - x: 2
+    y: 10
+    z: 0
+    color: 4
+    shade: 0.94269705
+  - x: 2
+    y: 10
+    z: 1
+    color: 4
+    shade: 0.94131565
+  - x: 2
+    y: 10
+    z: 2
+    color: 4
+    shade: 0.9957122
+  - x: 3
+    y: 10
+    z: -1
+    color: 4
+    shade: 0.9559184
+  - x: 3
+    y: 10
+    z: 0
+    color: 4
+    shade: 1.0153276
+  - x: 3
+    y: 10
+    z: 1
+    color: 4
+    shade: 0.92768574
+  - x: -9
+    y: 11
+    z: 0
+    color: 3
+    shade: 1.016359
+  - x: -8
+    y: 11
+    z: -4
+    color: 3
+    shade: 0.99842316
+  - x: -8
+    y: 11
+    z: -3
+    color: 3
+    shade: 0.9298763
+  - x: -8
+    y: 11
+    z: -2
+    color: 11
+    shade: 1.0311573
+  - x: -8
+    y: 11
+    z: -1
+    color: 3
+    shade: 1.0091157
+  - x: -8
+    y: 11
+    z: 0
+    color: 3
+    shade: 0.97782564
+  - x: -8
+    y: 11
+    z: 1
+    color: 3
+    shade: 0.96504146
+  - x: -8
+    y: 11
+    z: 2
+    color: 3
+    shade: 0.94171643
+  - x: -8
+    y: 11
+    z: 3
+    color: 3
+    shade: 1.0069934
+  - x: -8
+    y: 11
+    z: 4
+    color: 3
+    shade: 1.0210898
+  - x: -7
+    y: 11
+    z: -5
+    color: 3
+    shade: 0.95213264
+  - x: -7
+    y: 11
+    z: -4
+    color: 3
+    shade: 1.0014701
+  - x: -7
+    y: 11
+    z: -3
+    color: 3
+    shade: 1.0028113
+  - x: -7
+    y: 11
+    z: -2
+    color: 3
+    shade: 0.9700811
+  - x: -7
+    y: 11
+    z: -1
+    color: 3
+    shade: 1.0331405
+  - x: -7
+    y: 11
+    z: 0
+    color: 3
+    shade: 1.0033182
+  - x: -7
+    y: 11
+    z: 1
+    color: 11
+    shade: 0.91326743
+  - x: -7
+    y: 11
+    z: 2
+    color: 3
+    shade: 0.9431405
+  - x: -7
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.93606144
+  - x: -7
+    y: 11
+    z: 4
+    color: 3
+    shade: 0.9738787
+  - x: -7
+    y: 11
+    z: 5
+    color: 3
+    shade: 0.92963696
+  - x: -6
+    y: 11
+    z: -6
+    color: 3
+    shade: 1.0236845
+  - x: -6
+    y: 11
+    z: -5
+    color: 3
+    shade: 0.94490236
+  - x: -6
+    y: 11
+    z: -4
+    color: 3
+    shade: 0.9760033
+  - x: -6
+    y: 11
+    z: -3
+    color: 3
+    shade: 0.9962827
+  - x: -6
+    y: 11
+    z: -2
+    color: 3
+    shade: 0.9721365
+  - x: -6
+    y: 11
+    z: -1
+    color: 3
+    shade: 0.97119594
+  - x: -6
+    y: 11
+    z: 0
+    color: 3
+    shade: 0.9294852
+  - x: -6
+    y: 11
+    z: 1
+    color: 3
+    shade: 0.93957746
+  - x: -6
+    y: 11
+    z: 2
+    color: 3
+    shade: 1.0362971
+  - x: -6
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.9475824
+  - x: -6
+    y: 11
+    z: 4
+    color: 11
+    shade: 1.028832
+  - x: -6
+    y: 11
+    z: 5
+    color: 3
+    shade: 0.9625469
+  - x: -6
+    y: 11
+    z: 6
+    color: 3
+    shade: 0.9390934
+  - x: -5
+    y: 11
+    z: -7
+    color: 3
+    shade: 0.94436353
+  - x: -5
+    y: 11
+    z: -6
+    color: 3
+    shade: 0.95145243
+  - x: -5
+    y: 11
+    z: -5
+    color: 3
+    shade: 0.9166125
+  - x: -5
+    y: 11
+    z: -4
+    color: 11
+    shade: 0.96824455
+  - x: -5
+    y: 11
+    z: -3
+    color: 3
+    shade: 1.00087
+  - x: -5
+    y: 11
+    z: -2
+    color: 3
+    shade: 0.9489294
+  - x: -5
+    y: 11
+    z: -1
+    color: 3
+    shade: 0.92624015
+  - x: -5
+    y: 11
+    z: 0
+    color: 3
+    shade: 1.0229988
+  - x: -5
+    y: 11
+    z: 1
+    color: 3
+    shade: 0.910472
+  - x: -5
+    y: 11
+    z: 2
+    color: 3
+    shade: 0.9323914
+  - x: -5
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.95983297
+  - x: -5
+    y: 11
+    z: 4
+    color: 3
+    shade: 0.92806554
+  - x: -5
+    y: 11
+    z: 5
+    color: 3
+    shade: 0.9100346
+  - x: -5
+    y: 11
+    z: 6
+    color: 3
+    shade: 0.96258533
+  - x: -5
+    y: 11
+    z: 7
+    color: 11
+    shade: 1.0156145
+  - x: -4
+    y: 11
+    z: -8
+    color: 3
+    shade: 0.9793788
+  - x: -4
+    y: 11
+    z: -7
+    color: 3
+    shade: 0.93804824
+  - x: -4
+    y: 11
+    z: -6
+    color: 3
+    shade: 0.9625718
+  - x: -4
+    y: 11
+    z: -5
+    color: 3
+    shade: 0.929857
+  - x: -4
+    y: 11
+    z: -4
+    color: 3
+    shade: 0.95144886
+  - x: -4
+    y: 11
+    z: -3
+    color: 3
+    shade: 1.0380487
+  - x: -4
+    y: 11
+    z: -2
+    color: 3
+    shade: 1.0326746
+  - x: -4
+    y: 11
+    z: -1
+    color: 11
+    shade: 0.9635208
+  - x: -4
+    y: 11
+    z: 0
+    color: 3
+    shade: 0.99387306
+  - x: -4
+    y: 11
+    z: 1
+    color: 3
+    shade: 0.9448746
+  - x: -4
+    y: 11
+    z: 2
+    color: 3
+    shade: 0.94697917
+  - x: -4
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.91662973
+  - x: -4
+    y: 11
+    z: 4
+    color: 3
+    shade: 0.9455562
+  - x: -4
+    y: 11
+    z: 5
+    color: 3
+    shade: 0.912139
+  - x: -4
+    y: 11
+    z: 6
+    color: 3
+    shade: 1.0106963
+  - x: -4
+    y: 11
+    z: 7
+    color: 3
+    shade: 0.9835074
+  - x: -4
+    y: 11
+    z: 8
+    color: 3
+    shade: 0.9633007
+  - x: -3
+    y: 11
+    z: -8
+    color: 3
+    shade: 0.94892323
+  - x: -3
+    y: 11
+    z: -7
+    color: 3
+    shade: 0.973718
+  - x: -3
+    y: 11
+    z: -6
+    color: 3
+    shade: 0.9357176
+  - x: -3
+    y: 11
+    z: -5
+    color: 3
+    shade: 0.99168813
+  - x: -3
+    y: 11
+    z: -4
+    color: 3
+    shade: 0.9967057
+  - x: -3
+    y: 11
+    z: -3
+    color: 3
+    shade: 0.9850229
+  - x: -3
+    y: 11
+    z: -2
+    color: 3
+    shade: 0.9822705
+  - x: -3
+    y: 11
+    z: -1
+    color: 3
+    shade: 1.027132
+  - x: -3
+    y: 11
+    z: 0
+    color: 3
+    shade: 0.95763856
+  - x: -3
+    y: 11
+    z: 1
+    color: 3
+    shade: 0.9466382
+  - x: -3
+    y: 11
+    z: 2
+    color: 11
+    shade: 1.0232126
+  - x: -3
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.92251104
+  - x: -3
+    y: 11
+    z: 4
+    color: 3
+    shade: 0.92617035
+  - x: -3
+    y: 11
+    z: 5
+    color: 3
+    shade: 0.9782172
+  - x: -3
+    y: 11
+    z: 6
+    color: 3
+    shade: 0.9721019
+  - x: -3
+    y: 11
+    z: 7
+    color: 3
+    shade: 0.91861063
+  - x: -3
+    y: 11
+    z: 8
+    color: 3
+    shade: 0.9538707
+  - x: -2
+    y: 11
+    z: -8
+    color: 3
+    shade: 1.0001986
+  - x: -2
+    y: 11
+    z: -7
+    color: 3
+    shade: 1.0082489
+  - x: -2
+    y: 11
+    z: -6
+    color: 11
+    shade: 1.0250107
+  - x: -2
+    y: 11
+    z: -5
+    color: 3
+    shade: 1.008975
+  - x: -2
+    y: 11
+    z: -4
+    color: 3
+    shade: 0.92109805
+  - x: -2
+    y: 11
+    z: -3
+    color: 3
+    shade: 0.9410446
+  - x: -2
+    y: 11
+    z: -2
+    color: 3
+    shade: 0.95168906
+  - x: -2
+    y: 11
+    z: -1
+    color: 3
+    shade: 1.0279317
+  - x: -2
+    y: 11
+    z: 0
+    color: 3
+    shade: 0.9627395
+  - x: -2
+    y: 11
+    z: 1
+    color: 3
+    shade: 0.93337
+  - x: -2
+    y: 11
+    z: 2
+    color: 3
+    shade: 0.9638909
+  - x: -2
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.9422997
+  - x: -2
+    y: 11
+    z: 4
+    color: 3
+    shade: 1.020684
+  - x: -2
+    y: 11
+    z: 5
+    color: 11
+    shade: 1.0208598
+  - x: -2
+    y: 11
+    z: 6
+    color: 3
+    shade: 0.9397757
+  - x: -2
+    y: 11
+    z: 7
+    color: 3
+    shade: 0.988884
+  - x: -2
+    y: 11
+    z: 8
+    color: 3
+    shade: 1.0365323
+  - x: -1
+    y: 11
+    z: -8
+    color: 3
+    shade: 1.0191424
+  - x: -1
+    y: 11
+    z: -7
+    color: 3
+    shade: 0.97631663
+  - x: -1
+    y: 11
+    z: -6
+    color: 3
+    shade: 0.9368678
+  - x: -1
+    y: 11
+    z: -5
+    color: 3
+    shade: 0.9339264
+  - x: -1
+    y: 11
+    z: -4
+    color: 3
+    shade: 1.0226731
+  - x: -1
+    y: 11
+    z: -3
+    color: 11
+    shade: 0.99302536
+  - x: -1
+    y: 11
+    z: -2
+    color: 3
+    shade: 1.0203013
+  - x: -1
+    y: 11
+    z: -1
+    color: 3
+    shade: 0.942725
+  - x: -1
+    y: 11
+    z: 0
+    color: 3
+    shade: 1.0338104
+  - x: -1
+    y: 11
+    z: 1
+    color: 3
+    shade: 1.0014106
+  - x: -1
+    y: 11
+    z: 2
+    color: 3
+    shade: 0.91946197
+  - x: -1
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.9510098
+  - x: -1
+    y: 11
+    z: 4
+    color: 3
+    shade: 0.97770274
+  - x: -1
+    y: 11
+    z: 5
+    color: 3
+    shade: 1.0066574
+  - x: -1
+    y: 11
+    z: 6
+    color: 3
+    shade: 1.0148772
+  - x: -1
+    y: 11
+    z: 7
+    color: 3
+    shade: 1.0380191
+  - x: -1
+    y: 11
+    z: 8
+    color: 11
+    shade: 1.0316856
+  - x: 0
+    y: 11
+    z: -9
+    color: 3
+    shade: 0.95194036
+  - x: 0
+    y: 11
+    z: -8
+    color: 3
+    shade: 0.91244733
+  - x: 0
+    y: 11
+    z: -7
+    color: 3
+    shade: 0.9984968
+  - x: 0
+    y: 11
+    z: -6
+    color: 3
+    shade: 0.99432576
+  - x: 0
+    y: 11
+    z: -5
+    color: 3
+    shade: 0.93782514
+  - x: 0
+    y: 11
+    z: -4
+    color: 3
+    shade: 0.9426734
+  - x: 0
+    y: 11
+    z: -3
+    color: 3
+    shade: 1.0240285
+  - x: 0
+    y: 11
+    z: -2
+    color: 3
+    shade: 1.0037565
+  - x: 0
+    y: 11
+    z: -1
+    color: 3
+    shade: 0.9439662
+  - x: 0
+    y: 11
+    z: 0
+    color: 11
+    shade: 0.96165293
+  - x: 0
+    y: 11
+    z: 1
+    color: 3
+    shade: 0.9283796
+  - x: 0
+    y: 11
+    z: 2
+    color: 3
+    shade: 0.99483234
+  - x: 0
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.97695464
+  - x: 0
+    y: 11
+    z: 4
+    color: 3
+    shade: 0.96577847
+  - x: 0
+    y: 11
+    z: 5
+    color: 3
+    shade: 0.9934368
+  - x: 0
+    y: 11
+    z: 6
+    color: 3
+    shade: 0.97362703
+  - x: 0
+    y: 11
+    z: 7
+    color: 3
+    shade: 0.929638
+  - x: 0
+    y: 11
+    z: 8
+    color: 3
+    shade: 0.9990749
+  - x: 0
+    y: 11
+    z: 9
+    color: 3
+    shade: 1.0357853
+  - x: 1
+    y: 11
+    z: -8
+    color: 11
+    shade: 1.0217428
+  - x: 1
+    y: 11
+    z: -7
+    color: 3
+    shade: 0.92994434
+  - x: 1
+    y: 11
+    z: -6
+    color: 3
+    shade: 1.0175256
+  - x: 1
+    y: 11
+    z: -5
+    color: 3
+    shade: 0.9252236
+  - x: 1
+    y: 11
+    z: -4
+    color: 3
+    shade: 0.9147094
+  - x: 1
+    y: 11
+    z: -3
+    color: 3
+    shade: 0.97625005
+  - x: 1
+    y: 11
+    z: -2
+    color: 3
+    shade: 0.92728776
+  - x: 1
+    y: 11
+    z: -1
+    color: 3
+    shade: 0.97963405
+  - x: 1
+    y: 11
+    z: 0
+    color: 3
+    shade: 0.94222707
+  - x: 1
+    y: 11
+    z: 1
+    color: 3
+    shade: 0.98692185
+  - x: 1
+    y: 11
+    z: 2
+    color: 3
+    shade: 1.0250368
+  - x: 1
+    y: 11
+    z: 3
+    color: 11
+    shade: 0.9667126
+  - x: 1
+    y: 11
+    z: 4
+    color: 3
+    shade: 0.9890137
+  - x: 1
+    y: 11
+    z: 5
+    color: 3
+    shade: 0.9442806
+  - x: 1
+    y: 11
+    z: 6
+    color: 3
+    shade: 1.0289984
+  - x: 1
+    y: 11
+    z: 7
+    color: 3
+    shade: 0.97891945
+  - x: 1
+    y: 11
+    z: 8
+    color: 3
+    shade: 0.9373284
+  - x: 2
+    y: 11
+    z: -8
+    color: 3
+    shade: 1.0303873
+  - x: 2
+    y: 11
+    z: -7
+    color: 3
+    shade: 0.95220655
+  - x: 2
+    y: 11
+    z: -6
+    color: 3
+    shade: 0.9913172
+  - x: 2
+    y: 11
+    z: -5
+    color: 11
+    shade: 0.9436433
+  - x: 2
+    y: 11
+    z: -4
+    color: 3
+    shade: 0.95283926
+  - x: 2
+    y: 11
+    z: -3
+    color: 3
+    shade: 0.9701699
+  - x: 2
+    y: 11
+    z: -2
+    color: 3
+    shade: 0.9887069
+  - x: 2
+    y: 11
+    z: -1
+    color: 3
+    shade: 0.94137245
+  - x: 2
+    y: 11
+    z: 0
+    color: 3
+    shade: 1.0019218
+  - x: 2
+    y: 11
+    z: 1
+    color: 3
+    shade: 0.9878926
+  - x: 2
+    y: 11
+    z: 2
+    color: 3
+    shade: 0.9668557
+  - x: 2
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.94563216
+  - x: 2
+    y: 11
+    z: 4
+    color: 3
+    shade: 0.9660252
+  - x: 2
+    y: 11
+    z: 5
+    color: 3
+    shade: 1.0173827
+  - x: 2
+    y: 11
+    z: 6
+    color: 11
+    shade: 0.9580647
+  - x: 2
+    y: 11
+    z: 7
+    color: 3
+    shade: 0.9175826
+  - x: 2
+    y: 11
+    z: 8
+    color: 3
+    shade: 1.019092
+  - x: 3
+    y: 11
+    z: -8
+    color: 3
+    shade: 0.92627627
+  - x: 3
+    y: 11
+    z: -7
+    color: 3
+    shade: 1.0117413
+  - x: 3
+    y: 11
+    z: -6
+    color: 3
+    shade: 0.9744149
+  - x: 3
+    y: 11
+    z: -5
+    color: 3
+    shade: 1.0272238
+  - x: 3
+    y: 11
+    z: -4
+    color: 3
+    shade: 0.9937874
+  - x: 3
+    y: 11
+    z: -3
+    color: 3
+    shade: 0.92807573
+  - x: 3
+    y: 11
+    z: -2
+    color: 11
+    shade: 0.9205374
+  - x: 3
+    y: 11
+    z: -1
+    color: 3
+    shade: 1.0030394
+  - x: 3
+    y: 11
+    z: 0
+    color: 3
+    shade: 0.9918015
+  - x: 3
+    y: 11
+    z: 1
+    color: 3
+    shade: 0.9268347
+  - x: 3
+    y: 11
+    z: 2
+    color: 3
+    shade: 0.9589294
+  - x: 3
+    y: 11
+    z: 3
+    color: 3
+    shade: 1.0349404
+  - x: 3
+    y: 11
+    z: 4
+    color: 3
+    shade: 0.97936594
+  - x: 3
+    y: 11
+    z: 5
+    color: 3
+    shade: 0.96055174
+  - x: 3
+    y: 11
+    z: 6
+    color: 3
+    shade: 0.9879562
+  - x: 3
+    y: 11
+    z: 7
+    color: 3
+    shade: 1.026859
+  - x: 3
+    y: 11
+    z: 8
+    color: 3
+    shade: 0.96610844
+  - x: 4
+    y: 11
+    z: -8
+    color: 3
+    shade: 0.9832398
+  - x: 4
+    y: 11
+    z: -7
+    color: 3
+    shade: 1.0174315
+  - x: 4
+    y: 11
+    z: -6
+    color: 3
+    shade: 0.91775775
+  - x: 4
+    y: 11
+    z: -5
+    color: 3
+    shade: 1.0021421
+  - x: 4
+    y: 11
+    z: -4
+    color: 3
+    shade: 0.97890365
+  - x: 4
+    y: 11
+    z: -3
+    color: 3
+    shade: 0.9997744
+  - x: 4
+    y: 11
+    z: -2
+    color: 3
+    shade: 0.93881863
+  - x: 4
+    y: 11
+    z: -1
+    color: 3
+    shade: 1.0238512
+  - x: 4
+    y: 11
+    z: 0
+    color: 3
+    shade: 0.9527877
+  - x: 4
+    y: 11
+    z: 1
+    color: 11
+    shade: 1.0283574
+  - x: 4
+    y: 11
+    z: 2
+    color: 3
+    shade: 1.000432
+  - x: 4
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.94400185
+  - x: 4
+    y: 11
+    z: 4
+    color: 3
+    shade: 1.016202
+  - x: 4
+    y: 11
+    z: 5
+    color: 3
+    shade: 1.0095391
+  - x: 4
+    y: 11
+    z: 6
+    color: 3
+    shade: 0.97697216
+  - x: 4
+    y: 11
+    z: 7
+    color: 3
+    shade: 0.95913005
+  - x: 4
+    y: 11
+    z: 8
+    color: 3
+    shade: 1.0099218
+  - x: 5
+    y: 11
+    z: -7
+    color: 11
+    shade: 0.9280044
+  - x: 5
+    y: 11
+    z: -6
+    color: 3
+    shade: 0.9272572
+  - x: 5
+    y: 11
+    z: -5
+    color: 3
+    shade: 0.9145046
+  - x: 5
+    y: 11
+    z: -4
+    color: 3
+    shade: 0.9501046
+  - x: 5
+    y: 11
+    z: -3
+    color: 3
+    shade: 0.9465999
+  - x: 5
+    y: 11
+    z: -2
+    color: 3
+    shade: 0.93413085
+  - x: 5
+    y: 11
+    z: -1
+    color: 3
+    shade: 0.98077977
+  - x: 5
+    y: 11
+    z: 0
+    color: 3
+    shade: 0.98060393
+  - x: 5
+    y: 11
+    z: 1
+    color: 3
+    shade: 1.0010378
+  - x: 5
+    y: 11
+    z: 2
+    color: 3
+    shade: 0.9533353
+  - x: 5
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.9397775
+  - x: 5
+    y: 11
+    z: 4
+    color: 11
+    shade: 0.94643205
+  - x: 5
+    y: 11
+    z: 5
+    color: 3
+    shade: 0.9325558
+  - x: 5
+    y: 11
+    z: 6
+    color: 3
+    shade: 0.937341
+  - x: 5
+    y: 11
+    z: 7
+    color: 3
+    shade: 1.0188996
+  - x: 6
+    y: 11
+    z: -6
+    color: 3
+    shade: 0.95877314
+  - x: 6
+    y: 11
+    z: -5
+    color: 3
+    shade: 1.0399168
+  - x: 6
+    y: 11
+    z: -4
+    color: 11
+    shade: 0.944143
+  - x: 6
+    y: 11
+    z: -3
+    color: 3
+    shade: 0.9806332
+  - x: 6
+    y: 11
+    z: -2
+    color: 3
+    shade: 1.0398248
+  - x: 6
+    y: 11
+    z: -1
+    color: 3
+    shade: 0.92694986
+  - x: 6
+    y: 11
+    z: 0
+    color: 3
+    shade: 0.9873727
+  - x: 6
+    y: 11
+    z: 1
+    color: 3
+    shade: 0.92196685
+  - x: 6
+    y: 11
+    z: 2
+    color: 3
+    shade: 0.9455963
+  - x: 6
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.9133727
+  - x: 6
+    y: 11
+    z: 4
+    color: 3
+    shade: 0.95099974
+  - x: 6
+    y: 11
+    z: 5
+    color: 3
+    shade: 0.93971837
+  - x: 6
+    y: 11
+    z: 6
+    color: 3
+    shade: 0.96010536
+  - x: 7
+    y: 11
+    z: -5
+    color: 3
+    shade: 0.96903753
+  - x: 7
+    y: 11
+    z: -4
+    color: 3
+    shade: 1.0155996
+  - x: 7
+    y: 11
+    z: -3
+    color: 3
+    shade: 0.9572956
+  - x: 7
+    y: 11
+    z: -2
+    color: 3
+    shade: 1.0219573
+  - x: 7
+    y: 11
+    z: -1
+    color: 11
+    shade: 0.98581034
+  - x: 7
+    y: 11
+    z: 0
+    color: 3
+    shade: 1.0094442
+  - x: 7
+    y: 11
+    z: 1
+    color: 3
+    shade: 0.9425474
+  - x: 7
+    y: 11
+    z: 2
+    color: 3
+    shade: 0.9706991
+  - x: 7
+    y: 11
+    z: 3
+    color: 3
+    shade: 1.0223545
+  - x: 7
+    y: 11
+    z: 4
+    color: 3
+    shade: 0.9260039
+  - x: 7
+    y: 11
+    z: 5
+    color: 3
+    shade: 0.94663996
+  - x: 8
+    y: 11
+    z: -4
+    color: 3
+    shade: 0.9933007
+  - x: 8
+    y: 11
+    z: -3
+    color: 3
+    shade: 0.97697794
+  - x: 8
+    y: 11
+    z: -2
+    color: 3
+    shade: 0.93153816
+  - x: 8
+    y: 11
+    z: -1
+    color: 3
+    shade: 1.0178659
+  - x: 8
+    y: 11
+    z: 0
+    color: 3
+    shade: 0.9564392
+  - x: 8
+    y: 11
+    z: 1
+    color: 3
+    shade: 1.0390412
+  - x: 8
+    y: 11
+    z: 2
+    color: 11
+    shade: 0.98741907
+  - x: 8
+    y: 11
+    z: 3
+    color: 3
+    shade: 0.93023187
+  - x: 8
+    y: 11
+    z: 4
+    color: 3
+    shade: 1.0010165
+  - x: 9
+    y: 11
+    z: 0
+    color: 3
+    shade: 1.0215325
+  - x: -8
+    y: 12
+    z: -4
+    color: 3
+    shade: 1.0252287
+  - x: -8
+    y: 12
+    z: -3
+    color: 3
+    shade: 1.0162852
+  - x: -8
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.9753961
+  - x: -8
+    y: 12
+    z: -1
+    color: 3
+    shade: 1.0363389
+  - x: -8
+    y: 12
+    z: 0
+    color: 3
+    shade: 0.9593052
+  - x: -8
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.99297196
+  - x: -8
+    y: 12
+    z: 2
+    color: 3
+    shade: 0.98063177
+  - x: -8
+    y: 12
+    z: 3
+    color: 3
+    shade: 0.91529036
+  - x: -8
+    y: 12
+    z: 4
+    color: 11
+    shade: 1.0089084
+  - x: -7
+    y: 12
+    z: -5
+    color: 3
+    shade: 0.946732
+  - x: -7
+    y: 12
+    z: -4
+    color: 11
+    shade: 1.0356002
+  - x: -7
+    y: 12
+    z: -3
+    color: 3
+    shade: 1.0344125
+  - x: -7
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.93067443
+  - x: -7
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.9215664
+  - x: -7
+    y: 12
+    z: 0
+    color: 3
+    shade: 1.0254382
+  - x: -7
+    y: 12
+    z: 1
+    color: 3
+    shade: 1.0360397
+  - x: -7
+    y: 12
+    z: 2
+    color: 3
+    shade: 0.9578202
+  - x: -7
+    y: 12
+    z: 3
+    color: 3
+    shade: 1.0006218
+  - x: -7
+    y: 12
+    z: 4
+    color: 3
+    shade: 0.96311164
+  - x: -7
+    y: 12
+    z: 5
+    color: 3
+    shade: 1.0347936
+  - x: -6
+    y: 12
+    z: -6
+    color: 3
+    shade: 0.95820045
+  - x: -6
+    y: 12
+    z: -5
+    color: 3
+    shade: 0.9764187
+  - x: -6
+    y: 12
+    z: -4
+    color: 3
+    shade: 1.0239129
+  - x: -6
+    y: 12
+    z: -3
+    color: 3
+    shade: 1.0375031
+  - x: -6
+    y: 12
+    z: -2
+    color: 3
+    shade: 1.0273325
+  - x: -6
+    y: 12
+    z: -1
+    color: 11
+    shade: 0.9728469
+  - x: -6
+    y: 12
+    z: 0
+    color: 3
+    shade: 1.0354117
+  - x: -6
+    y: 12
+    z: 1
+    color: 3
+    shade: 1.0095068
+  - x: -6
+    y: 12
+    z: 2
+    color: 3
+    shade: 1.0055277
+  - x: -6
+    y: 12
+    z: 3
+    color: 3
+    shade: 0.94655514
+  - x: -6
+    y: 12
+    z: 4
+    color: 3
+    shade: 0.9659536
+  - x: -6
+    y: 12
+    z: 5
+    color: 3
+    shade: 0.9307679
+  - x: -6
+    y: 12
+    z: 6
+    color: 3
+    shade: 0.9787019
+  - x: -5
+    y: 12
+    z: -7
+    color: 3
+    shade: 0.97857285
+  - x: -5
+    y: 12
+    z: -6
+    color: 3
+    shade: 0.9838088
+  - x: -5
+    y: 12
+    z: -5
+    color: 3
+    shade: 1.0393144
+  - x: -5
+    y: 12
+    z: -4
+    color: 3
+    shade: 1.0218996
+  - x: -5
+    y: 12
+    z: -3
+    color: 3
+    shade: 1.0256184
+  - x: -5
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.93650514
+  - x: -5
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.9264723
+  - x: -5
+    y: 12
+    z: 0
+    color: 3
+    shade: 1.0019157
+  - x: -5
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.9654088
+  - x: -5
+    y: 12
+    z: 2
+    color: 11
+    shade: 0.9234462
+  - x: -5
+    y: 12
+    z: 3
+    color: 3
+    shade: 1.019272
+  - x: -5
+    y: 12
+    z: 4
+    color: 3
+    shade: 0.95103985
+  - x: -5
+    y: 12
+    z: 5
+    color: 3
+    shade: 0.9988882
+  - x: -5
+    y: 12
+    z: 6
+    color: 3
+    shade: 0.95630354
+  - x: -5
+    y: 12
+    z: 7
+    color: 3
+    shade: 0.91997176
+  - x: -4
+    y: 12
+    z: -8
+    color: 3
+    shade: 1.0324277
+  - x: -4
+    y: 12
+    z: -7
+    color: 3
+    shade: 0.9603995
+  - x: -4
+    y: 12
+    z: -6
+    color: 11
+    shade: 0.991221
+  - x: -4
+    y: 12
+    z: -5
+    color: 3
+    shade: 1.0267973
+  - x: -4
+    y: 12
+    z: -4
+    color: 3
+    shade: 1.0071203
+  - x: -4
+    y: 12
+    z: -3
+    color: 3
+    shade: 1.0062228
+  - x: -4
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.97333217
+  - x: -4
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.9588101
+  - x: -4
+    y: 12
+    z: 0
+    color: 3
+    shade: 1.0323724
+  - x: -4
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.97789305
+  - x: -4
+    y: 12
+    z: 2
+    color: 3
+    shade: 0.9190064
+  - x: -4
+    y: 12
+    z: 3
+    color: 3
+    shade: 1.0264584
+  - x: -4
+    y: 12
+    z: 4
+    color: 3
+    shade: 0.9975602
+  - x: -4
+    y: 12
+    z: 5
+    color: 11
+    shade: 1.011125
+  - x: -4
+    y: 12
+    z: 6
+    color: 3
+    shade: 0.94976264
+  - x: -4
+    y: 12
+    z: 7
+    color: 3
+    shade: 0.9723532
+  - x: -4
+    y: 12
+    z: 8
+    color: 3
+    shade: 1.0207784
+  - x: -3
+    y: 12
+    z: -8
+    color: 3
+    shade: 1.0148323
+  - x: -3
+    y: 12
+    z: -7
+    color: 3
+    shade: 0.96571064
+  - x: -3
+    y: 12
+    z: -6
+    color: 3
+    shade: 0.9921016
+  - x: -3
+    y: 12
+    z: -5
+    color: 3
+    shade: 0.97775763
+  - x: -3
+    y: 12
+    z: -4
+    color: 3
+    shade: 1.0261239
+  - x: -3
+    y: 12
+    z: -3
+    color: 11
+    shade: 0.92414016
+  - x: -3
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.9722018
+  - x: -3
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.9741167
+  - x: -3
+    y: 12
+    z: 0
+    color: 3
+    shade: 0.94663936
+  - x: -3
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.942878
+  - x: -3
+    y: 12
+    z: 2
+    color: 3
+    shade: 1.0327917
+  - x: -3
+    y: 12
+    z: 3
+    color: 3
+    shade: 0.9629726
+  - x: -3
+    y: 12
+    z: 4
+    color: 3
+    shade: 0.914641
+  - x: -3
+    y: 12
+    z: 5
+    color: 3
+    shade: 0.99646324
+  - x: -3
+    y: 12
+    z: 6
+    color: 3
+    shade: 0.9384444
+  - x: -3
+    y: 12
+    z: 7
+    color: 3
+    shade: 0.9265434
+  - x: -3
+    y: 12
+    z: 8
+    color: 11
+    shade: 1.02544
+  - x: -2
+    y: 12
+    z: -8
+    color: 3
+    shade: 1.0170792
+  - x: -2
+    y: 12
+    z: -7
+    color: 3
+    shade: 0.9551282
+  - x: -2
+    y: 12
+    z: -6
+    color: 3
+    shade: 0.99533415
+  - x: -2
+    y: 12
+    z: -5
+    color: 3
+    shade: 0.97915626
+  - x: -2
+    y: 12
+    z: -4
+    color: 3
+    shade: 0.9636476
+  - x: -2
+    y: 12
+    z: -3
+    color: 3
+    shade: 1.0124791
+  - x: -2
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.9152407
+  - x: -2
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.93499875
+  - x: -2
+    y: 12
+    z: 0
+    color: 11
+    shade: 0.9169421
+  - x: -2
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.9540065
+  - x: -2
+    y: 12
+    z: 2
+    color: 3
+    shade: 1.0166119
+  - x: -2
+    y: 12
+    z: 3
+    color: 3
+    shade: 0.95004684
+  - x: -2
+    y: 12
+    z: 4
+    color: 3
+    shade: 0.96891207
+  - x: -2
+    y: 12
+    z: 5
+    color: 3
+    shade: 1.0307907
+  - x: -2
+    y: 12
+    z: 6
+    color: 3
+    shade: 0.9256462
+  - x: -2
+    y: 12
+    z: 7
+    color: 3
+    shade: 0.9910929
+  - x: -2
+    y: 12
+    z: 8
+    color: 3
+    shade: 1.0384935
+  - x: -1
+    y: 12
+    z: -8
+    color: 11
+    shade: 0.97620755
+  - x: -1
+    y: 12
+    z: -7
+    color: 3
+    shade: 0.94317764
+  - x: -1
+    y: 12
+    z: -6
+    color: 3
+    shade: 1.004202
+  - x: -1
+    y: 12
+    z: -5
+    color: 3
+    shade: 0.98221415
+  - x: -1
+    y: 12
+    z: -4
+    color: 3
+    shade: 0.9163038
+  - x: -1
+    y: 12
+    z: -3
+    color: 3
+    shade: 0.9462594
+  - x: -1
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.9290192
+  - x: -1
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.9626807
+  - x: -1
+    y: 12
+    z: 0
+    color: 3
+    shade: 0.9704809
+  - x: -1
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.9733449
+  - x: -1
+    y: 12
+    z: 2
+    color: 3
+    shade: 0.9805405
+  - x: -1
+    y: 12
+    z: 3
+    color: 11
+    shade: 1.0358375
+  - x: -1
+    y: 12
+    z: 4
+    color: 3
+    shade: 1.0277313
+  - x: -1
+    y: 12
+    z: 5
+    color: 3
+    shade: 1.0214299
+  - x: -1
+    y: 12
+    z: 6
+    color: 3
+    shade: 1.020562
+  - x: -1
+    y: 12
+    z: 7
+    color: 3
+    shade: 1.009915
+  - x: -1
+    y: 12
+    z: 8
+    color: 3
+    shade: 1.0121202
+  - x: 0
+    y: 12
+    z: -8
+    color: 3
+    shade: 1.0340457
+  - x: 0
+    y: 12
+    z: -7
+    color: 3
+    shade: 1.0346345
+  - x: 0
+    y: 12
+    z: -6
+    color: 3
+    shade: 1.017019
+  - x: 0
+    y: 12
+    z: -5
+    color: 11
+    shade: 0.9516221
+  - x: 0
+    y: 12
+    z: -4
+    color: 3
+    shade: 0.9611847
+  - x: 0
+    y: 12
+    z: -3
+    color: 3
+    shade: 0.9932316
+  - x: 0
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.98686093
+  - x: 0
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.9527589
+  - x: 0
+    y: 12
+    z: 0
+    color: 11
+    shade: 1.0191817
+  - x: 0
+    y: 12
+    z: 1
+    color: 3
+    shade: 1.0101337
+  - x: 0
+    y: 12
+    z: 2
+    color: 3
+    shade: 0.99558985
+  - x: 0
+    y: 12
+    z: 3
+    color: 3
+    shade: 0.9340699
+  - x: 0
+    y: 12
+    z: 4
+    color: 3
+    shade: 1.0177274
+  - x: 0
+    y: 12
+    z: 5
+    color: 3
+    shade: 0.9520873
+  - x: 0
+    y: 12
+    z: 6
+    color: 11
+    shade: 1.0171455
+  - x: 0
+    y: 12
+    z: 7
+    color: 3
+    shade: 1.0118797
+  - x: 0
+    y: 12
+    z: 8
+    color: 3
+    shade: 0.9161475
+  - x: 1
+    y: 12
+    z: -8
+    color: 3
+    shade: 0.9302557
+  - x: 1
+    y: 12
+    z: -7
+    color: 3
+    shade: 1.0352668
+  - x: 1
+    y: 12
+    z: -6
+    color: 3
+    shade: 0.9623414
+  - x: 1
+    y: 12
+    z: -5
+    color: 3
+    shade: 0.95322585
+  - x: 1
+    y: 12
+    z: -4
+    color: 3
+    shade: 1.0107754
+  - x: 1
+    y: 12
+    z: -3
+    color: 3
+    shade: 0.91886884
+  - x: 1
+    y: 12
+    z: -2
+    color: 11
+    shade: 0.976315
+  - x: 1
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.9264756
+  - x: 1
+    y: 12
+    z: 0
+    color: 3
+    shade: 1.0331666
+  - x: 1
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.9491342
+  - x: 1
+    y: 12
+    z: 2
+    color: 3
+    shade: 0.9747003
+  - x: 1
+    y: 12
+    z: 3
+    color: 3
+    shade: 0.93916124
+  - x: 1
+    y: 12
+    z: 4
+    color: 3
+    shade: 0.92921084
+  - x: 1
+    y: 12
+    z: 5
+    color: 3
+    shade: 0.9725767
+  - x: 1
+    y: 12
+    z: 6
+    color: 3
+    shade: 1.03605
+  - x: 1
+    y: 12
+    z: 7
+    color: 3
+    shade: 0.98013186
+  - x: 1
+    y: 12
+    z: 8
+    color: 3
+    shade: 0.9967918
+  - x: 2
+    y: 12
+    z: -8
+    color: 3
+    shade: 1.036745
+  - x: 2
+    y: 12
+    z: -7
+    color: 3
+    shade: 0.9310118
+  - x: 2
+    y: 12
+    z: -6
+    color: 3
+    shade: 1.0140738
+  - x: 2
+    y: 12
+    z: -5
+    color: 3
+    shade: 0.9968715
+  - x: 2
+    y: 12
+    z: -4
+    color: 3
+    shade: 0.9250229
+  - x: 2
+    y: 12
+    z: -3
+    color: 3
+    shade: 0.98994607
+  - x: 2
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.9273411
+  - x: 2
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.9394553
+  - x: 2
+    y: 12
+    z: 0
+    color: 3
+    shade: 0.9371221
+  - x: 2
+    y: 12
+    z: 1
+    color: 11
+    shade: 0.97612566
+  - x: 2
+    y: 12
+    z: 2
+    color: 3
+    shade: 0.9734294
+  - x: 2
+    y: 12
+    z: 3
+    color: 3
+    shade: 0.93861085
+  - x: 2
+    y: 12
+    z: 4
+    color: 3
+    shade: 0.9927536
+  - x: 2
+    y: 12
+    z: 5
+    color: 3
+    shade: 0.93125767
+  - x: 2
+    y: 12
+    z: 6
+    color: 3
+    shade: 1.003395
+  - x: 2
+    y: 12
+    z: 7
+    color: 3
+    shade: 0.9339579
+  - x: 2
+    y: 12
+    z: 8
+    color: 3
+    shade: 1.0215838
+  - x: 3
+    y: 12
+    z: -8
+    color: 3
+    shade: 1.0011741
+  - x: 3
+    y: 12
+    z: -7
+    color: 11
+    shade: 1.0252954
+  - x: 3
+    y: 12
+    z: -6
+    color: 3
+    shade: 0.95757353
+  - x: 3
+    y: 12
+    z: -5
+    color: 3
+    shade: 0.9688945
+  - x: 3
+    y: 12
+    z: -4
+    color: 3
+    shade: 0.93327034
+  - x: 3
+    y: 12
+    z: -3
+    color: 3
+    shade: 1.0257655
+  - x: 3
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.9507041
+  - x: 3
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.9351466
+  - x: 3
+    y: 12
+    z: 0
+    color: 3
+    shade: 0.968018
+  - x: 3
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.95409745
+  - x: 3
+    y: 12
+    z: 2
+    color: 3
+    shade: 0.9221607
+  - x: 3
+    y: 12
+    z: 3
+    color: 3
+    shade: 0.9235977
+  - x: 3
+    y: 12
+    z: 4
+    color: 11
+    shade: 0.9999709
+  - x: 3
+    y: 12
+    z: 5
+    color: 3
+    shade: 0.9475571
+  - x: 3
+    y: 12
+    z: 6
+    color: 3
+    shade: 0.99954
+  - x: 3
+    y: 12
+    z: 7
+    color: 3
+    shade: 0.993938
+  - x: 3
+    y: 12
+    z: 8
+    color: 3
+    shade: 0.93093556
+  - x: 4
+    y: 12
+    z: -8
+    color: 3
+    shade: 0.95534235
+  - x: 4
+    y: 12
+    z: -7
+    color: 3
+    shade: 0.9961338
+  - x: 4
+    y: 12
+    z: -6
+    color: 3
+    shade: 1.0378058
+  - x: 4
+    y: 12
+    z: -5
+    color: 3
+    shade: 0.959276
+  - x: 4
+    y: 12
+    z: -4
+    color: 11
+    shade: 0.91523284
+  - x: 4
+    y: 12
+    z: -3
+    color: 3
+    shade: 0.9553208
+  - x: 4
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.9450004
+  - x: 4
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.92377055
+  - x: 4
+    y: 12
+    z: 0
+    color: 3
+    shade: 0.98365337
+  - x: 4
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.9827432
+  - x: 4
+    y: 12
+    z: 2
+    color: 3
+    shade: 0.91288567
+  - x: 4
+    y: 12
+    z: 3
+    color: 3
+    shade: 1.0278648
+  - x: 4
+    y: 12
+    z: 4
+    color: 3
+    shade: 0.9504131
+  - x: 4
+    y: 12
+    z: 5
+    color: 3
+    shade: 0.92787653
+  - x: 4
+    y: 12
+    z: 6
+    color: 3
+    shade: 1.0113053
+  - x: 4
+    y: 12
+    z: 7
+    color: 11
+    shade: 0.9152034
+  - x: 4
+    y: 12
+    z: 8
+    color: 3
+    shade: 0.94762707
+  - x: 5
+    y: 12
+    z: -7
+    color: 3
+    shade: 1.0114025
+  - x: 5
+    y: 12
+    z: -6
+    color: 3
+    shade: 0.9207546
+  - x: 5
+    y: 12
+    z: -5
+    color: 3
+    shade: 0.9325583
+  - x: 5
+    y: 12
+    z: -4
+    color: 3
+    shade: 0.9378974
+  - x: 5
+    y: 12
+    z: -3
+    color: 3
+    shade: 1.0134747
+  - x: 5
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.9452462
+  - x: 5
+    y: 12
+    z: -1
+    color: 11
+    shade: 0.9733698
+  - x: 5
+    y: 12
+    z: 0
+    color: 3
+    shade: 0.9717249
+  - x: 5
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.9970049
+  - x: 5
+    y: 12
+    z: 2
+    color: 3
+    shade: 0.94584864
+  - x: 5
+    y: 12
+    z: 3
+    color: 3
+    shade: 0.9151804
+  - x: 5
+    y: 12
+    z: 4
+    color: 3
+    shade: 0.9258576
+  - x: 5
+    y: 12
+    z: 5
+    color: 3
+    shade: 0.9771512
+  - x: 5
+    y: 12
+    z: 6
+    color: 3
+    shade: 0.9385686
+  - x: 5
+    y: 12
+    z: 7
+    color: 3
+    shade: 1.0138894
+  - x: 6
+    y: 12
+    z: -6
+    color: 3
+    shade: 0.98467284
+  - x: 6
+    y: 12
+    z: -5
+    color: 3
+    shade: 0.9718181
+  - x: 6
+    y: 12
+    z: -4
+    color: 3
+    shade: 1.0159153
+  - x: 6
+    y: 12
+    z: -3
+    color: 3
+    shade: 0.91726124
+  - x: 6
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.9361521
+  - x: 6
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.9723078
+  - x: 6
+    y: 12
+    z: 0
+    color: 3
+    shade: 0.99594134
+  - x: 6
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.9799746
+  - x: 6
+    y: 12
+    z: 2
+    color: 11
+    shade: 0.9225732
+  - x: 6
+    y: 12
+    z: 3
+    color: 3
+    shade: 0.9551239
+  - x: 6
+    y: 12
+    z: 4
+    color: 3
+    shade: 0.98961705
+  - x: 6
+    y: 12
+    z: 5
+    color: 3
+    shade: 0.9530224
+  - x: 6
+    y: 12
+    z: 6
+    color: 3
+    shade: 0.9478185
+  - x: 7
+    y: 12
+    z: -5
+    color: 3
+    shade: 0.9472818
+  - x: 7
+    y: 12
+    z: -4
+    color: 3
+    shade: 0.9276049
+  - x: 7
+    y: 12
+    z: -3
+    color: 3
+    shade: 0.93622094
+  - x: 7
+    y: 12
+    z: -2
+    color: 3
+    shade: 0.95085543
+  - x: 7
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.9183943
+  - x: 7
+    y: 12
+    z: 0
+    color: 3
+    shade: 0.9623439
+  - x: 7
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.9761546
+  - x: 7
+    y: 12
+    z: 2
+    color: 3
+    shade: 0.9887854
+  - x: 7
+    y: 12
+    z: 3
+    color: 3
+    shade: 0.97137976
+  - x: 7
+    y: 12
+    z: 4
+    color: 3
+    shade: 1.0330383
+  - x: 7
+    y: 12
+    z: 5
+    color: 11
+    shade: 0.9818677
+  - x: 8
+    y: 12
+    z: -4
+    color: 3
+    shade: 0.9608876
+  - x: 8
+    y: 12
+    z: -3
+    color: 11
+    shade: 0.97443604
+  - x: 8
+    y: 12
+    z: -2
+    color: 3
+    shade: 1.027551
+  - x: 8
+    y: 12
+    z: -1
+    color: 3
+    shade: 0.95822793
+  - x: 8
+    y: 12
+    z: 0
+    color: 3
+    shade: 0.91947216
+  - x: 8
+    y: 12
+    z: 1
+    color: 3
+    shade: 0.93982
+  - x: 8
+    y: 12
+    z: 2
+    color: 3
+    shade: 1.037913
+  - x: 8
+    y: 12
+    z: 3
+    color: 3
+    shade: 0.9165022
+  - x: 8
+    y: 12
+    z: 4
+    color: 3
+    shade: 0.95417464
+  - x: -8
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.93899626
+  - x: -8
+    y: 13
+    z: -2
+    color: 3
+    shade: 0.953192
+  - x: -8
+    y: 13
+    z: -1
+    color: 11
+    shade: 1.018595
+  - x: -8
+    y: 13
+    z: 0
+    color: 3
+    shade: 0.9519612
+  - x: -8
+    y: 13
+    z: 1
+    color: 3
+    shade: 1.004044
+  - x: -8
+    y: 13
+    z: 2
+    color: 3
+    shade: 1.0190513
+  - x: -8
+    y: 13
+    z: 3
+    color: 3
+    shade: 1.0153192
+  - x: -7
+    y: 13
+    z: -5
+    color: 3
+    shade: 0.92546123
+  - x: -7
+    y: 13
+    z: -4
+    color: 3
+    shade: 0.98078
+  - x: -7
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.9199852
+  - x: -7
+    y: 13
+    z: -2
+    color: 3
+    shade: 1.0227735
+  - x: -7
+    y: 13
+    z: -1
+    color: 3
+    shade: 0.9338577
+  - x: -7
+    y: 13
+    z: 0
+    color: 3
+    shade: 1.0322238
+  - x: -7
+    y: 13
+    z: 1
+    color: 3
+    shade: 0.9355513
+  - x: -7
+    y: 13
+    z: 2
+    color: 11
+    shade: 0.9344432
+  - x: -7
+    y: 13
+    z: 3
+    color: 3
+    shade: 0.97940004
+  - x: -7
+    y: 13
+    z: 4
+    color: 3
+    shade: 0.9196277
+  - x: -7
+    y: 13
+    z: 5
+    color: 3
+    shade: 1.004325
+  - x: -6
+    y: 13
+    z: -6
+    color: 11
+    shade: 0.9174633
+  - x: -6
+    y: 13
+    z: -5
+    color: 3
+    shade: 0.92480737
+  - x: -6
+    y: 13
+    z: -4
+    color: 3
+    shade: 1.002414
+  - x: -6
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.9351041
+  - x: -6
+    y: 13
+    z: -2
+    color: 3
+    shade: 0.9232931
+  - x: -6
+    y: 13
+    z: -1
+    color: 3
+    shade: 0.9787799
+  - x: -6
+    y: 13
+    z: 0
+    color: 3
+    shade: 0.9440477
+  - x: -6
+    y: 13
+    z: 1
+    color: 3
+    shade: 0.99637365
+  - x: -6
+    y: 13
+    z: 2
+    color: 3
+    shade: 1.0017161
+  - x: -6
+    y: 13
+    z: 3
+    color: 3
+    shade: 0.9847567
+  - x: -6
+    y: 13
+    z: 4
+    color: 3
+    shade: 0.94771343
+  - x: -6
+    y: 13
+    z: 5
+    color: 11
+    shade: 0.9705025
+  - x: -6
+    y: 13
+    z: 6
+    color: 3
+    shade: 1.0227532
+  - x: -5
+    y: 13
+    z: -7
+    color: 3
+    shade: 0.95721096
+  - x: -5
+    y: 13
+    z: -6
+    color: 3
+    shade: 0.9831149
+  - x: -5
+    y: 13
+    z: -5
+    color: 3
+    shade: 1.0388478
+  - x: -5
+    y: 13
+    z: -4
+    color: 3
+    shade: 0.9188223
+  - x: -5
+    y: 13
+    z: -3
+    color: 11
+    shade: 1.0340898
+  - x: -5
+    y: 13
+    z: -2
+    color: 3
+    shade: 0.94900995
+  - x: -5
+    y: 13
+    z: -1
+    color: 3
+    shade: 1.0242597
+  - x: -5
+    y: 13
+    z: 0
+    color: 3
+    shade: 0.98681134
+  - x: -5
+    y: 13
+    z: 1
+    color: 3
+    shade: 0.9393431
+  - x: -5
+    y: 13
+    z: 2
+    color: 3
+    shade: 0.9870246
+  - x: -5
+    y: 13
+    z: 3
+    color: 3
+    shade: 0.9606934
+  - x: -5
+    y: 13
+    z: 4
+    color: 3
+    shade: 0.91800535
+  - x: -5
+    y: 13
+    z: 5
+    color: 3
+    shade: 0.9613946
+  - x: -5
+    y: 13
+    z: 6
+    color: 3
+    shade: 0.9202648
+  - x: -5
+    y: 13
+    z: 7
+    color: 3
+    shade: 0.9580101
+  - x: -4
+    y: 13
+    z: -7
+    color: 3
+    shade: 0.9686638
+  - x: -4
+    y: 13
+    z: -6
+    color: 3
+    shade: 0.9488848
+  - x: -4
+    y: 13
+    z: -5
+    color: 3
+    shade: 1.0031079
+  - x: -4
+    y: 13
+    z: -4
+    color: 3
+    shade: 1.0188279
+  - x: -4
+    y: 13
+    z: -3
+    color: 3
+    shade: 1.0398444
+  - x: -4
+    y: 13
+    z: -2
+    color: 3
+    shade: 0.97549504
+  - x: -4
+    y: 13
+    z: -1
+    color: 3
+    shade: 1.0304496
+  - x: -4
+    y: 13
+    z: 0
+    color: 11
+    shade: 1.0316948
+  - x: -4
+    y: 13
+    z: 1
+    color: 3
+    shade: 0.9917607
+  - x: -4
+    y: 13
+    z: 2
+    color: 3
+    shade: 0.91389215
+  - x: -4
+    y: 13
+    z: 3
+    color: 3
+    shade: 0.9398989
+  - x: -4
+    y: 13
+    z: 4
+    color: 3
+    shade: 0.9498151
+  - x: -4
+    y: 13
+    z: 5
+    color: 3
+    shade: 0.9179136
+  - x: -4
+    y: 13
+    z: 6
+    color: 3
+    shade: 0.9176705
+  - x: -4
+    y: 13
+    z: 7
+    color: 3
+    shade: 0.9273352
+  - x: -3
+    y: 13
+    z: -8
+    color: 11
+    shade: 0.9405626
+  - x: -3
+    y: 13
+    z: -7
+    color: 3
+    shade: 1.0177479
+  - x: -3
+    y: 13
+    z: -6
+    color: 3
+    shade: 0.9202776
+  - x: -3
+    y: 13
+    z: -5
+    color: 3
+    shade: 0.937232
+  - x: -3
+    y: 13
+    z: -4
+    color: 3
+    shade: 0.9755625
+  - x: -3
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.9907428
+  - x: -3
+    y: 13
+    z: -2
+    color: 3
+    shade: 1.0333761
+  - x: -3
+    y: 13
+    z: -1
+    color: 3
+    shade: 0.926729
+  - x: -3
+    y: 13
+    z: 0
+    color: 3
+    shade: 0.94035333
+  - x: -3
+    y: 13
+    z: 1
+    color: 3
+    shade: 0.9403901
+  - x: -3
+    y: 13
+    z: 2
+    color: 3
+    shade: 0.93536806
+  - x: -3
+    y: 13
+    z: 3
+    color: 11
+    shade: 0.92751366
+  - x: -3
+    y: 13
+    z: 4
+    color: 3
+    shade: 1.0181203
+  - x: -3
+    y: 13
+    z: 5
+    color: 3
+    shade: 0.9777828
+  - x: -3
+    y: 13
+    z: 6
+    color: 3
+    shade: 0.95172065
+  - x: -3
+    y: 13
+    z: 7
+    color: 3
+    shade: 0.92709875
+  - x: -3
+    y: 13
+    z: 8
+    color: 3
+    shade: 1.0018985
+  - x: -2
+    y: 13
+    z: -8
+    color: 3
+    shade: 0.96851516
+  - x: -2
+    y: 13
+    z: -7
+    color: 3
+    shade: 1.0260376
+  - x: -2
+    y: 13
+    z: -6
+    color: 3
+    shade: 0.93770987
+  - x: -2
+    y: 13
+    z: -5
+    color: 11
+    shade: 0.9628313
+  - x: -2
+    y: 13
+    z: -4
+    color: 3
+    shade: 1.0216488
+  - x: -2
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.96888554
+  - x: -2
+    y: 13
+    z: -2
+    color: 3
+    shade: 0.97065806
+  - x: -2
+    y: 13
+    z: -1
+    color: 3
+    shade: 0.95725816
+  - x: -2
+    y: 13
+    z: 0
+    color: 3
+    shade: 0.96676135
+  - x: -2
+    y: 13
+    z: 1
+    color: 3
+    shade: 0.9914201
+  - x: -2
+    y: 13
+    z: 2
+    color: 3
+    shade: 0.9570871
+  - x: -2
+    y: 13
+    z: 3
+    color: 3
+    shade: 0.91493016
+  - x: -2
+    y: 13
+    z: 4
+    color: 3
+    shade: 1.0041909
+  - x: -2
+    y: 13
+    z: 5
+    color: 3
+    shade: 1.0391948
+  - x: -2
+    y: 13
+    z: 6
+    color: 11
+    shade: 1.0163461
+  - x: -2
+    y: 13
+    z: 7
+    color: 3
+    shade: 0.97914094
+  - x: -2
+    y: 13
+    z: 8
+    color: 3
+    shade: 0.9220079
+  - x: -1
+    y: 13
+    z: -8
+    color: 3
+    shade: 0.956462
+  - x: -1
+    y: 13
+    z: -7
+    color: 3
+    shade: 0.9829456
+  - x: -1
+    y: 13
+    z: -6
+    color: 3
+    shade: 1.0377278
+  - x: -1
+    y: 13
+    z: -5
+    color: 3
+    shade: 0.9341627
+  - x: -1
+    y: 13
+    z: -4
+    color: 3
+    shade: 0.9847023
+  - x: -1
+    y: 13
+    z: -3
+    color: 3
+    shade: 1.0072672
+  - x: -1
+    y: 13
+    z: -2
+    color: 11
+    shade: 0.97528774
+  - x: -1
+    y: 13
+    z: -1
+    color: 3
+    shade: 0.9321558
+  - x: -1
+    y: 13
+    z: 0
+    color: 3
+    shade: 0.97275466
+  - x: -1
+    y: 13
+    z: 1
+    color: 3
+    shade: 0.98843783
+  - x: -1
+    y: 13
+    z: 2
+    color: 3
+    shade: 1.0144764
+  - x: -1
+    y: 13
+    z: 3
+    color: 3
+    shade: 0.9579814
+  - x: -1
+    y: 13
+    z: 4
+    color: 3
+    shade: 0.9223294
+  - x: -1
+    y: 13
+    z: 5
+    color: 3
+    shade: 0.96391207
+  - x: -1
+    y: 13
+    z: 6
+    color: 3
+    shade: 0.9500401
+  - x: -1
+    y: 13
+    z: 7
+    color: 3
+    shade: 1.0267935
+  - x: -1
+    y: 13
+    z: 8
+    color: 3
+    shade: 0.9780004
+  - x: 0
+    y: 13
+    z: -8
+    color: 3
+    shade: 1.0213
+  - x: 0
+    y: 13
+    z: -7
+    color: 3
+    shade: 0.931876
+  - x: 0
+    y: 13
+    z: -6
+    color: 3
+    shade: 1.0199606
+  - x: 0
+    y: 13
+    z: -5
+    color: 3
+    shade: 1.0045038
+  - x: 0
+    y: 13
+    z: -4
+    color: 3
+    shade: 0.9589138
+  - x: 0
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.9588623
+  - x: 0
+    y: 13
+    z: -2
+    color: 3
+    shade: 0.98961955
+  - x: 0
+    y: 13
+    z: -1
+    color: 3
+    shade: 1.0199739
+  - x: 0
+    y: 13
+    z: 0
+    color: 11
+    shade: 0.9188012
+  - x: 0
+    y: 13
+    z: 1
+    color: 11
+    shade: 1.0393227
+  - x: 0
+    y: 13
+    z: 2
+    color: 3
+    shade: 0.986289
+  - x: 0
+    y: 13
+    z: 3
+    color: 3
+    shade: 0.9217989
+  - x: 0
+    y: 13
+    z: 4
+    color: 3
+    shade: 0.9761624
+  - x: 0
+    y: 13
+    z: 5
+    color: 3
+    shade: 0.94119525
+  - x: 0
+    y: 13
+    z: 6
+    color: 3
+    shade: 0.959022
+  - x: 0
+    y: 13
+    z: 7
+    color: 3
+    shade: 0.98837274
+  - x: 0
+    y: 13
+    z: 8
+    color: 3
+    shade: 1.0061123
+  - x: 1
+    y: 13
+    z: -8
+    color: 3
+    shade: 0.9313207
+  - x: 1
+    y: 13
+    z: -7
+    color: 11
+    shade: 1.008775
+  - x: 1
+    y: 13
+    z: -6
+    color: 3
+    shade: 0.92937094
+  - x: 1
+    y: 13
+    z: -5
+    color: 3
+    shade: 0.9777359
+  - x: 1
+    y: 13
+    z: -4
+    color: 3
+    shade: 1.0238129
+  - x: 1
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.92877036
+  - x: 1
+    y: 13
+    z: -2
+    color: 3
+    shade: 1.0024221
+  - x: 1
+    y: 13
+    z: -1
+    color: 3
+    shade: 0.94067556
+  - x: 1
+    y: 13
+    z: 0
+    color: 3
+    shade: 0.9588942
+  - x: 1
+    y: 13
+    z: 1
+    color: 3
+    shade: 1.0204477
+  - x: 1
+    y: 13
+    z: 2
+    color: 3
+    shade: 0.99618167
+  - x: 1
+    y: 13
+    z: 3
+    color: 3
+    shade: 1.0392767
+  - x: 1
+    y: 13
+    z: 4
+    color: 11
+    shade: 0.9544319
+  - x: 1
+    y: 13
+    z: 5
+    color: 3
+    shade: 0.93750805
+  - x: 1
+    y: 13
+    z: 6
+    color: 3
+    shade: 0.9170471
+  - x: 1
+    y: 13
+    z: 7
+    color: 3
+    shade: 0.92813677
+  - x: 1
+    y: 13
+    z: 8
+    color: 3
+    shade: 0.93619055
+  - x: 2
+    y: 13
+    z: -8
+    color: 3
+    shade: 0.92789495
+  - x: 2
+    y: 13
+    z: -7
+    color: 3
+    shade: 0.9944701
+  - x: 2
+    y: 13
+    z: -6
+    color: 3
+    shade: 0.9991803
+  - x: 2
+    y: 13
+    z: -5
+    color: 3
+    shade: 0.95750403
+  - x: 2
+    y: 13
+    z: -4
+    color: 11
+    shade: 1.0375483
+  - x: 2
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.9340833
+  - x: 2
+    y: 13
+    z: -2
+    color: 3
+    shade: 0.9581083
+  - x: 2
+    y: 13
+    z: -1
+    color: 3
+    shade: 0.9541888
+  - x: 2
+    y: 13
+    z: 0
+    color: 3
+    shade: 0.9759011
+  - x: 2
+    y: 13
+    z: 1
+    color: 3
+    shade: 1.0079446
+  - x: 2
+    y: 13
+    z: 2
+    color: 3
+    shade: 1.0289987
+  - x: 2
+    y: 13
+    z: 3
+    color: 3
+    shade: 0.920357
+  - x: 2
+    y: 13
+    z: 4
+    color: 3
+    shade: 1.0365922
+  - x: 2
+    y: 13
+    z: 5
+    color: 3
+    shade: 0.9572426
+  - x: 2
+    y: 13
+    z: 6
+    color: 3
+    shade: 0.96545446
+  - x: 2
+    y: 13
+    z: 7
+    color: 11
+    shade: 1.0096087
+  - x: 2
+    y: 13
+    z: 8
+    color: 3
+    shade: 0.9562171
+  - x: 3
+    y: 13
+    z: -8
+    color: 3
+    shade: 0.94259137
+  - x: 3
+    y: 13
+    z: -7
+    color: 3
+    shade: 0.98126507
+  - x: 3
+    y: 13
+    z: -6
+    color: 3
+    shade: 1.0074224
+  - x: 3
+    y: 13
+    z: -5
+    color: 3
+    shade: 0.9102646
+  - x: 3
+    y: 13
+    z: -4
+    color: 3
+    shade: 1.037487
+  - x: 3
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.91310567
+  - x: 3
+    y: 13
+    z: -2
+    color: 3
+    shade: 0.9275385
+  - x: 3
+    y: 13
+    z: -1
+    color: 11
+    shade: 0.9738284
+  - x: 3
+    y: 13
+    z: 0
+    color: 3
+    shade: 0.9100197
+  - x: 3
+    y: 13
+    z: 1
+    color: 3
+    shade: 0.97841465
+  - x: 3
+    y: 13
+    z: 2
+    color: 3
+    shade: 1.0334378
+  - x: 3
+    y: 13
+    z: 3
+    color: 3
+    shade: 1.0206971
+  - x: 3
+    y: 13
+    z: 4
+    color: 3
+    shade: 1.0043694
+  - x: 3
+    y: 13
+    z: 5
+    color: 3
+    shade: 1.0118147
+  - x: 3
+    y: 13
+    z: 6
+    color: 3
+    shade: 0.97924197
+  - x: 3
+    y: 13
+    z: 7
+    color: 3
+    shade: 1.0336621
+  - x: 3
+    y: 13
+    z: 8
+    color: 3
+    shade: 0.94997185
+  - x: 4
+    y: 13
+    z: -7
+    color: 3
+    shade: 0.9233003
+  - x: 4
+    y: 13
+    z: -6
+    color: 3
+    shade: 1.0045519
+  - x: 4
+    y: 13
+    z: -5
+    color: 3
+    shade: 1.0291924
+  - x: 4
+    y: 13
+    z: -4
+    color: 3
+    shade: 0.9586084
+  - x: 4
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.9337725
+  - x: 4
+    y: 13
+    z: -2
+    color: 3
+    shade: 0.9846918
+  - x: 4
+    y: 13
+    z: -1
+    color: 3
+    shade: 1.0112627
+  - x: 4
+    y: 13
+    z: 0
+    color: 3
+    shade: 0.9335471
+  - x: 4
+    y: 13
+    z: 1
+    color: 3
+    shade: 0.9579118
+  - x: 4
+    y: 13
+    z: 2
+    color: 11
+    shade: 0.96082586
+  - x: 4
+    y: 13
+    z: 3
+    color: 3
+    shade: 1.0134233
+  - x: 4
+    y: 13
+    z: 4
+    color: 3
+    shade: 0.9303186
+  - x: 4
+    y: 13
+    z: 5
+    color: 3
+    shade: 0.9623019
+  - x: 4
+    y: 13
+    z: 6
+    color: 3
+    shade: 0.97320515
+  - x: 4
+    y: 13
+    z: 7
+    color: 3
+    shade: 0.94072723
+  - x: 5
+    y: 13
+    z: -7
+    color: 3
+    shade: 0.9396681
+  - x: 5
+    y: 13
+    z: -6
+    color: 11
+    shade: 1.0382148
+  - x: 5
+    y: 13
+    z: -5
+    color: 3
+    shade: 1.0349168
+  - x: 5
+    y: 13
+    z: -4
+    color: 3
+    shade: 0.97578204
+  - x: 5
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.9607143
+  - x: 5
+    y: 13
+    z: -2
+    color: 3
+    shade: 0.935926
+  - x: 5
+    y: 13
+    z: -1
+    color: 3
+    shade: 0.93040794
+  - x: 5
+    y: 13
+    z: 0
+    color: 3
+    shade: 0.9913645
+  - x: 5
+    y: 13
+    z: 1
+    color: 3
+    shade: 0.98164177
+  - x: 5
+    y: 13
+    z: 2
+    color: 3
+    shade: 1.0236757
+  - x: 5
+    y: 13
+    z: 3
+    color: 3
+    shade: 1.0375286
+  - x: 5
+    y: 13
+    z: 4
+    color: 3
+    shade: 0.9956687
+  - x: 5
+    y: 13
+    z: 5
+    color: 11
+    shade: 0.9646705
+  - x: 5
+    y: 13
+    z: 6
+    color: 3
+    shade: 0.9734918
+  - x: 5
+    y: 13
+    z: 7
+    color: 3
+    shade: 1.0115318
+  - x: 6
+    y: 13
+    z: -6
+    color: 3
+    shade: 1.0361298
+  - x: 6
+    y: 13
+    z: -5
+    color: 3
+    shade: 0.95975685
+  - x: 6
+    y: 13
+    z: -4
+    color: 3
+    shade: 0.92669487
+  - x: 6
+    y: 13
+    z: -3
+    color: 11
+    shade: 0.9966204
+  - x: 6
+    y: 13
+    z: -2
+    color: 3
+    shade: 0.9439423
+  - x: 6
+    y: 13
+    z: -1
+    color: 3
+    shade: 1.0009025
+  - x: 6
+    y: 13
+    z: 0
+    color: 3
+    shade: 1.0204163
+  - x: 6
+    y: 13
+    z: 1
+    color: 3
+    shade: 1.0376087
+  - x: 6
+    y: 13
+    z: 2
+    color: 3
+    shade: 0.91881883
+  - x: 6
+    y: 13
+    z: 3
+    color: 3
+    shade: 1.0365733
+  - x: 6
+    y: 13
+    z: 4
+    color: 3
+    shade: 1.0361599
+  - x: 6
+    y: 13
+    z: 5
+    color: 3
+    shade: 1.0167176
+  - x: 6
+    y: 13
+    z: 6
+    color: 3
+    shade: 0.98957527
+  - x: 7
+    y: 13
+    z: -5
+    color: 3
+    shade: 0.9922798
+  - x: 7
+    y: 13
+    z: -4
+    color: 3
+    shade: 0.9541152
+  - x: 7
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.9535098
+  - x: 7
+    y: 13
+    z: -2
+    color: 3
+    shade: 0.98771775
+  - x: 7
+    y: 13
+    z: -1
+    color: 3
+    shade: 0.91520953
+  - x: 7
+    y: 13
+    z: 0
+    color: 11
+    shade: 1.0027107
+  - x: 7
+    y: 13
+    z: 1
+    color: 3
+    shade: 0.991029
+  - x: 7
+    y: 13
+    z: 2
+    color: 3
+    shade: 1.0061545
+  - x: 7
+    y: 13
+    z: 3
+    color: 3
+    shade: 1.016898
+  - x: 7
+    y: 13
+    z: 4
+    color: 3
+    shade: 0.91345996
+  - x: 7
+    y: 13
+    z: 5
+    color: 3
+    shade: 0.9829479
+  - x: 8
+    y: 13
+    z: -3
+    color: 3
+    shade: 0.92404586
+  - x: 8
+    y: 13
+    z: -2
+    color: 3
+    shade: 1.0328923
+  - x: 8
+    y: 13
+    z: -1
+    color: 3
+    shade: 0.92318743
+  - x: 8
+    y: 13
+    z: 0
+    color: 3
+    shade: 0.9575507
+  - x: 8
+    y: 13
+    z: 1
+    color: 3
+    shade: 0.97493273
+  - x: 8
+    y: 13
+    z: 2
+    color: 3
+    shade: 0.93624395
+  - x: 8
+    y: 13
+    z: 3
+    color: 11
+    shade: 1.0290232
+  - x: -8
+    y: 14
+    z: -2
+    color: 3
+    shade: 0.95659226
+  - x: -8
+    y: 14
+    z: -1
+    color: 3
+    shade: 1.0000553
+  - x: -8
+    y: 14
+    z: 0
+    color: 3
+    shade: 0.98638004
+  - x: -8
+    y: 14
+    z: 1
+    color: 3
+    shade: 0.964696
+  - x: -8
+    y: 14
+    z: 2
+    color: 3
+    shade: 0.96366656
+  - x: -7
+    y: 14
+    z: -4
+    color: 3
+    shade: 0.91362375
+  - x: -7
+    y: 14
+    z: -3
+    color: 11
+    shade: 1.0056815
+  - x: -7
+    y: 14
+    z: -2
+    color: 3
+    shade: 0.93926287
+  - x: -7
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.97982466
+  - x: -7
+    y: 14
+    z: 0
+    color: 3
+    shade: 0.9592519
+  - x: -7
+    y: 14
+    z: 1
+    color: 3
+    shade: 0.9106061
+  - x: -7
+    y: 14
+    z: 2
+    color: 3
+    shade: 1.0260979
+  - x: -7
+    y: 14
+    z: 3
+    color: 3
+    shade: 0.97920877
+  - x: -7
+    y: 14
+    z: 4
+    color: 3
+    shade: 0.9645544
+  - x: -6
+    y: 14
+    z: -6
+    color: 3
+    shade: 0.9592085
+  - x: -6
+    y: 14
+    z: -5
+    color: 3
+    shade: 0.9808327
+  - x: -6
+    y: 14
+    z: -4
+    color: 3
+    shade: 1.0390847
+  - x: -6
+    y: 14
+    z: -3
+    color: 3
+    shade: 0.93752664
+  - x: -6
+    y: 14
+    z: -2
+    color: 3
+    shade: 0.98016584
+  - x: -6
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.95981085
+  - x: -6
+    y: 14
+    z: 0
+    color: 11
+    shade: 0.9904592
+  - x: -6
+    y: 14
+    z: 1
+    color: 3
+    shade: 1.0019598
+  - x: -6
+    y: 14
+    z: 2
+    color: 3
+    shade: 1.0224628
+  - x: -6
+    y: 14
+    z: 3
+    color: 3
+    shade: 0.9153773
+  - x: -6
+    y: 14
+    z: 4
+    color: 3
+    shade: 0.9292318
+  - x: -6
+    y: 14
+    z: 5
+    color: 3
+    shade: 0.9562969
+  - x: -6
+    y: 14
+    z: 6
+    color: 3
+    shade: 0.983747
+  - x: -5
+    y: 14
+    z: -6
+    color: 3
+    shade: 0.9825746
+  - x: -5
+    y: 14
+    z: -5
+    color: 3
+    shade: 0.9510499
+  - x: -5
+    y: 14
+    z: -4
+    color: 3
+    shade: 0.9877152
+  - x: -5
+    y: 14
+    z: -3
+    color: 3
+    shade: 0.9728656
+  - x: -5
+    y: 14
+    z: -2
+    color: 3
+    shade: 0.97267604
+  - x: -5
+    y: 14
+    z: -1
+    color: 3
+    shade: 1.0225749
+  - x: -5
+    y: 14
+    z: 0
+    color: 3
+    shade: 0.9175502
+  - x: -5
+    y: 14
+    z: 1
+    color: 3
+    shade: 0.98956764
+  - x: -5
+    y: 14
+    z: 2
+    color: 3
+    shade: 0.92666227
+  - x: -5
+    y: 14
+    z: 3
+    color: 11
+    shade: 0.91319525
+  - x: -5
+    y: 14
+    z: 4
+    color: 3
+    shade: 0.93758386
+  - x: -5
+    y: 14
+    z: 5
+    color: 3
+    shade: 1.0304487
+  - x: -5
+    y: 14
+    z: 6
+    color: 3
+    shade: 0.94988614
+  - x: -4
+    y: 14
+    z: -7
+    color: 3
+    shade: 1.0220363
+  - x: -4
+    y: 14
+    z: -6
+    color: 3
+    shade: 1.0159466
+  - x: -4
+    y: 14
+    z: -5
+    color: 11
+    shade: 0.932886
+  - x: -4
+    y: 14
+    z: -4
+    color: 3
+    shade: 0.94177717
+  - x: -4
+    y: 14
+    z: -3
+    color: 3
+    shade: 1.0055485
+  - x: -4
+    y: 14
+    z: -2
+    color: 3
+    shade: 1.0308001
+  - x: -4
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.9742512
+  - x: -4
+    y: 14
+    z: 0
+    color: 3
+    shade: 0.9283935
+  - x: -4
+    y: 14
+    z: 1
+    color: 3
+    shade: 1.0048374
+  - x: -4
+    y: 14
+    z: 2
+    color: 3
+    shade: 0.96205974
+  - x: -4
+    y: 14
+    z: 3
+    color: 3
+    shade: 0.9241028
+  - x: -4
+    y: 14
+    z: 4
+    color: 3
+    shade: 0.9300241
+  - x: -4
+    y: 14
+    z: 5
+    color: 3
+    shade: 1.0347669
+  - x: -4
+    y: 14
+    z: 6
+    color: 11
+    shade: 1.0164331
+  - x: -4
+    y: 14
+    z: 7
+    color: 3
+    shade: 0.948564
+  - x: -3
+    y: 14
+    z: -7
+    color: 3
+    shade: 0.9946324
+  - x: -3
+    y: 14
+    z: -6
+    color: 3
+    shade: 1.0175925
+  - x: -3
+    y: 14
+    z: -5
+    color: 3
+    shade: 0.98100275
+  - x: -3
+    y: 14
+    z: -4
+    color: 3
+    shade: 0.9454642
+  - x: -3
+    y: 14
+    z: -3
+    color: 3
+    shade: 0.91736966
+  - x: -3
+    y: 14
+    z: -2
+    color: 11
+    shade: 0.9698767
+  - x: -3
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.93310696
+  - x: -3
+    y: 14
+    z: 0
+    color: 3
+    shade: 1.028213
+  - x: -3
+    y: 14
+    z: 1
+    color: 3
+    shade: 1.0321095
+  - x: -3
+    y: 14
+    z: 2
+    color: 3
+    shade: 1.0263864
+  - x: -3
+    y: 14
+    z: 3
+    color: 3
+    shade: 0.97793007
+  - x: -3
+    y: 14
+    z: 4
+    color: 3
+    shade: 0.913523
+  - x: -3
+    y: 14
+    z: 5
+    color: 3
+    shade: 0.9716586
+  - x: -3
+    y: 14
+    z: 6
+    color: 3
+    shade: 1.0149868
+  - x: -3
+    y: 14
+    z: 7
+    color: 3
+    shade: 0.94254625
+  - x: -2
+    y: 14
+    z: -8
+    color: 3
+    shade: 0.97763747
+  - x: -2
+    y: 14
+    z: -7
+    color: 3
+    shade: 1.0115008
+  - x: -2
+    y: 14
+    z: -6
+    color: 3
+    shade: 0.947078
+  - x: -2
+    y: 14
+    z: -5
+    color: 3
+    shade: 0.9402798
+  - x: -2
+    y: 14
+    z: -4
+    color: 3
+    shade: 0.97777456
+  - x: -2
+    y: 14
+    z: -3
+    color: 3
+    shade: 1.0145125
+  - x: -2
+    y: 14
+    z: -2
+    color: 3
+    shade: 0.9790738
+  - x: -2
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.9906857
+  - x: -2
+    y: 14
+    z: 0
+    color: 3
+    shade: 0.94982886
+  - x: -2
+    y: 14
+    z: 1
+    color: 11
+    shade: 0.93843174
+  - x: -2
+    y: 14
+    z: 2
+    color: 3
+    shade: 1.0220457
+  - x: -2
+    y: 14
+    z: 3
+    color: 3
+    shade: 0.9653536
+  - x: -2
+    y: 14
+    z: 4
+    color: 3
+    shade: 1.0177372
+  - x: -2
+    y: 14
+    z: 5
+    color: 3
+    shade: 1.0289903
+  - x: -2
+    y: 14
+    z: 6
+    color: 3
+    shade: 0.9736124
+  - x: -2
+    y: 14
+    z: 7
+    color: 3
+    shade: 0.9528415
+  - x: -2
+    y: 14
+    z: 8
+    color: 3
+    shade: 0.97790915
+  - x: -1
+    y: 14
+    z: -8
+    color: 3
+    shade: 0.9161418
+  - x: -1
+    y: 14
+    z: -7
+    color: 11
+    shade: 1.0089862
+  - x: -1
+    y: 14
+    z: -6
+    color: 3
+    shade: 1.0349352
+  - x: -1
+    y: 14
+    z: -5
+    color: 3
+    shade: 0.9490698
+  - x: -1
+    y: 14
+    z: -4
+    color: 3
+    shade: 0.9721925
+  - x: -1
+    y: 14
+    z: -3
+    color: 3
+    shade: 1.0321198
+  - x: -1
+    y: 14
+    z: -2
+    color: 3
+    shade: 1.023079
+  - x: -1
+    y: 14
+    z: -1
+    color: 3
+    shade: 1.0200094
+  - x: -1
+    y: 14
+    z: 0
+    color: 3
+    shade: 0.9989294
+  - x: -1
+    y: 14
+    z: 1
+    color: 3
+    shade: 1.0277337
+  - x: -1
+    y: 14
+    z: 2
+    color: 3
+    shade: 0.9407765
+  - x: -1
+    y: 14
+    z: 3
+    color: 3
+    shade: 0.9553908
+  - x: -1
+    y: 14
+    z: 4
+    color: 11
+    shade: 0.93761843
+  - x: -1
+    y: 14
+    z: 5
+    color: 3
+    shade: 1.0272771
+  - x: -1
+    y: 14
+    z: 6
+    color: 3
+    shade: 0.9125927
+  - x: -1
+    y: 14
+    z: 7
+    color: 3
+    shade: 0.9534067
+  - x: -1
+    y: 14
+    z: 8
+    color: 3
+    shade: 0.97229123
+  - x: 0
+    y: 14
+    z: -8
+    color: 3
+    shade: 1.0244223
+  - x: 0
+    y: 14
+    z: -7
+    color: 3
+    shade: 0.95260197
+  - x: 0
+    y: 14
+    z: -6
+    color: 3
+    shade: 1.0229461
+  - x: 0
+    y: 14
+    z: -5
+    color: 3
+    shade: 1.0044872
+  - x: 0
+    y: 14
+    z: -4
+    color: 11
+    shade: 0.9486586
+  - x: 0
+    y: 14
+    z: -3
+    color: 3
+    shade: 0.9740515
+  - x: 0
+    y: 14
+    z: -2
+    color: 3
+    shade: 0.9255587
+  - x: 0
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.9369069
+  - x: 0
+    y: 14
+    z: 0
+    color: 11
+    shade: 0.9411739
+  - x: 0
+    y: 14
+    z: 1
+    color: 3
+    shade: 0.9170325
+  - x: 0
+    y: 14
+    z: 2
+    color: 3
+    shade: 0.93532395
+  - x: 0
+    y: 14
+    z: 3
+    color: 3
+    shade: 0.9145231
+  - x: 0
+    y: 14
+    z: 4
+    color: 3
+    shade: 0.9553698
+  - x: 0
+    y: 14
+    z: 5
+    color: 3
+    shade: 1.0392227
+  - x: 0
+    y: 14
+    z: 6
+    color: 3
+    shade: 0.9684971
+  - x: 0
+    y: 14
+    z: 7
+    color: 11
+    shade: 0.9835448
+  - x: 0
+    y: 14
+    z: 8
+    color: 3
+    shade: 0.9100209
+  - x: 1
+    y: 14
+    z: -8
+    color: 3
+    shade: 1.0373813
+  - x: 1
+    y: 14
+    z: -7
+    color: 3
+    shade: 1.0026723
+  - x: 1
+    y: 14
+    z: -6
+    color: 3
+    shade: 1.0200516
+  - x: 1
+    y: 14
+    z: -5
+    color: 3
+    shade: 1.0334765
+  - x: 1
+    y: 14
+    z: -4
+    color: 3
+    shade: 0.91544497
+  - x: 1
+    y: 14
+    z: -3
+    color: 3
+    shade: 1.0193812
+  - x: 1
+    y: 14
+    z: -2
+    color: 3
+    shade: 0.9639989
+  - x: 1
+    y: 14
+    z: -1
+    color: 11
+    shade: 0.96027035
+  - x: 1
+    y: 14
+    z: 0
+    color: 3
+    shade: 1.0188452
+  - x: 1
+    y: 14
+    z: 1
+    color: 3
+    shade: 1.0267788
+  - x: 1
+    y: 14
+    z: 2
+    color: 3
+    shade: 0.9482973
+  - x: 1
+    y: 14
+    z: 3
+    color: 3
+    shade: 0.94529486
+  - x: 1
+    y: 14
+    z: 4
+    color: 3
+    shade: 0.92221045
+  - x: 1
+    y: 14
+    z: 5
+    color: 3
+    shade: 0.9511546
+  - x: 1
+    y: 14
+    z: 6
+    color: 3
+    shade: 1.019453
+  - x: 1
+    y: 14
+    z: 7
+    color: 3
+    shade: 0.92194694
+  - x: 1
+    y: 14
+    z: 8
+    color: 3
+    shade: 0.955446
+  - x: 2
+    y: 14
+    z: -8
+    color: 3
+    shade: 0.914568
+  - x: 2
+    y: 14
+    z: -7
+    color: 3
+    shade: 0.9310105
+  - x: 2
+    y: 14
+    z: -6
+    color: 3
+    shade: 0.96989536
+  - x: 2
+    y: 14
+    z: -5
+    color: 3
+    shade: 1.013422
+  - x: 2
+    y: 14
+    z: -4
+    color: 3
+    shade: 1.0074832
+  - x: 2
+    y: 14
+    z: -3
+    color: 3
+    shade: 0.94493484
+  - x: 2
+    y: 14
+    z: -2
+    color: 3
+    shade: 1.0193766
+  - x: 2
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.92216295
+  - x: 2
+    y: 14
+    z: 0
+    color: 3
+    shade: 0.9410187
+  - x: 2
+    y: 14
+    z: 1
+    color: 3
+    shade: 1.0250872
+  - x: 2
+    y: 14
+    z: 2
+    color: 11
+    shade: 0.9977551
+  - x: 2
+    y: 14
+    z: 3
+    color: 3
+    shade: 1.0154862
+  - x: 2
+    y: 14
+    z: 4
+    color: 3
+    shade: 0.95355964
+  - x: 2
+    y: 14
+    z: 5
+    color: 3
+    shade: 1.0285109
+  - x: 2
+    y: 14
+    z: 6
+    color: 3
+    shade: 1.0122795
+  - x: 2
+    y: 14
+    z: 7
+    color: 3
+    shade: 1.0118461
+  - x: 2
+    y: 14
+    z: 8
+    color: 3
+    shade: 0.9375976
+  - x: 3
+    y: 14
+    z: -7
+    color: 3
+    shade: 1.0298959
+  - x: 3
+    y: 14
+    z: -6
+    color: 11
+    shade: 0.9499204
+  - x: 3
+    y: 14
+    z: -5
+    color: 3
+    shade: 0.9733551
+  - x: 3
+    y: 14
+    z: -4
+    color: 3
+    shade: 0.9788148
+  - x: 3
+    y: 14
+    z: -3
+    color: 3
+    shade: 1.0189773
+  - x: 3
+    y: 14
+    z: -2
+    color: 3
+    shade: 0.9732208
+  - x: 3
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.96894723
+  - x: 3
+    y: 14
+    z: 0
+    color: 3
+    shade: 0.95421684
+  - x: 3
+    y: 14
+    z: 1
+    color: 3
+    shade: 0.9698134
+  - x: 3
+    y: 14
+    z: 2
+    color: 3
+    shade: 0.9872726
+  - x: 3
+    y: 14
+    z: 3
+    color: 3
+    shade: 1.0172614
+  - x: 3
+    y: 14
+    z: 4
+    color: 3
+    shade: 1.031612
+  - x: 3
+    y: 14
+    z: 5
+    color: 11
+    shade: 0.9289635
+  - x: 3
+    y: 14
+    z: 6
+    color: 3
+    shade: 1.005878
+  - x: 3
+    y: 14
+    z: 7
+    color: 3
+    shade: 0.9558709
+  - x: 4
+    y: 14
+    z: -7
+    color: 3
+    shade: 1.0325762
+  - x: 4
+    y: 14
+    z: -6
+    color: 3
+    shade: 1.0399238
+  - x: 4
+    y: 14
+    z: -5
+    color: 3
+    shade: 1.0346549
+  - x: 4
+    y: 14
+    z: -4
+    color: 3
+    shade: 0.94748664
+  - x: 4
+    y: 14
+    z: -3
+    color: 11
+    shade: 0.9236495
+  - x: 4
+    y: 14
+    z: -2
+    color: 3
+    shade: 0.9365989
+  - x: 4
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.93989813
+  - x: 4
+    y: 14
+    z: 0
+    color: 3
+    shade: 0.9677375
+  - x: 4
+    y: 14
+    z: 1
+    color: 3
+    shade: 0.91067505
+  - x: 4
+    y: 14
+    z: 2
+    color: 3
+    shade: 1.0213135
+  - x: 4
+    y: 14
+    z: 3
+    color: 3
+    shade: 1.0144262
+  - x: 4
+    y: 14
+    z: 4
+    color: 3
+    shade: 1.0342939
+  - x: 4
+    y: 14
+    z: 5
+    color: 3
+    shade: 1.0062438
+  - x: 4
+    y: 14
+    z: 6
+    color: 3
+    shade: 0.98478407
+  - x: 4
+    y: 14
+    z: 7
+    color: 3
+    shade: 0.9752856
+  - x: 5
+    y: 14
+    z: -6
+    color: 3
+    shade: 1.0382679
+  - x: 5
+    y: 14
+    z: -5
+    color: 3
+    shade: 0.97601783
+  - x: 5
+    y: 14
+    z: -4
+    color: 3
+    shade: 0.9734489
+  - x: 5
+    y: 14
+    z: -3
+    color: 3
+    shade: 1.0246129
+  - x: 5
+    y: 14
+    z: -2
+    color: 3
+    shade: 0.9612587
+  - x: 5
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.9795327
+  - x: 5
+    y: 14
+    z: 0
+    color: 11
+    shade: 0.9885919
+  - x: 5
+    y: 14
+    z: 1
+    color: 3
+    shade: 1.0166312
+  - x: 5
+    y: 14
+    z: 2
+    color: 3
+    shade: 0.9355907
+  - x: 5
+    y: 14
+    z: 3
+    color: 3
+    shade: 0.9977897
+  - x: 5
+    y: 14
+    z: 4
+    color: 3
+    shade: 0.91094816
+  - x: 5
+    y: 14
+    z: 5
+    color: 3
+    shade: 0.9692052
+  - x: 5
+    y: 14
+    z: 6
+    color: 3
+    shade: 0.9476698
+  - x: 6
+    y: 14
+    z: -6
+    color: 3
+    shade: 0.9976622
+  - x: 6
+    y: 14
+    z: -5
+    color: 3
+    shade: 0.9121152
+  - x: 6
+    y: 14
+    z: -4
+    color: 3
+    shade: 0.93055093
+  - x: 6
+    y: 14
+    z: -3
+    color: 3
+    shade: 0.92205524
+  - x: 6
+    y: 14
+    z: -2
+    color: 3
+    shade: 0.92920935
+  - x: 6
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.95188427
+  - x: 6
+    y: 14
+    z: 0
+    color: 3
+    shade: 1.0229101
+  - x: 6
+    y: 14
+    z: 1
+    color: 3
+    shade: 0.95363593
+  - x: 6
+    y: 14
+    z: 2
+    color: 3
+    shade: 1.0338562
+  - x: 6
+    y: 14
+    z: 3
+    color: 11
+    shade: 0.9747929
+  - x: 6
+    y: 14
+    z: 4
+    color: 3
+    shade: 0.9981966
+  - x: 6
+    y: 14
+    z: 5
+    color: 3
+    shade: 0.9109987
+  - x: 6
+    y: 14
+    z: 6
+    color: 3
+    shade: 0.9999978
+  - x: 7
+    y: 14
+    z: -4
+    color: 3
+    shade: 1.022183
+  - x: 7
+    y: 14
+    z: -3
+    color: 3
+    shade: 0.9726801
+  - x: 7
+    y: 14
+    z: -2
+    color: 3
+    shade: 0.99750125
+  - x: 7
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.9145511
+  - x: 7
+    y: 14
+    z: 0
+    color: 3
+    shade: 0.9789269
+  - x: 7
+    y: 14
+    z: 1
+    color: 3
+    shade: 1.0027034
+  - x: 7
+    y: 14
+    z: 2
+    color: 3
+    shade: 1.0094328
+  - x: 7
+    y: 14
+    z: 3
+    color: 3
+    shade: 1.0345279
+  - x: 7
+    y: 14
+    z: 4
+    color: 3
+    shade: 0.9890048
+  - x: 8
+    y: 14
+    z: -2
+    color: 11
+    shade: 0.9512436
+  - x: 8
+    y: 14
+    z: -1
+    color: 3
+    shade: 0.9681632
+  - x: 8
+    y: 14
+    z: 0
+    color: 3
+    shade: 0.94435054
+  - x: 8
+    y: 14
+    z: 1
+    color: 3
+    shade: 0.9546192
+  - x: 8
+    y: 14
+    z: 2
+    color: 3
+    shade: 1.0163382
+  - x: -8
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.9539844
+  - x: -8
+    y: 15
+    z: 0
+    color: 11
+    shade: 0.9332925
+  - x: -8
+    y: 15
+    z: 1
+    color: 3
+    shade: 1.0090642
+  - x: -7
+    y: 15
+    z: -4
+    color: 3
+    shade: 0.989697
+  - x: -7
+    y: 15
+    z: -3
+    color: 3
+    shade: 0.9227013
+  - x: -7
+    y: 15
+    z: -2
+    color: 3
+    shade: 1.0073937
+  - x: -7
+    y: 15
+    z: -1
+    color: 3
+    shade: 1.0322284
+  - x: -7
+    y: 15
+    z: 0
+    color: 3
+    shade: 1.0100753
+  - x: -7
+    y: 15
+    z: 1
+    color: 3
+    shade: 1.0385598
+  - x: -7
+    y: 15
+    z: 2
+    color: 3
+    shade: 1.0007627
+  - x: -7
+    y: 15
+    z: 3
+    color: 11
+    shade: 1.0023711
+  - x: -7
+    y: 15
+    z: 4
+    color: 3
+    shade: 1.0150846
+  - x: -6
+    y: 15
+    z: -5
+    color: 11
+    shade: 0.9643596
+  - x: -6
+    y: 15
+    z: -4
+    color: 3
+    shade: 1.001874
+  - x: -6
+    y: 15
+    z: -3
+    color: 3
+    shade: 0.9316496
+  - x: -6
+    y: 15
+    z: -2
+    color: 3
+    shade: 0.9144118
+  - x: -6
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.91122496
+  - x: -6
+    y: 15
+    z: 0
+    color: 3
+    shade: 1.0152522
+  - x: -6
+    y: 15
+    z: 1
+    color: 3
+    shade: 1.0236143
+  - x: -6
+    y: 15
+    z: 2
+    color: 3
+    shade: 1.001261
+  - x: -6
+    y: 15
+    z: 3
+    color: 3
+    shade: 0.99734986
+  - x: -6
+    y: 15
+    z: 4
+    color: 3
+    shade: 0.92591184
+  - x: -6
+    y: 15
+    z: 5
+    color: 3
+    shade: 0.9291301
+  - x: -5
+    y: 15
+    z: -6
+    color: 3
+    shade: 0.93103963
+  - x: -5
+    y: 15
+    z: -5
+    color: 3
+    shade: 0.92886275
+  - x: -5
+    y: 15
+    z: -4
+    color: 3
+    shade: 0.94824475
+  - x: -5
+    y: 15
+    z: -3
+    color: 3
+    shade: 0.9997724
+  - x: -5
+    y: 15
+    z: -2
+    color: 11
+    shade: 0.9531419
+  - x: -5
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.9186575
+  - x: -5
+    y: 15
+    z: 0
+    color: 3
+    shade: 1.0008717
+  - x: -5
+    y: 15
+    z: 1
+    color: 3
+    shade: 1.0023878
+  - x: -5
+    y: 15
+    z: 2
+    color: 3
+    shade: 1.0177047
+  - x: -5
+    y: 15
+    z: 3
+    color: 3
+    shade: 1.0145901
+  - x: -5
+    y: 15
+    z: 4
+    color: 3
+    shade: 0.97554606
+  - x: -5
+    y: 15
+    z: 5
+    color: 3
+    shade: 0.97892576
+  - x: -5
+    y: 15
+    z: 6
+    color: 3
+    shade: 0.93034345
+  - x: -4
+    y: 15
+    z: -7
+    color: 3
+    shade: 0.93479204
+  - x: -4
+    y: 15
+    z: -6
+    color: 3
+    shade: 1.0250959
+  - x: -4
+    y: 15
+    z: -5
+    color: 3
+    shade: 0.9854953
+  - x: -4
+    y: 15
+    z: -4
+    color: 3
+    shade: 0.943605
+  - x: -4
+    y: 15
+    z: -3
+    color: 3
+    shade: 1.0077695
+  - x: -4
+    y: 15
+    z: -2
+    color: 3
+    shade: 0.9221076
+  - x: -4
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.97412026
+  - x: -4
+    y: 15
+    z: 0
+    color: 3
+    shade: 1.0367386
+  - x: -4
+    y: 15
+    z: 1
+    color: 11
+    shade: 0.95218
+  - x: -4
+    y: 15
+    z: 2
+    color: 3
+    shade: 1.0038424
+  - x: -4
+    y: 15
+    z: 3
+    color: 3
+    shade: 0.94834393
+  - x: -4
+    y: 15
+    z: 4
+    color: 3
+    shade: 0.9175588
+  - x: -4
+    y: 15
+    z: 5
+    color: 3
+    shade: 1.0128783
+  - x: -4
+    y: 15
+    z: 6
+    color: 3
+    shade: 0.98459303
+  - x: -4
+    y: 15
+    z: 7
+    color: 3
+    shade: 0.95001864
+  - x: -3
+    y: 15
+    z: -7
+    color: 11
+    shade: 0.9929109
+  - x: -3
+    y: 15
+    z: -6
+    color: 3
+    shade: 0.9607363
+  - x: -3
+    y: 15
+    z: -5
+    color: 3
+    shade: 0.9933583
+  - x: -3
+    y: 15
+    z: -4
+    color: 3
+    shade: 0.9289884
+  - x: -3
+    y: 15
+    z: -3
+    color: 3
+    shade: 0.93807256
+  - x: -3
+    y: 15
+    z: -2
+    color: 3
+    shade: 0.91416246
+  - x: -3
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.9880246
+  - x: -3
+    y: 15
+    z: 0
+    color: 3
+    shade: 0.9708342
+  - x: -3
+    y: 15
+    z: 1
+    color: 3
+    shade: 1.0144566
+  - x: -3
+    y: 15
+    z: 2
+    color: 3
+    shade: 0.91762125
+  - x: -3
+    y: 15
+    z: 3
+    color: 3
+    shade: 0.9890864
+  - x: -3
+    y: 15
+    z: 4
+    color: 11
+    shade: 1.0014179
+  - x: -3
+    y: 15
+    z: 5
+    color: 3
+    shade: 0.94768816
+  - x: -3
+    y: 15
+    z: 6
+    color: 3
+    shade: 1.0383749
+  - x: -3
+    y: 15
+    z: 7
+    color: 3
+    shade: 1.0246663
+  - x: -2
+    y: 15
+    z: -7
+    color: 3
+    shade: 0.9104945
+  - x: -2
+    y: 15
+    z: -6
+    color: 3
+    shade: 1.0288135
+  - x: -2
+    y: 15
+    z: -5
+    color: 3
+    shade: 0.9329483
+  - x: -2
+    y: 15
+    z: -4
+    color: 11
+    shade: 0.9113062
+  - x: -2
+    y: 15
+    z: -3
+    color: 3
+    shade: 1.0196197
+  - x: -2
+    y: 15
+    z: -2
+    color: 3
+    shade: 0.92612904
+  - x: -2
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.939757
+  - x: -2
+    y: 15
+    z: 0
+    color: 3
+    shade: 0.9900093
+  - x: -2
+    y: 15
+    z: 1
+    color: 3
+    shade: 1.0334915
+  - x: -2
+    y: 15
+    z: 2
+    color: 3
+    shade: 0.98524225
+  - x: -2
+    y: 15
+    z: 3
+    color: 3
+    shade: 0.9917916
+  - x: -2
+    y: 15
+    z: 4
+    color: 3
+    shade: 0.93239146
+  - x: -2
+    y: 15
+    z: 5
+    color: 3
+    shade: 1.0188596
+  - x: -2
+    y: 15
+    z: 6
+    color: 3
+    shade: 0.9650205
+  - x: -2
+    y: 15
+    z: 7
+    color: 11
+    shade: 1.0399009
+  - x: -1
+    y: 15
+    z: -8
+    color: 3
+    shade: 0.99221367
+  - x: -1
+    y: 15
+    z: -7
+    color: 3
+    shade: 0.9802637
+  - x: -1
+    y: 15
+    z: -6
+    color: 3
+    shade: 0.9740644
+  - x: -1
+    y: 15
+    z: -5
+    color: 3
+    shade: 0.9608531
+  - x: -1
+    y: 15
+    z: -4
+    color: 3
+    shade: 0.91947687
+  - x: -1
+    y: 15
+    z: -3
+    color: 3
+    shade: 0.9669685
+  - x: -1
+    y: 15
+    z: -2
+    color: 3
+    shade: 0.93123186
+  - x: -1
+    y: 15
+    z: -1
+    color: 11
+    shade: 0.9565577
+  - x: -1
+    y: 15
+    z: 0
+    color: 3
+    shade: 0.9508532
+  - x: -1
+    y: 15
+    z: 1
+    color: 3
+    shade: 0.926181
+  - x: -1
+    y: 15
+    z: 2
+    color: 3
+    shade: 0.9867675
+  - x: -1
+    y: 15
+    z: 3
+    color: 3
+    shade: 0.9642618
+  - x: -1
+    y: 15
+    z: 4
+    color: 3
+    shade: 1.0110388
+  - x: -1
+    y: 15
+    z: 5
+    color: 3
+    shade: 0.9359838
+  - x: -1
+    y: 15
+    z: 6
+    color: 3
+    shade: 0.92868316
+  - x: -1
+    y: 15
+    z: 7
+    color: 3
+    shade: 0.9606897
+  - x: -1
+    y: 15
+    z: 8
+    color: 3
+    shade: 0.9364321
+  - x: 0
+    y: 15
+    z: -8
+    color: 3
+    shade: 1.0383637
+  - x: 0
+    y: 15
+    z: -7
+    color: 3
+    shade: 0.96751374
+  - x: 0
+    y: 15
+    z: -6
+    color: 3
+    shade: 1.0033478
+  - x: 0
+    y: 15
+    z: -5
+    color: 3
+    shade: 0.9595304
+  - x: 0
+    y: 15
+    z: -4
+    color: 3
+    shade: 1.0246105
+  - x: 0
+    y: 15
+    z: -3
+    color: 3
+    shade: 1.011572
+  - x: 0
+    y: 15
+    z: -2
+    color: 3
+    shade: 1.0049733
+  - x: 0
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.9338896
+  - x: 0
+    y: 15
+    z: 0
+    color: 11
+    shade: 0.96315396
+  - x: 0
+    y: 15
+    z: 1
+    color: 3
+    shade: 1.010727
+  - x: 0
+    y: 15
+    z: 2
+    color: 11
+    shade: 0.99986684
+  - x: 0
+    y: 15
+    z: 3
+    color: 3
+    shade: 0.9837462
+  - x: 0
+    y: 15
+    z: 4
+    color: 3
+    shade: 0.986281
+  - x: 0
+    y: 15
+    z: 5
+    color: 3
+    shade: 1.021771
+  - x: 0
+    y: 15
+    z: 6
+    color: 3
+    shade: 1.0091649
+  - x: 0
+    y: 15
+    z: 7
+    color: 3
+    shade: 0.91581374
+  - x: 0
+    y: 15
+    z: 8
+    color: 3
+    shade: 1.0145558
+  - x: 1
+    y: 15
+    z: -8
+    color: 3
+    shade: 0.9654076
+  - x: 1
+    y: 15
+    z: -7
+    color: 3
+    shade: 0.9188227
+  - x: 1
+    y: 15
+    z: -6
+    color: 11
+    shade: 0.9373535
+  - x: 1
+    y: 15
+    z: -5
+    color: 3
+    shade: 1.0268351
+  - x: 1
+    y: 15
+    z: -4
+    color: 3
+    shade: 1.028898
+  - x: 1
+    y: 15
+    z: -3
+    color: 3
+    shade: 0.9676979
+  - x: 1
+    y: 15
+    z: -2
+    color: 3
+    shade: 1.0192627
+  - x: 1
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.9822559
+  - x: 1
+    y: 15
+    z: 0
+    color: 3
+    shade: 1.0220951
+  - x: 1
+    y: 15
+    z: 1
+    color: 3
+    shade: 1.0251253
+  - x: 1
+    y: 15
+    z: 2
+    color: 3
+    shade: 0.94285226
+  - x: 1
+    y: 15
+    z: 3
+    color: 3
+    shade: 1.0018673
+  - x: 1
+    y: 15
+    z: 4
+    color: 3
+    shade: 0.9687183
+  - x: 1
+    y: 15
+    z: 5
+    color: 11
+    shade: 0.96402556
+  - x: 1
+    y: 15
+    z: 6
+    color: 3
+    shade: 1.0148083
+  - x: 1
+    y: 15
+    z: 7
+    color: 3
+    shade: 0.9345526
+  - x: 1
+    y: 15
+    z: 8
+    color: 3
+    shade: 0.9653595
+  - x: 2
+    y: 15
+    z: -7
+    color: 3
+    shade: 0.9340278
+  - x: 2
+    y: 15
+    z: -6
+    color: 3
+    shade: 0.9613459
+  - x: 2
+    y: 15
+    z: -5
+    color: 3
+    shade: 1.0016727
+  - x: 2
+    y: 15
+    z: -4
+    color: 3
+    shade: 0.99037045
+  - x: 2
+    y: 15
+    z: -3
+    color: 11
+    shade: 1.0076032
+  - x: 2
+    y: 15
+    z: -2
+    color: 3
+    shade: 1.0086917
+  - x: 2
+    y: 15
+    z: -1
+    color: 3
+    shade: 1.0090911
+  - x: 2
+    y: 15
+    z: 0
+    color: 3
+    shade: 0.9369635
+  - x: 2
+    y: 15
+    z: 1
+    color: 3
+    shade: 0.996323
+  - x: 2
+    y: 15
+    z: 2
+    color: 3
+    shade: 0.9962415
+  - x: 2
+    y: 15
+    z: 3
+    color: 3
+    shade: 0.97136503
+  - x: 2
+    y: 15
+    z: 4
+    color: 3
+    shade: 1.0128115
+  - x: 2
+    y: 15
+    z: 5
+    color: 3
+    shade: 1.0045723
+  - x: 2
+    y: 15
+    z: 6
+    color: 3
+    shade: 0.94441
+  - x: 2
+    y: 15
+    z: 7
+    color: 3
+    shade: 1.0176026
+  - x: 3
+    y: 15
+    z: -7
+    color: 3
+    shade: 0.95844805
+  - x: 3
+    y: 15
+    z: -6
+    color: 3
+    shade: 1.0364829
+  - x: 3
+    y: 15
+    z: -5
+    color: 3
+    shade: 1.0105761
+  - x: 3
+    y: 15
+    z: -4
+    color: 3
+    shade: 0.9198605
+  - x: 3
+    y: 15
+    z: -3
+    color: 3
+    shade: 0.93333626
+  - x: 3
+    y: 15
+    z: -2
+    color: 3
+    shade: 0.94959706
+  - x: 3
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.9194657
+  - x: 3
+    y: 15
+    z: 0
+    color: 11
+    shade: 1.0398159
+  - x: 3
+    y: 15
+    z: 1
+    color: 3
+    shade: 1.0240852
+  - x: 3
+    y: 15
+    z: 2
+    color: 3
+    shade: 1.0172745
+  - x: 3
+    y: 15
+    z: 3
+    color: 3
+    shade: 0.9125155
+  - x: 3
+    y: 15
+    z: 4
+    color: 3
+    shade: 1.0264468
+  - x: 3
+    y: 15
+    z: 5
+    color: 3
+    shade: 0.97212106
+  - x: 3
+    y: 15
+    z: 6
+    color: 3
+    shade: 0.97202235
+  - x: 3
+    y: 15
+    z: 7
+    color: 3
+    shade: 1.0344356
+  - x: 4
+    y: 15
+    z: -7
+    color: 3
+    shade: 0.95670146
+  - x: 4
+    y: 15
+    z: -6
+    color: 3
+    shade: 1.0250585
+  - x: 4
+    y: 15
+    z: -5
+    color: 3
+    shade: 0.9591936
+  - x: 4
+    y: 15
+    z: -4
+    color: 3
+    shade: 0.9309215
+  - x: 4
+    y: 15
+    z: -3
+    color: 3
+    shade: 0.99774325
+  - x: 4
+    y: 15
+    z: -2
+    color: 3
+    shade: 0.9578191
+  - x: 4
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.9541411
+  - x: 4
+    y: 15
+    z: 0
+    color: 3
+    shade: 0.9341853
+  - x: 4
+    y: 15
+    z: 1
+    color: 3
+    shade: 0.99780446
+  - x: 4
+    y: 15
+    z: 2
+    color: 3
+    shade: 0.950131
+  - x: 4
+    y: 15
+    z: 3
+    color: 11
+    shade: 0.9682624
+  - x: 4
+    y: 15
+    z: 4
+    color: 3
+    shade: 0.9998716
+  - x: 4
+    y: 15
+    z: 5
+    color: 3
+    shade: 0.9425751
+  - x: 4
+    y: 15
+    z: 6
+    color: 3
+    shade: 1.0114564
+  - x: 4
+    y: 15
+    z: 7
+    color: 3
+    shade: 0.95789766
+  - x: 5
+    y: 15
+    z: -6
+    color: 3
+    shade: 1.0094444
+  - x: 5
+    y: 15
+    z: -5
+    color: 11
+    shade: 0.92752284
+  - x: 5
+    y: 15
+    z: -4
+    color: 3
+    shade: 0.9907152
+  - x: 5
+    y: 15
+    z: -3
+    color: 3
+    shade: 0.9652498
+  - x: 5
+    y: 15
+    z: -2
+    color: 3
+    shade: 0.95341927
+  - x: 5
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.9722354
+  - x: 5
+    y: 15
+    z: 0
+    color: 3
+    shade: 0.99344945
+  - x: 5
+    y: 15
+    z: 1
+    color: 3
+    shade: 1.0049479
+  - x: 5
+    y: 15
+    z: 2
+    color: 3
+    shade: 0.9112164
+  - x: 5
+    y: 15
+    z: 3
+    color: 3
+    shade: 0.9257625
+  - x: 5
+    y: 15
+    z: 4
+    color: 3
+    shade: 0.9245621
+  - x: 5
+    y: 15
+    z: 5
+    color: 3
+    shade: 0.96153
+  - x: 5
+    y: 15
+    z: 6
+    color: 11
+    shade: 1.0175875
+  - x: 6
+    y: 15
+    z: -5
+    color: 3
+    shade: 1.013096
+  - x: 6
+    y: 15
+    z: -4
+    color: 3
+    shade: 1.0050877
+  - x: 6
+    y: 15
+    z: -3
+    color: 3
+    shade: 1.0222449
+  - x: 6
+    y: 15
+    z: -2
+    color: 11
+    shade: 0.9469701
+  - x: 6
+    y: 15
+    z: -1
+    color: 3
+    shade: 1.0049412
+  - x: 6
+    y: 15
+    z: 0
+    color: 3
+    shade: 1.0018873
+  - x: 6
+    y: 15
+    z: 1
+    color: 3
+    shade: 0.9495401
+  - x: 6
+    y: 15
+    z: 2
+    color: 3
+    shade: 0.9863065
+  - x: 6
+    y: 15
+    z: 3
+    color: 3
+    shade: 0.9636179
+  - x: 6
+    y: 15
+    z: 4
+    color: 3
+    shade: 0.9836508
+  - x: 6
+    y: 15
+    z: 5
+    color: 3
+    shade: 0.98666686
+  - x: 7
+    y: 15
+    z: -4
+    color: 3
+    shade: 0.9697834
+  - x: 7
+    y: 15
+    z: -3
+    color: 3
+    shade: 0.91430694
+  - x: 7
+    y: 15
+    z: -2
+    color: 3
+    shade: 1.0122976
+  - x: 7
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.9227717
+  - x: 7
+    y: 15
+    z: 0
+    color: 3
+    shade: 1.0097295
+  - x: 7
+    y: 15
+    z: 1
+    color: 11
+    shade: 1.0050739
+  - x: 7
+    y: 15
+    z: 2
+    color: 3
+    shade: 0.9897255
+  - x: 7
+    y: 15
+    z: 3
+    color: 3
+    shade: 1.0168906
+  - x: 7
+    y: 15
+    z: 4
+    color: 3
+    shade: 0.93835944
+  - x: 8
+    y: 15
+    z: -1
+    color: 3
+    shade: 0.97618747
+  - x: 8
+    y: 15
+    z: 0
+    color: 3
+    shade: 0.91783017
+  - x: 8
+    y: 15
+    z: 1
+    color: 3
+    shade: 1.0249927
+  - x: -7
+    y: 16
+    z: -2
+    color: 11
+    shade: 0.94573164
+  - x: -7
+    y: 16
+    z: -1
+    color: 3
+    shade: 0.9168713
+  - x: -7
+    y: 16
+    z: 0
+    color: 3
+    shade: 0.92860305
+  - x: -7
+    y: 16
+    z: 1
+    color: 3
+    shade: 0.9722003
+  - x: -7
+    y: 16
+    z: 2
+    color: 3
+    shade: 1.003252
+  - x: -6
+    y: 16
+    z: -4
+    color: 3
+    shade: 0.9301107
+  - x: -6
+    y: 16
+    z: -3
+    color: 3
+    shade: 0.95797724
+  - x: -6
+    y: 16
+    z: -2
+    color: 3
+    shade: 0.91515905
+  - x: -6
+    y: 16
+    z: -1
+    color: 3
+    shade: 0.9831812
+  - x: -6
+    y: 16
+    z: 0
+    color: 3
+    shade: 1.0362891
+  - x: -6
+    y: 16
+    z: 1
+    color: 11
+    shade: 0.9765535
+  - x: -6
+    y: 16
+    z: 2
+    color: 3
+    shade: 0.96108943
+  - x: -6
+    y: 16
+    z: 3
+    color: 3
+    shade: 1.0327169
+  - x: -6
+    y: 16
+    z: 4
+    color: 3
+    shade: 0.96788615
+  - x: -5
+    y: 16
+    z: -5
+    color: 3
+    shade: 0.9312923
+  - x: -5
+    y: 16
+    z: -4
+    color: 3
+    shade: 1.0349303
+  - x: -5
+    y: 16
+    z: -3
+    color: 3
+    shade: 0.98068774
+  - x: -5
+    y: 16
+    z: -2
+    color: 3
+    shade: 0.9719164
+  - x: -5
+    y: 16
+    z: -1
+    color: 3
+    shade: 1.0115912
+  - x: -5
+    y: 16
+    z: 0
+    color: 3
+    shade: 0.95582646
+  - x: -5
+    y: 16
+    z: 1
+    color: 3
+    shade: 0.9838721
+  - x: -5
+    y: 16
+    z: 2
+    color: 3
+    shade: 0.91404843
+  - x: -5
+    y: 16
+    z: 3
+    color: 3
+    shade: 1.0354664
+  - x: -5
+    y: 16
+    z: 4
+    color: 11
+    shade: 0.94911236
+  - x: -5
+    y: 16
+    z: 5
+    color: 3
+    shade: 0.9999378
+  - x: -4
+    y: 16
+    z: -6
+    color: 3
+    shade: 0.9806778
+  - x: -4
+    y: 16
+    z: -5
+    color: 3
+    shade: 1.0352184
+  - x: -4
+    y: 16
+    z: -4
+    color: 11
+    shade: 0.94614255
+  - x: -4
+    y: 16
+    z: -3
+    color: 3
+    shade: 0.976037
+  - x: -4
+    y: 16
+    z: -2
+    color: 3
+    shade: 0.9476715
+  - x: -4
+    y: 16
+    z: -1
+    color: 3
+    shade: 0.9331706
+  - x: -4
+    y: 16
+    z: 0
+    color: 3
+    shade: 0.9514001
+  - x: -4
+    y: 16
+    z: 1
+    color: 3
+    shade: 1.0052658
+  - x: -4
+    y: 16
+    z: 2
+    color: 3
+    shade: 1.020095
+  - x: -4
+    y: 16
+    z: 3
+    color: 3
+    shade: 0.98651326
+  - x: -4
+    y: 16
+    z: 4
+    color: 3
+    shade: 0.9400988
+  - x: -4
+    y: 16
+    z: 5
+    color: 3
+    shade: 0.98633814
+  - x: -4
+    y: 16
+    z: 6
+    color: 3
+    shade: 0.9396871
+  - x: -3
+    y: 16
+    z: -6
+    color: 3
+    shade: 0.9862881
+  - x: -3
+    y: 16
+    z: -5
+    color: 3
+    shade: 0.9661958
+  - x: -3
+    y: 16
+    z: -4
+    color: 3
+    shade: 0.9156407
+  - x: -3
+    y: 16
+    z: -3
+    color: 3
+    shade: 0.9784918
+  - x: -3
+    y: 16
+    z: -2
+    color: 3
+    shade: 0.9134857
+  - x: -3
+    y: 16
+    z: -1
+    color: 11
+    shade: 0.97349435
+  - x: -3
+    y: 16
+    z: 0
+    color: 3
+    shade: 0.97775346
+  - x: -3
+    y: 16
+    z: 1
+    color: 3
+    shade: 0.9612082
+  - x: -3
+    y: 16
+    z: 2
+    color: 3
+    shade: 0.9300549
+  - x: -3
+    y: 16
+    z: 3
+    color: 3
+    shade: 0.95184344
+  - x: -3
+    y: 16
+    z: 4
+    color: 3
+    shade: 0.9837816
+  - x: -3
+    y: 16
+    z: 5
+    color: 3
+    shade: 0.9947951
+  - x: -3
+    y: 16
+    z: 6
+    color: 3
+    shade: 0.94620293
+  - x: -2
+    y: 16
+    z: -7
+    color: 3
+    shade: 1.0064431
+  - x: -2
+    y: 16
+    z: -6
+    color: 3
+    shade: 1.0045964
+  - x: -2
+    y: 16
+    z: -5
+    color: 3
+    shade: 1.0020037
+  - x: -2
+    y: 16
+    z: -4
+    color: 3
+    shade: 0.9511206
+  - x: -2
+    y: 16
+    z: -3
+    color: 3
+    shade: 0.9416833
+  - x: -2
+    y: 16
+    z: -2
+    color: 3
+    shade: 0.92140496
+  - x: -2
+    y: 16
+    z: -1
+    color: 3
+    shade: 1.0194907
+  - x: -2
+    y: 16
+    z: 0
+    color: 3
+    shade: 1.0122626
+  - x: -2
+    y: 16
+    z: 1
+    color: 3
+    shade: 0.9325743
+  - x: -2
+    y: 16
+    z: 2
+    color: 11
+    shade: 0.93489236
+  - x: -2
+    y: 16
+    z: 3
+    color: 3
+    shade: 0.9218347
+  - x: -2
+    y: 16
+    z: 4
+    color: 3
+    shade: 0.97912204
+  - x: -2
+    y: 16
+    z: 5
+    color: 3
+    shade: 0.94550973
+  - x: -2
+    y: 16
+    z: 6
+    color: 3
+    shade: 1.0131185
+  - x: -2
+    y: 16
+    z: 7
+    color: 3
+    shade: 0.9351534
+  - x: -1
+    y: 16
+    z: -7
+    color: 3
+    shade: 0.9958236
+  - x: -1
+    y: 16
+    z: -6
+    color: 11
+    shade: 0.9226218
+  - x: -1
+    y: 16
+    z: -5
+    color: 3
+    shade: 1.0213729
+  - x: -1
+    y: 16
+    z: -4
+    color: 3
+    shade: 1.0311935
+  - x: -1
+    y: 16
+    z: -3
+    color: 3
+    shade: 0.9585923
+  - x: -1
+    y: 16
+    z: -2
+    color: 3
+    shade: 0.95100075
+  - x: -1
+    y: 16
+    z: -1
+    color: 3
+    shade: 1.0256283
+  - x: -1
+    y: 16
+    z: 0
+    color: 3
+    shade: 0.9553954
+  - x: -1
+    y: 16
+    z: 1
+    color: 3
+    shade: 0.9501858
+  - x: -1
+    y: 16
+    z: 2
+    color: 3
+    shade: 0.91538036
+  - x: -1
+    y: 16
+    z: 3
+    color: 3
+    shade: 0.91056275
+  - x: -1
+    y: 16
+    z: 4
+    color: 3
+    shade: 0.97197205
+  - x: -1
+    y: 16
+    z: 5
+    color: 11
+    shade: 1.0113589
+  - x: -1
+    y: 16
+    z: 6
+    color: 3
+    shade: 0.9487296
+  - x: -1
+    y: 16
+    z: 7
+    color: 3
+    shade: 0.9606229
+  - x: 0
+    y: 16
+    z: -7
+    color: 3
+    shade: 0.99337494
+  - x: 0
+    y: 16
+    z: -6
+    color: 3
+    shade: 1.0023609
+  - x: 0
+    y: 16
+    z: -5
+    color: 3
+    shade: 1.0212419
+  - x: 0
+    y: 16
+    z: -4
+    color: 3
+    shade: 0.91146857
+  - x: 0
+    y: 16
+    z: -3
+    color: 11
+    shade: 0.9667275
+  - x: 0
+    y: 16
+    z: -2
+    color: 3
+    shade: 0.98680377
+  - x: 0
+    y: 16
+    z: -1
+    color: 3
+    shade: 0.9132621
+  - x: 0
+    y: 16
+    z: 0
+    color: 11
+    shade: 0.97897446
+  - x: 0
+    y: 16
+    z: 1
+    color: 3
+    shade: 0.95483
+  - x: 0
+    y: 16
+    z: 2
+    color: 3
+    shade: 0.9286939
+  - x: 0
+    y: 16
+    z: 3
+    color: 3
+    shade: 1.0068475
+  - x: 0
+    y: 16
+    z: 4
+    color: 3
+    shade: 0.9674245
+  - x: 0
+    y: 16
+    z: 5
+    color: 3
+    shade: 0.9637138
+  - x: 0
+    y: 16
+    z: 6
+    color: 3
+    shade: 0.94130343
+  - x: 0
+    y: 16
+    z: 7
+    color: 3
+    shade: 1.033806
+  - x: 1
+    y: 16
+    z: -7
+    color: 3
+    shade: 1.0393697
+  - x: 1
+    y: 16
+    z: -6
+    color: 3
+    shade: 1.007976
+  - x: 1
+    y: 16
+    z: -5
+    color: 3
+    shade: 1.0003759
+  - x: 1
+    y: 16
+    z: -4
+    color: 3
+    shade: 0.95260006
+  - x: 1
+    y: 16
+    z: -3
+    color: 3
+    shade: 1.0053847
+  - x: 1
+    y: 16
+    z: -2
+    color: 3
+    shade: 0.91743314
+  - x: 1
+    y: 16
+    z: -1
+    color: 3
+    shade: 0.97047055
+  - x: 1
+    y: 16
+    z: 0
+    color: 11
+    shade: 0.9925881
+  - x: 1
+    y: 16
+    z: 1
+    color: 3
+    shade: 0.9462029
+  - x: 1
+    y: 16
+    z: 2
+    color: 3
+    shade: 1.0352023
+  - x: 1
+    y: 16
+    z: 3
+    color: 3
+    shade: 1.0208148
+  - x: 1
+    y: 16
+    z: 4
+    color: 3
+    shade: 0.959201
+  - x: 1
+    y: 16
+    z: 5
+    color: 3
+    shade: 0.961818
+  - x: 1
+    y: 16
+    z: 6
+    color: 3
+    shade: 0.9457402
+  - x: 1
+    y: 16
+    z: 7
+    color: 3
+    shade: 0.94112056
+  - x: 2
+    y: 16
+    z: -7
+    color: 3
+    shade: 0.9894329
+  - x: 2
+    y: 16
+    z: -6
+    color: 3
+    shade: 0.9181318
+  - x: 2
+    y: 16
+    z: -5
+    color: 3
+    shade: 0.97353303
+  - x: 2
+    y: 16
+    z: -4
+    color: 3
+    shade: 1.0119513
+  - x: 2
+    y: 16
+    z: -3
+    color: 3
+    shade: 0.98151743
+  - x: 2
+    y: 16
+    z: -2
+    color: 3
+    shade: 0.9594738
+  - x: 2
+    y: 16
+    z: -1
+    color: 3
+    shade: 0.9978801
+  - x: 2
+    y: 16
+    z: 0
+    color: 3
+    shade: 0.94404113
+  - x: 2
+    y: 16
+    z: 1
+    color: 3
+    shade: 0.95639104
+  - x: 2
+    y: 16
+    z: 2
+    color: 3
+    shade: 0.9883497
+  - x: 2
+    y: 16
+    z: 3
+    color: 11
+    shade: 0.9925615
+  - x: 2
+    y: 16
+    z: 4
+    color: 3
+    shade: 0.98364735
+  - x: 2
+    y: 16
+    z: 5
+    color: 3
+    shade: 0.97654295
+  - x: 2
+    y: 16
+    z: 6
+    color: 3
+    shade: 1.0124996
+  - x: 2
+    y: 16
+    z: 7
+    color: 3
+    shade: 0.9917448
+  - x: 3
+    y: 16
+    z: -6
+    color: 3
+    shade: 1.0235763
+  - x: 3
+    y: 16
+    z: -5
+    color: 11
+    shade: 0.9719145
+  - x: 3
+    y: 16
+    z: -4
+    color: 3
+    shade: 0.92409194
+  - x: 3
+    y: 16
+    z: -3
+    color: 3
+    shade: 0.9563798
+  - x: 3
+    y: 16
+    z: -2
+    color: 3
+    shade: 0.9160107
+  - x: 3
+    y: 16
+    z: -1
+    color: 3
+    shade: 0.9425868
+  - x: 3
+    y: 16
+    z: 0
+    color: 3
+    shade: 1.0115963
+  - x: 3
+    y: 16
+    z: 1
+    color: 3
+    shade: 0.9687589
+  - x: 3
+    y: 16
+    z: 2
+    color: 3
+    shade: 0.983345
+  - x: 3
+    y: 16
+    z: 3
+    color: 3
+    shade: 0.95318985
+  - x: 3
+    y: 16
+    z: 4
+    color: 3
+    shade: 0.9329044
+  - x: 3
+    y: 16
+    z: 5
+    color: 3
+    shade: 0.91977286
+  - x: 3
+    y: 16
+    z: 6
+    color: 11
+    shade: 0.9850391
+  - x: 4
+    y: 16
+    z: -6
+    color: 3
+    shade: 0.9162664
+  - x: 4
+    y: 16
+    z: -5
+    color: 3
+    shade: 0.98591274
+  - x: 4
+    y: 16
+    z: -4
+    color: 3
+    shade: 0.9376029
+  - x: 4
+    y: 16
+    z: -3
+    color: 3
+    shade: 0.9914442
+  - x: 4
+    y: 16
+    z: -2
+    color: 11
+    shade: 0.94323426
+  - x: 4
+    y: 16
+    z: -1
+    color: 3
+    shade: 0.92370945
+  - x: 4
+    y: 16
+    z: 0
+    color: 3
+    shade: 0.97926104
+  - x: 4
+    y: 16
+    z: 1
+    color: 3
+    shade: 0.99871564
+  - x: 4
+    y: 16
+    z: 2
+    color: 3
+    shade: 1.0338916
+  - x: 4
+    y: 16
+    z: 3
+    color: 3
+    shade: 0.9917625
+  - x: 4
+    y: 16
+    z: 4
+    color: 3
+    shade: 0.999786
+  - x: 4
+    y: 16
+    z: 5
+    color: 3
+    shade: 0.9843322
+  - x: 4
+    y: 16
+    z: 6
+    color: 3
+    shade: 0.9514896
+  - x: 5
+    y: 16
+    z: -5
+    color: 3
+    shade: 0.9739349
+  - x: 5
+    y: 16
+    z: -4
+    color: 3
+    shade: 0.9539848
+  - x: 5
+    y: 16
+    z: -3
+    color: 3
+    shade: 1.0042504
+  - x: 5
+    y: 16
+    z: -2
+    color: 3
+    shade: 0.92282313
+  - x: 5
+    y: 16
+    z: -1
+    color: 3
+    shade: 0.9737858
+  - x: 5
+    y: 16
+    z: 0
+    color: 3
+    shade: 1.0339277
+  - x: 5
+    y: 16
+    z: 1
+    color: 11
+    shade: 1.0200886
+  - x: 5
+    y: 16
+    z: 2
+    color: 3
+    shade: 0.994458
+  - x: 5
+    y: 16
+    z: 3
+    color: 3
+    shade: 0.92162603
+  - x: 5
+    y: 16
+    z: 4
+    color: 3
+    shade: 0.9589003
+  - x: 5
+    y: 16
+    z: 5
+    color: 3
+    shade: 0.945109
+  - x: 6
+    y: 16
+    z: -4
+    color: 3
+    shade: 0.91543823
+  - x: 6
+    y: 16
+    z: -3
+    color: 3
+    shade: 0.93972963
+  - x: 6
+    y: 16
+    z: -2
+    color: 3
+    shade: 1.0385338
+  - x: 6
+    y: 16
+    z: -1
+    color: 3
+    shade: 1.0178367
+  - x: 6
+    y: 16
+    z: 0
+    color: 3
+    shade: 0.98937297
+  - x: 6
+    y: 16
+    z: 1
+    color: 3
+    shade: 1.0301881
+  - x: 6
+    y: 16
+    z: 2
+    color: 3
+    shade: 0.9687615
+  - x: 6
+    y: 16
+    z: 3
+    color: 3
+    shade: 0.95861304
+  - x: 6
+    y: 16
+    z: 4
+    color: 11
+    shade: 0.949701
+  - x: 7
+    y: 16
+    z: -2
+    color: 3
+    shade: 0.922841
+  - x: 7
+    y: 16
+    z: -1
+    color: 3
+    shade: 0.9377748
+  - x: 7
+    y: 16
+    z: 0
+    color: 3
+    shade: 1.0104783
+  - x: 7
+    y: 16
+    z: 1
+    color: 3
+    shade: 0.9607468
+  - x: 7
+    y: 16
+    z: 2
+    color: 3
+    shade: 0.9111173
+  - x: -6
+    y: 17
+    z: -3
+    color: 3
+    shade: 0.9504131
+  - x: -6
+    y: 17
+    z: -2
+    color: 3
+    shade: 0.9628335
+  - x: -6
+    y: 17
+    z: -1
+    color: 3
+    shade: 0.9432386
+  - x: -6
+    y: 17
+    z: 0
+    color: 3
+    shade: 1.0330292
+  - x: -6
+    y: 17
+    z: 1
+    color: 3
+    shade: 1.0296847
+  - x: -6
+    y: 17
+    z: 2
+    color: 3
+    shade: 1.020152
+  - x: -6
+    y: 17
+    z: 3
+    color: 3
+    shade: 0.96430594
+  - x: -5
+    y: 17
+    z: -4
+    color: 3
+    shade: 1.0120475
+  - x: -5
+    y: 17
+    z: -3
+    color: 3
+    shade: 1.004521
+  - x: -5
+    y: 17
+    z: -2
+    color: 3
+    shade: 1.008652
+  - x: -5
+    y: 17
+    z: -1
+    color: 11
+    shade: 0.9676115
+  - x: -5
+    y: 17
+    z: 0
+    color: 3
+    shade: 1.0045085
+  - x: -5
+    y: 17
+    z: 1
+    color: 3
+    shade: 0.9705218
+  - x: -5
+    y: 17
+    z: 2
+    color: 3
+    shade: 1.019404
+  - x: -5
+    y: 17
+    z: 3
+    color: 3
+    shade: 0.9389768
+  - x: -5
+    y: 17
+    z: 4
+    color: 3
+    shade: 0.93968433
+  - x: -4
+    y: 17
+    z: -5
+    color: 3
+    shade: 1.0305811
+  - x: -4
+    y: 17
+    z: -4
+    color: 3
+    shade: 1.0346404
+  - x: -4
+    y: 17
+    z: -3
+    color: 3
+    shade: 0.9370125
+  - x: -4
+    y: 17
+    z: -2
+    color: 3
+    shade: 1.0324938
+  - x: -4
+    y: 17
+    z: -1
+    color: 3
+    shade: 0.986006
+  - x: -4
+    y: 17
+    z: 0
+    color: 3
+    shade: 0.91350466
+  - x: -4
+    y: 17
+    z: 1
+    color: 3
+    shade: 0.92517567
+  - x: -4
+    y: 17
+    z: 2
+    color: 11
+    shade: 1.0014244
+  - x: -4
+    y: 17
+    z: 3
+    color: 3
+    shade: 0.9193427
+  - x: -4
+    y: 17
+    z: 4
+    color: 3
+    shade: 0.91370344
+  - x: -4
+    y: 17
+    z: 5
+    color: 3
+    shade: 0.93300104
+  - x: -3
+    y: 17
+    z: -6
+    color: 11
+    shade: 0.951173
+  - x: -3
+    y: 17
+    z: -5
+    color: 3
+    shade: 0.9446313
+  - x: -3
+    y: 17
+    z: -4
+    color: 3
+    shade: 0.93864864
+  - x: -3
+    y: 17
+    z: -3
+    color: 3
+    shade: 0.9461601
+  - x: -3
+    y: 17
+    z: -2
+    color: 3
+    shade: 0.98350656
+  - x: -3
+    y: 17
+    z: -1
+    color: 3
+    shade: 0.9535036
+  - x: -3
+    y: 17
+    z: 0
+    color: 3
+    shade: 0.92170584
+  - x: -3
+    y: 17
+    z: 1
+    color: 3
+    shade: 0.9333727
+  - x: -3
+    y: 17
+    z: 2
+    color: 3
+    shade: 0.9810942
+  - x: -3
+    y: 17
+    z: 3
+    color: 3
+    shade: 0.98684996
+  - x: -3
+    y: 17
+    z: 4
+    color: 3
+    shade: 1.0014288
+  - x: -3
+    y: 17
+    z: 5
+    color: 11
+    shade: 0.93194133
+  - x: -3
+    y: 17
+    z: 6
+    color: 3
+    shade: 0.9787483
+  - x: -2
+    y: 17
+    z: -6
+    color: 3
+    shade: 1.0208031
+  - x: -2
+    y: 17
+    z: -5
+    color: 3
+    shade: 0.94339067
+  - x: -2
+    y: 17
+    z: -4
+    color: 3
+    shade: 0.9752086
+  - x: -2
+    y: 17
+    z: -3
+    color: 11
+    shade: 0.9398819
+  - x: -2
+    y: 17
+    z: -2
+    color: 3
+    shade: 0.96022516
+  - x: -2
+    y: 17
+    z: -1
+    color: 3
+    shade: 1.0248644
+  - x: -2
+    y: 17
+    z: 0
+    color: 3
+    shade: 0.9696663
+  - x: -2
+    y: 17
+    z: 1
+    color: 3
+    shade: 0.9893575
+  - x: -2
+    y: 17
+    z: 2
+    color: 3
+    shade: 0.92963624
+  - x: -2
+    y: 17
+    z: 3
+    color: 3
+    shade: 0.92001665
+  - x: -2
+    y: 17
+    z: 4
+    color: 3
+    shade: 0.9322599
+  - x: -2
+    y: 17
+    z: 5
+    color: 3
+    shade: 0.9431344
+  - x: -2
+    y: 17
+    z: 6
+    color: 3
+    shade: 0.98346585
+  - x: -1
+    y: 17
+    z: -6
+    color: 3
+    shade: 0.968253
+  - x: -1
+    y: 17
+    z: -5
+    color: 3
+    shade: 0.9651114
+  - x: -1
+    y: 17
+    z: -4
+    color: 3
+    shade: 0.9469085
+  - x: -1
+    y: 17
+    z: -3
+    color: 3
+    shade: 0.9476579
+  - x: -1
+    y: 17
+    z: -2
+    color: 3
+    shade: 0.9818142
+  - x: -1
+    y: 17
+    z: -1
+    color: 3
+    shade: 1.0236865
+  - x: -1
+    y: 17
+    z: 0
+    color: 11
+    shade: 1.0259813
+  - x: -1
+    y: 17
+    z: 1
+    color: 3
+    shade: 0.99715096
+  - x: -1
+    y: 17
+    z: 2
+    color: 3
+    shade: 0.92313296
+  - x: -1
+    y: 17
+    z: 3
+    color: 3
+    shade: 0.9774163
+  - x: -1
+    y: 17
+    z: 4
+    color: 3
+    shade: 0.97587246
+  - x: -1
+    y: 17
+    z: 5
+    color: 3
+    shade: 0.97249186
+  - x: -1
+    y: 17
+    z: 6
+    color: 3
+    shade: 1.024105
+  - x: 0
+    y: 17
+    z: -6
+    color: 3
+    shade: 0.961005
+  - x: 0
+    y: 17
+    z: -5
+    color: 3
+    shade: 0.958816
+  - x: 0
+    y: 17
+    z: -4
+    color: 3
+    shade: 0.9960314
+  - x: 0
+    y: 17
+    z: -3
+    color: 3
+    shade: 0.99788266
+  - x: 0
+    y: 17
+    z: -2
+    color: 3
+    shade: 0.9928344
+  - x: 0
+    y: 17
+    z: -1
+    color: 3
+    shade: 0.93915224
+  - x: 0
+    y: 17
+    z: 0
+    color: 11
+    shade: 1.0126991
+  - x: 0
+    y: 17
+    z: 1
+    color: 3
+    shade: 0.9982642
+  - x: 0
+    y: 17
+    z: 2
+    color: 3
+    shade: 0.92169076
+  - x: 0
+    y: 17
+    z: 3
+    color: 11
+    shade: 0.9526153
+  - x: 0
+    y: 17
+    z: 4
+    color: 3
+    shade: 0.9782961
+  - x: 0
+    y: 17
+    z: 5
+    color: 3
+    shade: 1.0252938
+  - x: 0
+    y: 17
+    z: 6
+    color: 3
+    shade: 0.95119923
+  - x: 1
+    y: 17
+    z: -6
+    color: 3
+    shade: 0.9344783
+  - x: 1
+    y: 17
+    z: -5
+    color: 11
+    shade: 0.98403716
+  - x: 1
+    y: 17
+    z: -4
+    color: 3
+    shade: 0.98364365
+  - x: 1
+    y: 17
+    z: -3
+    color: 3
+    shade: 0.9315368
+  - x: 1
+    y: 17
+    z: -2
+    color: 3
+    shade: 0.93461466
+  - x: 1
+    y: 17
+    z: -1
+    color: 3
+    shade: 0.9163887
+  - x: 1
+    y: 17
+    z: 0
+    color: 3
+    shade: 0.91302574
+  - x: 1
+    y: 17
+    z: 1
+    color: 3
+    shade: 0.91004074
+  - x: 1
+    y: 17
+    z: 2
+    color: 3
+    shade: 1.0252506
+  - x: 1
+    y: 17
+    z: 3
+    color: 3
+    shade: 0.9965945
+  - x: 1
+    y: 17
+    z: 4
+    color: 3
+    shade: 1.0264642
+  - x: 1
+    y: 17
+    z: 5
+    color: 3
+    shade: 0.9434363
+  - x: 1
+    y: 17
+    z: 6
+    color: 11
+    shade: 0.9150358
+  - x: 2
+    y: 17
+    z: -6
+    color: 3
+    shade: 1.0177424
+  - x: 2
+    y: 17
+    z: -5
+    color: 3
+    shade: 0.94596004
+  - x: 2
+    y: 17
+    z: -4
+    color: 3
+    shade: 1.0215974
+  - x: 2
+    y: 17
+    z: -3
+    color: 3
+    shade: 1.0076702
+  - x: 2
+    y: 17
+    z: -2
+    color: 11
+    shade: 1.0059744
+  - x: 2
+    y: 17
+    z: -1
+    color: 3
+    shade: 1.0393361
+  - x: 2
+    y: 17
+    z: 0
+    color: 3
+    shade: 1.0073901
+  - x: 2
+    y: 17
+    z: 1
+    color: 3
+    shade: 0.97612023
+  - x: 2
+    y: 17
+    z: 2
+    color: 3
+    shade: 0.9738595
+  - x: 2
+    y: 17
+    z: 3
+    color: 3
+    shade: 0.92085034
+  - x: 2
+    y: 17
+    z: 4
+    color: 3
+    shade: 1.033326
+  - x: 2
+    y: 17
+    z: 5
+    color: 3
+    shade: 0.9717536
+  - x: 2
+    y: 17
+    z: 6
+    color: 3
+    shade: 0.9671823
+  - x: 3
+    y: 17
+    z: -6
+    color: 3
+    shade: 1.0331076
+  - x: 3
+    y: 17
+    z: -5
+    color: 3
+    shade: 0.9704353
+  - x: 3
+    y: 17
+    z: -4
+    color: 3
+    shade: 1.0252017
+  - x: 3
+    y: 17
+    z: -3
+    color: 3
+    shade: 0.9565622
+  - x: 3
+    y: 17
+    z: -2
+    color: 3
+    shade: 0.922496
+  - x: 3
+    y: 17
+    z: -1
+    color: 3
+    shade: 1.0086124
+  - x: 3
+    y: 17
+    z: 0
+    color: 3
+    shade: 0.96236414
+  - x: 3
+    y: 17
+    z: 1
+    color: 11
+    shade: 0.940615
+  - x: 3
+    y: 17
+    z: 2
+    color: 3
+    shade: 0.9992083
+  - x: 3
+    y: 17
+    z: 3
+    color: 3
+    shade: 0.9519442
+  - x: 3
+    y: 17
+    z: 4
+    color: 3
+    shade: 0.9235074
+  - x: 3
+    y: 17
+    z: 5
+    color: 3
+    shade: 1.0315962
+  - x: 3
+    y: 17
+    z: 6
+    color: 3
+    shade: 0.9528017
+  - x: 4
+    y: 17
+    z: -5
+    color: 3
+    shade: 0.9694838
+  - x: 4
+    y: 17
+    z: -4
+    color: 3
+    shade: 0.96946615
+  - x: 4
+    y: 17
+    z: -3
+    color: 3
+    shade: 1.0240643
+  - x: 4
+    y: 17
+    z: -2
+    color: 3
+    shade: 0.9757544
+  - x: 4
+    y: 17
+    z: -1
+    color: 3
+    shade: 1.0022216
+  - x: 4
+    y: 17
+    z: 0
+    color: 3
+    shade: 1.0095671
+  - x: 4
+    y: 17
+    z: 1
+    color: 3
+    shade: 0.96444637
+  - x: 4
+    y: 17
+    z: 2
+    color: 3
+    shade: 0.9877987
+  - x: 4
+    y: 17
+    z: 3
+    color: 3
+    shade: 0.9614099
+  - x: 4
+    y: 17
+    z: 4
+    color: 11
+    shade: 0.9767391
+  - x: 4
+    y: 17
+    z: 5
+    color: 3
+    shade: 1.0166668
+  - x: 5
+    y: 17
+    z: -4
+    color: 11
+    shade: 0.9540207
+  - x: 5
+    y: 17
+    z: -3
+    color: 3
+    shade: 0.98664093
+  - x: 5
+    y: 17
+    z: -2
+    color: 3
+    shade: 0.97896004
+  - x: 5
+    y: 17
+    z: -1
+    color: 3
+    shade: 0.9279037
+  - x: 5
+    y: 17
+    z: 0
+    color: 3
+    shade: 1.015079
+  - x: 5
+    y: 17
+    z: 1
+    color: 3
+    shade: 1.0006188
+  - x: 5
+    y: 17
+    z: 2
+    color: 3
+    shade: 0.97318685
+  - x: 5
+    y: 17
+    z: 3
+    color: 3
+    shade: 0.9903176
+  - x: 5
+    y: 17
+    z: 4
+    color: 3
+    shade: 0.9997832
+  - x: 6
+    y: 17
+    z: -3
+    color: 3
+    shade: 1.0074323
+  - x: 6
+    y: 17
+    z: -2
+    color: 3
+    shade: 0.923281
+  - x: 6
+    y: 17
+    z: -1
+    color: 11
+    shade: 0.98259044
+  - x: 6
+    y: 17
+    z: 0
+    color: 3
+    shade: 0.9248391
+  - x: 6
+    y: 17
+    z: 1
+    color: 3
+    shade: 0.97868836
+  - x: 6
+    y: 17
+    z: 2
+    color: 3
+    shade: 0.9840985
+  - x: 6
+    y: 17
+    z: 3
+    color: 3
+    shade: 0.9278519
+  - x: -5
+    y: 18
+    z: -2
+    color: 3
+    shade: 1.0210723
+  - x: -5
+    y: 18
+    z: -1
+    color: 3
+    shade: 1.0144207
+  - x: -5
+    y: 18
+    z: 0
+    color: 3
+    shade: 0.9285341
+  - x: -5
+    y: 18
+    z: 1
+    color: 3
+    shade: 1.0340159
+  - x: -5
+    y: 18
+    z: 2
+    color: 3
+    shade: 1.00809
+  - x: -4
+    y: 18
+    z: -4
+    color: 3
+    shade: 1.016074
+  - x: -4
+    y: 18
+    z: -3
+    color: 11
+    shade: 0.96317273
+  - x: -4
+    y: 18
+    z: -2
+    color: 3
+    shade: 0.9798524
+  - x: -4
+    y: 18
+    z: -1
+    color: 3
+    shade: 0.94792396
+  - x: -4
+    y: 18
+    z: 0
+    color: 3
+    shade: 0.992056
+  - x: -4
+    y: 18
+    z: 1
+    color: 3
+    shade: 1.0381051
+  - x: -4
+    y: 18
+    z: 2
+    color: 3
+    shade: 0.9586288
+  - x: -4
+    y: 18
+    z: 3
+    color: 3
+    shade: 0.933759
+  - x: -4
+    y: 18
+    z: 4
+    color: 3
+    shade: 0.91730726
+  - x: -3
+    y: 18
+    z: -4
+    color: 3
+    shade: 1.0193837
+  - x: -3
+    y: 18
+    z: -3
+    color: 3
+    shade: 0.9816978
+  - x: -3
+    y: 18
+    z: -2
+    color: 3
+    shade: 1.0336962
+  - x: -3
+    y: 18
+    z: -1
+    color: 3
+    shade: 0.9185349
+  - x: -3
+    y: 18
+    z: 0
+    color: 11
+    shade: 0.9125416
+  - x: -3
+    y: 18
+    z: 1
+    color: 3
+    shade: 0.9758551
+  - x: -3
+    y: 18
+    z: 2
+    color: 3
+    shade: 0.9396524
+  - x: -3
+    y: 18
+    z: 3
+    color: 3
+    shade: 0.94446045
+  - x: -3
+    y: 18
+    z: 4
+    color: 3
+    shade: 0.965536
+  - x: -2
+    y: 18
+    z: -5
+    color: 3
+    shade: 1.0385895
+  - x: -2
+    y: 18
+    z: -4
+    color: 3
+    shade: 1.0187573
+  - x: -2
+    y: 18
+    z: -3
+    color: 3
+    shade: 0.97318983
+  - x: -2
+    y: 18
+    z: -2
+    color: 3
+    shade: 0.941813
+  - x: -2
+    y: 18
+    z: -1
+    color: 3
+    shade: 0.9853693
+  - x: -2
+    y: 18
+    z: 0
+    color: 3
+    shade: 0.95620275
+  - x: -2
+    y: 18
+    z: 1
+    color: 3
+    shade: 1.0268757
+  - x: -2
+    y: 18
+    z: 2
+    color: 3
+    shade: 1.0092251
+  - x: -2
+    y: 18
+    z: 3
+    color: 11
+    shade: 1.037066
+  - x: -2
+    y: 18
+    z: 4
+    color: 3
+    shade: 0.9281231
+  - x: -2
+    y: 18
+    z: 5
+    color: 3
+    shade: 0.99171525
+  - x: -1
+    y: 18
+    z: -5
+    color: 11
+    shade: 0.9833742
+  - x: -1
+    y: 18
+    z: -4
+    color: 3
+    shade: 1.0133779
+  - x: -1
+    y: 18
+    z: -3
+    color: 3
+    shade: 0.9428759
+  - x: -1
+    y: 18
+    z: -2
+    color: 3
+    shade: 0.98272324
+  - x: -1
+    y: 18
+    z: -1
+    color: 3
+    shade: 0.9185768
+  - x: -1
+    y: 18
+    z: 0
+    color: 3
+    shade: 0.9779467
+  - x: -1
+    y: 18
+    z: 1
+    color: 3
+    shade: 0.9334682
+  - x: -1
+    y: 18
+    z: 2
+    color: 3
+    shade: 1.0391077
+  - x: -1
+    y: 18
+    z: 3
+    color: 3
+    shade: 1.0199797
+  - x: -1
+    y: 18
+    z: 4
+    color: 3
+    shade: 0.93302304
+  - x: -1
+    y: 18
+    z: 5
+    color: 3
+    shade: 1.0025136
+  - x: 0
+    y: 18
+    z: -5
+    color: 3
+    shade: 0.9245581
+  - x: 0
+    y: 18
+    z: -4
+    color: 3
+    shade: 0.96655864
+  - x: 0
+    y: 18
+    z: -3
+    color: 3
+    shade: 0.992476
+  - x: 0
+    y: 18
+    z: -2
+    color: 11
+    shade: 1.0280488
+  - x: 0
+    y: 18
+    z: -1
+    color: 3
+    shade: 0.9815833
+  - x: 0
+    y: 18
+    z: 0
+    color: 11
+    shade: 0.9888942
+  - x: 0
+    y: 18
+    z: 1
+    color: 3
+    shade: 0.9163043
+  - x: 0
+    y: 18
+    z: 2
+    color: 3
+    shade: 0.9761468
+  - x: 0
+    y: 18
+    z: 3
+    color: 3
+    shade: 0.9182434
+  - x: 0
+    y: 18
+    z: 4
+    color: 3
+    shade: 1.0281996
+  - x: 0
+    y: 18
+    z: 5
+    color: 3
+    shade: 0.98661184
+  - x: 1
+    y: 18
+    z: -5
+    color: 3
+    shade: 0.95888484
+  - x: 1
+    y: 18
+    z: -4
+    color: 3
+    shade: 0.9299446
+  - x: 1
+    y: 18
+    z: -3
+    color: 3
+    shade: 0.9252586
+  - x: 1
+    y: 18
+    z: -2
+    color: 3
+    shade: 0.9449002
+  - x: 1
+    y: 18
+    z: -1
+    color: 3
+    shade: 0.98426104
+  - x: 1
+    y: 18
+    z: 0
+    color: 3
+    shade: 1.0178034
+  - x: 1
+    y: 18
+    z: 1
+    color: 11
+    shade: 0.93364966
+  - x: 1
+    y: 18
+    z: 2
+    color: 3
+    shade: 0.96104825
+  - x: 1
+    y: 18
+    z: 3
+    color: 3
+    shade: 1.0228308
+  - x: 1
+    y: 18
+    z: 4
+    color: 3
+    shade: 0.9110391
+  - x: 1
+    y: 18
+    z: 5
+    color: 3
+    shade: 0.94050574
+  - x: 2
+    y: 18
+    z: -5
+    color: 3
+    shade: 0.9820437
+  - x: 2
+    y: 18
+    z: -4
+    color: 3
+    shade: 0.9739331
+  - x: 2
+    y: 18
+    z: -3
+    color: 3
+    shade: 0.91600573
+  - x: 2
+    y: 18
+    z: -2
+    color: 3
+    shade: 0.9488219
+  - x: 2
+    y: 18
+    z: -1
+    color: 3
+    shade: 0.960973
+  - x: 2
+    y: 18
+    z: 0
+    color: 3
+    shade: 1.0399581
+  - x: 2
+    y: 18
+    z: 1
+    color: 3
+    shade: 0.97459495
+  - x: 2
+    y: 18
+    z: 2
+    color: 3
+    shade: 0.9523869
+  - x: 2
+    y: 18
+    z: 3
+    color: 3
+    shade: 0.9405448
+  - x: 2
+    y: 18
+    z: 4
+    color: 11
+    shade: 0.9644807
+  - x: 2
+    y: 18
+    z: 5
+    color: 3
+    shade: 0.942513
+  - x: 3
+    y: 18
+    z: -4
+    color: 11
+    shade: 0.94607586
+  - x: 3
+    y: 18
+    z: -3
+    color: 3
+    shade: 1.0041993
+  - x: 3
+    y: 18
+    z: -2
+    color: 3
+    shade: 0.9166312
+  - x: 3
+    y: 18
+    z: -1
+    color: 3
+    shade: 0.989337
+  - x: 3
+    y: 18
+    z: 0
+    color: 3
+    shade: 0.99732053
+  - x: 3
+    y: 18
+    z: 1
+    color: 3
+    shade: 1.0146195
+  - x: 3
+    y: 18
+    z: 2
+    color: 3
+    shade: 0.94798154
+  - x: 3
+    y: 18
+    z: 3
+    color: 3
+    shade: 1.0029209
+  - x: 3
+    y: 18
+    z: 4
+    color: 3
+    shade: 0.97091925
+  - x: 4
+    y: 18
+    z: -4
+    color: 3
+    shade: 0.91987973
+  - x: 4
+    y: 18
+    z: -3
+    color: 3
+    shade: 1.0035157
+  - x: 4
+    y: 18
+    z: -2
+    color: 3
+    shade: 1.0367624
+  - x: 4
+    y: 18
+    z: -1
+    color: 11
+    shade: 0.9644931
+  - x: 4
+    y: 18
+    z: 0
+    color: 3
+    shade: 0.9229314
+  - x: 4
+    y: 18
+    z: 1
+    color: 3
+    shade: 0.9674647
+  - x: 4
+    y: 18
+    z: 2
+    color: 3
+    shade: 1.0136765
+  - x: 4
+    y: 18
+    z: 3
+    color: 3
+    shade: 1.0336857
+  - x: 4
+    y: 18
+    z: 4
+    color: 3
+    shade: 0.9556648
+  - x: 5
+    y: 18
+    z: -2
+    color: 3
+    shade: 1.015458
+  - x: 5
+    y: 18
+    z: -1
+    color: 3
+    shade: 0.96893156
+  - x: 5
+    y: 18
+    z: 0
+    color: 3
+    shade: 0.95019215
+  - x: 5
+    y: 18
+    z: 1
+    color: 3
+    shade: 1.0014746
+  - x: 5
+    y: 18
+    z: 2
+    color: 11
+    shade: 1.0240524
+  - x: -4
+    y: 19
+    z: -1
+    color: 3
+    shade: 1.0245149
+  - x: -4
+    y: 19
+    z: 0
+    color: 3
+    shade: 0.9285429
+  - x: -4
+    y: 19
+    z: 1
+    color: 3
+    shade: 1.0220431
+  - x: -3
+    y: 19
+    z: -2
+    color: 3
+    shade: 0.9427614
+  - x: -3
+    y: 19
+    z: -1
+    color: 3
+    shade: 0.9379212
+  - x: -3
+    y: 19
+    z: 0
+    color: 3
+    shade: 0.9163462
+  - x: -3
+    y: 19
+    z: 1
+    color: 3
+    shade: 0.91155183
+  - x: -3
+    y: 19
+    z: 2
+    color: 3
+    shade: 1.0058565
+  - x: -2
+    y: 19
+    z: -3
+    color: 3
+    shade: 0.9976548
+  - x: -2
+    y: 19
+    z: -2
+    color: 11
+    shade: 0.9321312
+  - x: -2
+    y: 19
+    z: -1
+    color: 3
+    shade: 0.9263719
+  - x: -2
+    y: 19
+    z: 0
+    color: 3
+    shade: 1.0238687
+  - x: -2
+    y: 19
+    z: 1
+    color: 3
+    shade: 0.9610593
+  - x: -2
+    y: 19
+    z: 2
+    color: 3
+    shade: 0.9382691
+  - x: -2
+    y: 19
+    z: 3
+    color: 3
+    shade: 1.034924
+  - x: -1
+    y: 19
+    z: -4
+    color: 3
+    shade: 0.93048286
+  - x: -1
+    y: 19
+    z: -3
+    color: 3
+    shade: 0.9590302
+  - x: -1
+    y: 19
+    z: -2
+    color: 3
+    shade: 0.9230668
+  - x: -1
+    y: 19
+    z: -1
+    color: 3
+    shade: 0.92991
+  - x: -1
+    y: 19
+    z: 0
+    color: 3
+    shade: 0.9801199
+  - x: -1
+    y: 19
+    z: 1
+    color: 11
+    shade: 0.930626
+  - x: -1
+    y: 19
+    z: 2
+    color: 3
+    shade: 1.018528
+  - x: -1
+    y: 19
+    z: 3
+    color: 3
+    shade: 0.9771708
+  - x: -1
+    y: 19
+    z: 4
+    color: 3
+    shade: 0.99151266
+  - x: 0
+    y: 19
+    z: -4
+    color: 3
+    shade: 0.93589056
+  - x: 0
+    y: 19
+    z: -3
+    color: 3
+    shade: 1.0335083
+  - x: 0
+    y: 19
+    z: -2
+    color: 3
+    shade: 0.9362815
+  - x: 0
+    y: 19
+    z: -1
+    color: 3
+    shade: 0.98090935
+  - x: 0
+    y: 19
+    z: 0
+    color: 11
+    shade: 1.0367221
+  - x: 0
+    y: 19
+    z: 1
+    color: 3
+    shade: 0.9650868
+  - x: 0
+    y: 19
+    z: 2
+    color: 3
+    shade: 1.0355492
+  - x: 0
+    y: 19
+    z: 3
+    color: 3
+    shade: 1.0323209
+  - x: 0
+    y: 19
+    z: 4
+    color: 11
+    shade: 0.9846013
+  - x: 1
+    y: 19
+    z: -4
+    color: 11
+    shade: 1.020147
+  - x: 1
+    y: 19
+    z: -3
+    color: 3
+    shade: 0.93211627
+  - x: 1
+    y: 19
+    z: -2
+    color: 3
+    shade: 0.97079414
+  - x: 1
+    y: 19
+    z: -1
+    color: 3
+    shade: 1.0152775
+  - x: 1
+    y: 19
+    z: 0
+    color: 3
+    shade: 0.98185813
+  - x: 1
+    y: 19
+    z: 1
+    color: 3
+    shade: 0.9200603
+  - x: 1
+    y: 19
+    z: 2
+    color: 3
+    shade: 0.99657476
+  - x: 1
+    y: 19
+    z: 3
+    color: 3
+    shade: 0.96936744
+  - x: 1
+    y: 19
+    z: 4
+    color: 3
+    shade: 0.95402324
+  - x: 2
+    y: 19
+    z: -3
+    color: 3
+    shade: 0.91586095
+  - x: 2
+    y: 19
+    z: -2
+    color: 3
+    shade: 1.0146312
+  - x: 2
+    y: 19
+    z: -1
+    color: 11
+    shade: 0.9481213
+  - x: 2
+    y: 19
+    z: 0
+    color: 3
+    shade: 0.93906265
+  - x: 2
+    y: 19
+    z: 1
+    color: 3
+    shade: 0.91640544
+  - x: 2
+    y: 19
+    z: 2
+    color: 3
+    shade: 0.98540753
+  - x: 2
+    y: 19
+    z: 3
+    color: 3
+    shade: 1.0387616
+  - x: 3
+    y: 19
+    z: -2
+    color: 3
+    shade: 0.935182
+  - x: 3
+    y: 19
+    z: -1
+    color: 3
+    shade: 0.9664278
+  - x: 3
+    y: 19
+    z: 0
+    color: 3
+    shade: 0.9558648
+  - x: 3
+    y: 19
+    z: 1
+    color: 3
+    shade: 0.9302822
+  - x: 3
+    y: 19
+    z: 2
+    color: 11
+    shade: 0.9313547
+  - x: 4
+    y: 19
+    z: -1
+    color: 3
+    shade: 1.0034264
+  - x: 4
+    y: 19
+    z: 0
+    color: 3
+    shade: 0.91598696
+  - x: 4
+    y: 19
+    z: 1
+    color: 3
+    shade: 0.9913721
+  - x: 0
+    y: 20
+    z: 0
+    color: 11
+    shade: 0.9405305
