@@ -12,8 +12,11 @@ namespace VoxelSmash.Game
         const int Size = 192;
         static readonly Vector3 Stage = new(0f, -500f, 0f);
 
-        public static Texture[] Render(WeaponDef[] weapons, int layer)
+        // `sun` casts no shadows while the icons render (the icon camera has none to sample).
+        public static Texture[] Render(WeaponDef[] weapons, int layer, Light sun)
         {
+            var sunShadows = sun ? sun.shadows : LightShadows.None;
+            if (sun) sun.shadows = LightShadows.None;
             var camGo = new GameObject("Icon Camera");
             var cam = camGo.AddComponent<Camera>();
             cam.enabled = false;
@@ -62,6 +65,7 @@ namespace VoxelSmash.Game
                 Object.Destroy(holder.gameObject);
             }
             Object.Destroy(camGo);
+            if (sun) sun.shadows = sunShadows;
             return icons;
         }
     }

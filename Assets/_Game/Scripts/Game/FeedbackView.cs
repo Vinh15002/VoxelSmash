@@ -27,6 +27,8 @@ namespace VoxelSmash.Game
         }
 
         RectTransform layer, hand, handImage, caption, toast;
+        Text comboText;
+        float comboAge = 9f;
         Text toastText, captionText;
         HintMotion motion;
         CanvasGroup toastGroup;
@@ -47,14 +49,18 @@ namespace VoxelSmash.Game
             hand = Rect("Tutorial", layer, new Vector2(.5f, .5f), new Vector2(.5f, .5f), Vector2.zero, Vector2.zero);
             handImage = Picture("Hand", hand, Hand(192), new Vector2(.5f, .5f), Vector2.zero, Vector2.one * MaxHand).rectTransform;
             handImage.pivot = HandTip;
-            caption = Box("Caption", hand, new Color(.10f, .20f, .29f, .87f), new Vector2(.5f, .5f), Vector2.zero, new Vector2(560, 90), 24);
+            caption = Box("Caption", hand, new Color(.10f, .20f, .29f, .87f), new Vector2(.5f, .5f), Vector2.zero, new Vector2(660, 90), 24);
             caption.GetComponent<Image>().raycastTarget = false;
-            captionText = Label("Text", caption, 40, FontStyle.Bold, new Vector2(.5f, .5f), new Vector2(-50, 0), new Vector2(450, 90));
+            captionText = Label("Text", caption, 40, FontStyle.Bold, new Vector2(.5f, .5f), new Vector2(-62, 0), new Vector2(520, 90));
             // Onboarding must be skippable.
             var skip = UiKit.Button("Skip", caption, "Skip", new Vector2(1, .5f), new Vector2(-8, 0), new Vector2(100, 70),
                 new Color(.3f, .4f, .52f), () => SkipRequested?.Invoke(), 18, 32);
             skip.pivot = new Vector2(1, .5f);
             hand.gameObject.SetActive(false);
+
+            comboText = Headline(Label("Combo", layer, 96, FontStyle.Bold, new Vector2(.5f, .5f), new Vector2(0, 230), new Vector2(900, 130)),
+                new Color(1f, .95f, .4f), new Color(1f, .5f, .15f), 6f);
+            comboText.gameObject.SetActive(false);
 
             toast = Box("Toast", canvas, new Color(.09f, .21f, .34f, .92f), new Vector2(.5f, 0), Vector2.zero, new Vector2(820, 130), 32);
             toast.anchorMin = toast.anchorMax = new Vector2(.5f, .3f);
@@ -63,6 +69,14 @@ namespace VoxelSmash.Game
             toastText = Label("Text", toast, 38, FontStyle.Bold, new Vector2(.5f, .5f), Vector2.zero, new Vector2(780, 120));
             toastGroup = toast.gameObject.AddComponent<CanvasGroup>();
             toast.gameObject.SetActive(false);
+        }
+
+        // Big "COMBO xN!" that pops in the upper middle of the screen and fades.
+        public void ShowCombo(int combo)
+        {
+            comboText.text = $"COMBO x{combo}!";
+            comboAge = 0f;
+            comboText.gameObject.SetActive(true);
         }
 
         public void Toast(string message)
@@ -180,6 +194,18 @@ namespace VoxelSmash.Game
                 };
                 // A held press squeezes slightly and pulses so it reads as "keep pressing".
                 handImage.localScale = Vector3.one * (motion == HintMotion.Hold ? .94f + .04f * Mathf.Sin(phase * 2f) : 1f);
+            }
+
+            if (comboText.gameObject.activeSelf)
+            {
+                comboAge += dt;
+                const float life = 1.1f;
+                float pop = comboAge < .12f ? Mathf.Lerp(1.7f, .92f, comboAge / .12f) : Mathf.Lerp(.92f, 1f, Mathf.Min(1f, (comboAge - .12f) / .1f));
+                comboText.rectTransform.localScale = Vector3.one * pop;
+                var c = comboText.color;
+                c.a = Mathf.Clamp01((life - comboAge) / .3f);
+                comboText.color = c;
+                if (comboAge >= life) comboText.gameObject.SetActive(false);
             }
 
             if (toast.gameObject.activeSelf)

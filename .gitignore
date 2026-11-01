@@ -118,3 +118,7 @@ desktop.ini
 
 # Store videos are large and regenerable (see StoreMedia/SUBMISSION.md)
 /StoreMedia/*.mp4
+
+# MCP for Unity screenshots
+/[Aa]ssets/Screenshots/
+/[Aa]ssets/Screenshots.meta

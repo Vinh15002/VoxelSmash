@@ -23,6 +23,7 @@ namespace VoxelSmash.Game
             Purple = new(.44f, .32f, .71f), BossRed = new(1f, .42f, .32f), StarOff = new(.25f, .27f, .36f, .85f);
 
         CanvasScaler scaler;
+        RectTransform topBar, winCard;
         RectTransform safeRoot, weaponPanel, weaponGrid, pageBar, progressFill, starRow;
         Text levelText, percentText, modelText, coinText, winTitle, winScore, winRibbon, winUnlock, winCoins, pageLabel, powerLabel;
         RawImage winIcon;
@@ -64,7 +65,7 @@ namespace VoxelSmash.Game
             safeRoot = Stretch("Safe Area", transform);
             ApplySafeArea();
 
-            var top = Rect("Top Bar", safeRoot, new Vector2(0, 1), Vector2.one, new Vector2(0, -TopReservePortrait), Vector2.zero);
+            var top = topBar = Rect("Top Bar", safeRoot, new Vector2(0, 1), Vector2.one, new Vector2(0, -TopReservePortrait), Vector2.zero);
             // Tapping the level title opens the level list, as in the reference.
             var title = Box("Level Button", top, Color.clear, new Vector2(.5f, 1), new Vector2(0, -24), new Vector2(620, 110));
             layout.Add(title, new Vector2(0, -16));
@@ -73,6 +74,7 @@ namespace VoxelSmash.Game
             levelText.resizeTextForBestFit = true;
             levelText.resizeTextMinSize = 40;
             levelText.resizeTextMaxSize = 84;
+            Headline(levelText, Color.white, new Color(.78f, .9f, 1f), 5f);
             var bar = Box("Progress", top, Navy, new Vector2(.5f, 1), new Vector2(0, -150), new Vector2(660, 66), 33);
             layout.Add(bar, new Vector2(0, -132), new Vector2(600, 60));
             Border(bar, Color.white, 4);
@@ -84,7 +86,9 @@ namespace VoxelSmash.Game
             modelText = Label("Model", top, 44, FontStyle.Bold, new Vector2(.5f, 1), new Vector2(0, -230), new Vector2(900, 60));
             layout.Add(modelText.rectTransform, new Vector2(0, -205));
 
-            Button("Restart", top, "RETRY", new Vector2(1, 1), new Vector2(-30, -30), new Vector2(170, 130), () => Restart?.Invoke());
+            var restart = UiKit.Button("Restart", top, null, new Vector2(1, 1), new Vector2(-30, -30), new Vector2(130, 130), Blue, () => Restart?.Invoke(), 30);
+            Border(restart, new Color(.89f, .96f, 1f), 5);
+            Picture("Arrow", restart, UiKit.Restart(128), new Vector2(.5f, .5f), Vector2.zero, new Vector2(100, 100));
             var shop = UiKit.Button("Shop", top, "SHOP", new Vector2(1, 1), new Vector2(-30, -180), new Vector2(170, 86), Purple, () => ShopRequested?.Invoke(), 24, 40);
             Border(shop, new Color(.89f, .96f, 1f), 4);
             var settings = UiKit.Button("Settings", top, null, new Vector2(0, 1), new Vector2(30, -30), new Vector2(130, 130), Blue, () => SettingsRequested?.Invoke(), 30);
@@ -108,51 +112,53 @@ namespace VoxelSmash.Game
             ApplyLayout();
         }
 
+        // Win screen: everything sits on one centred card laid out for portrait; landscape only scales
+        // the card down, so it never collides with the HUD panels (which hide while it shows).
         void BuildWin()
         {
-            winPanel = Backdrop("Win", transform, new Color(0, 0, 0, .45f)).gameObject;
-            var win = (RectTransform)winPanel.transform;
+            winPanel = Backdrop("Win", transform, new Color(.03f, .05f, .12f, .72f)).gameObject;
             var c = new Vector2(.5f, .5f);
-            winTitle = Label("Title", win, 130, FontStyle.Bold, c, new Vector2(0, 600), new Vector2(1000, 170));
-            layout.Add(winTitle.rectTransform, new Vector2(0, 405), new Vector2(1400, 170));
-            winTitle.color = Gold;
-            winRibbon = Label("Ribbon", win, 56, FontStyle.Bold, c, new Vector2(0, 470), new Vector2(1000, 90));
-            layout.Add(winRibbon.rectTransform, new Vector2(0, 295));
-            starRow = Rect("Stars", win, c, c, Vector2.zero, Vector2.zero);
-            Place(starRow, c, new Vector2(0, 360), new Vector2(420, 130));
-            layout.Add(starRow, new Vector2(-380, 175));
+            winCard = Rect("Card", winPanel.transform, c, c, Vector2.zero, Vector2.zero);
+            Place(winCard, c, Vector2.zero, new Vector2(1000, 1240));
+            var rays = Picture("Rays", winCard, Rays(256), c, new Vector2(0, 330), new Vector2(980, 980));
+            rays.color = new Color(1f, .86f, .4f, .55f);
+            rays.gameObject.AddComponent<Spin>();
+            winTitle = Headline(Label("Title", winCard, 132, FontStyle.Bold, c, new Vector2(0, 565), new Vector2(1100, 170)),
+                new Color(1f, .9f, .3f), new Color(1f, .45f, .12f), 8f);
+            var ribbon = Box("Ribbon Band", winCard, Color.white, c, new Vector2(0, 432), new Vector2(880, 96), 12);
+            ribbon.localRotation = Quaternion.Euler(0, 0, -2f);
+            ribbon.gameObject.AddComponent<Shadow>().effectDistance = new Vector2(0, -8);
+            winRibbon = Plain(Label("Ribbon", ribbon, 54, FontStyle.Bold, c, Vector2.zero, new Vector2(860, 96)), new Color(.08f, .1f, .16f));
+            starRow = Rect("Stars", winCard, c, c, Vector2.zero, Vector2.zero);
+            Place(starRow, c, new Vector2(0, 295), new Vector2(460, 150));
             var star = Star(128);
             for (int i = 0; i < 3; i++)
-                stars[i] = Picture("Star", starRow, star, c, new Vector2((i - 1) * 135, i == 1 ? 12 : 0), Vector2.one * (i == 1 ? 130 : 110));
-            winScore = Label("Score", win, 46, FontStyle.Bold, c, new Vector2(0, 265), new Vector2(1000, 76));
-            layout.Add(winScore.rectTransform, new Vector2(-380, 70), new Vector2(760, 76));
-            winCoins = Label("Coins", win, 50, FontStyle.Bold, c, new Vector2(0, 192), new Vector2(1000, 76));
-            layout.Add(winCoins.rectTransform, new Vector2(-380, -10), new Vector2(760, 76));
+            {
+                stars[i] = Picture("Star", starRow, star, c, new Vector2((i - 1) * 145, i == 1 ? 16 : 0), Vector2.one * (i == 1 ? 150 : 124));
+                var lip = stars[i].gameObject.AddComponent<Shadow>();
+                lip.effectColor = new Color(.45f, .22f, 0f, .9f);
+                lip.effectDistance = new Vector2(0, -7);
+            }
+            winScore = Label("Score", winCard, 44, FontStyle.Bold, c, new Vector2(0, 190), new Vector2(1000, 70));
+            winCoins = Label("Coins", winCard, 52, FontStyle.Bold, c, new Vector2(0, 122), new Vector2(1000, 76));
             winCoins.color = Gold;
-            winIcon = Picture("Unlock Icon", win, null, c, new Vector2(0, 75), new Vector2(140, 140));
-            layout.Add(winIcon.rectTransform, new Vector2(-380, -135), new Vector2(120, 120));
-            winUnlock = Label("Unlock", win, 42, FontStyle.Bold, c, new Vector2(0, -32), new Vector2(1000, 70));
-            layout.Add(winUnlock.rectTransform, new Vector2(-380, -245), new Vector2(760, 70));
+            winIcon = Picture("Unlock Icon", winCard, null, c, new Vector2(0, 12), new Vector2(130, 130));
+            winUnlock = Label("Unlock", winCard, 42, FontStyle.Bold, c, new Vector2(0, -88), new Vector2(1000, 66));
 
             // Optional power-hit offer for the next level: watch an ad, or pay coins instead.
-            powerLabel = Label("Power Offer", win, 38, FontStyle.Bold, c, new Vector2(0, -125), new Vector2(1000, 60));
-            layout.Add(powerLabel.rectTransform, new Vector2(380, 185), new Vector2(760, 60));
+            powerLabel = Label("Power Offer", winCard, 36, FontStyle.Bold, c, new Vector2(0, -170), new Vector2(1000, 56));
             powerLabel.text = "Start next level with 3 POWER HITS";
-            var ad = UiKit.Button("Power Ad", win, "WATCH AD", c, new Vector2(-175, -205), new Vector2(330, 90), Purple, () => PowerAdRequested?.Invoke(), 24, 38);
-            layout.Add(ad, new Vector2(240, 100), new Vector2(260, 84));
+            var ad = UiKit.Button("Power Ad", winCard, "WATCH AD", c, new Vector2(-175, -248), new Vector2(330, 90), Purple, () => PowerAdRequested?.Invoke(), 24, 38);
             powerAd = ad.gameObject;
-            var buy = UiKit.Button("Power Buy", win, null, c, new Vector2(175, -205), new Vector2(330, 90), new Color(.85f, .6f, .1f), () => PowerBuyRequested?.Invoke(), 24);
-            layout.Add(buy, new Vector2(520, 100), new Vector2(260, 84));
+            var buy = UiKit.Button("Power Buy", winCard, null, c, new Vector2(175, -248), new Vector2(330, 90), new Color(.85f, .6f, .1f), () => PowerBuyRequested?.Invoke(), 24);
             Picture("Coin", buy, Coin(96), new Vector2(0, .5f), new Vector2(18, 0), new Vector2(56, 56));
             Label("Price", buy, 38, FontStyle.Bold, c, new Vector2(24, 0), new Vector2(240, 80)).text = Core.Economy.PowerHitsPrice.ToString();
             powerBuy = buy.gameObject;
 
-            var next = UiKit.Button("Next", win, "NEXT", c, new Vector2(0, -340), new Vector2(560, 150), Green, () => Next?.Invoke(), 36, 60);
-            layout.Add(next, new Vector2(380, -75), new Vector2(520, 140));
+            var next = UiKit.Button("Next", winCard, "NEXT", c, new Vector2(0, -395), new Vector2(560, 150), Green, () => Next?.Invoke(), 36, 62);
             nextButton = next.gameObject;
             Border(next.GetComponent<Image>(), Color.white, 6);
-            var replay = UiKit.Button("Replay", win, "Replay level", c, new Vector2(0, -480), new Vector2(420, 100), Blue, () => Replay?.Invoke(), 24, 44);
-            layout.Add(replay, new Vector2(380, -225), new Vector2(380, 96));
+            UiKit.Button("Replay", winCard, "Replay level", c, new Vector2(0, -545), new Vector2(420, 100), Blue, () => Replay?.Invoke(), 24, 44);
             winPanel.SetActive(false);
         }
 
@@ -162,6 +168,8 @@ namespace VoxelSmash.Game
             levelText.color = boss ? BossRed : Color.white;
             modelText.text = modelName;
             winPanel.SetActive(false);
+            topBar.gameObject.SetActive(true);
+            weaponPanel.gameObject.SetActive(true);
         }
 
         public void SetProgress(float progress)
@@ -184,6 +192,8 @@ namespace VoxelSmash.Game
             winScore.text = score;
             winCoins.text = coins;
             for (int i = 0; i < 3; i++) stars[i].color = i < starCount ? Gold : StarOff;
+            topBar.gameObject.SetActive(false);
+            weaponPanel.gameObject.SetActive(false);
             winPanel.SetActive(true);
         }
 
@@ -317,6 +327,8 @@ namespace VoxelSmash.Game
         void ApplyLayout()
         {
             layout.Apply(landscape);
+            // 1240 units of card in a 1080-unit-tall landscape canvas.
+            winCard.localScale = Vector3.one * (landscape ? .82f : 1f);
             weaponPanel.anchorMin = weaponPanel.anchorMax = weaponPanel.pivot = landscape ? new Vector2(1, .5f) : new Vector2(.5f, 0);
             weaponPanel.anchoredPosition = landscape ? new Vector2(-SidePanelMargin, -40f) : new Vector2(0, PanelBottom);
             ((RectTransform)safeRoot.Find("Top Bar")).offsetMin = new Vector2(0, -(landscape ? TopReserveLandscape : TopReservePortrait));

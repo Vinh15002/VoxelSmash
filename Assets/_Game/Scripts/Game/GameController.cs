@@ -21,7 +21,7 @@ namespace VoxelSmash.Game
         const float HoldDelay = .22f, DragThresholdDp = 13f, YawPerScreenWidth = 3.7f;
         // Six slow (>160 ms) frames drop to low detail, which caps physics bodies at 110 instead of 260
         // and turns off shadows. The last hit plays in slow motion.
-        const float SlowFrame = .16f, LowRenderScale = .75f, SlowMotion = .3f, SlowMotionTime = .7f;
+        const float SlowFrame = .16f, LowRenderScale = .75f, SlowMotion = .3f, SlowMotionTime = .7f, HitStop = .06f;
         const int SlowFramesToDowngrade = 6, BodiesHigh = 260, BodiesLow = 110;
         // Onboarding steps, stored as bits; the first was a plain flag in earlier saves, which still reads right.
         const int TapStep = 1, HoldStep = 2, DragStep = 4, AllSteps = TapStep | HoldStep | DragStep;
@@ -49,7 +49,8 @@ namespace VoxelSmash.Game
         Progression campaign;
         bool ready, quality;
         int tutorial, weaponsSeen, slowFrames;
-        float baseRenderScale = -1f, slowMotion;
+        float baseRenderScale = -1f, slowMotion, hitStop;
+        Light sun;
 
         int coins, sizeLevel, magnetLevel, powerHits;
         readonly Dictionary<int, int> bestStars = new();
@@ -113,10 +114,12 @@ namespace VoxelSmash.Game
             effects = new GameObject("Effects").AddComponent<HitEffects>();
             effects.Init(fxAlphaMaterial, fxAdditiveMaterial, fragmentMaterial);
             weaponAnimator = new GameObject("Weapons").AddComponent<WeaponAnimator>();
-            weaponAnimator.Init(weapons, cameraRig.Camera);
+            weaponAnimator.Init(weapons, cameraRig.Camera, fxAdditiveMaterial);
             sfx = new GameObject("Sfx").AddComponent<Sfx>();
             sfx.Init();
-            icons = WeaponIcons.Render(weapons, previewLayer);
+            foreach (var light in FindObjectsByType<Light>(FindObjectsSortMode.None))
+                if (light.type == LightType.Directional) sun = light;
+            icons = WeaponIcons.Render(weapons, previewLayer, sun);
 
             hud.Build();
             hud.Restart += () => LoadLevel(levelNumber);
@@ -312,7 +315,7 @@ namespace VoxelSmash.Game
         {
             if (Platform.AdRunning) return;
             bool paused = Paused;
-            Time.timeScale = paused ? 0f : slowMotion > 0f ? SlowMotion : 1f;
+            Time.timeScale = paused ? 0f : hitStop > 0f ? .04f : slowMotion > 0f ? SlowMotion : 1f;
             AudioListener.pause = paused;
             Platform.SetPlaying(ready && !paused && !won);
         }
@@ -330,7 +333,9 @@ namespace VoxelSmash.Game
         {
             debris.MaxBodies = quality ? BodiesHigh : BodiesLow;
             effects.Detail = quality;
-            cameraRig.Camera.GetUniversalAdditionalCameraData().renderShadows = quality;
+            // Switch shadows at the light, not per camera: a camera that skips shadows while the light
+            // casts them still samples an unbound shadow map on WebGL (GL texture/sampler mismatch).
+            if (sun) sun.shadows = quality ? LightShadows.Soft : LightShadows.None;
             if (GraphicsSettings.currentRenderPipeline is UniversalRenderPipelineAsset urp)
             {
                 if (baseRenderScale < 0f) baseRenderScale = urp.renderScale;
@@ -483,6 +488,11 @@ namespace VoxelSmash.Game
                 slowMotion -= Time.unscaledDeltaTime;
                 if (slowMotion <= 0f) SyncPause();
             }
+            if (hitStop > 0f)
+            {
+                hitStop -= Time.unscaledDeltaTime;
+                if (hitStop <= 0f) SyncPause();
+            }
             WatchFrameTime();
             HandlePointer();
             UpdateQueuedHits(Time.deltaTime);
@@ -507,7 +517,9 @@ namespace VoxelSmash.Game
 
         void WatchFrameTime()
         {
-            if (Paused || !quality || Platform.AdRunning) { slowFrames = 0; return; }
+            // Hidden or unfocused tabs are throttled by the browser; those frames say nothing about the device.
+            if (Paused || !quality || Platform.AdRunning || !Application.isFocused) { slowFrames = 0; return; }
+            if (Time.unscaledDeltaTime > 1f) return;
             slowFrames = Time.unscaledDeltaTime > SlowFrame ? slowFrames + 1 : Mathf.Max(0, slowFrames - 1);
             if (slowFrames < SlowFramesToDowngrade) return;
             slowFrames = 0;
@@ -670,6 +682,7 @@ namespace VoxelSmash.Game
                 combo = clock - lastComboAt <= Economy.ComboWindow ? Mathf.Min(combo + 1, Economy.MaxCombo) : 1;
                 lastComboAt = clock;
                 hitsThisLevel++;
+                if (combo is 3 or 5 or 8 or Economy.MaxCombo) feedback.ShowCombo(combo);
             }
             CompleteStep(TapStep);
             var impact = view.transform.TransformPoint(local);
@@ -694,6 +707,15 @@ namespace VoxelSmash.Game
             if (first) effects.Special(weapon.type, impact, toCamera);
             sfx.Play(critical ? WeaponSound.Explosion : weapon.sound);
             cameraRig.Shake(weapon.shake * (critical ? 2.2f : 1f));
+            bool heavy = weapon.Explosive || critical;
+            cameraRig.Punch(heavy ? 3.2f : 1f);
+            if (critical && !weapon.Explosive) effects.Shockwave(impact, .7f);
+            // A brief freeze on big blows sells the weight (skipped on the winning hit, which slows down instead).
+            if (heavy && first && sculpture.Progress < 1f)
+            {
+                hitStop = HitStop;
+                SyncPause();
+            }
 
             int earned = Economy.CoinsForHit(removed.Count, combo, magnetLevel, Boss);
             coins += earned;
@@ -726,13 +748,14 @@ namespace VoxelSmash.Game
             if (Boss || unlock >= 0) Save.HappyTime();
             cameraRig.StartVictoryOrbit();
             effects.Confetti(new Vector3(0f, frame.targetY, 0f));
+            effects.Fireworks(new Vector3(0f, frame.targetY + frame.height * .5f, -1.5f), Mathf.Max(1.6f, frame.width * .6f));
             sfx.PlayVictory();
             slowMotion = SlowMotionTime;
             hud.ShowWin(Boss ? "BOSS DOWN!" : levelNumber % 2 == 0 ? "SMASHED!" : "DESTROYED!",
                 unlock >= 0 ? "New Item Unlocked!" : Boss ? "Boss Scrapped!" : "Sculpture Destroyed!",
                 unlock >= 0 ? icons[unlock] : null,
                 unlock >= 0 ? $"{weapons[unlock].displayName} unlocks next level" : last ? "All levels complete!" : $"Level {levelNumber + 1} unlocked",
-                $"{sculpture.Total:N0} cubes · {hitsThisLevel} hits",
+                $"{sculpture.Total:N0} cubes · {hitsThisLevel} {(hitsThisLevel == 1 ? "hit" : "hits")}",
                 $"+{levelCoins:N0} coins", stars, !last);
             RefreshPowerOffer();
             SyncPause();

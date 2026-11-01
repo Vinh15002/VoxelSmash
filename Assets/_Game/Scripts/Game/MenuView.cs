@@ -28,7 +28,7 @@ namespace VoxelSmash.Game
             LevelViewPortrait = 1040f, LevelViewLandscape = 560f;
         const int Columns = 4;
 
-        static readonly Color Dim = new(.09f, .19f, .29f, .55f), TitleBack = new(.07f, .17f, .30f, .93f),
+        static readonly Color Dim = new(.04f, .08f, .16f, .7f), TitleBack = new(.05f, .12f, .24f, .97f),
             CardColor = new(.90f, .95f, .99f), Ink = new(.13f, .24f, .38f), Muted = new(.28f, .39f, .49f),
             Gold = new(1f, .86f, .21f), Green = new(.45f, .75f, .13f), Purple = new(.44f, .32f, .71f),
             RowColor = new(1f, 1f, 1f, .7f), OnColor = new(.22f, .44f, .11f), Blue = new(.13f, .55f, .93f),
@@ -74,40 +74,54 @@ namespace VoxelSmash.Game
             ApplyLayout();
         }
 
+        // Portrait: one centred column. Landscape: logo and name in a left column, actions in a right one;
+        // both columns are anchored to fractions of the screen width so narrow windows don't clip them.
         void BuildTitle(Transform root, Texture icon, string helpText)
         {
             var back = Backdrop("Title Screen", root, TitleBack);
             title = back.gameObject;
+            var glow = Box("Glow", back, new Color(.2f, .45f, .85f, .35f), new Vector2(.5f, 1f), Vector2.zero, new Vector2(4000, 900));
+            glow.anchorMin = new Vector2(0, 1); glow.anchorMax = Vector2.one; glow.sizeDelta = new Vector2(0, 900);
+            glow.gameObject.AddComponent<VerticalGradient>().Set(Color.white, new Color(1, 1, 1, 0));
             var c = new Vector2(.5f, .5f);
+            Vector2 left = new(.27f, .5f), right = new(.72f, .5f);
+            var rays = Picture("Rays", back, Rays(256), c, new Vector2(0, 560), new Vector2(900, 900));
+            layout.Add(rays.rectTransform, new Vector2(0, 170), new Vector2(760, 760), left);
+            rays.color = new Color(1f, .85f, .45f, .45f);
+            rays.gameObject.AddComponent<Spin>();
             var frame = Box("Icon Frame", back, Blue, c, new Vector2(0, 560), new Vector2(360, 360), 90);
-            layout.Add(frame, new Vector2(-450, 170), new Vector2(320, 320));
+            layout.Add(frame, new Vector2(0, 170), new Vector2(320, 320), left);
             Border(frame, Color.white, 8);
+            frame.gameObject.AddComponent<Shadow>().effectDistance = new Vector2(0, -14);
             var picture = Picture("Icon", frame, icon, c, Vector2.zero, Vector2.zero);
             picture.rectTransform.anchorMin = Vector2.one * .08f;
             picture.rectTransform.anchorMax = Vector2.one * .92f;
-            var top = Label("Name Top", back, 140, FontStyle.Bold, c, new Vector2(0, 280), new Vector2(1060, 170));
-            layout.Add(top.rectTransform, new Vector2(-450, -90), new Vector2(900, 170));
+            var top = Headline(Label("Name Top", back, 140, FontStyle.Bold, c, new Vector2(0, 280), new Vector2(1060, 170)),
+                Color.white, new Color(.75f, .88f, 1f), 7f);
+            layout.Add(top.rectTransform, new Vector2(0, -90), new Vector2(820, 170), left);
             top.text = GameInfo.TitleTop;
             top.resizeTextForBestFit = true;
             top.resizeTextMaxSize = 140;
-            var bottom = Label("Name Bottom", back, 170, FontStyle.Bold, c, new Vector2(0, 130), new Vector2(1000, 190));
-            layout.Add(bottom.rectTransform, new Vector2(-450, -240), new Vector2(900, 190));
+            var bottom = Headline(Label("Name Bottom", back, 170, FontStyle.Bold, c, new Vector2(0, 130), new Vector2(1000, 190)),
+                new Color(1f, .92f, .3f), new Color(1f, .5f, .1f), 8f);
+            layout.Add(bottom.rectTransform, new Vector2(0, -240), new Vector2(820, 190), left);
             bottom.text = GameInfo.TitleBottom;
-            bottom.color = Gold;
+            bottom.resizeTextForBestFit = true;
+            bottom.resizeTextMaxSize = 170;
             var tagline = Label("Tagline", back, 46, FontStyle.Bold, c, new Vector2(0, 10), new Vector2(1000, 70));
-            layout.Add(tagline.rectTransform, new Vector2(420, 280), new Vector2(860, 70));
+            layout.Add(tagline.rectTransform, new Vector2(0, 280), new Vector2(720, 70), right);
             tagline.text = GameInfo.Tagline;
             titleProgress = Label("Progress", back, 38, FontStyle.Bold, c, new Vector2(0, -70), new Vector2(1000, 60));
-            layout.Add(titleProgress.rectTransform, new Vector2(420, 195), new Vector2(860, 60));
+            layout.Add(titleProgress.rectTransform, new Vector2(0, 195), new Vector2(720, 60), right);
             titleProgress.color = new Color(.83f, .91f, 1f);
-            var play = Button("Play", back, "PLAY", c, new Vector2(0, -230), new Vector2(740, 160), Green, () => Play?.Invoke(), 38, 58);
-            layout.Add(play, new Vector2(420, 40), new Vector2(680, 150));
+            var play = Button("Play", back, "PLAY", c, new Vector2(0, -230), new Vector2(740, 160), Green, () => Play?.Invoke(), 38, 62);
+            layout.Add(play, new Vector2(0, 40), new Vector2(660, 150), right);
             Border(play, Color.white, 7);
             playLabel = play.GetComponentInChildren<Text>();
-            var how = TextButton("How To Play", back, "How to play", c, new Vector2(0, -390), Color.white, () => howTo.SetActive(!howTo.activeSelf));
-            layout.Add((RectTransform)how.transform.parent, new Vector2(420, -110));
+            var how = TextButton("How To Play", back, "How to play", c, new Vector2(0, -400), Color.white, () => howTo.SetActive(!howTo.activeSelf));
+            layout.Add((RectTransform)how.transform.parent, new Vector2(0, -110), null, right);
             howToText = Label("How To", back, 40, FontStyle.Bold, c, new Vector2(0, -560), new Vector2(1000, 240));
-            layout.Add(howToText.rectTransform, new Vector2(420, -270), new Vector2(860, 240));
+            layout.Add(howToText.rectTransform, new Vector2(0, -270), new Vector2(720, 240), right);
             howToText.text = helpText;
             howTo = howToText.gameObject;
             howTo.SetActive(false);
@@ -197,6 +211,7 @@ namespace VoxelSmash.Game
             overlay = back.gameObject;
             var card = Box("Card", back, CardColor, new Vector2(.5f, .5f), Vector2.zero, new Vector2(CardWidth, height), 56);
             Border(card, Color.white, 8);
+            card.gameObject.AddComponent<Shadow>().effectDistance = new Vector2(0, -18);
             return card;
         }
 

@@ -139,6 +139,7 @@ namespace VoxelSmash.Game
                 }
                 fx.light.intensity = Mathf.Max(0f, 12f * (1f - t / .25f));
             };
+            Shockwave(point, 1f);
         }
 
         // Translucent voxel puffs tinted by the broken material, drifting up and out from the hit.
@@ -165,6 +166,73 @@ namespace VoxelSmash.Game
                     piece.go.transform.position = point + drift * ease;
                     piece.go.transform.Rotate(spin * Mathf.Min(Time.deltaTime, .035f), Space.Self);
                     Fade(piece, color, .5f * (1f - k) * Mathf.Min(1f, t / .05f), size * (.6f + ease * 1.6f));
+                }
+            };
+        }
+
+        // A flat ring racing out across the ground under a blast; `strength` scales its reach.
+        public void Shockwave(Vector3 point, float strength)
+        {
+            var ground = new Vector3(point.x, .03f, point.z);
+            const float life = .55f;
+            var e = NewEffect(life, ground);
+            var ring = MeshPiece(e, ProceduralMeshes.Torus(1f, .035f, 6, 72), additive, ground);
+            ring.go.transform.rotation = Quaternion.LookRotation(Vector3.up);
+            var dust = MeshPiece(e, ProceduralMeshes.Torus(1f, .16f, 6, 48), alpha, ground);
+            dust.go.transform.rotation = Quaternion.LookRotation(Vector3.up);
+            e.update = (fx, t) =>
+            {
+                float k = t / life, ease = 1f - (1f - k) * (1f - k) * (1f - k);
+                Fade(ring, new Color32(0xff, 0xe2, 0x9a, 255), .8f * (1f - k), .2f + ease * 2.6f * strength);
+                Fade(dust, new Color32(0x9a, 0x8c, 0x7a, 255), .3f * (1f - k), .15f + ease * 2.1f * strength);
+            };
+        }
+
+        static readonly Color32[] FireworkColors =
+        {
+            new(0xff, 0x4d, 0x6d, 255), new(0xff, 0xd2, 0x3a, 255), new(0x4d, 0xe0, 0x7a, 255),
+            new(0x3d, 0xa8, 0xff, 255), new(0xc0, 0x6c, 0xff, 255), new(0xff, 0x8a, 0x2a, 255)
+        };
+
+        // Five staggered bursts above the scene for the win: a bright flash plus a ring of sparks each.
+        public void Fireworks(Vector3 center, float spread)
+        {
+            const float life = 2.6f;
+            var e = NewEffect(life, center);
+            var shots = new List<(float at, Vector3 pos, Color color, bool fired, Piece flash)>();
+            for (int i = 0; i < 5; i++)
+            {
+                var pos = center + new Vector3((Random.value - .5f) * 2f * spread, spread * (.7f + Random.value * .7f), (Random.value - .5f) * spread);
+                shots.Add((.15f + i * .38f, pos, ((Color)FireworkColors[i % FireworkColors.Length]).linear, false, null));
+            }
+            e.update = (fx, t) =>
+            {
+                for (int i = 0; i < shots.Count; i++)
+                {
+                    var shot = shots[i];
+                    if (!shot.fired && t >= shot.at)
+                    {
+                        shot.fired = true;
+                        shot.flash = MeshPiece(fx, ProceduralMeshes.Sphere(12, 8), additive, shot.pos);
+                        int count = Detail ? 70 : 35;
+                        for (int k = 0; k < count; k++)
+                        {
+                            if (sparks.Count >= MaxSparks) sparks.RemoveAt(0);
+                            var dir = Random.onUnitSphere;
+                            sparks.Add(new Spark
+                            {
+                                pos = shot.pos, vel = dir * (2.6f + Random.value * 1.4f), rot = Random.insideUnitSphere * 180f,
+                                life = .9f + Random.value * .7f, size = .035f + Random.value * .025f, spin = 8f,
+                                color = k % 5 == 0 ? Color.white : shot.color, gravity = 1.6f, drag = 1.4f
+                            });
+                        }
+                    }
+                    if (shot.fired)
+                    {
+                        float age = t - shot.at;
+                        Fade(shot.flash, shot.color.gamma, Mathf.Max(0f, .9f * (1f - age / .25f)), .1f + age * 2.4f);
+                    }
+                    shots[i] = shot;
                 }
             };
         }

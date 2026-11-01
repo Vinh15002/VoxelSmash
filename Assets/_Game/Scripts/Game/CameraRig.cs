@@ -13,7 +13,8 @@ namespace VoxelSmash.Game
 
         Camera cam;
         Vector3 target;
-        float viewOffsetNdc, viewOffsetXNdc, shake;
+        float viewOffsetNdc, viewOffsetXNdc, shake, punch;
+        const float Fov = 37f;
         float orbitTime = -1f;
         Vector3 orbitStart;
 
@@ -24,7 +25,7 @@ namespace VoxelSmash.Game
         public void Fit(TargetFrame frame, float topPx, float bottomPx, float leftPx, float rightPx, float width = 0f, float height = 0f)
         {
             var c = Camera;
-            c.fieldOfView = 37f;
+            c.fieldOfView = Fov;
             float w = width > 0f ? width : Screen.width, h = height > 0f ? height : Screen.height;
             float availableHeight = Mathf.Max(24f, bottomPx - topPx), availableWidth = Mathf.Max(24f, rightPx - leftPx);
             float tan = Mathf.Tan(c.fieldOfView * .5f * Mathf.Deg2Rad);
@@ -43,6 +44,9 @@ namespace VoxelSmash.Game
         }
 
         public void Shake(float amount) => shake = Mathf.Max(shake, amount);
+
+        // A quick zoom-in that springs back: heavy hits feel like they shove the camera.
+        public void Punch(float degrees) => punch = Mathf.Max(punch, degrees);
 
         public void StartVictoryOrbit()
         {
@@ -70,6 +74,18 @@ namespace VoxelSmash.Game
                 float angle = Mathf.Min(1f, orbitTime / VictoryDuration) * Mathf.PI * .58f;
                 transform.position = target + Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.up) * orbitStart;
                 transform.LookAt(target);
+            }
+            if (punch > .01f)
+            {
+                punch *= Mathf.Exp(-dt * 14f);
+                Camera.fieldOfView = Fov - punch;
+                if (shake <= .001f) ApplyProjection(0f, 0f);
+            }
+            else if (punch > 0f)
+            {
+                punch = 0f;
+                Camera.fieldOfView = Fov;
+                if (shake <= .001f) ApplyProjection(0f, 0f);
             }
             if (shake > .001f)
             {

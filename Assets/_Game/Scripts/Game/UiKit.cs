@@ -21,18 +21,22 @@ namespace VoxelSmash.Game
         // Remembers each element's portrait placement (as built) and its landscape placement.
         public sealed class Layout
         {
-            readonly List<(RectTransform rt, Vector2 portrait, Vector2 landscape, Vector2 portraitSize, Vector2 landscapeSize)> items = new();
+            readonly List<(RectTransform rt, Vector2 portrait, Vector2 landscape, Vector2 portraitSize, Vector2 landscapeSize,
+                Vector2 portraitAnchor, Vector2 landscapeAnchor)> items = new();
 
-            public RectTransform Add(RectTransform rt, Vector2 landscape, Vector2? landscapeSize = null)
+            // `landscapeAnchor` (a point of the parent, 0..1) lets landscape columns follow the screen
+            // width instead of sitting at fixed offsets from the centre.
+            public RectTransform Add(RectTransform rt, Vector2 landscape, Vector2? landscapeSize = null, Vector2? landscapeAnchor = null)
             {
-                items.Add((rt, rt.anchoredPosition, landscape, rt.sizeDelta, landscapeSize ?? rt.sizeDelta));
+                items.Add((rt, rt.anchoredPosition, landscape, rt.sizeDelta, landscapeSize ?? rt.sizeDelta, rt.anchorMin, landscapeAnchor ?? rt.anchorMin));
                 return rt;
             }
 
             public void Apply(bool landscape)
             {
-                foreach (var (rt, portrait, land, portraitSize, landSize) in items)
+                foreach (var (rt, portrait, land, portraitSize, landSize, portraitAnchor, landAnchor) in items)
                 {
+                    rt.anchorMin = rt.anchorMax = landscape ? landAnchor : portraitAnchor;
                     rt.anchoredPosition = landscape ? land : portrait;
                     rt.sizeDelta = landscape ? landSize : portraitSize;
                 }
@@ -117,7 +121,22 @@ namespace VoxelSmash.Game
             Color color, Action onClick, float radius = 24f, int fontSize = 48)
         {
             var rt = Box(name, parent, color, anchor, position, size, radius);
-            rt.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(() => onClick());
+            var button = rt.gameObject.AddComponent<UnityEngine.UI.Button>();
+            button.onClick.AddListener(() => onClick());
+            // Disabled buttons go solid grey instead of the default half-transparent tint.
+            var colors = button.colors;
+            colors.disabledColor = new Color(.55f, .55f, .58f, 1f);
+            button.colors = colors;
+            var lip = rt.gameObject.AddComponent<Shadow>();
+            lip.effectColor = Color.Lerp(color, Color.black, .45f);
+            lip.effectDistance = new Vector2(0, -Mathf.Clamp(size.y * .07f, 4f, 10f));
+            // Stretches with the button, so layouts that resize it (landscape) keep the shine inside.
+            var shine = Box("Shine", rt, new Color(1f, 1f, 1f, .18f), Vector2.zero, Vector2.zero, Vector2.zero, radius * .7f);
+            shine.anchorMin = new Vector2(0f, .52f);
+            shine.anchorMax = new Vector2(1f, .94f);
+            shine.offsetMin = new Vector2(radius * .45f, 0f);
+            shine.offsetMax = new Vector2(-radius * .45f, 0f);
+            shine.GetComponent<Image>().raycastTarget = false;
             if (caption != null) Label("Label", rt, fontSize, FontStyle.Bold, new Vector2(.5f, .5f), Vector2.zero, size).text = caption;
             return rt;
         }
@@ -130,6 +149,64 @@ namespace VoxelSmash.Game
             var label = Plain(Label("Label", rt, 40, FontStyle.Bold, new Vector2(.5f, .5f), Vector2.zero, new Vector2(600, 100)), color);
             label.text = caption;
             return label;
+        }
+
+        // Display text: vertical colour gradient, a thick dark outline and a drop shadow.
+        public static Text Headline(Text text, Color top, Color bottom, float stroke = 6f)
+        {
+            text.color = Color.white;
+            text.gameObject.AddComponent<VerticalGradient>().Set(top, bottom);
+            var outline = text.GetComponent<Outline>();
+            if (!outline) outline = text.gameObject.AddComponent<Outline>();
+            outline.effectColor = new Color(.07f, .05f, .2f, 1f);
+            outline.effectDistance = new Vector2(stroke, -stroke);
+            var second = text.gameObject.AddComponent<Outline>();
+            second.effectColor = new Color(.07f, .05f, .2f, 1f);
+            second.effectDistance = new Vector2(-stroke * .6f, stroke * .6f);
+            var shadow = text.gameObject.AddComponent<Shadow>();
+            shadow.effectColor = new Color(0f, 0f, 0f, .45f);
+            shadow.effectDistance = new Vector2(0, -stroke * 1.8f);
+            return text;
+        }
+
+        // Tints a graphic's vertices from top to bottom (used on headlines).
+        public sealed class VerticalGradient : BaseMeshEffect
+        {
+            Color top = Color.white, bottom = Color.white;
+
+            public void Set(Color topColor, Color bottomColor)
+            {
+                top = topColor;
+                bottom = bottomColor;
+                graphic.SetVerticesDirty();
+            }
+
+            public override void ModifyMesh(VertexHelper vh)
+            {
+                if (!IsActive() || vh.currentVertCount == 0) return;
+                var v = new UIVertex();
+                float min = float.MaxValue, max = float.MinValue;
+                for (int i = 0; i < vh.currentVertCount; i++)
+                {
+                    vh.PopulateUIVertex(ref v, i);
+                    min = Mathf.Min(min, v.position.y);
+                    max = Mathf.Max(max, v.position.y);
+                }
+                for (int i = 0; i < vh.currentVertCount; i++)
+                {
+                    vh.PopulateUIVertex(ref v, i);
+                    v.color *= Color.Lerp(bottom, top, Mathf.InverseLerp(min, max, v.position.y));
+                    vh.SetUIVertex(v, i);
+                }
+            }
+        }
+
+        // Rotates a UI element on unscaled time (sunbursts keep turning while the game is paused).
+        public sealed class Spin : MonoBehaviour
+        {
+            public float degreesPerSecond = 18f;
+
+            void Update() => transform.Rotate(0f, 0f, -degreesPerSecond * Time.unscaledDeltaTime);
         }
 
         public static RawImage Picture(string name, Transform parent, Texture texture, Vector2 anchor, Vector2 position, Vector2 size)
@@ -171,15 +248,52 @@ namespace VoxelSmash.Game
             return inside ? Color.white : Color.clear;
         }, 4);
 
-        // Five-pointed star, white on transparent (tinted per use).
-        public static Texture2D Star(int size) => Paint(size, (x, y) =>
+        // Five-pointed star, white on transparent (tinted per use): a point-in-polygon test against the
+        // ten corners, so the arms have straight edges.
+        public static Texture2D Star(int size)
         {
-            var p = new Vector2(x / size - .5f, y / size - .48f);
-            float a = Mathf.Atan2(p.x, p.y), sector = Mathf.PI * 2f / 5f;
-            float k = Mathf.Abs(Mathf.Repeat(a + sector * .5f, sector) - sector * .5f) / (sector * .5f);
-            float radius = Mathf.Lerp(.47f, .2f, k);
-            return p.magnitude < radius ? Color.white : Color.clear;
+            var corners = new Vector2[10];
+            for (int i = 0; i < 10; i++)
+            {
+                float a = Mathf.PI / 2f + i * Mathf.PI / 5f, r = i % 2 == 0 ? .48f : .2f;
+                corners[i] = new Vector2(.5f + Mathf.Cos(a) * r, .47f + Mathf.Sin(a) * r);
+            }
+            return Paint(size, (x, y) => Inside(corners, new Vector2(x / size, y / size)) ? Color.white : Color.clear, 4);
+        }
+
+        static bool Inside(Vector2[] polygon, Vector2 p)
+        {
+            bool inside = false;
+            for (int i = 0, j = polygon.Length - 1; i < polygon.Length; j = i++)
+                if ((polygon[i].y > p.y) != (polygon[j].y > p.y) &&
+                    p.x < (polygon[j].x - polygon[i].x) * (p.y - polygon[i].y) / (polygon[j].y - polygon[i].y) + polygon[i].x)
+                    inside = !inside;
+            return inside;
+        }
+
+        // Circular "restart" arrow: a 290-degree ring ending in an arrowhead.
+        public static Texture2D Restart(int size) => Paint(size, (x, y) =>
+        {
+            var p = new Vector2(x / size - .5f, y / size - .5f);
+            float r = p.magnitude, a = Mathf.Repeat(Mathf.Atan2(p.y, p.x) * Mathf.Rad2Deg, 360f);
+            bool ring = r > .24f && r < .36f && (a < 40f || a > 110f);
+            // Arrowhead at the ring's end (40 degrees), pointing along the circle.
+            var tip = new Vector2(Mathf.Cos(40f * Mathf.Deg2Rad), Mathf.Sin(40f * Mathf.Deg2Rad)) * .3f;
+            var along = new Vector2(-Mathf.Sin(40f * Mathf.Deg2Rad), Mathf.Cos(40f * Mathf.Deg2Rad));
+            var across = new Vector2(along.y, -along.x);
+            var head = new[] { tip + along * .17f, tip + across * .15f, tip - across * .15f };
+            return ring || Inside(head, p) ? Color.white : Color.clear;
         }, 4);
+
+        // Soft sunburst: alternating rays that fade toward the edge.
+        public static Texture2D Rays(int size) => Paint(size, (x, y) =>
+        {
+            var p = new Vector2(x / size - .5f, y / size - .5f);
+            float r = p.magnitude * 2f, a = Mathf.Atan2(p.y, p.x);
+            if (r > 1f) return Color.clear;
+            float ray = Mathf.Clamp01((Mathf.Cos(a * 14f) - .35f) * 3f);
+            return new Color(1f, 1f, 1f, ray * (1f - r) * (1f - r) * .9f + (1f - r) * .12f);
+        }, 2);
 
         // Gold coin with a darker rim and a raised inner ring.
         public static Texture2D Coin(int size) => Paint(size, (x, y) =>
