@@ -115,3 +115,6 @@ InitTestScene*.unity*
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Store videos are large and regenerable (see StoreMedia/SUBMISSION.md)
+/StoreMedia/*.mp4

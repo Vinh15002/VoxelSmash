@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,30 @@ namespace VoxelSmash.Game
         static Sprite rounded;
 
         public static Font Font => font ??= Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+
+        // Desktop web is landscape-first; the UI switches layouts on the window's shape.
+        public static bool Landscape => Screen.width > Screen.height * 1.05f;
+
+        // Remembers each element's portrait placement (as built) and its landscape placement.
+        public sealed class Layout
+        {
+            readonly List<(RectTransform rt, Vector2 portrait, Vector2 landscape, Vector2 portraitSize, Vector2 landscapeSize)> items = new();
+
+            public RectTransform Add(RectTransform rt, Vector2 landscape, Vector2? landscapeSize = null)
+            {
+                items.Add((rt, rt.anchoredPosition, landscape, rt.sizeDelta, landscapeSize ?? rt.sizeDelta));
+                return rt;
+            }
+
+            public void Apply(bool landscape)
+            {
+                foreach (var (rt, portrait, land, portraitSize, landSize) in items)
+                {
+                    rt.anchoredPosition = landscape ? land : portrait;
+                    rt.sizeDelta = landscape ? landSize : portraitSize;
+                }
+            }
+        }
 
         public static RectTransform Rect(string name, Transform parent, Vector2 anchorMin, Vector2 anchorMax, Vector2 offsetMin, Vector2 offsetMax)
         {
@@ -145,6 +170,27 @@ namespace VoxelSmash.Game
             bool inside = r < (tooth ? .47f : .36f) && r > .15f;
             return inside ? Color.white : Color.clear;
         }, 4);
+
+        // Five-pointed star, white on transparent (tinted per use).
+        public static Texture2D Star(int size) => Paint(size, (x, y) =>
+        {
+            var p = new Vector2(x / size - .5f, y / size - .48f);
+            float a = Mathf.Atan2(p.x, p.y), sector = Mathf.PI * 2f / 5f;
+            float k = Mathf.Abs(Mathf.Repeat(a + sector * .5f, sector) - sector * .5f) / (sector * .5f);
+            float radius = Mathf.Lerp(.47f, .2f, k);
+            return p.magnitude < radius ? Color.white : Color.clear;
+        }, 4);
+
+        // Gold coin with a darker rim and a raised inner ring.
+        public static Texture2D Coin(int size) => Paint(size, (x, y) =>
+        {
+            float d = new Vector2(x / size - .5f, y / size - .5f).magnitude;
+            if (d > .47f) return Color.clear;
+            if (d > .4f) return new Color(.80f, .52f, .08f);
+            if (d > .33f) return new Color(1f, .82f, .2f);
+            if (d > .28f) return new Color(.88f, .62f, .1f);
+            return new Color(1f, .78f, .16f);
+        }, 3);
 
         // Cartoon pointing hand (index finger up), white with a navy outline and a blue cuff.
         // The fingertip sits at (HandTip.x, HandTip.y) in normalized texture coordinates.

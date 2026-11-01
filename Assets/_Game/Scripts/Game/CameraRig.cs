@@ -3,8 +3,9 @@ using VoxelSmash.Core;
 
 namespace VoxelSmash.Game
 {
-    // Fits the sculpture into the screen band between the HUD and the bottom panel, then shifts the
-    // projection so that band's centre is the visual centre. Also owns hit shake and the victory orbit.
+    // Fits the sculpture into the clear rectangle the HUD leaves (between the top bar and the weapon
+    // panel, which sits below in portrait and to the right in landscape), then shifts the projection
+    // so that rectangle's centre is the visual centre. Also owns hit shake and the victory orbit.
     [RequireComponent(typeof(Camera))]
     public sealed class CameraRig : MonoBehaviour
     {
@@ -12,18 +13,20 @@ namespace VoxelSmash.Game
 
         Camera cam;
         Vector3 target;
-        float viewOffsetNdc, shake;
+        float viewOffsetNdc, viewOffsetXNdc, shake;
         float orbitTime = -1f;
         Vector3 orbitStart;
 
         public Camera Camera => cam ? cam : cam = GetComponent<Camera>();
 
-        public void Fit(TargetFrame frame, float topPx, float bottomPx, float sidePx)
+        // Edges are screen pixels: top/bottom measured from the top, left/right from the left.
+        // Width/height default to the screen; media capture passes its render-texture size.
+        public void Fit(TargetFrame frame, float topPx, float bottomPx, float leftPx, float rightPx, float width = 0f, float height = 0f)
         {
             var c = Camera;
             c.fieldOfView = 37f;
-            float w = Screen.width, h = Screen.height;
-            float availableHeight = Mathf.Max(24f, bottomPx - topPx), availableWidth = Mathf.Max(24f, w - sidePx * 2f);
+            float w = width > 0f ? width : Screen.width, h = height > 0f ? height : Screen.height;
+            float availableHeight = Mathf.Max(24f, bottomPx - topPx), availableWidth = Mathf.Max(24f, rightPx - leftPx);
             float tan = Mathf.Tan(c.fieldOfView * .5f * Mathf.Deg2Rad);
             float distance = Mathf.Max(frame.height / (2f * tan) * h / availableHeight,
                 frame.width / (2f * tan * c.aspect) * w / availableWidth);
@@ -34,6 +37,7 @@ namespace VoxelSmash.Game
             // Screen y grows downward in the layout; NDC y grows upward.
             float centerFromTop = (topPx + bottomPx) * .5f;
             viewOffsetNdc = 2f * (h * .5f - centerFromTop) / h;
+            viewOffsetXNdc = 2f * ((leftPx + rightPx) * .5f - w * .5f) / w;
             orbitTime = -1f;
             ApplyProjection(0f, 0f);
         }
@@ -52,7 +56,7 @@ namespace VoxelSmash.Game
             c.ResetProjectionMatrix();
             var p = c.projectionMatrix;
             // Adding d to m02/m12 moves the image by -d in NDC.
-            p.m02 = -jitterX;
+            p.m02 = -(viewOffsetXNdc + jitterX);
             p.m12 = -(viewOffsetNdc + jitterY);
             c.projectionMatrix = p;
         }

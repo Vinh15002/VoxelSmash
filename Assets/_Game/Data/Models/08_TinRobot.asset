@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 796d380692080574b938d0b017f0982f, type: 3}
-  m_Name: 07_TinRobot
+  m_Name: 08_TinRobot
   m_EditorClassIdentifier: VoxelSmash.Core::VoxelSmash.Core.VoxelModel
   displayName: Tin Robot
   voxelSize: 0.1

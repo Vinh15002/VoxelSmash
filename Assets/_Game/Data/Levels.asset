@@ -19,6 +19,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4a5b0ef6ac366ab42be8d193ce7137cc, type: 2}
   - {fileID: 11400000, guid: 8d659861fbb0c3a4b95f630cea2c5944, type: 2}
   - {fileID: 11400000, guid: e6b21f34219e1b34b97b4c4c443bc5a9, type: 2}
-  - {fileID: 11400000, guid: 7f4fc68b280d81c47bccdec256a8200c, type: 2}
-  - {fileID: 11400000, guid: 9973ae7d946cf5c48bedb979b332ce0e, type: 2}
+  - {fileID: 11400000, guid: 11947a2d3b6d42e4d8a1d78b09a2290f, type: 2}
+  - {fileID: 11400000, guid: e1a8925f4e98b63408f88fe4a60cea7c, type: 2}
+  - {fileID: 11400000, guid: 6e6c64b6abffddc4e87193ae286ac453, type: 2}
+  - {fileID: 11400000, guid: baa610bbd7316f541ba4e7a343d508a1, type: 2}
+  - {fileID: 11400000, guid: 0f568bb61d509694fb14fcb75837414d, type: 2}
+  - {fileID: 11400000, guid: 23dec4d502c15fa4b99c4972b3641289, type: 2}
+  - {fileID: 11400000, guid: 9a34b004ee5977c44bfccb82b48a563e, type: 2}
+  bosses:
+  - {fileID: 11400000, guid: 6e0b1e5df045e71418c74c34402b28cd, type: 2}
+  - {fileID: 11400000, guid: 9fe53f645656f9848a886975c87788ae, type: 2}
+  - {fileID: 11400000, guid: 813d3b5828fc5534dbff900d5f0ba922, type: 2}
   campaignLength: 42

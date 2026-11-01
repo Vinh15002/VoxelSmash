@@ -18,7 +18,7 @@ namespace VoxelSmash.EditorTools
     {
         const string Root = "Assets/_Game";
         const string ScenePath = Root + "/Scenes/Game.unity";
-        const string ApkPath = "Builds/VoxelSmash.apk";
+        const string ApkPath = "Builds/VoxelSmash.apk", WebGLPath = "Builds/WebGL";
 
         [MenuItem("Voxel Smash/Rebuild Content And Scene")]
         public static void Run()
@@ -51,10 +51,70 @@ namespace VoxelSmash.EditorTools
             if (Application.isBatchMode && report.summary.result != BuildResult.Succeeded) EditorApplication.Exit(1);
         }
 
+        // Release WebGL build for CrazyGames: Brotli-compressed, their template (needed for the SDK on
+        // localhost) and explicitly thrown exceptions: with none at all, any throw, even a handled one,
+        // halts the page.
+        // Zipped next to the build folder for upload.
+        // Batch: Unity -batchmode -quit -buildTarget WebGL -executeMethod VoxelSmash.EditorTools.ProjectSetup.BuildWebGL
+        [MenuItem("Voxel Smash/Build WebGL (CrazyGames)")]
+        public static void BuildWebGL() => BuildWebGL(false);
+
+        // Development build with full exception stack traces, for diagnosing browser-only failures.
+        [MenuItem("Voxel Smash/Build WebGL (debug)")]
+        public static void BuildWebGLDebug() => BuildWebGL(true);
+
+        static void BuildWebGL(bool debug)
+        {
+            ConfigurePlayer();
+            PlayerSettings.WebGL.template = "PROJECT:CrazyGames";
+            PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Brotli;
+            PlayerSettings.WebGL.decompressionFallback = false;
+            PlayerSettings.WebGL.exceptionSupport = debug ? WebGLExceptionSupport.FullWithStacktrace : WebGLExceptionSupport.ExplicitlyThrownExceptionsOnly;
+            PlayerSettings.WebGL.dataCaching = true;
+            PlayerSettings.WebGL.nameFilesAsHashes = true;
+            PlayerSettings.WebGL.showDiagnostics = false;
+            PlayerSettings.SetManagedStrippingLevel(UnityEditor.Build.NamedBuildTarget.WebGL, ManagedStrippingLevel.Medium);
+            PlayerSettings.runInBackground = false;
+            string path = debug ? WebGLPath + "Debug" : WebGLPath;
+            if (Directory.Exists(path)) Directory.Delete(path, true);
+            var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+            {
+                scenes = new[] { ScenePath },
+                locationPathName = path,
+                target = BuildTarget.WebGL,
+                options = debug ? BuildOptions.Development : BuildOptions.None
+            });
+            Debug.Log($"[VoxelSmash] WebGL build {report.summary.result}: {report.summary.totalSize / 1048576f:F1} MB");
+            if (!debug && report.summary.result == BuildResult.Succeeded)
+            {
+                string zip = WebGLPath + ".zip";
+                if (File.Exists(zip)) File.Delete(zip);
+                System.IO.Compression.ZipFile.CreateFromDirectory(WebGLPath, zip);
+                Debug.Log($"[VoxelSmash] Zipped {zip}: {new FileInfo(zip).Length / 1048576f:F1} MB");
+            }
+            if (Application.isBatchMode && report.summary.result != BuildResult.Succeeded) EditorApplication.Exit(1);
+        }
+
+        // Windows player used only to record store media (MediaCapture): run it with -capture <dir> ...
+        [MenuItem("Voxel Smash/Build Media Capture Player")]
+        public static void BuildCapture()
+        {
+            ConfigurePlayer();
+            var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+            {
+                scenes = new[] { ScenePath },
+                locationPathName = "Builds/Capture/ScrapyardSmash.exe",
+                target = BuildTarget.StandaloneWindows64,
+                options = BuildOptions.None
+            });
+            Debug.Log($"[VoxelSmash] Capture build {report.summary.result}");
+            if (Application.isBatchMode && report.summary.result != BuildResult.Succeeded) EditorApplication.Exit(1);
+        }
+
         static void ConfigurePlayer()
         {
             PlayerSettings.companyName = "VoxelSmash";
-            PlayerSettings.productName = "Voxel Smash";
+            PlayerSettings.productName = GameInfo.Name;
             PlayerSettings.SetApplicationIdentifier(UnityEditor.Build.NamedBuildTarget.Android, "com.voxelsmash.prototype");
             PlayerSettings.defaultInterfaceOrientation = UIOrientation.Portrait;
             PlayerSettings.SetScriptingBackend(UnityEditor.Build.NamedBuildTarget.Android, ScriptingImplementation.IL2CPP);
@@ -142,14 +202,22 @@ namespace VoxelSmash.EditorTools
                 paths.Add(path);
                 models[i] = Save(models[i], path);
             }
+            var bosses = SampleModels.Bosses();
+            for (int i = 0; i < bosses.Length; i++)
+            {
+                string path = $"{dir}/Boss{i + 1:00}_{bosses[i].name.Replace(" ", "")}.asset";
+                paths.Add(path);
+                bosses[i] = Save(bosses[i], path);
+            }
+            var list = ScriptableObject.CreateInstance<LevelList>();
+            list.levels = models;
+            list.bosses = bosses;
             // Drop models left over from an earlier ordering so the folder matches the level list.
             foreach (var guid in AssetDatabase.FindAssets("t:VoxelModel", new[] { dir }))
             {
                 string path = AssetDatabase.GUIDToAssetPath(guid);
                 if (!paths.Contains(path)) AssetDatabase.DeleteAsset(path);
             }
-            var list = ScriptableObject.CreateInstance<LevelList>();
-            list.levels = models;
             return Save(list, Root + "/Data/Levels.asset");
         }
 

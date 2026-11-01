@@ -19,7 +19,7 @@ namespace VoxelSmash.Tests
         [Test]
         public void SampleModelsAreFullySupported()
         {
-            foreach (var model in SampleModels.All())
+            foreach (var model in SampleModels.All().Concat(SampleModels.Bosses()))
             {
                 var cells = new HashSet<Vector3Int>(model.voxels.Select(v => new Vector3Int(v.x, v.y, v.z)));
                 var reached = new HashSet<Vector3Int>(cells.Where(c => c.y == 0));

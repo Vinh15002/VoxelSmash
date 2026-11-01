@@ -118,6 +118,82 @@ namespace VoxelSmash.EditorTools
                 }
             }
 
+            // A hollow box with walls `t` thick: containers and vehicle bodies stay light on cube count.
+            public void Shell(int x0, int y0, int z0, int sx, int sy, int sz, int t, byte c)
+            {
+                for (int x = x0; x < x0 + sx; x++)
+                for (int y = y0; y < y0 + sy; y++)
+                for (int z = z0; z < z0 + sz; z++)
+                {
+                    bool inside = x >= x0 + t && x < x0 + sx - t && y >= y0 + t && y < y0 + sy - t && z >= z0 + t && z < z0 + sz - t;
+                    if (!inside) Set(x, y, z, c);
+                }
+            }
+
+            // Every cell becomes a factor-sized block (for giant versions of a model).
+            public Builder Scaled(int factor)
+            {
+                var big = new Builder();
+                foreach (var (cell, c) in cells)
+                    big.Box(cell.x * factor, cell.y * factor, cell.z * factor, factor, factor, factor, c);
+                return big;
+            }
+
+            static readonly Vector3Int[] Neighbours =
+            {
+                Vector3Int.right, Vector3Int.left, Vector3Int.up, Vector3Int.down, Vector3Int.forward, Vector3Int.back
+            };
+
+            // Drops every cell enclosed on all six sides, leaving a one-cell skin (big bosses stay light).
+            // Hollowing cuts the skins of touching parts apart (an arm's end against the torso), so any
+            // skin cell no longer joined to the ground gets back the hidden inner cells on its path down.
+            public Builder Hollow()
+            {
+                var keep = new Builder();
+                foreach (var (cell, c) in cells)
+                {
+                    bool enclosed = true;
+                    foreach (var n in Neighbours)
+                        if (!cells.ContainsKey(cell + n)) { enclosed = false; break; }
+                    if (!enclosed) keep.cells[cell] = c;
+                }
+
+                int floor = cells.Keys.Min(k => k.y);
+                var parent = Flood(cells.Keys.Where(k => k.y == floor), cells.ContainsKey, record: true);
+                var reached = Flood(keep.cells.Keys.Where(k => k.y == floor), keep.cells.ContainsKey, record: false);
+                foreach (var cell in keep.cells.Keys.ToList())
+                {
+                    var c = cell;
+                    while (!reached.ContainsKey(c))
+                    {
+                        reached[c] = c;
+                        keep.cells[c] = cells[c];
+                        c = parent[c];
+                    }
+                }
+                return keep;
+            }
+
+            // Breadth-first flood over face neighbours; maps each reached cell to the cell it came from.
+            static Dictionary<Vector3Int, Vector3Int> Flood(IEnumerable<Vector3Int> seeds, System.Func<Vector3Int, bool> solid, bool record)
+            {
+                var from = new Dictionary<Vector3Int, Vector3Int>();
+                var queue = new Queue<Vector3Int>();
+                foreach (var s in seeds) { from[s] = s; queue.Enqueue(s); }
+                while (queue.Count > 0)
+                {
+                    var c = queue.Dequeue();
+                    foreach (var n in Neighbours)
+                    {
+                        var next = c + n;
+                        if (from.ContainsKey(next) || !solid(next)) continue;
+                        from[next] = record ? c : next;
+                        queue.Enqueue(next);
+                    }
+                }
+                return from;
+            }
+
             public VoxelModel Finish(string name, int seed)
             {
                 // Centre on x/z and rest the lowest layer on y = 0.
@@ -159,8 +235,12 @@ namespace VoxelSmash.EditorTools
 
         public static VoxelModel[] All() => new[]
         {
-            CandyTower(), RustyCar(), Mushroom(), RetroTv(), TwinArch(), OldFridge(), Robot(), OilDrums()
+            CandyTower(), RustyCar(), Mushroom(), RetroTv(), TwinArch(), OldFridge(), WashingMachine(), Robot(),
+            VendingMachine(), OilDrums(), ArcadeCabinet(), Dumpster(), TrafficLight()
         };
+
+        // Boss levels (every fifth): big, mostly hollow vehicles and a giant robot.
+        public static VoxelModel[] Bosses() => new[] { GarbageTruck(), SchoolBus(), MegaRobot() };
 
         // Echoes the reference's first level: purple feet, striped candy legs, a block body and a gold accent.
         static VoxelModel CandyTower()
@@ -278,7 +358,11 @@ namespace VoxelSmash.EditorTools
             return b.Finish("Old Fridge", 7);
         }
 
-        static VoxelModel Robot()
+        static VoxelModel Robot() => RobotShape().Finish("Tin Robot", 4);
+
+        static VoxelModel MegaRobot() => RobotShape().Scaled(2).Hollow().Finish("Mega Robot", 14);
+
+        static Builder RobotShape()
         {
             var b = new Builder();
             b.Box(-5, 0, -3, 4, 3, 6, Black);
@@ -301,7 +385,147 @@ namespace VoxelSmash.EditorTools
             b.Box(-1, 22, 3, 3, 1, 1, Slate);
             b.Box(0, 28, 0, 1, 3, 1, Steel);
             b.Box(-1, 31, -1, 3, 2, 3, Red);
-            return b.Finish("Tin Robot", 4);
+            return b;
+        }
+
+        // Front-loading washer: porthole door with sloshing water, control strip and knobs.
+        static VoxelModel WashingMachine()
+        {
+            var b = new Builder();
+            foreach (int x in new[] { -8, 6 })
+            foreach (int z in new[] { -6, 4 })
+                b.Box(x, 0, z, 2, 1, 2, Black);
+            b.Box(-8, 1, -7, 16, 19, 14, Appliance);
+            b.Paint(-8, 1, -7, 16, 19, 14, (x, y, z) => y < 5 ? Rusty(x, y, z, 31, .35f) : null);
+            b.Paint(-8, 16, 6, 16, 4, 1, (x, _, _) => x is >= -6 and <= -2 ? DarkGlass : Slate);
+            b.Box(2, 17, 7, 2, 2, 1, Chrome);
+            b.Box(5, 17, 7, 2, 2, 1, Chrome);
+            b.Disc(0, 9, 6, 2, 6.2f, d => d > 5f ? Chrome : (byte)0);
+            b.Paint(-6, 3, 6, 13, 13, 2, (x, y, _) =>
+            {
+                float d = Mathf.Sqrt(x * x + (y - 9) * (y - 9));
+                if (d > 5f) return null;
+                return y < 8 ? Blue : y == 8 ? Cream : DarkGlass;
+            });
+            return b.Finish("Washing Machine", 15);
+        }
+
+        // Soda vending machine: glass front with rows of cans, button column and a lit sign.
+        static VoxelModel VendingMachine()
+        {
+            var b = new Builder();
+            b.Box(-8, 0, -6, 17, 2, 12, Black);
+            b.Box(-8, 2, -6, 17, 30, 12, Red);
+            byte[] cans = { Red, Blue, Gold, Green, Orange, White };
+            b.Paint(-6, 9, 5, 10, 19, 1, (x, y, _) =>
+                (y - 9) % 4 == 3 ? Slate : cans[Mathf.Abs(x * 7 + (y / 4) * 3) % cans.Length]);
+            b.Paint(-7, 8, 5, 12, 21, 1, (x, y, _) => x == -7 || x == 4 || y == 8 || y == 28 ? Chrome : null);
+            b.Paint(5, 10, 5, 3, 16, 1, (_, y, _) => y % 3 == 0 ? Lamp : Slate);
+            b.Box(5, 7, 6, 3, 2, 1, Black);                 // coin slot
+            b.Paint(-6, 3, 5, 10, 4, 1, (_, _, _) => Black);  // pickup tray
+            b.Paint(-8, 29, 5, 17, 3, 1, (x, _, _) => x % 4 == 0 ? Red : White);
+            b.Paint(-8, 2, -6, 17, 30, 12, (x, y, z) => z < 5 ? Rusty(x, y, z, 33, .12f) : null);
+            return b.Finish("Vending Machine", 16);
+        }
+
+        // Retro arcade cabinet: control deck with joystick, glowing screen and a lit marquee.
+        static VoxelModel ArcadeCabinet()
+        {
+            var b = new Builder();
+            b.Box(-7, 0, -6, 14, 13, 12, Purple);
+            b.Box(-7, 13, -6, 14, 3, 15, Purple);            // control deck juts forward
+            b.Paint(-7, 15, 6, 14, 1, 3, (_, _, _) => Black);
+            b.Box(-4, 16, 7, 1, 2, 1, Black);
+            b.Box(-5, 18, 6, 3, 2, 3, Red);                  // joystick ball
+            b.Box(1, 16, 7, 1, 1, 1, Gold);
+            b.Box(3, 16, 7, 1, 1, 1, Green);
+            b.Box(5, 16, 7, 1, 1, 1, Blue);
+            b.Box(-7, 16, -6, 14, 14, 11, Purple);
+            b.Paint(-6, 18, 4, 12, 11, 1, (x, y, _) =>
+                x == -6 || x == 5 || y == 18 || y == 28 ? Black : (x + y) % 5 == 0 ? ScreenGlow : Screen);
+            b.Box(-7, 30, -6, 14, 5, 12, Black);
+            b.Paint(-7, 30, 5, 14, 5, 1, (x, y, _) => y == 30 || y == 34 ? Black : (x + 20) % 4 < 2 ? Lamp : Orange);
+            b.Paint(-7, 0, -6, 1, 30, 12, (_, y, z) => (y + z) % 6 < 2 ? Pink : null);
+            b.Paint(6, 0, -6, 1, 30, 12, (_, y, z) => (y + z) % 6 < 2 ? Pink : null);
+            return b.Finish("Arcade Cabinet", 17);
+        }
+
+        // Big wheeled dumpster with a propped lid and bin bags poking out.
+        static VoxelModel Dumpster()
+        {
+            var b = new Builder();
+            foreach (int x in new[] { -13, 11 })
+            foreach (int z in new[] { -6, 5 })
+                b.Box(x, 0, z, 2, 2, 2, Black);
+            b.Shell(-15, 2, -8, 30, 13, 16, 2, Green);
+            b.Paint(-15, 2, -8, 30, 13, 16, (x, y, z) => x % 5 == 0 ? (byte?)DarkGlass : Rusty(x, y, z, 35, .3f));
+            for (int x = -12; x <= 10; x += 5) b.Cylinder(x, 0, 3.4f, 13, 3, (dx, dy, dz) => Hash(x + dx, dy, dz, 36) < .2f ? Slate : Black);
+            for (int i = 0; i < 9; i++) b.Box(-15, 15 + i / 3, -8 + i * 2, 30, 2, 2, Black);   // lid propped open, steps overlap
+            b.Paint(-15, 15, -8, 30, 4, 18, (x, y, z) => x % 6 == 0 ? Steel : null);
+            return b.Finish("Dumpster", 18);
+        }
+
+        // Knocked-off traffic light on a weighted base: cut the pole and the head drops.
+        static VoxelModel TrafficLight()
+        {
+            var b = new Builder();
+            b.Box(-5, 0, -5, 11, 3, 11, Slate);
+            b.Paint(-5, 0, -5, 11, 3, 11, (x, y, z) => (x + z) % 4 == 0 && y == 2 ? Hazard : null);
+            b.Box(-1, 3, -1, 3, 24, 3, Steel);
+            b.Box(-4, 27, -3, 9, 22, 7, Hazard);
+            byte[] lamps = { Green, Gold, Red };
+            for (int i = 0; i < 3; i++)
+            {
+                int cy = 31 + i * 6;
+                b.Disc(0, cy, 4, 1, 2.6f, _ => lamps[i]);
+                b.Box(-3, cy + 3, 4, 7, 1, 2, Black);       // visor
+            }
+            b.Paint(-4, 27, -3, 9, 22, 7, (x, y, z) => z < 3 ? Rusty(x, y, z, 37, .2f) : null);
+            return b.Finish("Traffic Light", 19);
+        }
+
+        // Boss: a garbage truck, hollow body with a compactor at the back.
+        static VoxelModel GarbageTruck()
+        {
+            var b = new Builder();
+            b.Box(-24, 4, -6, 48, 3, 12, Black);              // chassis
+            b.Shell(-24, 7, -9, 32, 20, 18, 2, Green);         // body
+            b.Paint(-24, 7, -9, 32, 20, 18, (x, y, z) => (x + 24) % 4 == 0 ? (byte?)DarkGlass : Rusty(x, y, z, 41, .2f));
+            b.Paint(-24, 7, -9, 1, 20, 18, (_, y, z) => (y + z) % 6 < 3 ? Hazard : Black);
+            b.Shell(9, 7, -8, 14, 14, 16, 2, Appliance);      // cab
+            b.Box(9, 21, -7, 9, 2, 14, Appliance);
+            b.Paint(14, 13, -9, 9, 6, 18, (x, _, z) => z == -8 || z == 7 || x == 22 ? Glass : null);
+            b.Box(23, 7, -8, 1, 3, 16, Chrome);
+            b.Box(23, 11, -6, 1, 2, 3, Lamp);
+            b.Box(23, 11, 3, 1, 2, 3, Lamp);
+            b.Box(-4, 27, -2, 4, 2, 4, Orange);               // beacon
+            foreach (int wx in new[] { -18, -8, 16 })
+            foreach (int wz in new[] { -10, 7 })
+                b.Disc(wx, 4, wz, 3, 4.6f, d => d < 2f ? Chrome : Tyre);
+            return b.Finish("Garbage Truck", 21);
+        }
+
+        // Boss: a hollow yellow school bus with a window row and black trim.
+        static VoxelModel SchoolBus()
+        {
+            var b = new Builder();
+            b.Shell(-24, 4, -8, 48, 18, 16, 2, Hazard);
+            b.Paint(-24, 4, -8, 48, 18, 16, (x, y, z) =>
+                y == 10 || y == 11 ? Black
+                : y >= 13 && y <= 18 && (z == -8 || z == 7) && (x + 24) % 6 != 0 ? Glass
+                : x == 23 && y >= 13 && y <= 18 && z > -7 && z < 6 ? Glass
+                : Rusty(x, y, z, 43, .15f));
+            b.Box(24, 4, -8, 1, 3, 16, Black);
+            b.Box(24, 7, -6, 1, 2, 2, Lamp);
+            b.Box(24, 7, 4, 1, 2, 2, Lamp);
+            b.Box(-25, 4, -8, 1, 3, 16, Black);
+            b.Box(-25, 8, -7, 1, 2, 2, Red);
+            b.Box(-25, 8, 5, 1, 2, 2, Red);
+            b.Box(-6, 22, -6, 12, 1, 12, Appliance);         // roof hatch
+            foreach (int wx in new[] { -15, 14 })
+            foreach (int wz in new[] { -10, 7 })
+                b.Disc(wx, 4, wz, 3, 4.6f, d => d < 2f ? Chrome : Tyre);
+            return b.Finish("School Bus", 22);
         }
 
         // Steel drums stacked on a pallet: three below, two above resting in the gaps.
