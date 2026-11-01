@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
 using UnityEditor.SceneManagement;
@@ -190,12 +191,17 @@ namespace VoxelSmash.EditorTools
 
         static string WeaponPath(int index, string name) => $"{WeaponDir}/{index + 1:00}_{name.Replace(" ", "")}.asset";
 
+        // The 200-level campaign: the scrapyard's own procedural models plus the imported PixelLand
+        // set. Regular levels open with two scrapyard pieces, then mix one in every 12 PixelLand models
+        // (those ramp from small to large); bosses start with the scrapyard vehicles.
+        const int CampaignLength = 200, ScrapEvery = 12;
+
         static LevelList CreateLevels()
         {
             string dir = Root + "/Data/Models";
             Directory.CreateDirectory(dir);
             var models = SampleModels.All();
-            var paths = new System.Collections.Generic.HashSet<string>();
+            var paths = new System.Collections.Generic.HashSet<string>(PixelLandImporter.AssetPaths());
             for (int i = 0; i < models.Length; i++)
             {
                 string path = $"{dir}/{i + 1:00}_{models[i].name.Replace(" ", "")}.asset";
@@ -209,9 +215,20 @@ namespace VoxelSmash.EditorTools
                 paths.Add(path);
                 bosses[i] = Save(bosses[i], path);
             }
+            var (pixelRegular, pixelBosses) = PixelLandImporter.Load();
+            var regular = new System.Collections.Generic.List<VoxelModel> { models[0], models[1] };
+            int scrap = 2;
+            for (int i = 0; i < pixelRegular.Length; i++)
+            {
+                regular.Add(pixelRegular[i]);
+                if ((i + 1) % ScrapEvery == 0 && scrap < models.Length) regular.Add(models[scrap++]);
+            }
+            while (scrap < models.Length) regular.Add(models[scrap++]);
             var list = ScriptableObject.CreateInstance<LevelList>();
-            list.levels = models;
-            list.bosses = bosses;
+            list.levels = regular.ToArray();
+            list.bosses = bosses.Concat(pixelBosses).ToArray();
+            list.campaignLength = CampaignLength;
+            Debug.Log($"[VoxelSmash] Campaign: {list.levels.Length} regular + {list.bosses.Length} boss models for {CampaignLength} levels");
             // Drop models left over from an earlier ordering so the folder matches the level list.
             foreach (var guid in AssetDatabase.FindAssets("t:VoxelModel", new[] { dir }))
             {

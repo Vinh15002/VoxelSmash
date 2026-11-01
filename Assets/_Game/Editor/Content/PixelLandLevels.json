@@ -1,0 +1,927 @@
+{
+ "source": "PixelLand02062026/Assets/Resources/Levels",
+ "regular": [
+  {
+   "file": "level_0565.json",
+   "name": "Gift Pile",
+   "voxels": 3587
+  },
+  {
+   "file": "level_0505.json",
+   "name": "Corn Bowl",
+   "voxels": 3590
+  },
+  {
+   "file": "level_0673.json",
+   "name": "Jade Dragon",
+   "voxels": 3612
+  },
+  {
+   "file": "level_0830.json",
+   "name": "Tape Roll",
+   "voxels": 3621
+  },
+  {
+   "file": "level_0652.json",
+   "name": "Steel Toaster",
+   "voxels": 3627
+  },
+  {
+   "file": "level_0674.json",
+   "name": "Market Stall",
+   "voxels": 3628
+  },
+  {
+   "file": "level_0545.json",
+   "name": "Toy Train",
+   "voxels": 3630
+  },
+  {
+   "file": "level_0538.json",
+   "name": "Yarn Ball",
+   "voxels": 3652
+  },
+  {
+   "file": "level_0183.json",
+   "name": "Melon",
+   "voxels": 3687
+  },
+  {
+   "file": "level_0844.json",
+   "name": "Monster Truck",
+   "voxels": 3717
+  },
+  {
+   "file": "level_0320.json",
+   "name": "Rainbow Caterpillar",
+   "voxels": 3719
+  },
+  {
+   "file": "level_0779.json",
+   "name": "Seahorse",
+   "voxels": 3748
+  },
+  {
+   "file": "level_0613.json",
+   "name": "Ancient Shrine",
+   "voxels": 3750
+  },
+  {
+   "file": "level_0560.json",
+   "name": "Painted Egg",
+   "voxels": 3768
+  },
+  {
+   "file": "level_0072.json",
+   "name": "Party Cake",
+   "voxels": 3791
+  },
+  {
+   "file": "level_0076.json",
+   "name": "Cinnamon Roll",
+   "voxels": 3794
+  },
+  {
+   "file": "level_0553.json",
+   "name": "Red Sedan",
+   "voxels": 3795
+  },
+  {
+   "file": "level_0824.json",
+   "name": "Lab Robot",
+   "voxels": 3818
+  },
+  {
+   "file": "level_0042.json",
+   "name": "Cherry Plate",
+   "voxels": 3831
+  },
+  {
+   "file": "level_0018.json",
+   "name": "Rooster",
+   "voxels": 3848
+  },
+  {
+   "file": "level_0544.json",
+   "name": "Flying Saucer",
+   "voxels": 3873
+  },
+  {
+   "file": "level_0095.json",
+   "name": "Gravestone",
+   "voxels": 3882
+  },
+  {
+   "file": "level_0015.json",
+   "name": "Parrot",
+   "voxels": 3921
+  },
+  {
+   "file": "level_0045.json",
+   "name": "Tanuki",
+   "voxels": 3924
+  },
+  {
+   "file": "level_0835.json",
+   "name": "Lime",
+   "voxels": 3930
+  },
+  {
+   "file": "level_0676.json",
+   "name": "Red Teddy",
+   "voxels": 3934
+  },
+  {
+   "file": "level_0595.json",
+   "name": "Blue Ball",
+   "voxels": 3935
+  },
+  {
+   "file": "level_0815.json",
+   "name": "Cake Slice",
+   "voxels": 3935
+  },
+  {
+   "file": "level_0285.json",
+   "name": "Party Table",
+   "voxels": 3944
+  },
+  {
+   "file": "level_0619.json",
+   "name": "Garden Patch",
+   "voxels": 3950
+  },
+  {
+   "file": "level_0411.json",
+   "name": "Toy Castle",
+   "voxels": 3958
+  },
+  {
+   "file": "level_0755.json",
+   "name": "Hot Sauce",
+   "voxels": 3975
+  },
+  {
+   "file": "level_0831.json",
+   "name": "Painted Frame",
+   "voxels": 3975
+  },
+  {
+   "file": "level_0075.json",
+   "name": "Treasure Barrel",
+   "voxels": 3977
+  },
+  {
+   "file": "level_0150.json",
+   "name": "Popsicle",
+   "voxels": 4001
+  },
+  {
+   "file": "level_0326.json",
+   "name": "Fish Pair",
+   "voxels": 4004
+  },
+  {
+   "file": "level_0337.json",
+   "name": "Bunny Egg",
+   "voxels": 4006
+  },
+  {
+   "file": "level_0083.json",
+   "name": "Cowboy Kid",
+   "voxels": 4012
+  },
+  {
+   "file": "level_0764.json",
+   "name": "Bumblebee",
+   "voxels": 4042
+  },
+  {
+   "file": "level_0734.json",
+   "name": "Black Cat",
+   "voxels": 4053
+  },
+  {
+   "file": "level_0617.json",
+   "name": "Green Dino",
+   "voxels": 4058
+  },
+  {
+   "file": "level_0621.json",
+   "name": "Easter Egg",
+   "voxels": 4060
+  },
+  {
+   "file": "level_0584.json",
+   "name": "Red Monster",
+   "voxels": 4064
+  },
+  {
+   "file": "level_0737.json",
+   "name": "Fruit Bowl",
+   "voxels": 4073
+  },
+  {
+   "file": "level_0739.json",
+   "name": "Juice Bottle",
+   "voxels": 4092
+  },
+  {
+   "file": "level_0589.json",
+   "name": "Puzzle Cube",
+   "voxels": 4096
+  },
+  {
+   "file": "level_0396.json",
+   "name": "Omelette Plate",
+   "voxels": 4101
+  },
+  {
+   "file": "level_0650.json",
+   "name": "Orange Owl",
+   "voxels": 4107
+  },
+  {
+   "file": "level_0390.json",
+   "name": "Pink Boot",
+   "voxels": 4109
+  },
+  {
+   "file": "level_0078.json",
+   "name": "Rainbow Cupcake",
+   "voxels": 4124
+  },
+  {
+   "file": "level_0620.json",
+   "name": "Wizard Hat",
+   "voxels": 4124
+  },
+  {
+   "file": "level_0593.json",
+   "name": "Flag Crate",
+   "voxels": 4125
+  },
+  {
+   "file": "level_0089.json",
+   "name": "Orange",
+   "voxels": 4131
+  },
+  {
+   "file": "level_0677.json",
+   "name": "Cottage",
+   "voxels": 4140
+  },
+  {
+   "file": "level_0563.json",
+   "name": "Blue Pickup",
+   "voxels": 4142
+  },
+  {
+   "file": "level_0679.json",
+   "name": "Gift Box",
+   "voxels": 4156
+  },
+  {
+   "file": "level_0839.json",
+   "name": "Blue Wheel",
+   "voxels": 4165
+  },
+  {
+   "file": "level_0628.json",
+   "name": "Bee",
+   "voxels": 4172
+  },
+  {
+   "file": "level_0261.json",
+   "name": "Tribal Drum",
+   "voxels": 4180
+  },
+  {
+   "file": "level_0697.json",
+   "name": "Water Tower",
+   "voxels": 4208
+  },
+  {
+   "file": "level_0704.json",
+   "name": "Kettlebell",
+   "voxels": 4214
+  },
+  {
+   "file": "level_0258.json",
+   "name": "Wooden Egg",
+   "voxels": 4216
+  },
+  {
+   "file": "level_0314.json",
+   "name": "Pickle",
+   "voxels": 4249
+  },
+  {
+   "file": "level_0849.json",
+   "name": "Turtle",
+   "voxels": 4295
+  },
+  {
+   "file": "level_0794.json",
+   "name": "Lilac Bear",
+   "voxels": 4315
+  },
+  {
+   "file": "level_0368.json",
+   "name": "Blue Hippo",
+   "voxels": 4326
+  },
+  {
+   "file": "level_0638.json",
+   "name": "Yellow Dragon",
+   "voxels": 4326
+  },
+  {
+   "file": "level_0699.json",
+   "name": "Spinning Top",
+   "voxels": 4338
+  },
+  {
+   "file": "level_0629.json",
+   "name": "Pear",
+   "voxels": 4358
+  },
+  {
+   "file": "level_0605.json",
+   "name": "Spotted Frog",
+   "voxels": 4368
+  },
+  {
+   "file": "level_0656.json",
+   "name": "Hot Air Balloon",
+   "voxels": 4370
+  },
+  {
+   "file": "level_0165.json",
+   "name": "Unicorn",
+   "voxels": 4399
+  },
+  {
+   "file": "level_0279.json",
+   "name": "Firework Rocket",
+   "voxels": 4412
+  },
+  {
+   "file": "level_0751.json",
+   "name": "Book Stack",
+   "voxels": 4425
+  },
+  {
+   "file": "level_0683.json",
+   "name": "Toaster",
+   "voxels": 4442
+  },
+  {
+   "file": "level_0749.json",
+   "name": "Safe",
+   "voxels": 4454
+  },
+  {
+   "file": "level_0104.json",
+   "name": "Orange Snowman",
+   "voxels": 4495
+  },
+  {
+   "file": "level_0138.json",
+   "name": "Pink Float",
+   "voxels": 4515
+  },
+  {
+   "file": "level_0336.json",
+   "name": "Teddy Picnic",
+   "voxels": 4517
+  },
+  {
+   "file": "level_0227.json",
+   "name": "Rainbow Snail",
+   "voxels": 4524
+  },
+  {
+   "file": "level_0796.json",
+   "name": "Blue Blob",
+   "voxels": 4551
+  },
+  {
+   "file": "level_0415.json",
+   "name": "Duck Boat",
+   "voxels": 4552
+  },
+  {
+   "file": "level_0410.json",
+   "name": "Toy Boat",
+   "voxels": 4585
+  },
+  {
+   "file": "level_0664.json",
+   "name": "Steam Roller",
+   "voxels": 4638
+  },
+  {
+   "file": "level_0748.json",
+   "name": "Cracked Egg",
+   "voxels": 4652
+  },
+  {
+   "file": "level_0483.json",
+   "name": "Polar Bear",
+   "voxels": 4656
+  },
+  {
+   "file": "level_0807.json",
+   "name": "Circus Lion",
+   "voxels": 4677
+  },
+  {
+   "file": "level_0324.json",
+   "name": "Pastel Unicorn",
+   "voxels": 4678
+  },
+  {
+   "file": "level_0535.json",
+   "name": "Cow",
+   "voxels": 4679
+  },
+  {
+   "file": "level_0721.json",
+   "name": "Green Bus",
+   "voxels": 4682
+  },
+  {
+   "file": "level_0820.json",
+   "name": "Coconut",
+   "voxels": 4684
+  },
+  {
+   "file": "level_0533.json",
+   "name": "Green Dino Plush",
+   "voxels": 4688
+  },
+  {
+   "file": "level_0700.json",
+   "name": "Pink Teddy",
+   "voxels": 4693
+  },
+  {
+   "file": "level_0706.json",
+   "name": "Strawberry Cake",
+   "voxels": 4711
+  },
+  {
+   "file": "level_0665.json",
+   "name": "Globe",
+   "voxels": 4712
+  },
+  {
+   "file": "level_0713.json",
+   "name": "Rubber Duck",
+   "voxels": 4715
+  },
+  {
+   "file": "level_0772.json",
+   "name": "Monkey Face",
+   "voxels": 4722
+  },
+  {
+   "file": "level_0745.json",
+   "name": "Water Jug",
+   "voxels": 4743
+  },
+  {
+   "file": "level_0318.json",
+   "name": "Giraffe",
+   "voxels": 4749
+  },
+  {
+   "file": "level_0731.json",
+   "name": "Office Building",
+   "voxels": 4751
+  },
+  {
+   "file": "level_0377.json",
+   "name": "Yellow Tree",
+   "voxels": 4753
+  },
+  {
+   "file": "level_0634.json",
+   "name": "Snowman Gift",
+   "voxels": 4769
+  },
+  {
+   "file": "level_0598.json",
+   "name": "Blue Octopus",
+   "voxels": 4782
+  },
+  {
+   "file": "level_0838.json",
+   "name": "Space Robot",
+   "voxels": 4800
+  },
+  {
+   "file": "level_0742.json",
+   "name": "Tribal Chest",
+   "voxels": 4807
+  },
+  {
+   "file": "level_0743.json",
+   "name": "Cupcake Tower",
+   "voxels": 4825
+  },
+  {
+   "file": "level_0404.json",
+   "name": "Blue Racket",
+   "voxels": 4840
+  },
+  {
+   "file": "level_0351.json",
+   "name": "Cupcake",
+   "voxels": 4897
+  },
+  {
+   "file": "level_0695.json",
+   "name": "Blue House",
+   "voxels": 4914
+  },
+  {
+   "file": "level_0816.json",
+   "name": "Toy Cannon",
+   "voxels": 4926
+  },
+  {
+   "file": "level_0845.json",
+   "name": "Holly Ball",
+   "voxels": 4929
+  },
+  {
+   "file": "level_0718.json",
+   "name": "Pink Train",
+   "voxels": 5027
+  },
+  {
+   "file": "level_0802.json",
+   "name": "Purple Cheese",
+   "voxels": 5076
+  },
+  {
+   "file": "level_0810.json",
+   "name": "Race Kart",
+   "voxels": 5114
+  },
+  {
+   "file": "level_0201.json",
+   "name": "Burger",
+   "voxels": 5135
+  },
+  {
+   "file": "level_0661.json",
+   "name": "Bowler Hat",
+   "voxels": 5137
+  },
+  {
+   "file": "level_0686.json",
+   "name": "Robot Head",
+   "voxels": 5225
+  },
+  {
+   "file": "level_0637.json",
+   "name": "Yellow Bus",
+   "voxels": 5304
+  },
+  {
+   "file": "level_0616.json",
+   "name": "Red Flowers",
+   "voxels": 5306
+  },
+  {
+   "file": "level_0698.json",
+   "name": "Apple Pie",
+   "voxels": 5353
+  },
+  {
+   "file": "level_0608.json",
+   "name": "Lemon",
+   "voxels": 5369
+  },
+  {
+   "file": "level_0778.json",
+   "name": "Gingerbread Head",
+   "voxels": 5451
+  },
+  {
+   "file": "level_0054.json",
+   "name": "Lava Cake",
+   "voxels": 5454
+  },
+  {
+   "file": "level_0348.json",
+   "name": "Fruit Cart",
+   "voxels": 5471
+  },
+  {
+   "file": "level_0127.json",
+   "name": "Cauldron",
+   "voxels": 5479
+  },
+  {
+   "file": "level_0832.json",
+   "name": "Onigiri",
+   "voxels": 5482
+  },
+  {
+   "file": "level_0754.json",
+   "name": "Bread Loaf",
+   "voxels": 5494
+  },
+  {
+   "file": "level_0648.json",
+   "name": "Treasure Chest",
+   "voxels": 5496
+  },
+  {
+   "file": "level_0601.json",
+   "name": "Ice Cream Cup",
+   "voxels": 5503
+  },
+  {
+   "file": "level_0283.json",
+   "name": "Flower Castle",
+   "voxels": 5508
+  },
+  {
+   "file": "level_0846.json",
+   "name": "Egg Toast",
+   "voxels": 5559
+  },
+  {
+   "file": "level_0823.json",
+   "name": "Yellow Chick",
+   "voxels": 5593
+  },
+  {
+   "file": "level_0510.json",
+   "name": "Blue Pagoda",
+   "voxels": 5725
+  },
+  {
+   "file": "level_0303.json",
+   "name": "Rocket Launch",
+   "voxels": 5752
+  },
+  {
+   "file": "level_0039.json",
+   "name": "Red Mug",
+   "voxels": 5787
+  },
+  {
+   "file": "level_0782.json",
+   "name": "Hippo",
+   "voxels": 5789
+  },
+  {
+   "file": "level_0111.json",
+   "name": "Milkshake",
+   "voxels": 5796
+  },
+  {
+   "file": "level_0735.json",
+   "name": "Snow Globe",
+   "voxels": 5923
+  },
+  {
+   "file": "level_0126.json",
+   "name": "Pink Bunny",
+   "voxels": 5969
+  },
+  {
+   "file": "level_0513.json",
+   "name": "Pink Mushroom",
+   "voxels": 5988
+  },
+  {
+   "file": "level_0723.json",
+   "name": "Snow Yeti",
+   "voxels": 6000
+  },
+  {
+   "file": "level_0252.json",
+   "name": "Pastel Bear",
+   "voxels": 6013
+  },
+  {
+   "file": "level_0516.json",
+   "name": "Reindeer Sleigh",
+   "voxels": 6041
+  },
+  {
+   "file": "level_0834.json",
+   "name": "Cocoa Cake",
+   "voxels": 6064
+  },
+  {
+   "file": "level_0759.json",
+   "name": "Pink Guitar",
+   "voxels": 9643
+  },
+  {
+   "file": "level_0708.json",
+   "name": "Toadstool Table",
+   "voxels": 9791
+  },
+  {
+   "file": "level_0812.json",
+   "name": "Beach Ball",
+   "voxels": 9860
+  }
+ ],
+ "bosses": [
+  {
+   "file": "level_0375.json",
+   "name": "Fruit Cake",
+   "voxels": 6070
+  },
+  {
+   "file": "level_0087.json",
+   "name": "Blue Fish",
+   "voxels": 6135
+  },
+  {
+   "file": "level_0388.json",
+   "name": "Rainbow Bird",
+   "voxels": 6295
+  },
+  {
+   "file": "level_0102.json",
+   "name": "Santa Pig",
+   "voxels": 6300
+  },
+  {
+   "file": "level_0435.json",
+   "name": "Ice Cream Bucket",
+   "voxels": 6376
+  },
+  {
+   "file": "level_0781.json",
+   "name": "Chestnut",
+   "voxels": 6389
+  },
+  {
+   "file": "level_0732.json",
+   "name": "Paper Lantern",
+   "voxels": 6440
+  },
+  {
+   "file": "level_0817.json",
+   "name": "Jack-in-the-Box",
+   "voxels": 6788
+  },
+  {
+   "file": "level_0462.json",
+   "name": "Popcorn Stand",
+   "voxels": 6867
+  },
+  {
+   "file": "level_0847.json",
+   "name": "Red Toaster",
+   "voxels": 6933
+  },
+  {
+   "file": "level_0714.json",
+   "name": "Pudding Box",
+   "voxels": 6939
+  },
+  {
+   "file": "level_0246.json",
+   "name": "Pink Cat",
+   "voxels": 6953
+  },
+  {
+   "file": "level_0342.json",
+   "name": "Purple Bear",
+   "voxels": 7048
+  },
+  {
+   "file": "level_0270.json",
+   "name": "Snail",
+   "voxels": 7167
+  },
+  {
+   "file": "level_0826.json",
+   "name": "Rainbow Shell",
+   "voxels": 7192
+  },
+  {
+   "file": "level_0702.json",
+   "name": "Christmas Cake",
+   "voxels": 7200
+  },
+  {
+   "file": "level_0762.json",
+   "name": "Potted Cactus",
+   "voxels": 7359
+  },
+  {
+   "file": "level_0741.json",
+   "name": "Toadstool",
+   "voxels": 7500
+  },
+  {
+   "file": "level_0833.json",
+   "name": "Tangerine",
+   "voxels": 7658
+  },
+  {
+   "file": "level_0192.json",
+   "name": "Toy Truck",
+   "voxels": 7664
+  },
+  {
+   "file": "level_0651.json",
+   "name": "Robot Face",
+   "voxels": 7920
+  },
+  {
+   "file": "level_0267.json",
+   "name": "Red Bunny",
+   "voxels": 7934
+  },
+  {
+   "file": "level_0750.json",
+   "name": "Big Burger",
+   "voxels": 7958
+  },
+  {
+   "file": "level_0696.json",
+   "name": "Cake Castle",
+   "voxels": 8000
+  },
+  {
+   "file": "level_0606.json",
+   "name": "Jelly Cake",
+   "voxels": 8381
+  },
+  {
+   "file": "level_0576.json",
+   "name": "Pumpkin",
+   "voxels": 8651
+  },
+  {
+   "file": "level_0729.json",
+   "name": "Macaron",
+   "voxels": 8730
+  },
+  {
+   "file": "level_0027.json",
+   "name": "Blue Bear Head",
+   "voxels": 8738
+  },
+  {
+   "file": "level_0276.json",
+   "name": "Blue Penguin",
+   "voxels": 8841
+  },
+  {
+   "file": "level_0840.json",
+   "name": "Persimmon",
+   "voxels": 8884
+  },
+  {
+   "file": "level_0756.json",
+   "name": "Panda",
+   "voxels": 9000
+  },
+  {
+   "file": "level_0273.json",
+   "name": "Beige Cat",
+   "voxels": 9333
+  },
+  {
+   "file": "level_0609.json",
+   "name": "Lunch Box",
+   "voxels": 9478
+  },
+  {
+   "file": "level_0744.json",
+   "name": "Ice Box",
+   "voxels": 10560
+  },
+  {
+   "file": "level_0801.json",
+   "name": "Taco",
+   "voxels": 10848
+  },
+  {
+   "file": "level_0747.json",
+   "name": "Cash Register",
+   "voxels": 11210
+  },
+  {
+   "file": "level_0693.json",
+   "name": "Striped Pumpkin",
+   "voxels": 11951
+  }
+ ]
+}

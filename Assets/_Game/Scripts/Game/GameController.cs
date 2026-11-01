@@ -59,6 +59,8 @@ namespace VoxelSmash.Game
 
         Sculpture sculpture;
         SculptureView view;
+        // The current model's framing; computing it walks every voxel, so it is cached per level.
+        TargetFrame frame;
         DebrisField debris;
         HitEffects effects;
         WeaponAnimator weaponAnimator;
@@ -372,6 +374,7 @@ namespace VoxelSmash.Game
             if (view) Destroy(view.gameObject);
             debris.Clear();
             var model = Model;
+            frame = Framing.For(model);
             sculpture = new Sculpture(model);
             view = SculptureView.Create(sculpture, model, voxelMaterial, voxelPhysics, sculptureLayer, transform);
             view.SetYaw(yaw);
@@ -421,9 +424,9 @@ namespace VoxelSmash.Game
             {
                 // Media capture hides the HUD: frame the sculpture in most of the picture.
                 float w = captureSize.x, h = captureSize.y;
-                cameraRig.Fit(Framing.For(Model), h * .1f, h * .95f, w * .08f, w * .92f, w, h);
+                cameraRig.Fit(frame, h * .1f, h * .95f, w * .08f, w * .92f, w, h);
             }
-            else cameraRig.Fit(Framing.For(Model), hud.TopPx, hud.BottomPx, hud.LeftPx, hud.RightPx);
+            else cameraRig.Fit(frame, hud.TopPx, hud.BottomPx, hud.LeftPx, hud.RightPx);
         }
 
         // ---- Media capture (store covers and preview videos; see MediaCapture) ------------------
@@ -545,7 +548,7 @@ namespace VoxelSmash.Game
             // live cell after it once that one is gone).
             int cell = Mathf.Min(sculpture.Total - 1, Mathf.FloorToInt(sculpture.Total * .6f));
             for (int i = 0; i < sculpture.Total && !sculpture.cells[cell].alive; i++) cell = (cell + 1) % sculpture.Total;
-            var world = motion == FeedbackView.HintMotion.Drag ? view.transform.position + Vector3.up * Framing.For(Model).targetY : view.WorldPosition(cell);
+            var world = motion == FeedbackView.HintMotion.Drag ? view.transform.position + Vector3.up * frame.targetY : view.WorldPosition(cell);
             feedback.PlaceHint(cameraRig.Camera.WorldToScreenPoint(world), hud.TopPx, hud.BottomPx);
         }
 
@@ -722,7 +725,7 @@ namespace VoxelSmash.Game
             int unlock = System.Array.FindIndex(weapons, w => w.unlockLevel == levelNumber);
             if (Boss || unlock >= 0) Save.HappyTime();
             cameraRig.StartVictoryOrbit();
-            effects.Confetti(new Vector3(0f, Framing.For(Model).targetY, 0f));
+            effects.Confetti(new Vector3(0f, frame.targetY, 0f));
             sfx.PlayVictory();
             slowMotion = SlowMotionTime;
             hud.ShowWin(Boss ? "BOSS DOWN!" : levelNumber % 2 == 0 ? "SMASHED!" : "DESTROYED!",
