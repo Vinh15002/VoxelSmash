@@ -10,8 +10,10 @@ using VoxelSmash.Core;
 namespace VoxelSmash.Game
 {
     // Game loop: title -> load a level, tap/hold to strike with the selected weapon, drag to rotate, win at 100%.
-    // Around it: coins and upgrades, stars, combos and critical hits, boss levels, the step-by-step
-    // onboarding hints, and the platform hooks (saves, gameplay start/stop, ads).
+    // Gold: every strike costs its weapon's price from the level's purse, smashed cubes pay into it, and
+    // running out before the sculpture is gone loses the level. What is left on a win goes to the bank,
+    // which buys upgrades and power hits. Around it: stars, combos and critical hits, boss levels, the
+    // step-by-step onboarding hints, and the platform hooks (saves, gameplay start/stop).
     public sealed class GameController : MonoBehaviour
     {
         const string FinishedKey = "voxel-smash.finished", LegacyLevelKey = "voxel-smash.level-number",
@@ -25,6 +27,7 @@ namespace VoxelSmash.Game
         const int SlowFramesToDowngrade = 6, BodiesHigh = 260, BodiesLow = 110;
         // Onboarding steps, stored as bits; the first was a plain flag in earlier saves, which still reads right.
         const int TapStep = 1, HoldStep = 2, DragStep = 4, AllSteps = TapStep | HoldStep | DragStep;
+        static readonly Color Toxic = ((Color)new Color32(0x86, 0xe5, 0x2b, 255)).linear;
         public const string SculptureLayer = "Sculpture", DebrisLayer = "Debris", PreviewLayer = "Preview";
 
         struct QueuedHit
@@ -37,7 +40,8 @@ namespace VoxelSmash.Game
 
         [SerializeField] LevelList levels;
         [SerializeField] WeaponDef[] weapons;
-        [SerializeField] Material voxelMaterial;
+        // PixelLand's per-colour cube materials (TCP2 Hybrid) for the sculpture, debris and weapons.
+        [SerializeField] Material[] voxelPalette;
         [SerializeField] Material fragmentMaterial;
         [SerializeField] Material fxAlphaMaterial;
         [SerializeField] Material fxAdditiveMaterial;
@@ -54,9 +58,11 @@ namespace VoxelSmash.Game
 
         int coins, sizeLevel, magnetLevel, powerHits;
         readonly Dictionary<int, int> bestStars = new();
-        int combo, hitsThisLevel, levelCoins;
+        int combo, hitsThisLevel;
         float lastComboAt = -5f;
-        bool rewardedThisWin;
+        // Gold for this level (see Economy.StartPurse); `coins` is the bank.
+        int purse;
+        bool lost;
 
         Sculpture sculpture;
         SculptureView view;
@@ -69,6 +75,7 @@ namespace VoxelSmash.Game
         Texture[] icons;
         OccupancyGrid occupancy;
         PhysicsMaterial voxelPhysics;
+        VoxelMaterials voxelMaterials;
         int sculptureLayer, sculptureMask;
         int levelNumber, selected, weaponPage;
         bool won;
@@ -77,6 +84,7 @@ namespace VoxelSmash.Game
         Vector2 downPos;
         float downAt, startYaw;
         int loadedFrame = -1;
+        GameObject loadingCover;
         Vector2Int fittedScreen;
         readonly List<RaycastResult> uiHits = new();
         readonly List<QueuedHit> queuedHits = new();
@@ -90,7 +98,24 @@ namespace VoxelSmash.Game
         static bool Touch => Touchscreen.current != null;
 
         // The SDK must finish initialising before saves can be read, so everything waits for it.
-        void Start() => Platform.Backend.Init(Boot);
+        void Start()
+        {
+            loadingCover = LoadingCover();
+            Platform.Backend.Init(Boot);
+        }
+
+        // SDK start-up can take seconds; until the title is up, cover the bare scene (unfitted camera,
+        // no HUD) with the title colour so the game never looks broken while it loads.
+        static GameObject LoadingCover()
+        {
+            var go = new GameObject("Loading Cover", typeof(Canvas));
+            var canvas = go.GetComponent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.sortingOrder = short.MaxValue;
+            UiKit.Backdrop("Back", go.transform, new Color(.05f, .12f, .24f));
+            UiKit.Label("Text", go.transform, 36, FontStyle.Bold, new Vector2(.5f, .5f), Vector2.zero, new Vector2(600, 80)).text = "Loading...";
+            return go;
+        }
 
         void Boot()
         {
@@ -109,12 +134,14 @@ namespace VoxelSmash.Game
             int previewLayer = Mathf.Max(0, LayerMask.NameToLayer(PreviewLayer));
             cameraRig.Camera.cullingMask &= ~(1 << previewLayer);
 
+            voxelMaterials = new VoxelMaterials(voxelPalette);
+            WeaponModels.Materials = voxelMaterials;
             debris = new GameObject("Debris").AddComponent<DebrisField>();
-            debris.Init(fragmentMaterial, voxelPhysics, Mathf.Max(0, LayerMask.NameToLayer(DebrisLayer)));
+            debris.Init(voxelMaterials, voxelPhysics, Mathf.Max(0, LayerMask.NameToLayer(DebrisLayer)));
             effects = new GameObject("Effects").AddComponent<HitEffects>();
             effects.Init(fxAlphaMaterial, fxAdditiveMaterial, fragmentMaterial);
             weaponAnimator = new GameObject("Weapons").AddComponent<WeaponAnimator>();
-            weaponAnimator.Init(weapons, cameraRig.Camera, fxAdditiveMaterial);
+            weaponAnimator.Init(weapons, cameraRig.Camera, fxAlphaMaterial);
             sfx = new GameObject("Sfx").AddComponent<Sfx>();
             sfx.Init();
             foreach (var light in FindObjectsByType<Light>(FindObjectsSortMode.None))
@@ -131,8 +158,7 @@ namespace VoxelSmash.Game
             hud.SettingsRequested += OpenSettings;
             hud.LevelsRequested += OpenLevels;
             hud.ShopRequested += OpenShop;
-            hud.PowerAdRequested += () => WatchForPowerHits(fromShop: false);
-            hud.PowerBuyRequested += () => BuyPowerHits(fromShop: false);
+            hud.Continue += ContinueFromBank;
             feedback = new GameObject("Feedback").AddComponent<FeedbackView>();
             feedback.Build(hud.transform, hud.WinIndex);
             feedback.SkipRequested += SkipTutorial;
@@ -146,14 +172,14 @@ namespace VoxelSmash.Game
             menu.LevelChosen += n => LoadLevel(n);
             menu.BuySize += () => BuyUpgrade(ref sizeLevel, Economy.SizeCost(sizeLevel), SizeKey);
             menu.BuyMagnet += () => BuyUpgrade(ref magnetLevel, Economy.MagnetCost(magnetLevel), MagnetKey);
-            menu.BuyPower += () => BuyPowerHits(fromShop: true);
-            menu.PowerAd += () => WatchForPowerHits(fromShop: true);
+            menu.BuyPower += BuyPowerHits;
 
             LoadSave();
             ApplyQuality();
             ready = true;
             LoadLevel(campaign.ResumeLevel);
             OpenTitle();
+            Destroy(loadingCover);
         }
 
         void LoadSave()
@@ -175,7 +201,6 @@ namespace VoxelSmash.Game
                 if (parts.Length == 2 && int.TryParse(parts[0], out int level) && int.TryParse(parts[1], out int stars))
                     bestStars[level] = Mathf.Clamp(stars, 1, 3);
             }
-            hud.SetCoins(coins);
         }
 
         int StartingWeapons()
@@ -250,7 +275,7 @@ namespace VoxelSmash.Game
         {
             coins = coins, sizeLevel = sizeLevel, sizeCost = Economy.SizeCost(sizeLevel),
             magnetLevel = magnetLevel, magnetCost = Economy.MagnetCost(magnetLevel), powerHits = powerHits,
-            maxLevel = Economy.MaxUpgrade, powerPrice = Economy.PowerHitsPrice, adAvailable = Save.RewardedAvailable
+            maxLevel = Economy.MaxUpgrade, powerPrice = Economy.PowerHitsPrice
         };
 
         void BuyUpgrade(ref int level, int cost, string key)
@@ -259,49 +284,65 @@ namespace VoxelSmash.Game
             coins -= cost;
             level++;
             SaveEconomy();
-            hud.SetCoins(coins);
             menu.RefreshShop(ShopState());
             sfx.Play(WeaponSound.Glove);
         }
 
-        // Power hits cost coins; the rewarded ad is the optional shortcut to the same thing.
-        void BuyPowerHits(bool fromShop)
+        // Power hits are bought from the bank in the shop.
+        void BuyPowerHits()
         {
             if (coins < Economy.PowerHitsPrice) return;
             coins -= Economy.PowerHitsPrice;
-            GrantPowerHits(fromShop);
-        }
-
-        void WatchForPowerHits(bool fromShop)
-        {
-            if (Platform.AdRunning) return;
-            Platform.Rewarded(ok =>
-            {
-                if (ok) GrantPowerHits(fromShop);
-                else feedback.Toast("No ad available right now.");
-                RefreshPowerOffer();
-                if (fromShop) menu.RefreshShop(ShopState());
-                SyncPause();
-            });
-        }
-
-        void GrantPowerHits(bool fromShop)
-        {
             powerHits += Economy.PowerHits;
             SaveEconomy();
-            hud.SetCoins(coins);
             feedback.Toast($"{powerHits} power hits ready!");
-            if (fromShop) menu.RefreshShop(ShopState());
-            else
-            {
-                // A reward on the win screen replaces this transition's midgame ad.
-                rewardedThisWin = true;
-                RefreshPowerOffer();
-            }
+            menu.RefreshShop(ShopState());
         }
 
-        void RefreshPowerOffer() =>
-            hud.SetPowerOffer(Save.RewardedAvailable, coins >= Economy.PowerHitsPrice, won && !rewardedThisWin && levelNumber < campaign.Total);
+        // ---- Gold -----------------------------------------------------------------------------
+
+        // The weapon lab strikes for free unless asked to play the economy; so does media capture.
+        int StrikeCost(WeaponDef weapon) => allWeapons && labFree || captureSize.x > 0 ? 0 : weapon.strikeCost;
+
+        int CheapestStrike()
+        {
+            int cheapest = int.MaxValue;
+            for (int i = 0; i < weapons.Length; i++)
+                if (Available(i)) cheapest = Mathf.Min(cheapest, StrikeCost(weapons[i]));
+            return cheapest;
+        }
+
+        void SetPurse(int amount)
+        {
+            purse = amount;
+            hud.SetGold(purse);
+        }
+
+        // Out of gold once every strike in flight has landed and no weapon is affordable.
+        void CheckBroke()
+        {
+            if (won || lost || weaponAnimator.Busy || queuedHits.Count > 0 || purse >= CheapestStrike()) return;
+            lost = true;
+            held = false;
+            feedback.HideHint();
+            int topUp = Economy.ContinueGold(sculpture.Total);
+            hud.ShowLose($"{Mathf.FloorToInt(sculpture.Progress * 100f)}% smashed", topUp, coins >= topUp);
+            sfx.Play(WeaponSound.Hammer);
+            SyncPause();
+        }
+
+        // Keeps the sculpture as it is and moves gold from the bank into the purse, one for one.
+        void ContinueFromBank()
+        {
+            int topUp = Economy.ContinueGold(sculpture.Total);
+            if (!lost || coins < topUp) return;
+            coins -= topUp;
+            SaveEconomy();
+            lost = false;
+            hud.HideLose();
+            SetPurse(purse + topUp);
+            SyncPause();
+        }
 
         void CloseMenus()
         {
@@ -315,16 +356,19 @@ namespace VoxelSmash.Game
         {
             if (Platform.AdRunning) return;
             bool paused = Paused;
-            Time.timeScale = paused ? 0f : hitStop > 0f ? .04f : slowMotion > 0f ? SlowMotion : 1f;
+            Time.timeScale = paused ? 0f : (hitStop > 0f ? .04f : slowMotion > 0f ? SlowMotion : 1f) * labSpeed;
             AudioListener.pause = paused;
-            Platform.SetPlaying(ready && !paused && !won);
+            Platform.SetPlaying(ready && !paused && !won && !lost);
         }
 
-        void SetQuality(bool high)
+        // `remember` is false for the automatic downgrade: a few slow frames (shader warm-up, a busy
+        // tab) shouldn't lock a capable device to LOW on every later visit.
+        void SetQuality(bool high, bool remember = true)
         {
             quality = high;
             ApplyQuality();
             menu.SetQuality(high);
+            if (!remember) return;
             Save.SetInt(QualityKey, high ? 1 : 0);
             Save.Flush();
         }
@@ -343,13 +387,10 @@ namespace VoxelSmash.Game
             }
         }
 
-        // Level transitions are the natural break for a midgame ad (the SDK rate-limits them itself).
         void NextLevel()
         {
-            if (Platform.AdRunning) return;
             int next = levelNumber + 1;
-            if (rewardedThisWin || levelNumber < 2) LoadLevel(next);
-            else Platform.Midgame(() => LoadLevel(next));
+            LoadLevel(next, allWeapons);
         }
 
         bool LoadLevel(int number) => LoadLevel(number, false);
@@ -370,8 +411,7 @@ namespace VoxelSmash.Game
             lastHit = -5f;
             combo = 0;
             hitsThisLevel = 0;
-            levelCoins = 0;
-            rewardedThisWin = false;
+            lost = false;
             queuedHits.Clear();
             weaponAnimator.Cancel();
             effects.Clear();
@@ -381,14 +421,15 @@ namespace VoxelSmash.Game
             var model = Model;
             frame = Framing.For(model);
             sculpture = new Sculpture(model);
-            view = SculptureView.Create(sculpture, model, voxelMaterial, voxelPhysics, sculptureLayer, transform);
+            SetPurse(Economy.StartPurse(sculpture.Total));
+            view = SculptureView.Create(sculpture, model, voxelMaterials, voxelPhysics, sculptureLayer, transform);
             view.SetYaw(yaw);
             occupancy?.Dispose();
             occupancy = new OccupancyGrid(sculpture);
             debris.ClearRadius = Framing.DebrisClearance(model);
             debris.Occupancy = occupancy;
             debris.Sculpture = view.transform;
-            if (!weapons[selected].AvailableAt(levelNumber)) selected = 0;
+            if (!Available(selected)) selected = 0;
             hud.SetLevel(number, model.displayName, Boss);
             hud.SetProgress(0f);
             RefreshWeapons();
@@ -404,7 +445,7 @@ namespace VoxelSmash.Game
 
         void SelectWeapon(int index)
         {
-            if (won || !weapons[index].AvailableAt(levelNumber)) return;
+            if (won || !Available(index)) return;
             selected = index;
             weaponsSeen |= 1 << index;
             Save.SetInt(SelectedKey, index);
@@ -412,13 +453,16 @@ namespace VoxelSmash.Game
             RefreshWeapons();
         }
 
+        bool Available(int index) => allWeapons || weapons[index].AvailableAt(levelNumber);
+
         void RefreshWeapons()
         {
             buttons.Clear();
             for (int i = 0; i < weapons.Length; i++)
-                if (weapons[i].AvailableAt(levelNumber))
-                    buttons.Add(new HudView.WeaponButton { weapon = i, name = weapons[i].displayName, icon = icons[i], isNew = (weaponsSeen & (1 << i)) == 0 });
+                if (Available(i))
+                    buttons.Add(new HudView.WeaponButton { weapon = i, name = weapons[i].displayName, icon = icons[i], cost = StrikeCost(weapons[i]), isNew = (weaponsSeen & (1 << i)) == 0 });
             hud.SetWeapons(buttons, selected, weaponPage, out weaponPage);
+            hud.SetGold(purse);
         }
 
         void Fit()
@@ -432,6 +476,42 @@ namespace VoxelSmash.Game
                 cameraRig.Fit(frame, h * .1f, h * .95f, w * .08f, w * .92f, w, h);
             }
             else cameraRig.Fit(frame, hud.TopPx, hud.BottomPx, hud.LeftPx, hud.RightPx);
+        }
+
+        // ---- Weapon lab (editor tool: every weapon on any level, see WeaponLab) ------------------
+
+        bool allWeapons, labFree = true;
+        float labSpeed = 1f;
+
+        public WeaponDef[] Weapons => weapons;
+        public int SelectedWeapon => selected;
+        public int LevelNumber => levelNumber;
+
+        // Loads `level` with every weapon available and the onboarding skipped; Next then keeps going
+        // without locks or ads.
+        public void BeginLab(int level)
+        {
+            allWeapons = true;
+            tutorial = AllSteps;
+            // Silences the "new weapon" pointers (picking a weapon then saves this mask, editor save only).
+            weaponsSeen |= (1 << weapons.Length) - 1;
+            menu.HideTitle();
+            LoadLevel(Mathf.Clamp(level, 1, levels.Count), true);
+        }
+
+        public void LabSelect(int index) => SelectWeapon(index);
+
+        // Strikes cost nothing in the lab unless this is turned off to try the gold economy.
+        public bool LabFreeStrikes
+        {
+            get => labFree;
+            set { labFree = value; RefreshWeapons(); }
+        }
+
+        public float LabSpeed
+        {
+            get => labSpeed;
+            set { labSpeed = value; SyncPause(); }
         }
 
         // ---- Media capture (store covers and preview videos; see MediaCapture) ------------------
@@ -496,6 +576,7 @@ namespace VoxelSmash.Game
             WatchFrameTime();
             HandlePointer();
             UpdateQueuedHits(Time.deltaTime);
+            CheckBroke();
         }
 
         // Escape belongs to the browser (it leaves fullscreen), so the web build pauses on P instead.
@@ -523,7 +604,7 @@ namespace VoxelSmash.Game
             slowFrames = Time.unscaledDeltaTime > SlowFrame ? slowFrames + 1 : Mathf.Max(0, slowFrames - 1);
             if (slowFrames < SlowFramesToDowngrade) return;
             slowFrames = 0;
-            SetQuality(false);
+            SetQuality(false, remember: false);
             feedback.Toast("Debris detail set to LOW");
         }
 
@@ -614,7 +695,9 @@ namespace VoxelSmash.Game
             if (!dragged && (pos - downPos).magnitude > threshold) dragged = true;
             if (dragged)
             {
-                yaw = startYaw + (pos.x - downPos.x) / Screen.width * YawPerScreenWidth;
+                // The camera looks down -z, so a positive yaw turns the near face to screen-left; negate
+                // so the model follows the finger.
+                yaw = startYaw - (pos.x - downPos.x) / Screen.width * YawPerScreenWidth;
                 view.SetYaw(yaw);
                 if (Mathf.Abs(yaw - startYaw) > .6f) CompleteStep(DragStep);
             }
@@ -633,15 +716,23 @@ namespace VoxelSmash.Game
         bool StrikeAt(Vector2 screenPos)
         {
             var weapon = weapons[selected];
-            if (weaponAnimator.Busy || clock - lastHit < weapon.cooldown) return false;
+            if (lost || weaponAnimator.Busy || clock - lastHit < weapon.cooldown) return false;
             var ray = cameraRig.Camera.ScreenPointToRay(screenPos);
             // Only the sculpture's colliders are tap targets; debris bodies and the table are ignored.
             if (!Physics.Raycast(ray, out var hit, 200f, sculptureMask)) return false;
             int cell = view.CellFromHit(hit);
             if (cell < 0) return false;
+            int cost = StrikeCost(weapon);
+            if (purse < cost)
+            {
+                feedback.Toast($"Not enough gold for the {weapon.displayName}!");
+                return false;
+            }
+            SetPurse(purse - cost);
             lastHit = clock;
             int index = selected;
             var local = sculpture.Position(cell);
+            sfx.Play(weapon.swingSounds);
             weaponAnimator.Play(index, view.WorldPosition(cell), () =>
             {
                 foreach (var step in weapon.pattern)
@@ -670,7 +761,7 @@ namespace VoxelSmash.Game
         {
             if (won) return;
             var weapon = weapons[index];
-            // The first hit of each strike can be a power hit (bought or rewarded) and can roll a critical.
+            // The first hit of each strike can be a power hit (bought in the shop) and can roll a critical.
             bool powered = first && powerHits > 0;
             bool critical = first && Random.value < Economy.CritChance;
             float boost = (powered ? Economy.PowerScale : 1f) * (critical ? Economy.CritScale : 1f);
@@ -688,24 +779,32 @@ namespace VoxelSmash.Game
             var impact = view.transform.TransformPoint(local);
             view.OnRemoved(removed);
             occupancy.Remove(sculpture, removed);
+            debris.WakeBodies();
             hitPalette.Clear();
             for (int i = 0; i < removed.Count && hitPalette.Count < 8; i++)
             {
                 var c = view.CellColor(removed[i]);
                 if (!hitPalette.Contains(c)) hitPalette.Add(c);
             }
-            foreach (int i in removed) debris.Spawn(view.WorldPosition(i), view.CellColor(i), impact, weapon.power * boost);
+            // Poison melts what it hits: the voxels slump off tinted toxic green instead of flying.
+            bool melt = weapon.type == WeaponType.Poison;
+            foreach (int i in removed)
+                debris.Spawn(view.WorldPosition(i), melt ? Color.Lerp(view.CellColor(i), Toxic, .65f) : view.CellColor(i), impact,
+                    weapon.power * boost * (melt ? .25f : 1f));
             var toCamera = (cameraRig.transform.position - impact).normalized;
-            if (weapon.type == WeaponType.Poison)
+            if (melt)
             {
                 // Poison sparks are toxic green, not the sculpture's colours (palette is linear).
                 hitPalette.Clear();
-                hitPalette.Add(((Color)new Color32(0x86, 0xe5, 0x2b, 255)).linear);
+                hitPalette.Add(Toxic);
                 hitPalette.Add(((Color)new Color32(0xc3, 0xff, 0x69, 255)).linear);
             }
             effects.Impact(impact, weapon.Explosive || critical, hitPalette, toCamera);
             if (first) effects.Special(weapon.type, impact, toCamera);
-            sfx.Play(critical ? WeaponSound.Explosion : weapon.sound);
+            if (melt) effects.Melt(impact, hitPalette);
+            if (weapon.impactEffect) effects.PlayBurst(weapon.impactEffect, impact, toCamera, weapon.impactEffectScale);
+            if (!sfx.Play(weapon.impactSounds)) sfx.Play(weapon.sound);
+            if (critical) sfx.Play(WeaponSound.Explosion);
             cameraRig.Shake(weapon.shake * (critical ? 2.2f : 1f));
             bool heavy = weapon.Explosive || critical;
             cameraRig.Punch(heavy ? 3.2f : 1f);
@@ -718,9 +817,7 @@ namespace VoxelSmash.Game
             }
 
             int earned = Economy.CoinsForHit(removed.Count, combo, magnetLevel, Boss);
-            coins += earned;
-            levelCoins += earned;
-            hud.SetCoins(coins);
+            SetPurse(purse + earned);
             feedback.ShowScore(removed.Count, cameraRig.Camera.WorldToScreenPoint(impact), combo, critical);
             hud.SetProgress(sculpture.Progress);
             if (sculpture.Progress >= 1f) Win();
@@ -734,9 +831,8 @@ namespace VoxelSmash.Game
             feedback.HideHint();
             int stars = Economy.Stars(hitsThisLevel, sculpture.Total);
             int bonus = Economy.StarBonusCoins(stars) * (Boss ? 2 : 1);
-            coins += bonus;
-            levelCoins += bonus;
-            hud.SetCoins(coins);
+            int banked = purse + bonus;
+            coins += banked;
             if (!bestStars.TryGetValue(levelNumber, out int best) || stars > best) bestStars[levelNumber] = stars;
             Save.SetString(StarsKey, string.Join(",", bestStars.Select(p => $"{p.Key}:{p.Value}")));
             campaign.Complete(levelNumber);
@@ -756,8 +852,7 @@ namespace VoxelSmash.Game
                 unlock >= 0 ? icons[unlock] : null,
                 unlock >= 0 ? $"{weapons[unlock].displayName} unlocks next level" : last ? "All levels complete!" : $"Level {levelNumber + 1} unlocked",
                 $"{sculpture.Total:N0} cubes · {hitsThisLevel} {(hitsThisLevel == 1 ? "hit" : "hits")}",
-                $"+{levelCoins:N0} coins", stars, !last);
-            RefreshPowerOffer();
+                $"+{banked:N0} coins to the bank", stars, !last);
             SyncPause();
         }
 

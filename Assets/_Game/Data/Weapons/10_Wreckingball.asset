@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216b6e3b7aba9ff49bdfadf28e243518, type: 3}
+  m_Name: 10_Wreckingball
+  m_EditorClassIdentifier: VoxelSmash.Core::VoxelSmash.Core.WeaponDef
+  displayName: Wrecking ball
+  type: 10
+  mode: 0
+  radius: 0.88
+  power: 9
+  cooldown: 0.95
+  duration: 0.78
+  unlockLevel: 11
+  sound: 2
+  strikeCost: 85
+  shake: 0.065
+  pattern:
+  - delay: 0
+    dx: 0
+    dy: 0
+    scale: 1
+  model: {fileID: 6596121958902757658, guid: 6e91693fd5eb69b49971e867bb7bb5c2, type: 3}
+  impactEffect: {fileID: 9211856010480761094, guid: a53abd5e01858a8458e42fe3d5ff37cc, type: 3}
+  impactEffectScale: 0.6
+  motion: 0
+  swingAxis: {x: 0, y: 0, z: 1}
+  showInHand: 1
+  strikeOffset: {x: 0, y: 0, z: 0}
+  trailColor: {r: 0.8, g: 0.85, b: 1, a: 1}
+  swingSounds: []
+  impactSounds:
+  - {fileID: 8300000, guid: 63f96ed4a8cf2704d8c4dcfb708a6404, type: 3}
+  - {fileID: 8300000, guid: 8705c572e78145745ae089f2cd4541c4, type: 3}
+  - {fileID: 8300000, guid: 9df1e72f33eb18c42b68099adc3b0963, type: 3}
+  - {fileID: 8300000, guid: 5bca09c51c8821a439baac4721f0e829, type: 3}
+  - {fileID: 8300000, guid: ad00363f7726367429ea90f96ded0867, type: 3}
+  - {fileID: 8300000, guid: 54748bfdbcbfcdd4190af96bb718577d, type: 3}
+  - {fileID: 8300000, guid: 2b1f422d25f5bf146a1e084bcc7b8c96, type: 3}
+  - {fileID: 8300000, guid: 2daa85dd287400f44a9f8e45ce82806a, type: 3}
+  - {fileID: 8300000, guid: 7a569a3c3d2cfda4b8c744b64736607c, type: 3}
+  - {fileID: 8300000, guid: ed84719d36f4624489ba2fb8af111267, type: 3}

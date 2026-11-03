@@ -21,9 +21,28 @@ MonoBehaviour:
   duration: 0.29
   unlockLevel: 0
   sound: 1
+  strikeCost: 38
   shake: 0.065
   pattern:
   - delay: 0
     dx: 0
     dy: 0
     scale: 1
+  model: {fileID: 4742188228384965501, guid: 51c4d2d8c0698744da2a69375e2dc17d, type: 3}
+  impactEffect: {fileID: 2618310445646919321, guid: 41be862193157c543822e4bc6b31a227, type: 3}
+  impactEffectScale: 1
+  motion: 1
+  swingAxis: {x: 0, y: 0, z: 1}
+  showInHand: 1
+  strikeOffset: {x: 0, y: 0, z: 0}
+  trailColor: {r: 0.3, g: 0.9, b: 1, a: 1}
+  swingSounds:
+  - {fileID: 8300000, guid: 657d8ad1a59fedd4188bbc6158a925b7, type: 3}
+  - {fileID: 8300000, guid: 0500cb246eed4da4d82bc7a78dac0208, type: 3}
+  - {fileID: 8300000, guid: 1c948d5b6a167614ba2197d57ce241c7, type: 3}
+  impactSounds:
+  - {fileID: 8300000, guid: 87cefe559420a7d408a8080b6e234393, type: 3}
+  - {fileID: 8300000, guid: a6e818a2cd70c164d92580dfa25ed89b, type: 3}
+  - {fileID: 8300000, guid: 01cfd4e4f9f1ac24886cdecbdaf15cd1, type: 3}
+  - {fileID: 8300000, guid: 7d773928286811c4daa59045012e5af9, type: 3}
+  - {fileID: 8300000, guid: 88ece2234c6b0b147997a9f1ce2558a1, type: 3}

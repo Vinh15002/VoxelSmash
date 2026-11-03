@@ -4,7 +4,7 @@ namespace VoxelSmash.Core
 {
     public struct SwingState
     {
-        public float phase, reach, rotation;
+        public float phase, reach, rotation, contactPhase;
         public bool contact, done;
     }
 
@@ -30,7 +30,7 @@ namespace VoxelSmash.Core
                 WeaponType.Star => phase * 9f,
                 _ => 0f
             };
-            return new SwingState { phase = phase, reach = reach, rotation = rotation, contact = phase >= contact, done = phase >= 1f };
+            return new SwingState { phase = phase, reach = reach, rotation = rotation, contactPhase = contact, contact = phase >= contact, done = phase >= 1f };
         }
     }
 }

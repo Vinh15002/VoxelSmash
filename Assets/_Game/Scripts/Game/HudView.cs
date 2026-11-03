@@ -23,22 +23,26 @@ namespace VoxelSmash.Game
             Purple = new(.44f, .32f, .71f), BossRed = new(1f, .42f, .32f), StarOff = new(.25f, .27f, .36f, .85f);
 
         CanvasScaler scaler;
-        RectTransform topBar, winCard;
+        RectTransform topBar, winCard, loseCard;
         RectTransform safeRoot, weaponPanel, weaponGrid, pageBar, progressFill, starRow;
-        Text levelText, percentText, modelText, coinText, winTitle, winScore, winRibbon, winUnlock, winCoins, pageLabel, powerLabel;
+        Text levelText, percentText, modelText, coinText, winTitle, winScore, winRibbon, winUnlock, winCoins, pageLabel, loseScore, continueLabel;
         RawImage winIcon;
         readonly RawImage[] stars = new RawImage[3];
-        GameObject winPanel, nextButton, powerAd, powerBuy;
+        GameObject winPanel, nextButton, losePanel;
+        UnityEngine.UI.Button continueButton;
         Rect appliedSafeArea;
         float bottomReserve = 330f, sideReserve = 420f;
         bool landscape;
         readonly Layout layout = new();
         readonly Dictionary<int, RectTransform> weaponButtons = new();
         readonly List<WeaponButton> lastWeapons = new();
+        // Each visible weapon button's price tag and icon, dimmed while the purse cannot pay for it.
+        readonly List<(int cost, Text price, RawImage icon)> priceTags = new();
+        int gold;
         int lastSelected, lastPage;
 
         public event Action Restart, Next, Replay, LayoutChanged, SettingsRequested, LevelsRequested, ShopRequested,
-            PowerAdRequested, PowerBuyRequested;
+            Continue;
         public event Action<int> WeaponSelected, PageChanged;
 
         // Sibling index of the win overlay: feedback layers go just beneath it.
@@ -109,6 +113,7 @@ namespace VoxelSmash.Game
             pageLabel = Label("Page", pageBar, 40, FontStyle.Bold, new Vector2(.5f, .5f), Vector2.zero, new Vector2(150, 70));
 
             BuildWin();
+            BuildLose();
             ApplyLayout();
         }
 
@@ -145,16 +150,6 @@ namespace VoxelSmash.Game
             winIcon = Picture("Unlock Icon", winCard, null, c, new Vector2(0, 12), new Vector2(130, 130));
             winUnlock = Label("Unlock", winCard, 42, FontStyle.Bold, c, new Vector2(0, -88), new Vector2(1000, 66));
 
-            // Optional power-hit offer for the next level: watch an ad, or pay coins instead.
-            powerLabel = Label("Power Offer", winCard, 36, FontStyle.Bold, c, new Vector2(0, -170), new Vector2(1000, 56));
-            powerLabel.text = "Start next level with 3 POWER HITS";
-            var ad = UiKit.Button("Power Ad", winCard, "WATCH AD", c, new Vector2(-175, -248), new Vector2(330, 90), Purple, () => PowerAdRequested?.Invoke(), 24, 38);
-            powerAd = ad.gameObject;
-            var buy = UiKit.Button("Power Buy", winCard, null, c, new Vector2(175, -248), new Vector2(330, 90), new Color(.85f, .6f, .1f), () => PowerBuyRequested?.Invoke(), 24);
-            Picture("Coin", buy, Coin(96), new Vector2(0, .5f), new Vector2(18, 0), new Vector2(56, 56));
-            Label("Price", buy, 38, FontStyle.Bold, c, new Vector2(24, 0), new Vector2(240, 80)).text = Core.Economy.PowerHitsPrice.ToString();
-            powerBuy = buy.gameObject;
-
             var next = UiKit.Button("Next", winCard, "NEXT", c, new Vector2(0, -395), new Vector2(560, 150), Green, () => Next?.Invoke(), 36, 62);
             nextButton = next.gameObject;
             Border(next.GetComponent<Image>(), Color.white, 6);
@@ -162,12 +157,43 @@ namespace VoxelSmash.Game
             winPanel.SetActive(false);
         }
 
+        // Out of gold: retry the level from scratch, or move gold from the bank and keep going.
+        void BuildLose()
+        {
+            losePanel = Backdrop("Lose", transform, new Color(.03f, .05f, .12f, .72f)).gameObject;
+            var c = new Vector2(.5f, .5f);
+            loseCard = Rect("Card", losePanel.transform, c, c, Vector2.zero, Vector2.zero);
+            Place(loseCard, c, Vector2.zero, new Vector2(1000, 900));
+            Picture("Coin", loseCard, Coin(256), c, new Vector2(0, 250), new Vector2(200, 200)).color = new Color(.55f, .55f, .6f);
+            Headline(Label("Title", loseCard, 120, FontStyle.Bold, c, new Vector2(0, 80), new Vector2(1100, 160)),
+                new Color(1f, .55f, .45f), new Color(.75f, .12f, .1f), 8f).text = "OUT OF GOLD!";
+            loseScore = Label("Score", loseCard, 46, FontStyle.Bold, c, new Vector2(0, -30), new Vector2(1000, 70));
+            var retry = UiKit.Button("Retry", loseCard, "TRY AGAIN", c, new Vector2(0, -170), new Vector2(560, 150), Green, () => Replay?.Invoke(), 36, 58);
+            Border(retry.GetComponent<Image>(), Color.white, 6);
+            var keep = UiKit.Button("Continue", loseCard, null, c, new Vector2(0, -330), new Vector2(560, 110), new Color(.85f, .6f, .1f), () => Continue?.Invoke(), 24);
+            continueButton = keep.GetComponent<UnityEngine.UI.Button>();
+            Picture("Coin", keep, Coin(96), new Vector2(0, .5f), new Vector2(22, 0), new Vector2(64, 64));
+            continueLabel = Label("Label", keep, 34, FontStyle.Bold, c, new Vector2(30, 0), new Vector2(460, 100));
+            losePanel.SetActive(false);
+        }
+
+        public void ShowLose(string score, int continueGold, bool canContinue)
+        {
+            loseScore.text = score;
+            continueLabel.text = $"KEEP GOING  +{continueGold}";
+            continueButton.interactable = canContinue;
+            losePanel.SetActive(true);
+        }
+
+        public void HideLose() => losePanel.SetActive(false);
+
         public void SetLevel(int number, string modelName, bool boss)
         {
             levelText.text = boss ? $"BOSS · Level {number}" : $"Level {number}";
             levelText.color = boss ? BossRed : Color.white;
             modelText.text = modelName;
             winPanel.SetActive(false);
+            losePanel.SetActive(false);
             topBar.gameObject.SetActive(true);
             weaponPanel.gameObject.SetActive(true);
         }
@@ -179,7 +205,18 @@ namespace VoxelSmash.Game
             percentText.text = pct + "%";
         }
 
-        public void SetCoins(int amount) => coinText.text = amount.ToString("N0");
+        // The level's purse; weapons it cannot pay for are dimmed and their price turns red.
+        public void SetGold(int amount)
+        {
+            gold = amount;
+            coinText.text = amount.ToString("N0");
+            foreach (var (cost, price, icon) in priceTags)
+            {
+                bool affordable = cost <= amount;
+                price.color = affordable ? Gold : BossRed;
+                icon.color = affordable ? Color.white : new Color(1f, 1f, 1f, .4f);
+            }
+        }
 
         public void ShowWin(string title, string ribbon, Texture icon, string unlock, string score, string coins, int starCount, bool showNext)
         {
@@ -197,20 +234,12 @@ namespace VoxelSmash.Game
             winPanel.SetActive(true);
         }
 
-        // Shows or hides each side of the power-hit offer; the label hides when neither applies.
-        public void SetPowerOffer(bool adAvailable, bool canAfford, bool offered)
-        {
-            powerAd.SetActive(offered && adAvailable);
-            powerBuy.SetActive(offered);
-            powerBuy.GetComponent<UnityEngine.UI.Button>().interactable = canAfford;
-            powerLabel.gameObject.SetActive(offered);
-        }
-
         public struct WeaponButton
         {
             public int weapon;
             public string name;
             public Texture icon;
+            public int cost;
             public bool isNew;
         }
 
@@ -251,6 +280,7 @@ namespace VoxelSmash.Game
             pageLabel.text = $"{page + 1} / {pages}";
 
             weaponButtons.Clear();
+            priceTags.Clear();
             for (int i = weaponGrid.childCount - 1; i >= 0; i--) Destroy(weaponGrid.GetChild(i).gameObject);
             float gridWidth = columns * button + (columns - 1) * PanelGap;
             for (int k = 0; k < visible; k++)
@@ -269,7 +299,19 @@ namespace VoxelSmash.Game
                 outline.effectDistance = active ? new Vector2(8, -8) : new Vector2(4, -4);
                 int weapon = w.weapon;
                 rt.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(() => WeaponSelected?.Invoke(weapon));
-                Picture("Icon", rt, w.icon, new Vector2(.5f, .5f), new Vector2(0, button * .08f), Vector2.one * button * .78f);
+                var icon = Picture("Icon", rt, w.icon, new Vector2(.5f, .5f), new Vector2(0, button * .08f), Vector2.one * button * .78f);
+                if (w.cost > 0)
+                {
+                    // Price per strike, top-left.
+                    var tag = Box("Price", rt, new Color(.07f, .1f, .22f, .85f), new Vector2(0, 1), new Vector2(-8, 8), new Vector2(button * .62f, button * .26f), button * .1f);
+                    tag.pivot = new Vector2(0, 1);
+                    tag.GetComponent<Image>().raycastTarget = false;
+                    Picture("Coin", tag, Coin(64), new Vector2(0, .5f), new Vector2(button * .02f, 0), Vector2.one * button * .2f).raycastTarget = false;
+                    var price = Label("Amount", tag, Mathf.Max(22, Mathf.RoundToInt(button * .16f)), FontStyle.Bold, new Vector2(1, .5f), new Vector2(-button * .04f, 0), new Vector2(button * .4f, button * .26f));
+                    price.alignment = TextAnchor.MiddleRight;
+                    price.text = w.cost.ToString();
+                    priceTags.Add((w.cost, price, icon));
+                }
                 var label = Label("Name", rt, Mathf.Max(24, Mathf.RoundToInt(button * .15f)), FontStyle.Bold, new Vector2(.5f, 0), new Vector2(0, button * .04f), new Vector2(button * 1.1f, button * .24f));
                 label.text = w.name;
                 label.color = WeaponLabel;
@@ -284,6 +326,7 @@ namespace VoxelSmash.Game
                 }
             }
 
+            SetGold(gold);
             float bottom = landscape ? 0f : PanelBottom + height + PanelClearance;
             float side = landscape ? width + SidePanelMargin + 40f : 0f;
             if (!Mathf.Approximately(bottom, bottomReserve) || !Mathf.Approximately(side, sideReserve))

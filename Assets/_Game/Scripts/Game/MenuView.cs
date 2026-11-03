@@ -21,7 +21,6 @@ namespace VoxelSmash.Game
         public struct ShopState
         {
             public int coins, sizeLevel, sizeCost, magnetLevel, magnetCost, powerHits, maxLevel, powerPrice;
-            public bool adAvailable;
         }
 
         const float CardWidth = 940f, TileWidth = 196f, TileHeight = 170f, TileGap = 24f,
@@ -43,7 +42,6 @@ namespace VoxelSmash.Game
         ScrollRect levelScroll;
         Texture2D starTexture;
         ShopRow sizeRow, magnetRow, powerRow;
-        GameObject powerAdButton;
         readonly Layout layout = new();
         bool landscape;
 
@@ -54,7 +52,7 @@ namespace VoxelSmash.Game
             public UnityEngine.UI.Button buy;
         }
 
-        public event Action Play, Resume, OpenLevels, MainMenu, ToggleQuality, BuySize, BuyMagnet, BuyPower, PowerAd;
+        public event Action Play, Resume, OpenLevels, MainMenu, ToggleQuality, BuySize, BuyMagnet, BuyPower;
         public event Action<int> LevelChosen;
 
         public bool TitleOpen => title.activeSelf;
@@ -182,8 +180,6 @@ namespace VoxelSmash.Game
             sizeRow = Row(card, -290, "Bigger hits", "+8% strike size per level", () => BuySize?.Invoke());
             magnetRow = Row(card, -475, "Coin magnet", "+10% coins per level", () => BuyMagnet?.Invoke());
             powerRow = Row(card, -660, "3 power hits", "+35% for 3 strikes", () => BuyPower?.Invoke());
-            var ad = UiKit.Button("Watch Ad", powerRow.buy.transform.parent, "WATCH AD", new Vector2(1, .5f), new Vector2(-290, 0), new Vector2(220, 96), Purple, () => PowerAd?.Invoke(), 22, 32);
-            powerAdButton = ad.gameObject;
             TextButton("Close", card, "Close", top, new Vector2(0, -900), Ink, () => Resume?.Invoke());
         }
 
@@ -249,7 +245,6 @@ namespace VoxelSmash.Game
             Fill(sizeRow, $"Level {s.sizeLevel}/{s.maxLevel}  ·  +8% strike size", s.sizeLevel >= s.maxLevel ? -1 : s.sizeCost, s.coins);
             Fill(magnetRow, $"Level {s.magnetLevel}/{s.maxLevel}  ·  +10% coins", s.magnetLevel >= s.maxLevel ? -1 : s.magnetCost, s.coins);
             Fill(powerRow, s.powerHits > 0 ? $"{s.powerHits} ready" : "+35% for 3 strikes", s.powerPrice, s.coins);
-            powerAdButton.SetActive(s.adAvailable);
         }
 
         static void Fill(ShopRow row, string level, int cost, int coins)

@@ -34,22 +34,21 @@ namespace VoxelSmash.Game
             public int particle = -1;
         }
 
-        Material material;
+        VoxelMaterials materials;
         Mesh cube;
         PhysicsMaterial physicsMaterial;
         int bodyLayer;
         NativeArray<Particle> particles;
         NativeArray<float4x4> matrices;
         int count;
-        readonly Vector4[] colors = new Vector4[MaxFragments];
+        readonly Material[] fragmentMaterials = new Material[MaxFragments];
         readonly Matrix4x4[] batchMatrices = new Matrix4x4[Batch];
-        readonly Vector4[] batchColors = new Vector4[Batch];
-        readonly List<MaterialPropertyBlock> blocks = new();
+        // Fragment indices per colour material, rebuilt each frame.
+        readonly Dictionary<Material, List<int>> byMaterial = new();
         readonly List<Body> bodies = new();
         readonly Stack<Body> freeBodies = new();
         int activeBodies;
         uint seed = 1;
-        static readonly int BaseColor = Shader.PropertyToID("_BaseColor");
 
         public float ClearRadius { get; set; } = 2f;
         // 260 on capable phones, 110 on low quality (Phase 6 wires this to the quality toggle).
@@ -59,20 +58,13 @@ namespace VoxelSmash.Game
         public int Count => count;
         public int ActiveBodies => activeBodies;
 
-        public void Init(Material fragmentMaterial, PhysicsMaterial physics, int layer)
+        public void Init(VoxelMaterials voxelMaterials, PhysicsMaterial physics, int layer)
         {
-            material = fragmentMaterial;
+            materials = voxelMaterials;
             physicsMaterial = physics;
             bodyLayer = layer;
-            // The shader multiplies vertex colour by the instance colour, so the cube needs white vertices.
-            cube = Instantiate(Resources.GetBuiltinResource<Mesh>("Cube.fbx"));
-            var white = new Color[cube.vertexCount];
-            System.Array.Fill(white, Color.white);
-            cube.colors = white;
-            // uv0 already spans 0..1 per face; a unit face size turns on the shader's edge bevel.
-            var faceSize = new Vector2[cube.vertexCount];
-            System.Array.Fill(faceSize, Vector2.one);
-            cube.SetUVs(2, faceSize);
+            // The built-in cube's uv0 spans 0..1 per face, like PixelLand's cube mesh.
+            cube = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
             particles = new NativeArray<Particle>(MaxFragments, Allocator.Persistent);
             matrices = new NativeArray<float4x4>(MaxFragments, Allocator.Persistent);
         }
@@ -108,8 +100,16 @@ namespace VoxelSmash.Game
                 b.rb.WakeUp();
             }
             particles[count] = p;
-            colors[count] = color;
+            fragmentMaterials[count] = materials.For(color);
             count++;
+        }
+
+        // The sculpture's colliders are resized in place after a strike, which doesn't wake bodies resting
+        // on them, so a cube whose support was knocked away would hang in the air.
+        public void WakeBodies()
+        {
+            foreach (var b in bodies)
+                if (b.particle >= 0) b.rb.WakeUp();
         }
 
         Body Acquire()
@@ -230,22 +230,28 @@ namespace VoxelSmash.Game
 
         void Draw()
         {
-            if (material == null) return;
-            for (int start = 0, b = 0; start < count; start += Batch, b++)
+            if (materials == null) return;
+            foreach (var list in byMaterial.Values) list.Clear();
+            for (int i = 0; i < count; i++)
             {
-                int n = Mathf.Min(Batch, count - start);
-                NativeArray<Matrix4x4>.Copy(matrices.Reinterpret<Matrix4x4>(), start, batchMatrices, 0, n);
-                System.Array.Copy(colors, start, batchColors, 0, n);
-                if (blocks.Count <= b) blocks.Add(new MaterialPropertyBlock());
-                var block = blocks[b];
-                block.SetVectorArray(BaseColor, batchColors);
-                var rp = new RenderParams(material)
+                if (!byMaterial.TryGetValue(fragmentMaterials[i], out var list)) byMaterial[fragmentMaterials[i]] = list = new List<int>();
+                list.Add(i);
+            }
+            var all = matrices.Reinterpret<Matrix4x4>();
+            foreach (var pair in byMaterial)
+            {
+                var list = pair.Value;
+                var rp = new RenderParams(pair.Key)
                 {
-                    matProps = block,
                     shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     receiveShadows = true
                 };
-                Graphics.RenderMeshInstanced(rp, cube, 0, batchMatrices, n);
+                for (int start = 0; start < list.Count; start += Batch)
+                {
+                    int n = Mathf.Min(Batch, list.Count - start);
+                    for (int k = 0; k < n; k++) batchMatrices[k] = all[list[start + k]];
+                    Graphics.RenderMeshInstanced(rp, cube, 0, batchMatrices, n);
+                }
             }
         }
 
@@ -258,7 +264,7 @@ namespace VoxelSmash.Game
         [BurstCompile]
         struct IntegrateJob : IJobParallelFor
         {
-            const float Gravity = 9.81f, Floor = .05f;
+            const float Gravity = 9.81f, Floor = .05f, PerchTime = 3f;
 
             public NativeArray<Particle> particles;
             [WriteOnly] public NativeArray<float4x4> matrices;
@@ -292,11 +298,19 @@ namespace VoxelSmash.Game
                 p.vel.y -= Gravity * dt;
                 p.vel *= math.exp(-.16f * dt);
                 p.pos += p.vel * dt;
-                if (Occupied(p.pos))
+                // Cubes bounce off the sculpture but never perch on it: each contact damps the spin and
+                // shoves them outward so they slide off a ledge. Without this a cube landing on top bounced
+                // in place forever, spinning (it only sleeps on the floor). Past PerchTime it stops
+                // colliding with the sculpture at all and drops through to the floor, so none can stay
+                // wedged in a notch or under an overhang.
+                if (p.age < PerchTime && Occupied(p.pos))
                 {
                     p.pos -= p.vel * dt;
-                    p.vel.xz *= -.28f;
-                    p.vel.y = math.max(.5f, math.abs(p.vel.y) * .23f);
+                    float2 dir = r < .12f ? RandomDirection(ref p.random) : p.pos.xz / r;
+                    float2 side = new float2(-dir.y, dir.x) * p.random.NextFloat(-.6f, .6f);
+                    p.vel.xz = p.vel.xz * -.28f + (dir + side) * 1.1f;
+                    p.vel.y = math.max(.35f, math.abs(p.vel.y) * .23f);
+                    p.spin *= .6f;
                 }
                 if (p.pos.y < Floor)
                 {

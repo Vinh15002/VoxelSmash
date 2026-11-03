@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216b6e3b7aba9ff49bdfadf28e243518, type: 3}
+  m_Name: 07_Lightning
+  m_EditorClassIdentifier: VoxelSmash.Core::VoxelSmash.Core.WeaponDef
+  displayName: Lightning
+  type: 7
+  mode: 2
+  radius: 0.97
+  power: 10
+  cooldown: 0.68
+  duration: 0.46
+  unlockLevel: 8
+  sound: 4
+  strikeCost: 130
+  shake: 0.065
+  pattern:
+  - delay: 0
+    dx: 0
+    dy: 0
+    scale: 1
+  model: {fileID: 0}
+  impactEffect: {fileID: 2549197074893662332, guid: 4916a86470fc18648a887ea3a567a82e, type: 3}
+  impactEffectScale: 0.7
+  motion: 0
+  swingAxis: {x: 0, y: 0, z: 1}
+  showInHand: 0
+  strikeOffset: {x: 0, y: 0, z: 0}
+  trailColor: {r: 1, g: 1, b: 1, a: 1}
+  swingSounds:
+  - {fileID: 8300000, guid: c91a1083f75fbc541aa56967a06ee083, type: 3}
+  - {fileID: 8300000, guid: 7ea3a5c479b809b4d9c6f37f134c1b1d, type: 3}
+  - {fileID: 8300000, guid: 6bcbd5366cf440b41a0dd37c3dcb7c89, type: 3}
+  - {fileID: 8300000, guid: b9c5104657014ef4e91f9d1632857e8b, type: 3}
+  - {fileID: 8300000, guid: f886fb7624f9f6b4cb908e24ecd98ae0, type: 3}
+  impactSounds:
+  - {fileID: 8300000, guid: fefd1523d649abd49806c4008a9fc19d, type: 3}
+  - {fileID: 8300000, guid: 0231d02955bc64348af99d691b225bcc, type: 3}

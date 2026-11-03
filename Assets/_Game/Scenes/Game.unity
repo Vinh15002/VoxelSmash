@@ -295,14 +295,43 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb86ef88c3001fe40a54787465d40906, type: 2}
   - {fileID: 11400000, guid: 280368cf8588d814080b464e8be85490, type: 2}
   - {fileID: 11400000, guid: 660ddf16360f5b642a64213920b0e30d, type: 2}
-  - {fileID: 11400000, guid: 5c2255a0e8ea35647a7c2f60e0fd4b93, type: 2}
   - {fileID: 11400000, guid: 914b236f6a0d6624bb1df1eb89f7039c, type: 2}
   - {fileID: 11400000, guid: 7ec63631abc354346a2ad4ef4f27e993, type: 2}
   - {fileID: 11400000, guid: 0828619930803534d97b2203e1d7c350, type: 2}
   - {fileID: 11400000, guid: 0ac3442c5a9982846ba85ec16f80065f, type: 2}
   - {fileID: 11400000, guid: 4306da588374b1d4e99536e52ad03518, type: 2}
   - {fileID: 11400000, guid: cb40c82658c00584cbaa9cdc8c2d5921, type: 2}
-  voxelMaterial: {fileID: 2100000, guid: e0668e6043a6d6542a8707a46a9aad1a, type: 2}
+  voxelPalette:
+  - {fileID: 2100000, guid: 88c9d6e1f9321dd469183a0a06e7efd2, type: 2}
+  - {fileID: 2100000, guid: 7f748e4018b04db48b533d2d3abacfe4, type: 2}
+  - {fileID: 2100000, guid: 621a3e2f270a09e4eac276648e3a0500, type: 2}
+  - {fileID: 2100000, guid: 30cc64a71250ead48897100f1945618a, type: 2}
+  - {fileID: 2100000, guid: ceb68a4f4aff9194aa62b3624b15a09d, type: 2}
+  - {fileID: 2100000, guid: a80adf768e6237b4aa60a14c47a9702e, type: 2}
+  - {fileID: 2100000, guid: d7fcb5f4e11edda42bdc7a6e6468a263, type: 2}
+  - {fileID: 2100000, guid: 57039023064c49b4fa03cb7f0bffa674, type: 2}
+  - {fileID: 2100000, guid: c9b98280b28cb764793f66521a82a0dd, type: 2}
+  - {fileID: 2100000, guid: e082a5a5917ff704faa43d4fb55d4121, type: 2}
+  - {fileID: 2100000, guid: 62fd1290dd1e7524f8f976508f071720, type: 2}
+  - {fileID: 2100000, guid: 1867aa13608716846adbfdbd732cd28f, type: 2}
+  - {fileID: 2100000, guid: a173b8b3304598b4dbdfde37d1bbecab, type: 2}
+  - {fileID: 2100000, guid: 2e040245454488b478de80fad46d43bd, type: 2}
+  - {fileID: 2100000, guid: d4406428c7fe1f646a85bf988df7b638, type: 2}
+  - {fileID: 2100000, guid: c6b870d7f1bdf774a8eafbd33fdc3daf, type: 2}
+  - {fileID: 2100000, guid: 65c100366b71c4f4b82d038802257146, type: 2}
+  - {fileID: 2100000, guid: 1c39e31eb466a0140889d02485b70cd4, type: 2}
+  - {fileID: 2100000, guid: 452720a5a7bc72d49870b21caba269fa, type: 2}
+  - {fileID: 2100000, guid: b2b0ecd5b03c25c4d9f27923ae1a10bd, type: 2}
+  - {fileID: 2100000, guid: d33bc043dd957c3408a401751f88beb1, type: 2}
+  - {fileID: 2100000, guid: c19032e96b8bd11409b231a1f3a846b7, type: 2}
+  - {fileID: 2100000, guid: d239af1e61c22384fb63fa4ea962a588, type: 2}
+  - {fileID: 2100000, guid: 806f6814314440c4485058d80197d899, type: 2}
+  - {fileID: 2100000, guid: 4e04a73c06b867542b5756be572e25c9, type: 2}
+  - {fileID: 2100000, guid: cba255c4ec87f2a4e8e03a1390dbba79, type: 2}
+  - {fileID: 2100000, guid: 433aed429098ebf4ba1b99f30090fd1d, type: 2}
+  - {fileID: 2100000, guid: 08c8121289a27054c9504d36362ca386, type: 2}
+  - {fileID: 2100000, guid: 02065fdef6c70064ba4f258eefd326cd, type: 2}
+  - {fileID: 2100000, guid: d791489097b0ecc44a02a96cc2294366, type: 2}
   fragmentMaterial: {fileID: 2100000, guid: 39244f4f2cd102342875193d02e469f8, type: 2}
   fxAlphaMaterial: {fileID: 2100000, guid: 43edd77f75874b0469484d66d8b01ad2, type: 2}
   fxAdditiveMaterial: {fileID: 2100000, guid: 8401cfcf7c6dbec41b7a8d5b846e8f07, type: 2}
@@ -333,6 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1504006488}
   - component: {fileID: 1504006487}
+  - component: {fileID: 1504006489}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -420,6 +450,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1504006489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504006486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &1775458906
 GameObject:
   m_ObjectHideFlags: 0

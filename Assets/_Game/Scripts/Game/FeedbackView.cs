@@ -35,6 +35,9 @@ namespace VoxelSmash.Game
         readonly List<Score> scores = new();
         readonly Stack<Text> spare = new();
         float toastAge = ToastLife, handClock;
+        // Fingertip (normalized) and width/height of the hand picture in use.
+        Vector2 handTip = HandTip;
+        float handAspect = 1f;
 
         public bool TutorialVisible => hand.gameObject.activeSelf;
         public HintMotion Motion => motion;
@@ -47,8 +50,11 @@ namespace VoxelSmash.Game
             layer.SetSiblingIndex(siblingIndex);
 
             hand = Rect("Tutorial", layer, new Vector2(.5f, .5f), new Vector2(.5f, .5f), Vector2.zero, Vector2.zero);
-            handImage = Picture("Hand", hand, Hand(192), new Vector2(.5f, .5f), Vector2.zero, Vector2.one * MaxHand).rectTransform;
-            handImage.pivot = HandTip;
+            // PixelLand's glossy hand art when present, else the procedural one.
+            var art = Resources.Load<Texture2D>("UI/TutorialHand");
+            if (art != null) { handTip = new Vector2(.17f, .95f); handAspect = art.width / (float)art.height; }
+            handImage = Picture("Hand", hand, art != null ? art : Hand(192), new Vector2(.5f, .5f), Vector2.zero, Vector2.one * MaxHand).rectTransform;
+            handImage.pivot = handTip;
             caption = Box("Caption", hand, new Color(.10f, .20f, .29f, .87f), new Vector2(.5f, .5f), Vector2.zero, new Vector2(660, 90), 24);
             caption.GetComponent<Image>().raycastTarget = false;
             captionText = Label("Text", caption, 40, FontStyle.Bold, new Vector2(.5f, .5f), new Vector2(-62, 0), new Vector2(520, 90));
@@ -150,17 +156,18 @@ namespace VoxelSmash.Game
             var rect = layer.rect;
             float scale = Screen.width / Mathf.Max(1f, rect.width);
             float size = Mathf.Min(MaxHand, rect.width * .25f, rect.height * .2f);
-            handImage.sizeDelta = Vector2.one * size;
+            handImage.sizeDelta = new Vector2(size * handAspect, size);
             var tip = new Vector2(screenPoint.x / scale - rect.width * .5f, screenPoint.y / scale - rect.height * .5f);
             // Both band edges are measured in screen pixels from the top.
             float top = rect.height * .5f - topPx / scale, bottom = rect.height * .5f - bottomPx / scale;
-            tip.x = Mathf.Clamp(tip.x, -rect.width * .5f + 8f + size * HandTip.x, rect.width * .5f - 8f - size * (1f - HandTip.x));
-            if (motion != HintMotion.Point) tip.y = Mathf.Clamp(tip.y, bottom + size * HandTip.y + 100f, top);
+            float width = size * handAspect;
+            tip.x = Mathf.Clamp(tip.x, -rect.width * .5f + 8f + width * handTip.x, rect.width * .5f - 8f - width * (1f - handTip.x));
+            if (motion != HintMotion.Point) tip.y = Mathf.Clamp(tip.y, bottom + size * handTip.y + 100f, top);
             hand.anchoredPosition = tip;
-            float captionX = Mathf.Clamp(size * (.5f - HandTip.x) - 20f, -rect.width * .5f + 290f - tip.x, rect.width * .5f - 290f - tip.x);
+            float captionX = Mathf.Clamp(width * (.5f - handTip.x) - 20f, -rect.width * .5f + 290f - tip.x, rect.width * .5f - 290f - tip.x);
             caption.anchoredPosition = motion == HintMotion.Point
                 ? new Vector2(captionX, 80f)
-                : new Vector2(captionX, -size * HandTip.y - 55f);
+                : new Vector2(captionX, -size * handTip.y - 55f);
         }
 
         void Update()

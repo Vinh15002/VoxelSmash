@@ -16,7 +16,7 @@ namespace VoxelSmash.Game
         static readonly WeaponType[] Tour =
         {
             WeaponType.Glove, WeaponType.Glove, WeaponType.Hammer, WeaponType.Mace, WeaponType.Lightning,
-            WeaponType.Bomb, WeaponType.Axe, WeaponType.Bullets, WeaponType.Chain, WeaponType.Rocket,
+            WeaponType.Bomb, WeaponType.Hammer, WeaponType.Bullets, WeaponType.Chain, WeaponType.Rocket,
             WeaponType.Poison, WeaponType.Bomb, WeaponType.Rocket, WeaponType.Lightning, WeaponType.Bomb
         };
 

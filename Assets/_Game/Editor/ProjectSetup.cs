@@ -28,6 +28,7 @@ namespace VoxelSmash.EditorTools
             EnsureLayers(GameController.SculptureLayer, GameController.DebrisLayer, "Table", GameController.PreviewLayer);
             CreateLevels();
             CreateWeapons();
+            WeaponArtImporter.Run();
             CreateMaterials();
             AssetDatabase.SaveAssets();
             CreateScene();
@@ -55,7 +56,8 @@ namespace VoxelSmash.EditorTools
         // Release WebGL build for CrazyGames: Brotli-compressed, their template (needed for the SDK on
         // localhost) and explicitly thrown exceptions: with none at all, any throw, even a handled one,
         // halts the page.
-        // Zipped next to the build folder for upload.
+        // Upload the four files in Build/ directly: CrazyGames rejects archives, and matches the
+        // loader, framework, data and wasm by their shared name, so files are not named as hashes.
         // Batch: Unity -batchmode -quit -buildTarget WebGL -executeMethod VoxelSmash.EditorTools.ProjectSetup.BuildWebGL
         [MenuItem("Voxel Smash/Build WebGL (CrazyGames)")]
         public static void BuildWebGL() => BuildWebGL(false);
@@ -72,7 +74,7 @@ namespace VoxelSmash.EditorTools
             PlayerSettings.WebGL.decompressionFallback = false;
             PlayerSettings.WebGL.exceptionSupport = debug ? WebGLExceptionSupport.FullWithStacktrace : WebGLExceptionSupport.ExplicitlyThrownExceptionsOnly;
             PlayerSettings.WebGL.dataCaching = true;
-            PlayerSettings.WebGL.nameFilesAsHashes = true;
+            PlayerSettings.WebGL.nameFilesAsHashes = false;
             PlayerSettings.WebGL.showDiagnostics = false;
             PlayerSettings.SetManagedStrippingLevel(UnityEditor.Build.NamedBuildTarget.WebGL, ManagedStrippingLevel.Medium);
             PlayerSettings.runInBackground = false;
@@ -86,13 +88,6 @@ namespace VoxelSmash.EditorTools
                 options = debug ? BuildOptions.Development : BuildOptions.None
             });
             Debug.Log($"[VoxelSmash] WebGL build {report.summary.result}: {report.summary.totalSize / 1048576f:F1} MB");
-            if (!debug && report.summary.result == BuildResult.Succeeded)
-            {
-                string zip = WebGLPath + ".zip";
-                if (File.Exists(zip)) File.Delete(zip);
-                System.IO.Compression.ZipFile.CreateFromDirectory(WebGLPath, zip);
-                Debug.Log($"[VoxelSmash] Zipped {zip}: {new FileInfo(zip).Length / 1048576f:F1} MB");
-            }
             if (Application.isBatchMode && report.summary.result != BuildResult.Succeeded) EditorApplication.Exit(1);
         }
 
@@ -145,19 +140,19 @@ namespace VoxelSmash.EditorTools
 
         const string WeaponDir = Root + "/Data/Weapons";
 
-        // Numbers from the reference's WEAPONS table; durations default to .29 s where it had none.
+        // Numbers from the reference's WEAPONS table; durations default to .29 s where it had none. The axe
+        // was dropped; bomb and poison fall onto the target, so they take longer.
         static readonly (string name, WeaponType type, float radius, float power, float cooldown, float duration, int unlock, StrikeMode mode, WeaponSound sound)[] WeaponTable =
         {
             ("Boxing glove", WeaponType.Glove, .43f, 4.8f, .27f, .29f, 0, StrikeMode.Sphere, WeaponSound.Glove),
             ("Knife", WeaponType.Knife, .48f, 4.0f, .62f, .56f, 0, StrikeMode.Slice, WeaponSound.Slice),
             ("Shuriken", WeaponType.Star, .58f, 6.2f, .32f, .29f, 0, StrikeMode.Sphere, WeaponSound.Slice),
-            ("Bomb", WeaponType.Bomb, 1.05f, 12f, .75f, .29f, 5, StrikeMode.Sphere, WeaponSound.Explosion),
+            ("Bomb", WeaponType.Bomb, 1.05f, 12f, .75f, .70f, 5, StrikeMode.Sphere, WeaponSound.Explosion),
             ("Hammer", WeaponType.Hammer, .52f, 5.7f, .76f, .68f, 0, StrikeMode.Sphere, WeaponSound.Hammer),
-            ("Axe", WeaponType.Axe, .64f, 6.2f, .80f, .72f, 6, StrikeMode.Slice, WeaponSound.Hammer),
             ("Mace", WeaponType.Mace, .71f, 7.6f, .44f, .29f, 7, StrikeMode.Sphere, WeaponSound.Hammer),
             ("Lightning", WeaponType.Lightning, .97f, 10f, .68f, .46f, 8, StrikeMode.Beam, WeaponSound.Zap),
             ("Bullet burst", WeaponType.Bullets, .35f, 5.6f, .64f, .40f, 9, StrikeMode.Sphere, WeaponSound.Shot),
-            ("Poison", WeaponType.Poison, .58f, 4.4f, .95f, .52f, 10, StrikeMode.Sphere, WeaponSound.Poison),
+            ("Poison", WeaponType.Poison, .58f, 4.4f, .95f, .70f, 10, StrikeMode.Sphere, WeaponSound.Poison),
             ("Wrecking ball", WeaponType.Chain, .88f, 9f, .95f, .78f, 11, StrikeMode.Sphere, WeaponSound.Hammer),
             ("Rocket", WeaponType.Rocket, 1.18f, 12f, 1.0f, .55f, 12, StrikeMode.Sphere, WeaponSound.Explosion)
         };
@@ -178,6 +173,7 @@ namespace VoxelSmash.EditorTools
                 w.unlockLevel = row.unlock;
                 w.mode = row.mode;
                 w.sound = row.sound;
+                w.strikeCost = StrikeCost(row.type);
                 w.shake = w.Explosive ? .24f : .065f;
                 w.pattern = row.type switch
                 {
@@ -188,6 +184,24 @@ namespace VoxelSmash.EditorTools
                 Save(w, WeaponPath(i, row.name));
             }
         }
+
+        // Gold per strike: about what a carelessly aimed strike earns on average (measured over the
+        // campaign: a level pays ~1 coin per 8 cubes), slightly more, so only good aim grows the purse.
+        static int StrikeCost(WeaponType type) => type switch
+        {
+            WeaponType.Glove => 20,
+            WeaponType.Knife => 30,
+            WeaponType.Star => 38,
+            WeaponType.Hammer => 28,
+            WeaponType.Mace => 55,
+            WeaponType.Bomb => 100,
+            WeaponType.Lightning => 130,
+            WeaponType.Bullets => 16,
+            WeaponType.Poison => 32,
+            WeaponType.Chain => 85,
+            WeaponType.Rocket => 130,
+            _ => 30
+        };
 
         static string WeaponPath(int index, string name) => $"{WeaponDir}/{index + 1:00}_{name.Replace(" ", "")}.asset";
 
@@ -261,12 +275,16 @@ namespace VoxelSmash.EditorTools
             var shader = Shader.Find("VoxelSmash/VoxelLit");
             // Edge widths are in each mesh's uv units: metres for sculpture and junkyard faces,
             // the unit cube for instanced fragments.
+            // Sculptures and fragments use PixelLand's rounded cube-face texture (its toon "base" look).
+            var face = FaceTexture();
             var voxel = Save(new Material(shader), dir + "/Voxel.mat");
-            Edges(voxel, .009f, .3f);
+            Edges(voxel, .009f, .12f);
+            Face(voxel, face);
             var fragmentMat = new Material(shader) { enableInstancing = true };
             var fragments = Save(fragmentMat, dir + "/VoxelFragments.mat");
             fragments.enableInstancing = true;
-            Edges(fragments, .09f, .3f);
+            Edges(fragments, .09f, .12f);
+            Face(fragments, face);
             var junkyard = Save(new Material(shader), dir + "/Junkyard.mat");
             Edges(junkyard, .035f, .22f);
             var sky = Save(new Material(Shader.Find("Skybox/Procedural")), dir + "/Sky.mat");
@@ -286,6 +304,26 @@ namespace VoxelSmash.EditorTools
             fxAdditive.SetFloat("_DstBlend", (float)BlendMode.One);
             EditorUtility.SetDirty(fxAlpha);
             EditorUtility.SetDirty(fxAdditive);
+        }
+
+        const string FaceTexturePath = Root + "/Textures/VoxelFace.png";
+
+        static Texture2D FaceTexture()
+        {
+            var importer = (TextureImporter)AssetImporter.GetAtPath(FaceTexturePath);
+            importer.wrapMode = TextureWrapMode.Clamp;
+            importer.mipmapEnabled = true;
+            importer.anisoLevel = 4;
+            importer.maxTextureSize = 256;
+            importer.SaveAndReimport();
+            return AssetDatabase.LoadAssetAtPath<Texture2D>(FaceTexturePath);
+        }
+
+        static void Face(Material m, Texture2D texture)
+        {
+            m.SetTexture("_FaceMap", texture);
+            m.SetFloat("_FaceStrength", 1f);
+            EditorUtility.SetDirty(m);
         }
 
         static void Edges(Material m, float width, float dark)
@@ -309,7 +347,8 @@ namespace VoxelSmash.EditorTools
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             // Load only after NewScene: it unloads unreferenced assets, leaving earlier handles destroyed.
             var levels = AssetDatabase.LoadAssetAtPath<LevelList>(Root + "/Data/Levels.asset");
-            var voxel = AssetDatabase.LoadAssetAtPath<Material>(Root + "/Materials/Voxel.mat");
+            var voxelPalette = AssetDatabase.FindAssets("t:Material", new[] { Root + "/Materials/PixelLand" })
+                .Select(g => AssetDatabase.LoadAssetAtPath<Material>(AssetDatabase.GUIDToAssetPath(g))).ToArray();
             var fragments = AssetDatabase.LoadAssetAtPath<Material>(Root + "/Materials/VoxelFragments.mat");
             var junkyardMat = AssetDatabase.LoadAssetAtPath<Material>(Root + "/Materials/Junkyard.mat");
             var skyMat = AssetDatabase.LoadAssetAtPath<Material>(Root + "/Materials/Sky.mat");
@@ -364,7 +403,9 @@ namespace VoxelSmash.EditorTools
             var game = new GameObject("Game").AddComponent<GameController>();
             var so = new SerializedObject(game);
             so.FindProperty("levels").objectReferenceValue = levels;
-            so.FindProperty("voxelMaterial").objectReferenceValue = voxel;
+            var palette = so.FindProperty("voxelPalette");
+            palette.arraySize = voxelPalette.Length;
+            for (int i = 0; i < voxelPalette.Length; i++) palette.GetArrayElementAtIndex(i).objectReferenceValue = voxelPalette[i];
             so.FindProperty("fragmentMaterial").objectReferenceValue = fragments;
             so.FindProperty("cameraRig").objectReferenceValue = rig;
             so.FindProperty("hud").objectReferenceValue = hud;
@@ -374,7 +415,7 @@ namespace VoxelSmash.EditorTools
             weaponsProp.arraySize = weapons.Length;
             for (int i = 0; i < weapons.Length; i++) weaponsProp.GetArrayElementAtIndex(i).objectReferenceValue = weapons[i];
             so.ApplyModifiedPropertiesWithoutUndo();
-            if (!levels || !voxel || !fragments || !junkyardMat || !skyMat || !fxAlpha || !fxAdditive || System.Array.Exists(weapons, w => !w)) throw new System.InvalidOperationException("[VoxelSmash] Generated assets missing; scene not wired");
+            if (!levels || voxelPalette.Length == 0 || !fragments || !junkyardMat || !skyMat || !fxAlpha || !fxAdditive || System.Array.Exists(weapons, w => !w)) throw new System.InvalidOperationException("[VoxelSmash] Generated assets missing; scene not wired");
 
             EditorSceneManager.SaveScene(scene, ScenePath);
             EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(ScenePath, true) };

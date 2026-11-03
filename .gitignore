@@ -122,3 +122,7 @@ desktop.ini
 # MCP for Unity screenshots
 /[Aa]ssets/Screenshots/
 /[Aa]ssets/Screenshots.meta
+
+# Paid Asset Store packages (Toony Colors Pro, Cartoon FX): import them locally, never publish them.
+/Assets/JMO Assets/
+/Assets/JMO Assets.meta

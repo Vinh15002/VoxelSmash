@@ -11,8 +11,19 @@ namespace VoxelSmash.Game
     {
         static Material red, darkRed, metal, orange, black, gold, blue, green, cream, glow, rocketBlue, bulletRed;
 
+        // When set (the game sets PixelLand's colour materials), weapons use untextured copies of the
+        // nearest one so they match the sculptures; metallic/smoothness then only apply to the URP/Lit fallback.
+        public static VoxelMaterials Materials { get; set; }
+
         static Material Lit(Color32 color, float metallic, float smoothness)
         {
+            if (Materials != null)
+            {
+                var toon = new Material(Materials.For(((Color)color).linear));
+                toon.SetTexture("_BaseMap", null);
+                toon.SetColor("_BaseColor", color);
+                return toon;
+            }
             var m = new Material(Shader.Find("Universal Render Pipeline/Lit"));
             m.SetColor("_BaseColor", color);
             m.SetFloat("_Metallic", metallic);
@@ -53,6 +64,19 @@ namespace VoxelSmash.Game
         }
 
         static Vector3 V(float x, float y, float z) => new(x, y, z);
+
+        public static GameObject Build(WeaponDef weapon, int layer = 0)
+        {
+            if (!weapon.model) return Build(weapon.type, layer);
+            var root = new GameObject(weapon.type.ToString()) { layer = layer };
+            // Undo the parent's z mirror so the imported model keeps its handedness.
+            var unmirror = new GameObject("Unmirror") { layer = layer }.transform;
+            unmirror.SetParent(root.transform, false);
+            unmirror.localScale = new Vector3(1f, 1f, -1f);
+            var model = Object.Instantiate(weapon.model, unmirror, false);
+            foreach (var t in model.GetComponentsInChildren<Transform>(true)) t.gameObject.layer = layer;
+            return root;
+        }
 
         public static GameObject Build(WeaponType type, int layer = 0)
         {

@@ -1,7 +1,9 @@
 // Vertex-coloured voxels: chunk meshes carry colour per vertex (with baked corner occlusion), instanced
-// fragments per instance (_BaseColor). Lighting is a hemisphere ambient plus the URP main light with
-// shadows, then fog. Faces that carry uv0 (position along the face) and uv2 (face size) get a dark
-// bevel line at each cube edge; meshes without uv2 render plain.
+// fragments per instance (_BaseColor). Lighting follows PixelLand's toon cube material (TCP2 settings):
+// wrapped N.L through a ramp step at _RampThreshold, a small specular highlight, hemisphere ambient,
+// URP main-light shadows, then fog. Faces that carry uv0 (position along the face) and uv2 (face size)
+// get PixelLand's rounded "pillow" face texture (_FaceMap) and/or a dark line at each cube edge;
+// meshes without uv2 render plain.
 Shader "VoxelSmash/VoxelLit"
 {
     Properties
@@ -12,6 +14,13 @@ Shader "VoxelSmash/VoxelLit"
         _Ambient ("Ambient Strength", Range(0,2)) = 0.75
         _EdgeWidth ("Edge Width (uv units)", Float) = 0.012
         _EdgeDark ("Edge Darkening", Range(0,1)) = 0.28
+        _FaceMap ("Face Texture (one cube face)", 2D) = "white" {}
+        _FaceStrength ("Face Texture Strength", Range(0,1)) = 0
+        _RampThreshold ("Ramp Threshold", Range(0,1)) = 0.6
+        _RampSmooth ("Ramp Smoothing", Range(0.01,1)) = 0.2
+        _ShadowTint ("Shadow Side Tint", Color) = (0.62,0.66,0.8,1)
+        _SpecStrength ("Specular Strength", Range(0,1)) = 0.26
+        _SpecPower ("Specular Power", Float) = 19.6
     }
     SubShader
     {
@@ -39,7 +48,17 @@ Shader "VoxelSmash/VoxelLit"
                 half _Ambient;
                 float _EdgeWidth;
                 half _EdgeDark;
+                half _FaceStrength;
+                half _RampThreshold;
+                half _RampSmooth;
+                half4 _ShadowTint;
+                half _SpecStrength;
+                half _SpecPower;
+                float4 _FaceMap_ST;
             CBUFFER_END
+
+            TEXTURE2D(_FaceMap);
+            SAMPLER(sampler_FaceMap);
 
             UNITY_INSTANCING_BUFFER_START(Props)
                 UNITY_DEFINE_INSTANCED_PROP(float4, _BaseColor)
@@ -83,18 +102,25 @@ Shader "VoxelSmash/VoxelLit"
             {
                 half3 n = normalize(i.normalWS);
                 Light light = GetMainLight(TransformWorldToShadowCoord(i.positionWS));
-                half ndl = saturate(dot(n, light.direction));
+                // Toon ramp on wrapped lighting: a soft step between the lit and the shadowed side.
+                half wrapped = dot(n, light.direction) * .5h + .5h;
+                half ramp = smoothstep(_RampThreshold - _RampSmooth * .5h, _RampThreshold + _RampSmooth * .5h, wrapped);
+                ramp *= light.shadowAttenuation * light.distanceAttenuation;
                 half3 ambient = lerp(_GroundColor.rgb, _SkyColor.rgb, n.y * .5h + .5h) * _Ambient;
-                half3 lit = light.color * ndl * light.shadowAttenuation * light.distanceAttenuation + ambient;
+                half3 lit = lerp(ambient * _ShadowTint.rgb, light.color + ambient * .35h, ramp);
+                half3 view = normalize(GetWorldSpaceViewDir(i.positionWS));
+                half spec = pow(saturate(dot(n, normalize(light.direction + view))), _SpecPower) * _SpecStrength * ramp;
                 half3 albedo = i.color.rgb;
                 if (i.face.z > 0)
                 {
+                    float2 uv = i.face.xy / i.face.zw;
+                    albedo *= lerp(1, SAMPLE_TEXTURE2D(_FaceMap, sampler_FaceMap, uv).rgb, _FaceStrength);
                     float2 d = min(i.face.xy, i.face.zw - i.face.xy);
                     float w = max(_EdgeWidth, fwidth(i.face.x) * 1.2);
                     half edge = smoothstep(0, w, min(d.x, d.y));
                     albedo *= lerp(1 - _EdgeDark, 1, edge);
                 }
-                return half4(MixFog(albedo * lit, i.fog), 1);
+                return half4(MixFog(albedo * lit + spec * light.color, i.fog), 1);
             }
             ENDHLSL
         }

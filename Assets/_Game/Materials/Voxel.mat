@@ -22,15 +22,25 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _FaceMap:
+        m_Texture: {fileID: 2800000, guid: d5b7ebd641b76ae4393ecdd35594b865, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _Ambient: 0.75
-    - _EdgeDark: 0.3
+    - _EdgeDark: 0.12
     - _EdgeWidth: 0.009
+    - _FaceStrength: 1
+    - _RampSmooth: 0.2
+    - _RampThreshold: 0.6
+    - _SpecPower: 19.6
+    - _SpecStrength: 0.26
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _GroundColor: {r: 0.26999995, g: 0.21999997, b: 0.16999996, a: 1}
+    - _ShadowTint: {r: 0.62, g: 0.65999997, b: 0.8, a: 1}
     - _SkyColor: {r: 0.78999996, g: 0.89, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

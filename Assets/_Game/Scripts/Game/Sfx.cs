@@ -5,8 +5,9 @@ using VoxelSmash.Core;
 
 namespace VoxelSmash.Game
 {
-    // Procedurally synthesised placeholder sounds (no third-party audio). One family per weapon
-    // sound, with variants played round-robin like the reference; at most five play at once.
+    // Weapon sounds: the recorded clips a WeaponDef carries (Kenney, CC0), else procedurally
+    // synthesised ones, one family per weapon sound with variants played round-robin like the
+    // reference. At most five play at once.
     public sealed class Sfx : MonoBehaviour
     {
         const int Rate = 22050, Voices = 5;
@@ -38,6 +39,14 @@ namespace VoxelSmash.Game
         {
             var set = clips[sound];
             PlayClip(set[variant++ % set.Length], .95f + UnityEngine.Random.value * .1f);
+        }
+
+        // One of a weapon's recorded clips; false when it has none.
+        public bool Play(AudioClip[] set)
+        {
+            if (set == null || set.Length == 0) return false;
+            PlayClip(set[UnityEngine.Random.Range(0, set.Length)], .93f + UnityEngine.Random.value * .14f);
+            return true;
         }
 
         public void PlayVictory()

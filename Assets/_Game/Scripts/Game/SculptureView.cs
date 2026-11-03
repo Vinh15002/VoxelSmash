@@ -1,12 +1,11 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using VoxelSmash.Core;
 
 namespace VoxelSmash.Game
 {
-    // Draws a sculpture as 8x8x8 chunk meshes with hidden faces culled. Only chunks touched by a
-    // strike are rebuilt. Each chunk's greedy-merged BoxColliders are both the static physics
+    // Draws a sculpture as 8x8x8 chunk meshes with hidden faces culled, one submesh per voxel colour
+    // (each with its PixelLand cube material). Only chunks touched by a strike are rebuilt. Each chunk's greedy-merged BoxColliders are both the static physics
     // the debris lands on and the tap raycast target.
     public sealed class SculptureView : MonoBehaviour
     {
@@ -27,14 +26,15 @@ namespace VoxelSmash.Game
         };
 
         Sculpture sculpture;
-        Material material;
+        VoxelMaterials materials;
         readonly Dictionary<Vector3Int, Chunk> chunks = new();
         readonly HashSet<Vector3Int> dirty = new();
         readonly List<Vector3> vertices = new();
         readonly List<Vector3> normals = new();
-        readonly List<Color> colors = new();
-        readonly List<Vector2> uvs = new(), faceSizes = new();
-        readonly List<int> triangles = new();
+        readonly List<Vector2> uvs = new();
+        // Triangles per colour material, reused between rebuilds.
+        readonly Dictionary<Material, List<int>> groups = new();
+        readonly List<Material> used = new();
         Color[] linearPalette;
         PhysicsMaterial physicsMaterial;
         readonly bool[] occupancy = new bool[ChunkSize * ChunkSize * ChunkSize];
@@ -42,14 +42,14 @@ namespace VoxelSmash.Game
 
         public Sculpture Sculpture => sculpture;
 
-        public static SculptureView Create(Sculpture sculpture, VoxelModel model, Material material,
+        public static SculptureView Create(Sculpture sculpture, VoxelModel model, VoxelMaterials materials,
             PhysicsMaterial physicsMaterial, int layer, Transform parent)
         {
             var go = new GameObject("Sculpture") { layer = layer };
             go.transform.SetParent(parent, false);
             var view = go.AddComponent<SculptureView>();
             view.sculpture = sculpture;
-            view.material = material;
+            view.materials = materials;
             view.physicsMaterial = physicsMaterial;
             view.linearPalette = new Color[model.palette.Length];
             for (int i = 0; i < model.palette.Length; i++) view.linearPalette[i] = ((Color)model.palette[i]).linear;
@@ -100,7 +100,6 @@ namespace VoxelSmash.Game
             chunk.go.transform.SetParent(transform, false);
             chunk.go.AddComponent<MeshFilter>().sharedMesh = chunk.mesh;
             var renderer = chunk.go.AddComponent<MeshRenderer>();
-            renderer.sharedMaterial = material;
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
             chunk.go.layer = gameObject.layer;
             chunk.origin = key * ChunkSize;
@@ -110,19 +109,22 @@ namespace VoxelSmash.Game
 
         void Rebuild(Chunk chunk)
         {
-            vertices.Clear(); normals.Clear(); colors.Clear(); triangles.Clear(); uvs.Clear(); faceSizes.Clear();
+            vertices.Clear(); normals.Clear(); uvs.Clear(); used.Clear();
+            foreach (var g in groups.Values) g.Clear();
             float h = sculpture.size * .5f;
             foreach (int i in chunk.cells)
             {
                 var cell = sculpture.cells[i];
                 if (!cell.alive) continue;
                 var center = sculpture.Position(i);
-                var color = linearPalette[cell.color] * cell.shade;
+                var material = materials.For(linearPalette[cell.color] * cell.shade);
+                if (!groups.TryGetValue(material, out var triangles)) groups[material] = triangles = new List<int>();
+                if (triangles.Count == 0) used.Add(material);
                 foreach (var f in Faces)
                 {
                     if (sculpture.IsAlive(cell.grid + f)) continue;
                     if (f.y < 0 && cell.grid.y == 0) continue; // never seen through the table
-                    AddFace(cell.grid, center, f, h, color);
+                    AddFace(center, f, h, triangles);
                 }
             }
             chunk.mesh.Clear();
@@ -131,10 +133,12 @@ namespace VoxelSmash.Game
             if (empty) return;
             chunk.mesh.SetVertices(vertices);
             chunk.mesh.SetNormals(normals);
-            chunk.mesh.SetColors(colors);
             chunk.mesh.SetUVs(0, uvs);
-            chunk.mesh.SetUVs(2, faceSizes);
-            chunk.mesh.SetTriangles(triangles, 0);
+            // A cell whose faces are all hidden still registered its material; drop empty groups.
+            used.RemoveAll(m => groups[m].Count == 0);
+            chunk.mesh.subMeshCount = used.Count;
+            for (int m = 0; m < used.Count; m++) chunk.mesh.SetTriangles(groups[used[m]], m, false);
+            chunk.go.GetComponent<MeshRenderer>().sharedMaterials = used.ToArray();
             chunk.mesh.RecalculateBounds();
             RebuildColliders(chunk);
         }
@@ -169,50 +173,26 @@ namespace VoxelSmash.Game
             for (int b = merged.Count; b < chunk.boxes.Count; b++) chunk.boxes[b].enabled = false;
         }
 
-        // Per-corner occlusion levels (0 = tucked into a corner, 3 = open), the classic voxel AO.
-        static readonly float[] Occlusion = { .56f, .72f, .87f, 1f };
         static readonly Vector2Int[] Corners = { new(-1, -1), new(-1, 1), new(1, 1), new(1, -1) };
 
-        void AddFace(Vector3Int grid, Vector3 center, Vector3Int face, float h, Color color)
+        // One quad with uv 0..1 across the face, like PixelLand's cube mesh.
+        void AddFace(Vector3 center, Vector3Int face, float h, List<int> triangles)
         {
             Vector3 n = face;
             // Bottom-left, top-left, top-right, bottom-right as seen from outside: clockwise for Unity.
-            var upI = face.y != 0 ? new Vector3Int(0, 0, 1) : new Vector3Int(0, 1, 0);
-            var rightI = Vector3Int.RoundToInt(Vector3.Cross(upI, -n));
-            Vector3 up = upI, right = rightI;
+            Vector3 up = face.y != 0 ? Vector3.forward : Vector3.up;
+            var right = Vector3.Cross(up, -n);
             Vector3 c = center + n * h;
             int start = vertices.Count;
-            var outside = grid + face;
-            Span<int> ao = stackalloc int[4];
-            for (int k = 0; k < 4; k++)
+            foreach (var corner in Corners)
             {
-                var corner = Corners[k];
                 vertices.Add(c + (right * corner.x + up * corner.y) * h);
-                int side1 = Solid(outside + rightI * corner.x) ? 1 : 0, side2 = Solid(outside + upI * corner.y) ? 1 : 0;
-                int diagonal = Solid(outside + rightI * corner.x + upI * corner.y) ? 1 : 0;
-                ao[k] = side1 + side2 == 2 ? 0 : 3 - side1 - side2 - diagonal;
-                var shaded = color * Occlusion[ao[k]];
-                shaded.a = 1f;
                 normals.Add(n);
-                colors.Add(shaded);
-                uvs.Add(new Vector2((corner.x + 1) * h, (corner.y + 1) * h));
-                faceSizes.Add(new Vector2(h * 2f, h * 2f));
+                uvs.Add(new Vector2((corner.x + 1) * .5f, (corner.y + 1) * .5f));
             }
-            // Split the quad along the brighter diagonal so occlusion interpolates without a crease.
-            if (ao[0] + ao[2] >= ao[1] + ao[3])
-            {
-                triangles.Add(start); triangles.Add(start + 1); triangles.Add(start + 2);
-                triangles.Add(start); triangles.Add(start + 2); triangles.Add(start + 3);
-            }
-            else
-            {
-                triangles.Add(start + 1); triangles.Add(start + 2); triangles.Add(start + 3);
-                triangles.Add(start + 1); triangles.Add(start + 3); triangles.Add(start);
-            }
+            triangles.Add(start); triangles.Add(start + 1); triangles.Add(start + 2);
+            triangles.Add(start); triangles.Add(start + 2); triangles.Add(start + 3);
         }
-
-        // The table counts as solid so the bottom layer gets a contact shadow.
-        bool Solid(Vector3Int g) => g.y < 0 || sculpture.IsAlive(g);
 
         void OnDestroy()
         {

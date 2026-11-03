@@ -18,12 +18,30 @@ MonoBehaviour:
   radius: 1.05
   power: 12
   cooldown: 0.75
-  duration: 0.29
+  duration: 0.7
   unlockLevel: 5
   sound: 3
+  strikeCost: 100
   shake: 0.24
   pattern:
   - delay: 0
     dx: 0
     dy: 0
     scale: 1
+  model: {fileID: 312072454581056817, guid: 1fc31dd4fce5b634f86a60140ebf025c, type: 3}
+  impactEffect: {fileID: 8649959347210459449, guid: 09f0b49b73521f546a68fd7f9fbb566e, type: 3}
+  impactEffectScale: 0.5
+  motion: 2
+  swingAxis: {x: 0, y: 0, z: 1}
+  showInHand: 1
+  strikeOffset: {x: 0, y: 0, z: 0}
+  trailColor: {r: 1, g: 0.55, b: 0.15, a: 1}
+  swingSounds: []
+  impactSounds:
+  - {fileID: 8300000, guid: e57d0293af2aa724bb937c7e18943366, type: 3}
+  - {fileID: 8300000, guid: 6b6b9e31ba4140f4cbc8c466633f2149, type: 3}
+  - {fileID: 8300000, guid: c39b79864fec91d42a0c895bf90ba118, type: 3}
+  - {fileID: 8300000, guid: 21697943b61ed104586799b97a274e42, type: 3}
+  - {fileID: 8300000, guid: 4edea76656b619a439adba11e067c6cb, type: 3}
+  - {fileID: 8300000, guid: fefd1523d649abd49806c4008a9fc19d, type: 3}
+  - {fileID: 8300000, guid: 0231d02955bc64348af99d691b225bcc, type: 3}

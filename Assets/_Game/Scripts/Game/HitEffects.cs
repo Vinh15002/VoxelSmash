@@ -74,6 +74,55 @@ namespace VoxelSmash.Game
             sparks.Clear();
             foreach (var e in effects) Dispose(e);
             effects.Clear();
+            foreach (var b in bursts) b.go.SetActive(false);
+        }
+
+        // ---- Imported particle bursts ----------------------------------------------------------
+
+        sealed class Burst
+        {
+            public GameObject prefab, go;
+            public ParticleSystem[] systems;
+            public float life, until;
+        }
+
+        readonly List<Burst> bursts = new();
+
+        // Plays a weapon's imported impact prefab (see WeaponArtImporter), facing away from the camera.
+        // Instances are pooled per prefab; sub-emitters are left to their parents.
+        public void PlayBurst(GameObject prefab, Vector3 point, Vector3 toCamera, float scale)
+        {
+            Burst burst = null;
+            foreach (var b in bursts)
+                if (b.prefab == prefab && !b.go.activeSelf) { burst = b; break; }
+            if (burst == null)
+            {
+                var go = Instantiate(prefab, transform);
+                var subs = new HashSet<ParticleSystem>();
+                var all = go.GetComponentsInChildren<ParticleSystem>(true);
+                foreach (var ps in all)
+                    for (int i = 0; i < ps.subEmitters.subEmittersCount; i++) subs.Add(ps.subEmitters.GetSubEmitterSystem(i));
+                var roots = new List<ParticleSystem>();
+                float life = .2f;
+                foreach (var ps in all)
+                {
+                    var main = ps.main;
+                    life = Mathf.Max(life, main.startDelay.constantMax + main.duration + main.startLifetime.constantMax);
+                    if (!subs.Contains(ps)) roots.Add(ps);
+                }
+                burst = new Burst { prefab = prefab, go = go, systems = roots.ToArray(), life = Mathf.Min(life, 3f) };
+                bursts.Add(burst);
+            }
+            // Pulled toward the camera so the swung weapon, which stops just in front of the hit, does not hide it.
+            burst.go.transform.SetPositionAndRotation(point + toCamera * .5f, Quaternion.LookRotation(-toCamera, Vector3.up));
+            burst.go.transform.localScale = Vector3.one * scale;
+            burst.go.SetActive(true);
+            foreach (var ps in burst.systems)
+            {
+                ps.Clear(false);
+                ps.Play(false);
+            }
+            burst.until = Time.time + burst.life;
         }
 
         // ---- Impact burst ----------------------------------------------------------------------
@@ -251,6 +300,25 @@ namespace VoxelSmash.Game
                     rot = Random.insideUnitSphere * 180f, life = 2.6f + Random.value * 1.4f,
                     size = .045f + Random.value * .03f, spin = 6f + Random.value * 10f,
                     color = ConfettiColors[i % ConfettiColors.Length].linear, gravity = 2.4f, drag = 1.9f
+                });
+            }
+        }
+
+        // Acid dripping off the struck voxels: small cubes that ooze out and run down slowly.
+        public void Melt(Vector3 point, IReadOnlyList<Color> palette)
+        {
+            int count = Detail ? 70 : 32;
+            for (int i = 0; i < count; i++)
+            {
+                if (sparks.Count >= MaxSparks) sparks.RemoveAt(0);
+                var spread = Random.insideUnitCircle * .45f;
+                sparks.Add(new Spark
+                {
+                    pos = point + new Vector3(spread.x, Random.value * .2f, spread.y),
+                    vel = new Vector3(spread.x, -.2f - Random.value * .4f, spread.y),
+                    rot = Random.insideUnitSphere * 180f, life = 1.1f + Random.value * .9f,
+                    size = .03f + Random.value * .035f, spin = .5f + Random.value, color = palette[i % palette.Count],
+                    gravity = 1.6f, drag = 2.4f
                 });
             }
         }
@@ -490,6 +558,8 @@ namespace VoxelSmash.Game
                 Dispose(e);
                 effects.RemoveAt(i);
             }
+            foreach (var b in bursts)
+                if (b.go.activeSelf && Time.time >= b.until) b.go.SetActive(false);
             UpdateSparks(dt);
         }
 

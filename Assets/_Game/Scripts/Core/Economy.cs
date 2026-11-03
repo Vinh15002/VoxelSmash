@@ -2,9 +2,13 @@ using UnityEngine;
 
 namespace VoxelSmash.Core
 {
-    // Coins, stars and upgrade maths. Coins come from every cube smashed (more with a hit combo and the
-    // coin-magnet upgrade, double on boss levels) and buy strike-size and magnet levels or power hits,
-    // which is also the in-game alternative to the rewarded ad.
+    // Gold, stars and upgrade maths. Each level starts with a purse; every strike costs its weapon's
+    // price (WeaponDef.strikeCost) and every cube smashed pays in (more with a hit combo and the
+    // coin-magnet upgrade, double on boss levels). A level pays about one coin per eight cubes whatever
+    // the weapon, and the prices are set near what a careless strike earns, so the purse is the margin:
+    // aim well (topple, pick the right weapon for what is left) and it grows; waste strikes and it runs
+    // dry and the level is lost. Leftover gold is banked on a win and buys strike-size and magnet
+    // levels or power hits.
     public static class Economy
     {
         public const int MaxUpgrade = 10, PowerHitsPrice = 120, PowerHits = 3, MaxCombo = 10;
@@ -18,6 +22,12 @@ namespace VoxelSmash.Core
         }
 
         public static int StarBonusCoins(int stars) => stars * StarBonus;
+
+        // About a fifth of what the level pays out, plus enough for a couple of cheap strikes.
+        public static int StartPurse(int totalCubes) => 30 + totalCubes / 40;
+
+        // Gold moved from the bank to keep playing after running out.
+        public static int ContinueGold(int totalCubes) => Mathf.Max(40, totalCubes / 40);
 
         // Par hits scale with the sculpture: roughly one glove hit per 260 cubes.
         public static int Par(int totalCubes) => Mathf.Max(3, Mathf.CeilToInt(totalCubes / 260f));

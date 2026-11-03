@@ -38,16 +38,28 @@ namespace VoxelSmash.Game
                 var mirror = new GameObject("Mirror") { layer = layer }.transform;
                 mirror.SetParent(holder, false);
                 mirror.localScale = new Vector3(1f, 1f, -1f);
-                var model = WeaponModels.Build(weapons[i].type, layer);
+                var model = WeaponModels.Build(weapons[i], layer);
                 model.transform.SetParent(mirror, false);
+                // Loose particles and trails would neither frame nor render well in a still.
+                foreach (var r in model.GetComponentsInChildren<Renderer>())
+                    if (r is ParticleSystemRenderer or TrailRenderer or LineRenderer) r.enabled = false;
                 // Turn the model three-quarters so depth reads; rockets would otherwise face nose-on.
                 bool lengthwise = weapons[i].type is WeaponType.Rocket or WeaponType.Bullets;
                 holder.rotation = Quaternion.Euler(lengthwise ? 15f : 8f, lengthwise ? 70f : -22f, 0f);
+                // Imported models point at the target (+z): the glove and knife are turned side-on, the
+                // flying shuriken face-on.
+                if (weapons[i].model)
+                {
+                    if (weapons[i].type == WeaponType.Glove) holder.rotation = Quaternion.Euler(10f, 110f, 0f);
+                    else if (weapons[i].type == WeaponType.Knife) holder.rotation = Quaternion.Euler(0f, 0f, 45f) * Quaternion.Euler(0f, 90f, 0f);
+                    else if (weapons[i].type == WeaponType.Star) holder.rotation = Quaternion.Euler(10f, -20f, 0f) * Quaternion.Euler(-70f, 0f, 0f);
+                }
 
                 var bounds = new Bounds(Stage, Vector3.zero);
                 bool first = true;
                 foreach (var r in model.GetComponentsInChildren<Renderer>())
                 {
+                    if (!r.enabled) continue;
                     if (first) { bounds = r.bounds; first = false; }
                     else bounds.Encapsulate(r.bounds);
                 }
